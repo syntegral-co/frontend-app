@@ -4,10 +4,11 @@ import NotFound from './pages/404'
 import SignIn from './pages/signin'
 import Dashboard from './pages'
 import Demo from './pages/demo'
+import ChatOutput from './components/chat-output'
+import Nav from './components/nav'
 
 export const router = createBrowserRouter([
   {
-    path: '/',
     element: <App />,
     errorElement: <NotFound />,
     children: [
@@ -20,8 +21,17 @@ export const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: 'demo',
+        path: '/',
         element: <Demo />,
+        children: [
+          {
+            index: true,
+            element: <ChatOutput />,
+          },
+          { path: 'company/:company', element: <Nav /> },
+          { path: 'company/:company/themes', element: <Nav /> },
+          { path: 'company/:company/theme/:theme', element: <Nav /> },
+        ],
       },
     ],
   },

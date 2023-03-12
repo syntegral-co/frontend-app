@@ -9,7 +9,7 @@ const NAV_LINKS = [
   },
   {
     title: 'Demo',
-    to: '/demo',
+    to: '/',
   },
 ]
 
@@ -87,12 +87,12 @@ function Nav() {
             <div className='flex flex-shrink-0 items-center'>
               <img
                 className='block h-8 w-auto lg:hidden'
-                src='./syntegral.png'
+                src='/syntegral.png'
                 alt='Syntegral'
               />
               <img
                 className='hidden h-8 w-auto lg:block'
-                src='./syntegral.png'
+                src='/syntegral.png'
                 alt='Syntegral'
               />
             </div>

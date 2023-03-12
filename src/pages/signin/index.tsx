@@ -37,7 +37,7 @@ function SignIn() {
         <div>
           <img
             className='mx-auto h-12 w-auto'
-            src='./syntegral.png'
+            src='/syntegral.png'
             alt='Syntegral'
           />
           <h2 className='mt-6 text-center text-3xl font-bold tracking-tight text-white'>
