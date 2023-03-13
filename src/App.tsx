@@ -4,6 +4,7 @@ import Demo from './pages'
 import ChatOutput from './components/chat-output'
 import Dashboard from './pages/dashboard'
 import ProtectedRoute from './components/protected-route'
+import NotFound from './pages/404'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             />
           </Route>
           <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </div>
     </div>
