@@ -3,15 +3,15 @@ import { NavLink } from 'react-router-dom'
 const NAV_LINKS = [
   {
     title: 'Account',
-    to: '/account',
+    to: 'companies/nike',
   },
   {
     title: 'Discovery',
-    to: '/discovery',
+    to: 'companies/nike/themes',
   },
   {
     title: 'Reporting',
-    to: '/reporting',
+    to: 'companies/nike/themes/planet',
   },
   {
     title: 'Download',
@@ -32,6 +32,7 @@ function Sidebar() {
                 ? 'rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-teal-600'
                 : 'rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
             }
+            end
           >
             {title}
           </NavLink>
