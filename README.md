@@ -10,13 +10,12 @@
 - Queries with [React Query](https://react-query-v3.tanstack.com/)
 - Authentication via [Auth0](https://auth0.com/)
 
-## File structure
+## File structure 📂
 
 The file structure follows the pattern:
 
 ```
 | - src
-|  | - assets
 |  | - components
 |  |  | - sidebar
 |  |  | - protected-route
@@ -30,9 +29,8 @@ The file structure follows the pattern:
 |  |  | - 404
 ```
 
-`assets` contains assets like images, fonts, etc.
-`components` contains all the app components that are reused throghout the entire application.
-`pages` contains the entire app routing system, with the following structure:
+- `components` contains all the app components that are reused throghout the entire application.
+- `pages` contains the entire app routing system, with the following structure:
 
 ```
 | - dashboard
