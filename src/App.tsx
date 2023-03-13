@@ -3,6 +3,7 @@ import Nav from './components/nav'
 import Demo from './pages'
 import ChatOutput from './components/chat-output'
 import Dashboard from './pages/dashboard'
+import ProtectedRoute from './components/protected-route'
 
 function App() {
   return (
@@ -10,7 +11,14 @@ function App() {
       <Nav />
       <div className='container mx-auto max-w-7xl p-2 sm:p-6 lg:p-8'>
         <Routes>
-          <Route path='/' element={<Demo />}>
+          <Route
+            path='/'
+            element={
+              <ProtectedRoute>
+                <Demo />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<ChatOutput />} />
             <Route path='companies/:company' element={<p>COMPANY</p>} />
             <Route
