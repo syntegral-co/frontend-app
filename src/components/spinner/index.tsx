@@ -1,15 +1,10 @@
-interface ISpinner {
-  size: string
-  color: string
-}
-
-function Spinner({ size, color }: ISpinner) {
+function Spinner() {
   return (
     <div className='text-center'>
       <div role='status'>
         <svg
           aria-hidden='true'
-          className={`mr-2 inline text-gray-300 h-${size} w-${size} animate-spin fill-${color}`}
+          className='mr-2 inline h-8 w-8 animate-spin fill-teal-600 text-gray-300'
           viewBox='0 0 100 101'
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
@@ -27,11 +22,6 @@ function Spinner({ size, color }: ISpinner) {
       </div>
     </div>
   )
-}
-
-Spinner.defaultProps = {
-  size: '8',
-  color: 'teal-600',
 }
 
 export default Spinner
