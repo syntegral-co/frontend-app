@@ -17,28 +17,23 @@ const NAV_LINKS = [
     title: 'Download',
     to: '/download',
   },
+  {
+    title: 'Upload',
+    to: '/upload',
+  },
 ]
 
 function Sidebar() {
   return (
-    <div className='sticky top-0 h-96 w-64 flex-none rounded-md bg-gray-800'>
-      <div className='flex flex-col gap-2 p-4'>
-        {NAV_LINKS.map(({ title, to }, index) => (
-          <NavLink
-            key={index}
-            to={to}
-            className={({ isActive }) =>
-              isActive
-                ? 'rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-teal-600'
-                : 'rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white'
-            }
-            end
-          >
+    <ul className='menu rounded-box menu-compact hidden w-72 bg-base-200 p-2 lg:menu-normal md:block'>
+      {NAV_LINKS.map(({ title, to }, index) => (
+        <li className='hover-bordered' key={index}>
+          <NavLink to={to} end>
             {title}
           </NavLink>
-        ))}
-      </div>
-    </div>
+        </li>
+      ))}
+    </ul>
   )
 }
 
