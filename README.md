@@ -9,6 +9,7 @@
 - Validation via [Zod](https://zod.dev/)
 - Queries with [React Query](https://react-query-v3.tanstack.com/)
 - Authentication via [Auth0](https://auth0.com/)
+- State via [recoil](https://recoiljs.org/)
 
 ## File structure 📂
 
