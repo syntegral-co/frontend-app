@@ -13,25 +13,28 @@ function Company() {
   const themes = getThemesArray()
 
   return (
-    <>
-      <div className='align-center flex flex-row justify-around gap-2'>
-        {themes.map((theme) => (
-          <NavLink
-            key={theme.id}
-            className='flex flex-col items-center justify-center text-center'
-            to={`./themes/${theme.id}`}
+    <div className='align-center flex w-full flex-row flex-wrap justify-around gap-2 rounded-md bg-base-200 px-4 py-8'>
+      {themes.map((theme) => (
+        <NavLink
+          key={theme.id}
+          className='flex flex-col items-center justify-center text-center'
+          to={`./themes/${theme.id}`}
+        >
+          <CircularProgress
+            color={theme.id}
+            percentage={Math.floor(Math.random() * 70 + 30)}
           >
-            <CircularProgress
-              color={theme.color}
-              percentage={Math.floor(Math.random() * 100)}
-            >
-              <p></p>
-            </CircularProgress>
-            <span className='badge mt-2'>{theme.name}</span>
-          </NavLink>
-        ))}
-      </div>
-    </>
+            <img
+              className='h-20 w-auto rounded-full bg-neutral-focus p-2'
+              src={`/${theme.id}.svg`}
+            />
+          </CircularProgress>
+          <span className='badge mt-2 border-none bg-secondary'>
+            {theme.name}
+          </span>
+        </NavLink>
+      ))}
+    </div>
   )
 }
 

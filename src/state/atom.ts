@@ -1,7 +1,12 @@
-import { atom } from "recoil";
-import { chatbot } from "./data";
+import { atom } from 'recoil'
+import { chatbot } from './data'
 
 export const chatState = atom({
-    key: 'chatState', // unique ID (with respect to other atoms/selectors)
-    default: chatbot, // default value (aka initial value)
-  });
+  key: 'chatState',
+  default: chatbot,
+})
+
+export const drawerState = atom({
+  key: 'drawerState',
+  default: { isOpen: false },
+})

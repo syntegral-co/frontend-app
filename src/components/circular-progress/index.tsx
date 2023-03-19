@@ -10,24 +10,25 @@ function CircularProgress({
 }: ICircularProgressProps): JSX.Element {
   const style = {
     '--value': percentage,
-    '--size': '10rem',
+    '--size': '7rem',
+    '--thickness': '1rem',
   } as React.CSSProperties
 
   let classes = 'bg-neutral radial-progress '
 
   switch (color) {
-    case 'secondary':
-      classes += 'text-secondary'
+    case 'purpose':
+      classes += 'text-purpose'
       break
-    case 'accent':
-      classes += 'text-accent'
+    case 'people':
+      classes += 'text-people'
       break
-    case 'error':
-      classes += 'text-error'
+    case 'profit':
+      classes += 'text-profit'
       break
-    case 'primary':
+    case 'planet':
     default:
-      classes += 'text-primary'
+      classes += 'text-planet'
       break
   }
 

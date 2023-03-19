@@ -25,10 +25,11 @@ const NAV_LINKS = [
 
 function Sidebar() {
   return (
-    <ul className='menu rounded-box menu-compact hidden w-72 bg-base-200 p-2 lg:menu-normal md:block'>
+    <ul className='menu menu-compact hidden w-96 rounded-md bg-base-200 p-2 px-6 lg:menu-normal md:block'>
+      <img className='mx-auto mt-4 mb-8 h-16 w-auto' src='/syntegral.png' />
       {NAV_LINKS.map(({ title, to }, index) => (
-        <li className='hover-bordered' key={index}>
-          <NavLink to={to} end>
+        <li className='border-md mb-4' key={index}>
+          <NavLink className='h-14 text-primary-content shadow-md' to={to} end>
             {title}
           </NavLink>
         </li>

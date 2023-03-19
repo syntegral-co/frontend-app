@@ -1,12 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { NavLink } from 'react-router-dom'
 
-const NAV_LINKS = [
-  {
-    title: 'Demo',
-    to: '/',
-  },
-]
+const NAV_LINKS = []
 
 const ACCOUNT_LINKS = [
   {
@@ -26,7 +21,7 @@ function Nav() {
   if (isLoading) return null
 
   return (
-    <div className='navbar mb-8 bg-base-100'>
+    <div className='navbar mb-8 bg-base-100 px-4 md:px-0'>
       <div className='navbar-start lg:hidden'>
         <img className='h-8 w-auto' src='/syntegral.png' alt='Syntegral' />
         <div className='dropdown'>

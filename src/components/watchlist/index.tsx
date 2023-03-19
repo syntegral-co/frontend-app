@@ -14,7 +14,7 @@ function Watchlist() {
                 <img
                   src={company.logo}
                   alt={company.name}
-                  className='!h-16ù !w-auto !object-contain p-2'
+                  className='!h-16 !w-auto !object-contain p-2'
                 />
               </figure>
               <div className='card-body'>

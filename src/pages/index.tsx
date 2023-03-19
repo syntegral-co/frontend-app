@@ -4,7 +4,7 @@ import ChatInput from '../components/chat-input'
 
 function Demo() {
   return (
-    <div className='flex gap-4'>
+    <div className='flex h-full gap-4'>
       <Sidebar />
       <div className='flex h-96 w-full flex-wrap justify-around gap-2'>
         <ChatOutput />

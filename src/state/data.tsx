@@ -16,24 +16,9 @@ export const companies: ICompany[] = [
 
 export let chatbot: IChatMessage[] = [
   {
-    author: 'bot',
-    avatar: '/avatar.png',
-    text: "It's over Anakin, I have the high ground.",
-  },
-  {
     author: 'current',
     avatar: null,
-    text: 'You underestimate my power!',
-  },
-  {
-    author: 'bot',
-    avatar: '/avatar.png',
-    text: 'It was said that you would, destroy the Sith, not join them.',
-  },
-  {
-    author: 'bot',
-    avatar: '/avatar.png',
-    text: 'It was you who would bring balance to the Force',
+    text: 'How is this company expanding learning opportunities for their employees and how are people impacted by their learning and development programs?',
   },
 ]
 
