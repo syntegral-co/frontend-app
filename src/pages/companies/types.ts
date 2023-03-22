@@ -1,5 +1,6 @@
 export interface ICompany {
-    id: string,
-    name: string,
-    logo: string
+  id: number
+  name: string
+  logo?: string
+  themes?: Record<string, number>
 }

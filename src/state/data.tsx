@@ -2,15 +2,20 @@ import { ICompany } from '../pages/companies/types'
 import { IChatMessage } from '../components/chat-output/types'
 
 export const companies: ICompany[] = [
+  { id: 1, name: 'BUA Cement Plc' },
+  { id: 2, name: 'Dangote Group' },
+  { id: 3, name: 'Guinness Nigeria' },
+  { id: 4, name: 'Okomu Oil Palm PLC' },
+  { id: 5, name: 'Presco PLC' },
   {
-    id: 'nike',
-    name: 'Nike',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/330px-Logo_NIKE.svg.png',
-  },
-  {
-    id: 'apple',
-    name: 'Apple',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/326px-Apple_logo_black.svg.png',
+    id: 6,
+    name: 'Seplat Energy Plc',
+    themes: {
+      purpose: 10,
+      people: 30,
+      profit: 50,
+      planet: 80,
+    },
   },
 ]
 

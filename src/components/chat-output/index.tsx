@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import { useChatBot } from '../chat-input/hooks'
 import Drawer from '../drawer'
 import Loader from '../loader'
+import logo from '@/assets/images/syntegral.svg'
 
 function ChatOutput() {
   const { user } = useAuth0()
@@ -31,7 +32,7 @@ function ChatOutput() {
         <div className='chat chat-start'>
           <div className='chat-image avatar'>
             <div className='w-10 rounded-full'>
-              <img src='/syntegral.svg' />
+              <img src={logo} />
             </div>
           </div>
           <div className='chat-bubble bg-base-200'>

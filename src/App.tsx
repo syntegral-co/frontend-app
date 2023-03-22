@@ -5,7 +5,7 @@ import Dashboard from './pages/dashboard'
 import ProtectedRoute from './components/protected-route'
 import NotFound from './pages/404'
 import Company from './pages/companies'
-import Watchlist from './components/watchlist'
+import CompanySwitcher from './components/company-switcher'
 
 function App() {
   return (
@@ -21,11 +21,11 @@ function App() {
               </ProtectedRoute>
             }
           >
-            <Route index element={<Watchlist />} />
+            <Route index element={<CompanySwitcher />} />
             <Route path='companies/:company' element={<Company />} />
             <Route
               path='companies/:company/themes/:theme?'
-              element={<p>THEME</p>}
+              element={<Company />}
             />
           </Route>
           <Route path='/dashboard' element={<Dashboard />} />

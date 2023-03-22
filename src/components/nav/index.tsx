@@ -1,5 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { NavLink } from 'react-router-dom'
+import logo from '@/assets/images/syntegral.png'
 
 const NAV_LINKS = []
 
@@ -23,7 +24,7 @@ function Nav() {
   return (
     <div className='navbar mb-8 bg-base-100 px-4 md:px-0'>
       <div className='navbar-start lg:hidden'>
-        <img className='h-8 w-auto' src='/syntegral.png' alt='Syntegral' />
+        <img className='h-8 w-auto' src={logo} alt='Syntegral' />
         <div className='dropdown'>
           <label tabIndex={0} className='btn-ghost btn'>
             <svg
@@ -56,7 +57,7 @@ function Nav() {
       {isAuthenticated && (
         <div className='navbar-start hidden lg:flex'>
           <a className='btn-ghost btn text-xl normal-case'>
-            <img className='h-8 w-auto' src='/syntegral.png' alt='Syntegral' />
+            <img className='h-8 w-auto' src={logo} alt='Syntegral' />
           </a>
           <ul className='menu menu-horizontal px-1'>
             {NAV_LINKS.map(({ title, to }, index) => (

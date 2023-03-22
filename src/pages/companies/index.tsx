@@ -2,39 +2,47 @@ import { NavLink, useParams } from 'react-router-dom'
 import { companies } from '../../state/data'
 import { getThemesArray } from '../themes/types'
 import { ICompany } from './types'
-import CircularProgress from '../../components/circular-progress'
+import Theme from '../../components/theme'
+import Sidebar from '../../components/sidebar'
+import ChatOutput from '../../components/chat-output'
+import ChatInput from '../../components/chat-input'
 
 function Company() {
   const { company } = useParams()
 
   const mockCompany = companies.find(
-    (mockCompany: ICompany) => mockCompany.id === company
+    (mockCompany: ICompany) => mockCompany.id === parseInt(company!)
   )
+
+  if (!mockCompany) {
+    return null
+  }
+
   const themes = getThemesArray()
 
   return (
-    <div className='align-center flex w-full flex-row flex-wrap justify-around gap-2 rounded-md bg-base-200 px-4 py-8'>
-      {themes.map((theme) => (
-        <NavLink
-          key={theme.id}
-          className='flex flex-col items-center justify-center text-center'
-          to={`./themes/${theme.id}`}
-        >
-          <CircularProgress
-            color={theme.id}
-            percentage={Math.floor(Math.random() * 70 + 30)}
-          >
-            <img
-              className='h-20 w-auto rounded-full bg-neutral-focus p-2'
-              src={`/${theme.id}.svg`}
-            />
-          </CircularProgress>
-          <span className='badge mt-2 border-none bg-secondary'>
-            {theme.name}
-          </span>
-        </NavLink>
-      ))}
-    </div>
+    <>
+      <Sidebar />
+      <div className='flex h-96 w-full flex-wrap justify-around gap-2'>
+        <div className='flex w-full flex-col items-center justify-center'>
+          <div className='align-center flex w-full flex-row flex-wrap justify-around gap-2 rounded-md bg-base-200 px-4 py-8'>
+            {themes.map((theme) => (
+              <NavLink
+                key={theme.id}
+                className='relative flex flex-col items-center justify-center text-center'
+                to={`/companies/${company}/themes/${theme.id}`}
+              >
+                <Theme company={mockCompany} theme={theme} />
+              </NavLink>
+            ))}
+          </div>
+        </div>
+        <ChatOutput />
+        <div className='h-14 w-full'>
+          <ChatInput />
+        </div>
+      </div>
+    </>
   )
 }
 

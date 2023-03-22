@@ -40,8 +40,6 @@ module.exports = {
           error: '#F93608',
         },
       },
-      'light',
-      'dark',
     ],
     base: true,
     utils: true,

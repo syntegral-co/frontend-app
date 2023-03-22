@@ -1,32 +1,38 @@
 import { NavLink } from 'react-router-dom'
+import logo from '@/assets/images/syntegral.png'
 
-const NAV_LINKS = [
+interface INavLink {
+  title: string
+  to: string
+}
+
+const NAV_LINKS: INavLink[] = [
   {
     title: 'Account',
-    to: 'companies/nike',
+    to: '',
   },
   {
     title: 'Discovery',
-    to: 'companies/nike/themes',
+    to: '',
   },
   {
     title: 'Reporting',
-    to: 'companies/nike/themes/planet',
+    to: '',
   },
   {
     title: 'Download',
-    to: '/download',
+    to: '',
   },
   {
     title: 'Upload',
-    to: '/upload',
+    to: '',
   },
 ]
 
 function Sidebar() {
   return (
     <ul className='menu menu-compact hidden w-96 rounded-md bg-base-200 p-2 px-6 lg:menu-normal md:block'>
-      <img className='mx-auto mt-4 mb-8 h-16 w-auto' src='/syntegral.png' />
+      <img className='mx-auto mt-4 mb-8 h-16 w-auto' src={logo} />
       {NAV_LINKS.map(({ title, to }, index) => (
         <li className='border-md mb-4' key={index}>
           <NavLink className='h-14 text-primary-content shadow-md' to={to} end>
