@@ -2,9 +2,14 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { NavLink } from 'react-router-dom'
 import logo from '@/assets/images/syntegral.png'
 
-const NAV_LINKS = []
+interface INavLink {
+  title: string
+  to: string
+}
 
-const ACCOUNT_LINKS = [
+const NAV_LINKS: INavLink[] = []
+
+const ACCOUNT_LINKS: INavLink[] = [
   {
     title: 'Your profile',
     to: '#',

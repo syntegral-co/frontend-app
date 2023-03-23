@@ -9,23 +9,23 @@ interface INavLink {
 const NAV_LINKS: INavLink[] = [
   {
     title: 'Account',
-    to: '',
+    to: '/companies/6/themes/people',
   },
   {
     title: 'Discovery',
-    to: '',
+    to: '/test',
   },
   {
     title: 'Reporting',
-    to: '',
+    to: '/test',
   },
   {
     title: 'Download',
-    to: '',
+    to: '/test',
   },
   {
     title: 'Upload',
-    to: '',
+    to: '/test',
   },
 ]
 
@@ -35,7 +35,7 @@ function Sidebar() {
       <img className='mx-auto mt-4 mb-8 h-16 w-auto' src={logo} />
       {NAV_LINKS.map(({ title, to }, index) => (
         <li className='border-md mb-4' key={index}>
-          <NavLink className='h-14 text-primary-content shadow-md' to={to} end>
+          <NavLink className='h-14 shadow-md' to={to} end>
             {title}
           </NavLink>
         </li>

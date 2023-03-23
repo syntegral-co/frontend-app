@@ -13,6 +13,8 @@ interface IThemeProps {
 function Theme({ company, theme }: IThemeProps): JSX.Element {
   const { theme: themeParam } = useParams()
 
+  if (!company || !company.themes) return <></>
+
   const showSubThemes = themeParam === theme.id
 
   let subThemes: JSX.Element[] = []

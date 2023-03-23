@@ -11,8 +11,3 @@ export const Themes: Record<ThemeName, ITheme> = {
   Profit: { id: 'profit', name: 'Profit' },
   Planet: { id: 'planet', name: 'Planet' },
 }
-
-export function getThemesArray(): ITheme[] {
-  const themes = Object.values(Themes).map((theme) => theme)
-  return themes
-}

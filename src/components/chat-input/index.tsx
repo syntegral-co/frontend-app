@@ -51,7 +51,7 @@ function ChatInput() {
         placeholder="What's on your mind?"
       />
       <button
-        className='btn absolute right-4 gap-2 rounded-none border-none bg-neutral-focus'
+        className='btn absolute right-4 gap-2 rounded-none border-none'
         type='submit'
       >
         <svg

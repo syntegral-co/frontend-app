@@ -1,24 +1,18 @@
-import { NavLink, useParams } from 'react-router-dom'
-import { companies } from '../../state/data'
-import { getThemesArray } from '../themes/types'
-import { ICompany } from './types'
+import { NavLink } from 'react-router-dom'
+import { useCurrentCompany } from './hooks'
+import { useThemes } from '../themes/hooks'
 import Theme from '../../components/theme'
 import Sidebar from '../../components/sidebar'
 import ChatOutput from '../../components/chat-output'
 import ChatInput from '../../components/chat-input'
 
 function Company() {
-  const { company } = useParams()
+  const company = useCurrentCompany()
+  const themes = useThemes()
 
-  const mockCompany = companies.find(
-    (mockCompany: ICompany) => mockCompany.id === parseInt(company!)
-  )
-
-  if (!mockCompany) {
+  if (!company) {
     return null
   }
-
-  const themes = getThemesArray()
 
   return (
     <>
@@ -30,9 +24,9 @@ function Company() {
               <NavLink
                 key={theme.id}
                 className='relative flex flex-col items-center justify-center text-center'
-                to={`/companies/${company}/themes/${theme.id}`}
+                to={`/companies/${company.id}/themes/${theme.id}`}
               >
-                <Theme company={mockCompany} theme={theme} />
+                <Theme company={company} theme={theme} />
               </NavLink>
             ))}
           </div>

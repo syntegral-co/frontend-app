@@ -1,4 +1,4 @@
-const watched = ['nike', 'apple']
+const watched = [1, 6]
 import { NavLink } from 'react-router-dom'
 import { companies } from '../../state/data'
 
