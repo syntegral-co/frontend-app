@@ -9,7 +9,7 @@ interface INavLink {
 const NAV_LINKS: INavLink[] = [
   {
     title: 'Account',
-    to: '/companies/6/themes/people',
+    to: '/companies/6',
   },
   {
     title: 'Discovery',
@@ -35,7 +35,13 @@ function Sidebar() {
       <img className='mx-auto mt-4 mb-8 h-16 w-auto' src={logo} />
       {NAV_LINKS.map(({ title, to }, index) => (
         <li className='border-md mb-4' key={index}>
-          <NavLink className='h-14 shadow-md' to={to} end>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? 'h-14 text-accent shadow-md' : 'h-14 shadow-md'
+            }
+            to={to}
+            end
+          >
             {title}
           </NavLink>
         </li>

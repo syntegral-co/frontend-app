@@ -1,9 +1,9 @@
+import { useCurrentTheme } from '../../pages/themes/hooks'
+import { useSpring } from '@react-spring/web'
 import CircularProgress from '../circular-progress'
 import { ITheme } from '../../pages/themes/types'
 import { ICompany } from '../../pages/companies/types'
-import { useParams } from 'react-router-dom'
 import LineTo from 'react-lineto'
-import { THEMES_POSITIONS } from '../../utils/constants'
 
 interface IThemeProps {
   company: ICompany
@@ -11,50 +11,62 @@ interface IThemeProps {
 }
 
 function Theme({ company, theme }: IThemeProps): JSX.Element {
-  const { theme: themeParam } = useParams()
+  const currentTheme = useCurrentTheme()
 
   if (!company || !company.themes) return <></>
 
-  const showSubThemes = themeParam === theme.id
+  let impactAreas: JSX.Element[] = []
 
-  let subThemes: JSX.Element[] = []
+  if (currentTheme && currentTheme.id === theme.id) {
+    for (let i = 0; i < currentTheme!.impactAreas!.length; i++) {
+      const currentImpactArea = currentTheme!.impactAreas![i].id
+      const score = company.themes[theme.id].impactAreas![currentImpactArea]
+      console.log('score: ', score)
 
-  if (showSubThemes) {
-    for (let i = 0; i < THEMES_POSITIONS.length; i++) {
-      subThemes.push(
+      impactAreas.push(
         <CircularProgress
           key={i}
-          color='success'
-          percentage={20}
+          color={score > 50 ? 'positive' : 'negative'}
+          percentage={score}
           size='3rem'
-          thickness='.5rem'
+          thickness='.3rem'
           subtheme={i}
         >
           <img
             className='h-10 w-auto rounded-full bg-neutral-focus p-2'
-            src={`/src/assets/images/subtheme.svg`}
+            src={`/src/assets/images/${currentTheme!.id}/${
+              currentTheme!.impactAreas![i].id
+            }.svg`}
           />
         </CircularProgress>
       )
     }
   }
 
-  let themeIcon: string = theme.id
-
-  if (themeParam) {
-    themeIcon = themeParam === theme.id ? theme.id : `${theme.id}-alt`
-  }
+  const themeIcon: string =
+    currentTheme && currentTheme.id === theme.id ? theme.id : `${theme.id}-alt`
 
   return (
     <>
-      <CircularProgress color={theme.id} percentage={company.themes[theme.id]}>
+      <CircularProgress
+        color={
+          currentTheme
+            ? currentTheme.id === theme.id
+              ? theme.id
+              : 'neutral'
+            : theme.id
+        }
+        percentage={company.themes[theme.id].score}
+      >
         <img
           className='h-20 w-auto rounded-full bg-neutral-focus p-2'
           src={`/src/assets/images/${themeIcon}.svg`}
         />
       </CircularProgress>
-      <span className='badge mt-2 border-none bg-secondary'>{theme.name}</span>
-      {subThemes}
+      <span className='badge mt-2 border-none bg-primary text-primary-content'>
+        {theme.name}
+      </span>
+      {impactAreas}
     </>
   )
 }

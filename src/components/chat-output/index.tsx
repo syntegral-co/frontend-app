@@ -16,14 +16,14 @@ function ChatOutput() {
       <Outlet />
       <Drawer />
       <div className='divider'></div>
-      <div className='mt-4 overflow-y-scroll rounded-md pr-4'>
+      <div className='mt-4 h-44 overflow-y-scroll rounded-md pr-4'>
         <div className='chat chat-start'>
           <div className='chat-image avatar'>
             <div className='w-10 rounded-full'>
               <img src={logo} />
             </div>
           </div>
-          <div className='chat-bubble bg-base-200'>
+          <div className='chat-bubble bg-base-200 text-primary-content'>
             Company name: {company!.name}. Overall score: 125.
             <br />
             Click on one of the 4 themes to see more data.
@@ -39,7 +39,9 @@ function ChatOutput() {
                   <img src={avatar || user?.picture} />
                 </div>
               </div>
-              <div className='chat-bubble bg-base-200'>{text}</div>
+              <div className='chat-bubble bg-base-200 text-primary-content'>
+                {text}
+              </div>
             </div>
           )
         })}

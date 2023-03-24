@@ -27,7 +27,6 @@ function CircularProgress({
 
   if (subtheme !== null) {
     const { x, y } = THEMES_POSITIONS[subtheme]
-    console.log('x, y: ', x, y)
     const springs = useSpring({
       from: { transform: 'translate(0,0)' },
       to: { transform: `translate(${x}%, ${y}%)` },
@@ -50,6 +49,9 @@ function CircularProgress({
       break
     case 'planet':
       classes += 'text-planet'
+      break
+    case 'neutral':
+      classes += 'text-secondary-content'
       break
     case 'negative':
       classes += 'text-error'

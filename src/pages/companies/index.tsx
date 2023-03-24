@@ -1,6 +1,6 @@
-import { NavLink } from 'react-router-dom'
 import { useCurrentCompany } from './hooks'
 import { useThemes } from '../themes/hooks'
+import { NavLink } from 'react-router-dom'
 import Theme from '../../components/theme'
 import Sidebar from '../../components/sidebar'
 import ChatOutput from '../../components/chat-output'
@@ -17,9 +17,9 @@ function Company() {
   return (
     <>
       <Sidebar />
-      <div className='flex h-96 w-full flex-wrap justify-around gap-2'>
-        <div className='flex w-full flex-col items-center justify-center'>
-          <div className='align-center flex w-full flex-row flex-wrap justify-around gap-2 rounded-md bg-base-200 px-4 py-8'>
+      <div className='flex h-full w-full flex-wrap justify-around gap-2'>
+        <div className='flex h-1/2 w-full flex-col items-center justify-center bg-base-200'>
+          <div className='align-center flex w-full flex-row flex-wrap justify-around gap-2 rounded-md px-4 py-8'>
             {themes.map((theme) => (
               <NavLink
                 key={theme.id}
@@ -31,8 +31,8 @@ function Company() {
             ))}
           </div>
         </div>
-        <ChatOutput />
-        <div className='h-14 w-full'>
+        <div className='h-1/2 w-full'>
+          <ChatOutput />
           <ChatInput />
         </div>
       </div>

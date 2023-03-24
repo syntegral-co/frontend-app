@@ -11,10 +11,22 @@ export const companies: ICompany[] = [
     id: 6,
     name: 'Seplat Energy Plc',
     themes: {
-      purpose: 10,
-      people: 30,
-      profit: 50,
-      planet: 80,
+      purpose: { score: 10 },
+      people: {
+        score: 30,
+        impactAreas: {
+          'food-and-security': 30,
+          'education-and-child-care': 12,
+          'womens-empowerment': 25,
+          'affordable-housing': 58,
+          'income-and-work': 10,
+          'access-to-energy': 2,
+          'youth-empowerment': 75,
+          'lgbtq-empowerment': 84,
+        },
+      },
+      profit: { score: 50 },
+      planet: { score: 80 },
     },
   },
 ]

@@ -1,6 +1,14 @@
-import { Themes } from './types'
+import { useParams } from 'react-router-dom'
+import { themes } from './types'
 
 export function useThemes() {
-  const themes = Object.values(Themes).map((theme) => theme)
-  return themes
+  return Object.values(themes).map((theme) => theme)
+}
+
+export function useCurrentTheme() {
+  const { theme: themeParam } = useParams()
+
+  if (!themeParam) return null
+
+  return Object.values(themes).find((theme) => theme.id === themeParam)
 }
