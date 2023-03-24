@@ -1,10 +1,10 @@
 function Spinner() {
   return (
-    <div className='text-center'>
+    <div className='flex h-full items-center justify-center text-center'>
       <div role='status'>
         <svg
           aria-hidden='true'
-          className='mr-2 inline h-8 w-8 animate-spin fill-teal-600 text-gray-300'
+          className='mr-2 inline h-8 w-8 animate-spin fill-accent text-primary-focus'
           viewBox='0 0 100 101'
           fill='none'
           xmlns='http://www.w3.org/2000/svg'
