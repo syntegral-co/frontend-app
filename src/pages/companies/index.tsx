@@ -1,7 +1,7 @@
 import { useCurrentCompany } from './hooks'
 import { useThemes } from '../themes/hooks'
 import { NavLink } from 'react-router-dom'
-import Theme from '../../components/theme'
+import Theme from '../themes'
 import Sidebar from '../../components/sidebar'
 import ChatOutput from '../../components/chat-output'
 import ChatInput from '../../components/chat-input'

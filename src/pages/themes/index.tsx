@@ -1,8 +1,8 @@
-import { useCurrentTheme } from '../../pages/themes/hooks'
+import { useCurrentTheme } from './hooks'
 import { useSpring } from '@react-spring/web'
-import CircularProgress from '../circular-progress'
-import { ITheme } from '../../pages/themes/types'
-import { ICompany } from '../../pages/companies/types'
+import CircularProgress from '../../components/circular-progress'
+import { ITheme } from './types'
+import { ICompany } from '../companies/types'
 import LineTo from 'react-lineto'
 
 interface IThemeProps {

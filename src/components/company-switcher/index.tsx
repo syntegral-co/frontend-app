@@ -14,7 +14,7 @@ function CompanySwitcher() {
   const [searchTerm, setSearchTerm] = useState('')
 
   return (
-    <div className='flex h-96 w-full flex-col items-center justify-center'>
+    <div className='flex h-96 w-full flex-col items-center justify-center self-center'>
       <h1 className='text-5xl font-bold'>Hi! 👋🏻</h1>
       <p className='py-6'>What would you like to explore today?</p>
       <input
