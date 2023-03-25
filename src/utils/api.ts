@@ -22,7 +22,7 @@ async function callAPI(endpoint: string) {
 }
 
 export async function getDocuments(pageId: number, minutes: number) {
-  const data = await callAPI(`get-url?page_id=${pageId}&minutes=${minutes}`)
+  const data = await callAPI(`doc-url?page_id=${pageId}&minutes=${minutes}`)
 
-  return [1, 2, 3]
+  return data
 }

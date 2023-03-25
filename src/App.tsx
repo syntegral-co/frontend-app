@@ -1,12 +1,12 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { Route, Routes } from 'react-router-dom'
-import Nav from './components/nav'
-import Demo from './pages'
-import Dashboard from './pages/dashboard'
 import ProtectedRoute from './components/protected-route'
-import NotFound from './pages/404'
-import Company from './pages/companies'
+import Demo from './pages'
 import CompanySwitcher from './components/company-switcher'
+import Company from './pages/companies'
+import ImpactAreas from './pages/areas'
+import Dashboard from './pages/dashboard'
+import NotFound from './pages/404'
 import { getDocuments } from './utils/api'
 
 const PAGE_ID = 123
@@ -43,7 +43,7 @@ function App() {
           }
         >
           <Route index element={<CompanySwitcher />} />
-          <Route path='companies/:company' element={<Company />} />
+          <Route path='companies/:company' element={<ImpactAreas />} />
           <Route
             path='companies/:company/themes/:theme?'
             element={<Company />}
