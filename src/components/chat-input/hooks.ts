@@ -1,16 +1,12 @@
-import { useRecoilState } from "recoil";
-import { chatState } from "../../state/atom";
-import { IChatMessage } from "../chat-output/types";
+import { useQuery } from '@tanstack/react-query'
+import { chat } from '../../utils/api'
 
 export function useChatBot() {
-    const [chatBotMessages, setChatBotMessage] = useRecoilState(chatState)
+  const { data, refetch, fetchStatus } = useQuery({
+    queryKey: ['chatbot', 'test'],
+    queryFn: ({ queryKey }) => chat('test'),
+    enabled: false,
+  })
 
-    function sendMessage(message: IChatMessage) {
-        setChatBotMessage([
-            ...chatBotMessages,
-            message
-        ])
-    }
-
-    return {chatBotMessages, sendMessage}
+  return { data, refetch, fetchStatus }
 }

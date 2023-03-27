@@ -1,10 +1,9 @@
 import { FormEvent, useState } from 'react'
-import { z, ZodFormattedError } from 'zod'
-import { useDrawer } from '../drawer/hooks'
 import { useChatBot } from './hooks'
+import { z, ZodFormattedError } from 'zod'
 
 const chatSchema = z.object({
-  text: z.string(),
+  text: z.string().min(1),
 })
 
 function ChatInput() {
@@ -12,8 +11,7 @@ function ChatInput() {
     ZodFormattedError<typeof chatSchema>
   >({} as ZodFormattedError<typeof chatSchema>)
 
-  const { sendMessage } = useChatBot()
-  const { toggleDrawer } = useDrawer()
+  const { refetch } = useChatBot()
 
   const submitForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -30,11 +28,7 @@ function ChatInput() {
 
     event.currentTarget.reset()
 
-    sendMessage({
-      author: 'current',
-      avatar: null,
-      text: parsedResults.data.text,
-    })
+    refetch()
 
     setFormErrors({} as ZodFormattedError<typeof chatSchema>)
   }

@@ -5,11 +5,13 @@ import Drawer from '../drawer'
 import Loader from '../loader'
 import logo from '@/assets/images/syntegral.svg'
 import { useCurrentCompany } from '../../pages/companies/hooks'
+import { IChatMessage } from './types'
 
 function ChatOutput() {
   const { user } = useAuth0()
   const company = useCurrentCompany()
-  const { chatBotMessages } = useChatBot()
+  const { data, fetchStatus } = useChatBot()
+  console.log('isLoading: ', fetchStatus)
 
   return (
     <div className='flex max-h-fit w-full flex-col justify-between rounded-md p-4 duration-300'>
@@ -29,7 +31,7 @@ function ChatOutput() {
             Click on one of the 4 themes to see more data.
           </div>
         </div>
-        {chatBotMessages.map(({ author, avatar, text }, index) => {
+        {data?.map(({ author, avatar, text }: IChatMessage, index: number) => {
           const chatClasses =
             author === 'bot' ? 'chat chat-start' : 'chat chat-end'
           return (
@@ -45,16 +47,18 @@ function ChatOutput() {
             </div>
           )
         })}
-        <div className='chat chat-start'>
-          <div className='chat-image avatar'>
-            <div className='w-10 rounded-full'>
-              <img src={logo} />
+        {fetchStatus === 'fetching' && (
+          <div className='chat chat-start'>
+            <div className='chat-image avatar'>
+              <div className='w-10 rounded-full'>
+                <img src={logo} />
+              </div>
+            </div>
+            <div className='chat-bubble bg-base-200'>
+              <Loader />
             </div>
           </div>
-          <div className='chat-bubble bg-base-200'>
-            <Loader />
-          </div>
-        </div>
+        )}
       </div>
     </div>
   )

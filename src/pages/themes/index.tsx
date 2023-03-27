@@ -34,7 +34,7 @@ function Theme({ company, theme }: IThemeProps): JSX.Element {
         >
           <img
             className='h-10 w-auto rounded-full bg-neutral-focus p-2'
-            src={`/src/assets/images/${currentTheme!.id}/${
+            src={`/assets/images/${currentTheme!.id}/${
               currentTheme!.impactAreas![i].id
             }.svg`}
           />
@@ -60,7 +60,7 @@ function Theme({ company, theme }: IThemeProps): JSX.Element {
       >
         <img
           className='h-20 w-auto rounded-full bg-neutral-focus p-2'
-          src={`/src/assets/images/${themeIcon}.svg`}
+          src={`/assets/images/${themeIcon}.svg`}
         />
       </CircularProgress>
       <span className='badge mt-2 border-none bg-primary text-primary-content'>

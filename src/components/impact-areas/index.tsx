@@ -10,7 +10,7 @@ function ImpactAreasToggles() {
   return (
     <>
       {areas.map((area) => (
-        <div className='form-control w-52'>
+        <div key={area.id} className='form-control w-52'>
           <label className='label cursor-pointer'>
             <span className='label-text mr-2 text-primary-content'>
               {area.name}
