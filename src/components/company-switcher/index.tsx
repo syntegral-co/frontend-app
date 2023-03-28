@@ -15,12 +15,14 @@ function CompanySwitcher() {
 
   return (
     <div className='flex h-96 w-full flex-col items-center justify-center self-center'>
-      <h1 className='text-5xl font-bold'>Hi! 👋🏻</h1>
-      <p className='py-6'>What would you like to explore today?</p>
+      <h1 className='text-5xl font-bold text-primary-content'>Hi! 👋🏻</h1>
+      <p className='py-6 text-primary-content'>
+        What would you like to explore today?
+      </p>
       <input
         type='text'
         placeholder='Type here'
-        className='input-bordered input w-full max-w-xs'
+        className='input-bordered input w-full max-w-xs text-primary-content'
         onChange={(event) => setSearchTerm(event.target.value)}
       />
       {searchTerm !== '' && (
@@ -28,7 +30,10 @@ function CompanySwitcher() {
           {companies
             .filter((company) => isCompanyInSearchTerm(company, searchTerm))
             .map((company: ICompany) => (
-              <li key={company.id}>
+              <li
+                key={company.id}
+                className='text-primary-content hover:text-accent'
+              >
                 <NavLink to={`/companies/${company.id}`}>
                   {company.name}
                 </NavLink>

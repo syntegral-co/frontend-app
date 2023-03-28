@@ -1,4 +1,5 @@
 import { useCurrentTheme } from './hooks'
+import { useImpactAreas } from '../../components/impact-areas/hooks'
 import { useSpring } from '@react-spring/web'
 import CircularProgress from '../../components/circular-progress'
 import { ITheme } from './types'
@@ -12,35 +13,36 @@ interface IThemeProps {
 
 function Theme({ company, theme }: IThemeProps): JSX.Element {
   const currentTheme = useCurrentTheme()
+  const { impactAreas } = useImpactAreas()
+
+  const selectedImpactAreas = impactAreas.filter((area) => area.checked)
 
   if (!company || !company.themes) return <></>
 
-  let impactAreas: JSX.Element[] = []
+  let themePercentage = company.themes[theme.id].score
+  let impactAreasElements: JSX.Element[] = []
 
   if (currentTheme && currentTheme.id === theme.id) {
-    for (let i = 0; i < currentTheme!.impactAreas!.length; i++) {
-      const currentImpactArea = currentTheme!.impactAreas![i].id
-      const score = company.themes[theme.id].impactAreas![currentImpactArea]
-      console.log('score: ', score)
+    impactAreasElements = selectedImpactAreas.map((area, index) => {
+      const score = company!.themes![theme.id].impactAreas![area.id]
+      themePercentage += score > 50 ? 5 : -5
 
-      impactAreas.push(
+      return (
         <CircularProgress
-          key={i}
+          key={area.id}
           color={score > 50 ? 'positive' : 'negative'}
           percentage={score}
           size='3rem'
           thickness='.3rem'
-          subtheme={i}
+          subtheme={index}
         >
           <img
             className='h-10 w-auto rounded-full bg-neutral-focus p-2'
-            src={`/assets/images/${currentTheme!.id}/${
-              currentTheme!.impactAreas![i].id
-            }.svg`}
+            src={`/assets/images/${currentTheme!.id}/${area.id}.svg`}
           />
         </CircularProgress>
       )
-    }
+    })
   }
 
   const themeIcon: string =
@@ -56,7 +58,7 @@ function Theme({ company, theme }: IThemeProps): JSX.Element {
               : 'neutral'
             : theme.id
         }
-        percentage={company.themes[theme.id].score}
+        percentage={themePercentage}
       >
         <img
           className='h-20 w-auto rounded-full bg-neutral-focus p-2'
@@ -66,7 +68,7 @@ function Theme({ company, theme }: IThemeProps): JSX.Element {
       <span className='badge mt-2 border-none bg-primary text-primary-content'>
         {theme.name}
       </span>
-      {impactAreas}
+      {impactAreasElements}
     </>
   )
 }

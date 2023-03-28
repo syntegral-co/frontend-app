@@ -11,9 +11,9 @@ export const companies: ICompany[] = [
     id: 6,
     name: 'Seplat Energy Plc',
     themes: {
-      purpose: { score: 10 },
+      purpose: { score: 25 },
       people: {
-        score: 30,
+        score: 60,
         impactAreas: {
           'food-and-security': 30,
           'education-and-child-care': 12,
@@ -26,7 +26,7 @@ export const companies: ICompany[] = [
         },
       },
       profit: { score: 50 },
-      planet: { score: 80 },
+      planet: { score: 15 },
     },
   },
 ]
@@ -34,7 +34,6 @@ export const companies: ICompany[] = [
 export let chatbot: IChatMessage[] = [
   {
     author: 'current',
-    avatar: null,
     text: 'How is this company expanding learning opportunities for their employees and how are people impacted by their learning and development programs?',
   },
 ]

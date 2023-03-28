@@ -1,5 +1,4 @@
 async function callAPI(endpoint: string) {
-  console.log('endpoint: ', endpoint)
   try {
     const response = await fetch(endpoint, {
       headers: {
@@ -18,13 +17,12 @@ async function callAPI(endpoint: string) {
   }
 }
 
-export async function chat(message: string) {
+export async function chat(message: string, companyId: number) {
   const APIUrl = `${
     import.meta.env.VITE_CHATBOT_API_BASEPATH
-  }/chatbot?question=${message}&top-k=1`
+  }/chatbot?question=${message}&company_id=${companyId}`
 
   const data = await callAPI(APIUrl)
-  console.log('data: ', data)
 
   return data
 }

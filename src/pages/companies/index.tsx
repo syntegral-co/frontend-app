@@ -22,8 +22,8 @@ function Company() {
         <input id='my-drawer' type='checkbox' className='drawer-toggle' />
         <div className='drawer-content'>
           <div className='flex h-full w-full flex-wrap justify-around gap-2'>
-            <div className='relative flex h-1/2 w-full flex-col items-center justify-center bg-base-200'>
-              <div className='badge-accent badge absolute top-4 left-4 hover:bg-accent-focus'>
+            <div className='relative flex h-auto w-full flex-col items-center justify-center bg-base-200'>
+              <div className='badge-accent badge absolute top-4 left-4 z-20 hover:bg-accent-focus'>
                 <label htmlFor='my-drawer' className='cursor-pointer text-xs'>
                   Choose impact areas
                 </label>

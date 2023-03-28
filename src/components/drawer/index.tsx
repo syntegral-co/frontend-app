@@ -2,7 +2,6 @@ import { useDrawer } from './hooks'
 
 function Drawer(): JSX.Element {
   const { isDrawerOpen } = useDrawer()
-  console.log('isDrawerOpen: ', isDrawerOpen)
 
   const positionClass = isDrawerOpen ? 'right-0' : 'right-full'
   const classes = `transition-all absolute inset-y-0 z-20 h-screen w-1/2 ${positionClass}`

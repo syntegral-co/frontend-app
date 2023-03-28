@@ -1,11 +1,10 @@
-import {
-  ImpactArea,
-  impactAreas,
-  peopleImpactAreas,
-} from '../../pages/areas/types'
+import { useRecoilValue } from 'recoil'
+import { impactAreasState } from '../../state/atom'
+import { useImpactAreas } from './hooks'
 
 function ImpactAreasToggles() {
-  const areas: ImpactArea[] = [...impactAreas, ...peopleImpactAreas]
+  const { toggleImpactArea } = useImpactAreas()
+  const areas = useRecoilValue(impactAreasState)
 
   return (
     <>
@@ -15,7 +14,12 @@ function ImpactAreasToggles() {
             <span className='label-text mr-2 text-primary-content'>
               {area.name}
             </span>
-            <input type='checkbox' className='toggle-accent toggle' />
+            <input
+              type='checkbox'
+              className='toggle-accent toggle'
+              checked={area.checked}
+              onChange={() => toggleImpactArea(area.id)}
+            />
           </label>
         </div>
       ))}

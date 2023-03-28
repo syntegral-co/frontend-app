@@ -1,6 +1,7 @@
 export interface ImpactArea {
   id: string
   name: string
+  checked?: boolean
 }
 
 export const peopleImpactAreas: ImpactArea[] = [

@@ -11,7 +11,7 @@ function ChatInput() {
     ZodFormattedError<typeof chatSchema>
   >({} as ZodFormattedError<typeof chatSchema>)
 
-  const { refetch } = useChatBot()
+  const { sendMessage } = useChatBot()
 
   const submitForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -26,9 +26,8 @@ function ChatInput() {
       return
     }
 
+    sendMessage(parsedResults.data.text)
     event.currentTarget.reset()
-
-    refetch()
 
     setFormErrors({} as ZodFormattedError<typeof chatSchema>)
   }
