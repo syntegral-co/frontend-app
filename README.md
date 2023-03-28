@@ -1,6 +1,8 @@
 # Syntegral Frontend Webapp
 
-**Bootstrapped with [Vite](https://vitejs.dev/)!**
+Bootstrapped with [Vite](https://vitejs.dev/). Deployed on [Netlify](https://www.netlify.com/).
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/88b7cb6c-6669-4b79-ad0f-62ad2d6f5765/deploy-status)](https://app.netlify.com/sites/fanciful-capybara-1c2cf2/deploys?branch=main)
 
 ## Main Features ⭐
 
