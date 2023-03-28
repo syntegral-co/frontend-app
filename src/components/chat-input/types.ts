@@ -1,8 +1,8 @@
 export interface IChatReply {
-  answer: string
-  categories: string
+  answer: string;
+  categories: string;
   references: {
-    list: number[]
-    text: string
-  }
+    list: number[];
+    text: string;
+  };
 }

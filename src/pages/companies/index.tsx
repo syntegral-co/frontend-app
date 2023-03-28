@@ -1,38 +1,38 @@
-import { useCurrentCompany } from './hooks'
-import { useThemes } from '../themes/hooks'
-import { NavLink } from 'react-router-dom'
-import Sidebar from '../../components/sidebar'
-import Theme from '../themes'
-import ChatOutput from '../../components/chat-output'
-import ChatInput from '../../components/chat-input'
-import ImpactAreasToggles from '../../components/impact-areas'
+import { useCurrentCompany } from './hooks';
+import { useThemes } from '../themes/hooks';
+import { NavLink } from 'react-router-dom';
+import Sidebar from '../../components/sidebar';
+import Theme from '../themes';
+import ChatOutput from '../../components/chat-output';
+import ChatInput from '../../components/chat-input';
+import ImpactAreasToggles from '../../components/impact-areas';
 
 function Company() {
-  const company = useCurrentCompany()
-  const themes = useThemes()
+  const company = useCurrentCompany();
+  const themes = useThemes();
 
   if (!company) {
-    return null
+    return null;
   }
 
   return (
     <>
       <Sidebar />
-      <div className='drawer drawer-end'>
-        <input id='my-drawer' type='checkbox' className='drawer-toggle' />
-        <div className='drawer-content'>
-          <div className='flex h-full w-full flex-wrap justify-around gap-2'>
-            <div className='relative flex h-auto w-full flex-col items-center justify-center bg-base-200'>
-              <div className='badge-accent badge absolute top-4 left-4 z-20 hover:bg-accent-focus'>
-                <label htmlFor='my-drawer' className='cursor-pointer text-xs'>
+      <div className="drawer drawer-end">
+        <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+        <div className="drawer-content">
+          <div className="flex h-full w-full flex-wrap justify-around gap-2">
+            <div className="relative flex h-auto w-full flex-col items-center justify-center bg-base-200">
+              <div className="badge-accent badge absolute top-4 left-4 z-20 hover:bg-accent-focus">
+                <label htmlFor="my-drawer" className="cursor-pointer text-xs">
                   Choose impact areas
                 </label>
               </div>
-              <div className='align-center flex w-full flex-row flex-wrap justify-around gap-2 rounded-md px-4 py-8'>
+              <div className="align-center flex w-full flex-row flex-wrap justify-around gap-2 rounded-md px-4 py-8">
                 {themes.map((theme) => (
                   <NavLink
                     key={theme.id}
-                    className='relative flex flex-col items-center justify-center text-center'
+                    className="relative flex flex-col items-center justify-center text-center"
                     to={`/companies/${company.id}/themes/${theme.id}`}
                   >
                     <Theme company={company} theme={theme} />
@@ -40,21 +40,21 @@ function Company() {
                 ))}
               </div>
             </div>
-            <div className='h-1/2 w-full'>
+            <div className="h-1/2 w-full">
               <ChatOutput />
               <ChatInput />
             </div>
           </div>
         </div>
-        <div className='drawer-side pb-8'>
-          <label htmlFor='my-drawer' className='drawer-overlay'></label>
-          <div className='flex flex-col flex-nowrap overflow-y-scroll bg-base-200 p-4'>
+        <div className="drawer-side pb-8">
+          <label htmlFor="my-drawer" className="drawer-overlay"></label>
+          <div className="flex flex-col flex-nowrap overflow-y-scroll bg-base-200 p-4">
             <ImpactAreasToggles />
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default Company
+export default Company;

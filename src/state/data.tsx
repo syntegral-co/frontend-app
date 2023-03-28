@@ -1,5 +1,5 @@
-import { ICompany } from '../pages/companies/types'
-import { IChatMessage } from '../components/chat-output/types'
+import { ICompany } from '../pages/companies/types';
+import { IChatMessage } from '../components/chat-output/types';
 
 export const companies: ICompany[] = [
   { id: 1, name: 'BUA Cement Plc' },
@@ -29,15 +29,15 @@ export const companies: ICompany[] = [
       planet: { score: 15 },
     },
   },
-]
+];
 
 export let chatbot: IChatMessage[] = [
   {
     author: 'current',
     text: 'How is this company expanding learning opportunities for their employees and how are people impacted by their learning and development programs?',
   },
-]
+];
 
 export function addChatMessage(message: IChatMessage) {
-  chatbot.push(message)
+  chatbot.push(message);
 }
