@@ -1,17 +1,17 @@
-import { useRecoilState } from 'recoil';
-import { impactAreasState } from '../../state/atom';
+import { useRecoilState } from 'recoil'
+import { impactAreasState } from '../../state/atom'
 
 export function useImpactAreas() {
-  const [impactAreas, setImpactAreas] = useRecoilState(impactAreasState);
+  const [impactAreas, setImpactAreas] = useRecoilState(impactAreasState)
 
   function toggleImpactArea(id: string) {
     let updatedAreas = [...impactAreas].map((area) => {
-      if (area.id !== id) return area;
-      return { ...area, checked: !area.checked };
-    });
+      if (area.id !== id) return area
+      return { ...area, checked: !area.checked }
+    })
 
-    setImpactAreas(updatedAreas);
+    setImpactAreas(updatedAreas)
   }
 
-  return { impactAreas, toggleImpactArea };
+  return { impactAreas, toggleImpactArea }
 }

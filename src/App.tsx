@@ -1,11 +1,11 @@
-import { Route, Routes } from 'react-router-dom';
-import ProtectedRoute from './components/protected-route';
-import Demo from './pages';
-import CompanySwitcher from './components/company-switcher';
-import Company from './pages/companies';
-import ImpactAreas from './pages/areas';
-import Dashboard from './pages/dashboard';
-import NotFound from './pages/404';
+import { Route, Routes } from 'react-router-dom'
+import ProtectedRoute from './components/protected-route'
+import Demo from './pages'
+import CompanySwitcher from './components/company-switcher'
+import Company from './pages/companies'
+import ImpactAreas from './pages/areas'
+import Dashboard from './pages/dashboard'
+import NotFound from './pages/404'
 
 function App() {
   return (
@@ -27,7 +27,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

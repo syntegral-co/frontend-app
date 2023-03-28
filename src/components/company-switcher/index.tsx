@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { ICompany } from '../../pages/companies/types';
-import { companies } from '../../state/data';
+import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import { ICompany } from '../../pages/companies/types'
+import { companies } from '../../state/data'
 
 function isCompanyInSearchTerm(company: ICompany, searchTerm: string): company is ICompany {
-  return company.name.toLowerCase().includes(searchTerm.toLowerCase());
+  return company.name.toLowerCase().includes(searchTerm.toLowerCase())
 }
 
 function CompanySwitcher() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('')
 
   return (
     <div className="flex h-96 w-full flex-col items-center justify-center self-center">
@@ -32,7 +32,7 @@ function CompanySwitcher() {
         </ul>
       )}
     </div>
-  );
+  )
 }
 
-export default CompanySwitcher;
+export default CompanySwitcher

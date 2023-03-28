@@ -1,10 +1,10 @@
-import { useRecoilValue } from 'recoil';
-import { impactAreasState } from '../../state/atom';
-import { useImpactAreas } from './hooks';
+import { useRecoilValue } from 'recoil'
+import { impactAreasState } from '../../state/atom'
+import { useImpactAreas } from './hooks'
 
 function ImpactAreasToggles() {
-  const { toggleImpactArea } = useImpactAreas();
-  const areas = useRecoilValue(impactAreasState);
+  const { toggleImpactArea } = useImpactAreas()
+  const areas = useRecoilValue(impactAreasState)
 
   return (
     <>
@@ -22,7 +22,7 @@ function ImpactAreasToggles() {
         </div>
       ))}
     </>
-  );
+  )
 }
 
-export default ImpactAreasToggles;
+export default ImpactAreasToggles

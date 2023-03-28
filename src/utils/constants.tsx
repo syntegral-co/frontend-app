@@ -1,6 +1,6 @@
 interface IThemePosition {
-  x: number;
-  y: number;
+  x: number
+  y: number
 }
 
 export const THEMES_POSITIONS: IThemePosition[] = [
@@ -64,4 +64,4 @@ export const THEMES_POSITIONS: IThemePosition[] = [
     x: 0,
     y: -220,
   },
-];
+]

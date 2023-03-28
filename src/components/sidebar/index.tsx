@@ -1,9 +1,9 @@
-import { NavLink } from 'react-router-dom';
-import logo from '@/assets/images/syntegral.png';
+import { NavLink } from 'react-router-dom'
+import logo from '@/assets/images/syntegral.png'
 
 interface INavLink {
-  title: string;
-  to: string;
+  title: string
+  to: string
 }
 
 const NAV_LINKS: INavLink[] = [
@@ -27,7 +27,7 @@ const NAV_LINKS: INavLink[] = [
     title: 'Upload',
     to: '/test',
   },
-];
+]
 
 function Sidebar() {
   return (
@@ -45,7 +45,7 @@ function Sidebar() {
         </li>
       ))}
     </ul>
-  );
+  )
 }
 
-export default Sidebar;
+export default Sidebar

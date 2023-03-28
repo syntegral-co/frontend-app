@@ -1,10 +1,10 @@
-import { ImpactArea, peopleImpactAreas } from '../areas/types';
+import { ImpactArea, peopleImpactAreas } from '../areas/types'
 
-type ThemeName = 'Purpose' | 'People' | 'Profit' | 'Planet';
+type ThemeName = 'Purpose' | 'People' | 'Profit' | 'Planet'
 export interface ITheme {
-  id: string;
-  name: ThemeName;
-  impactAreas?: ImpactArea[];
+  id: string
+  name: ThemeName
+  impactAreas?: ImpactArea[]
 }
 
 export const themes: Record<ThemeName, ITheme> = {
@@ -12,4 +12,4 @@ export const themes: Record<ThemeName, ITheme> = {
   People: { id: 'people', name: 'People', impactAreas: peopleImpactAreas },
   Profit: { id: 'profit', name: 'Profit' },
   Planet: { id: 'planet', name: 'Planet' },
-};
+}

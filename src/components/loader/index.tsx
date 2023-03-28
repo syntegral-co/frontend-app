@@ -6,7 +6,7 @@ function Loader() {
       <div className="animation-delay-400 h-2 w-2 animate-loader rounded-full bg-accent"></div>
       <div className="animation-delay-600 h-2 w-2 animate-loader rounded-full bg-accent"></div>
     </div>
-  );
+  )
 }
 
-export default Loader;
+export default Loader

@@ -1,36 +1,36 @@
-import { FormEvent, useState } from 'react';
-import { useChatBot } from './hooks';
-import { z, ZodFormattedError } from 'zod';
+import { FormEvent, useState } from 'react'
+import { useChatBot } from './hooks'
+import { z, ZodFormattedError } from 'zod'
 
 const chatSchema = z.object({
   text: z.string().min(1),
-});
+})
 
 function ChatInput() {
   const [formErrors, setFormErrors] = useState<ZodFormattedError<typeof chatSchema>>(
     {} as ZodFormattedError<typeof chatSchema>,
-  );
+  )
 
-  const { sendMessage } = useChatBot();
+  const { sendMessage } = useChatBot()
 
   const submitForm = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    const formData = new FormData(event.currentTarget);
-    const formObject = Object.fromEntries(formData.entries());
+    const formData = new FormData(event.currentTarget)
+    const formObject = Object.fromEntries(formData.entries())
 
-    const parsedResults = chatSchema.safeParse(formObject);
+    const parsedResults = chatSchema.safeParse(formObject)
 
     if (!parsedResults.success) {
-      setFormErrors(parsedResults.error.format());
-      return;
+      setFormErrors(parsedResults.error.format())
+      return
     }
 
-    sendMessage(parsedResults.data.text);
-    event.currentTarget.reset();
+    sendMessage(parsedResults.data.text)
+    event.currentTarget.reset()
 
-    setFormErrors({} as ZodFormattedError<typeof chatSchema>);
-  };
+    setFormErrors({} as ZodFormattedError<typeof chatSchema>)
+  }
 
   return (
     <form onSubmit={submitForm} className="relative flex w-full flex-row flex-nowrap gap-2 px-4">
@@ -57,7 +57,7 @@ function ChatInput() {
         </svg>
       </button>
     </form>
-  );
+  )
 }
 
-export default ChatInput;
+export default ChatInput

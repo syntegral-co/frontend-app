@@ -1,22 +1,22 @@
-import { ReactNode } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import Spinner from '../spinner';
+import { ReactNode } from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
+import Spinner from '../spinner'
 
 interface IProtectedRoute {
-  children?: ReactNode;
+  children?: ReactNode
 }
 
 function ProtectedRoute({ children }: IProtectedRoute): JSX.Element {
-  const { loginWithRedirect, user, isLoading } = useAuth0();
+  const { loginWithRedirect, user, isLoading } = useAuth0()
 
-  if (isLoading) return <Spinner />;
+  if (isLoading) return <Spinner />
 
   if (!user) {
-    loginWithRedirect();
-    return <></>;
+    loginWithRedirect()
+    return <></>
   }
 
-  return <>{children}</>;
+  return <>{children}</>
 }
 
-export default ProtectedRoute;
+export default ProtectedRoute

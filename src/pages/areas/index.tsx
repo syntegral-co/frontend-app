@@ -1,10 +1,10 @@
-import { useCurrentCompany } from '../companies/hooks';
-import Sidebar from '../../components/sidebar';
-import { NavLink } from 'react-router-dom';
-import ImpactAreasToggles from '../../components/impact-areas';
+import { useCurrentCompany } from '../companies/hooks'
+import Sidebar from '../../components/sidebar'
+import { NavLink } from 'react-router-dom'
+import ImpactAreasToggles from '../../components/impact-areas'
 
 function ImpactAreas() {
-  const company = useCurrentCompany();
+  const company = useCurrentCompany()
 
   return (
     <>
@@ -24,7 +24,7 @@ function ImpactAreas() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default ImpactAreas;
+export default ImpactAreas

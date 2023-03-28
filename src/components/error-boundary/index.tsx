@@ -1,17 +1,17 @@
-import React from 'react';
+import React from 'react'
 
 class ErrorBoundary extends React.Component<{ children: JSX.Element }, { hasError: boolean }> {
   constructor(props: any) {
-    super(props);
-    this.state = { hasError: false };
+    super(props)
+    this.state = { hasError: false }
   }
 
   static getDerivedStateFromError(error: Error) {
-    return { hasError: true, error: error };
+    return { hasError: true, error: error }
   }
 
   componentDidCatch(error: Error, info: React.ErrorInfo) {
-    console.log('error: ', error, info.componentStack);
+    console.log('error: ', error, info.componentStack)
   }
 
   render() {
@@ -24,11 +24,11 @@ class ErrorBoundary extends React.Component<{ children: JSX.Element }, { hasErro
             <a href="/">Go home</a>
           </div>
         </div>
-      );
+      )
     }
 
-    return this.props.children;
+    return this.props.children
   }
 }
 
-export default ErrorBoundary;
+export default ErrorBoundary

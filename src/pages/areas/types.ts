@@ -1,7 +1,7 @@
 export interface ImpactArea {
-  id: string;
-  name: string;
-  checked?: boolean;
+  id: string
+  name: string
+  checked?: boolean
 }
 
 export const peopleImpactAreas: ImpactArea[] = [
@@ -13,7 +13,7 @@ export const peopleImpactAreas: ImpactArea[] = [
   { id: 'access-to-energy', name: 'Access to Energy' },
   { id: 'youth-empowerment', name: 'Youth Empowerment' },
   { id: 'lgbtq-empowerment', name: 'LGBTQ+ Empowerment' },
-];
+]
 
 export const impactAreas: ImpactArea[] = [
   { id: 'peace-and-justice', name: 'Peace and Justice' },
@@ -23,4 +23,4 @@ export const impactAreas: ImpactArea[] = [
   { id: 'community-development', name: 'Community Development' },
   { id: 'enterprise-development', name: 'Enterprise Development' },
   { id: 'economic-inclusion', name: 'Economic Inclusion' },
-];
+]

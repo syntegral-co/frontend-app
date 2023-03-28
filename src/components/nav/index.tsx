@@ -1,13 +1,13 @@
-import { useAuth0 } from '@auth0/auth0-react';
-import { NavLink } from 'react-router-dom';
-import logo from '@/assets/images/syntegral.png';
+import { useAuth0 } from '@auth0/auth0-react'
+import { NavLink } from 'react-router-dom'
+import logo from '@/assets/images/syntegral.png'
 
 interface INavLink {
-  title: string;
-  to: string;
+  title: string
+  to: string
 }
 
-const NAV_LINKS: INavLink[] = [];
+const NAV_LINKS: INavLink[] = []
 
 const ACCOUNT_LINKS: INavLink[] = [
   {
@@ -18,12 +18,12 @@ const ACCOUNT_LINKS: INavLink[] = [
     title: 'Settings',
     to: '#',
   },
-];
+]
 
 function Nav() {
-  const { loginWithRedirect, logout, user, isAuthenticated, isLoading } = useAuth0();
+  const { loginWithRedirect, logout, user, isAuthenticated, isLoading } = useAuth0()
 
-  if (isLoading) return null;
+  if (isLoading) return null
 
   return (
     <div className="navbar mb-8 bg-base-100 px-4 md:px-0">
@@ -93,7 +93,7 @@ function Nav() {
         )}
       </div>
     </div>
-  );
+  )
 }
 
-export default Nav;
+export default Nav

@@ -1,32 +1,32 @@
-import { atom } from 'recoil';
-import { IChatMessage } from '../components/chat-output/types';
-import { impactAreas, peopleImpactAreas } from '../pages/areas/types';
-import { themes } from '../pages/themes/types';
+import { atom } from 'recoil'
+import { IChatMessage } from '../components/chat-output/types'
+import { impactAreas, peopleImpactAreas } from '../pages/areas/types'
+import { themes } from '../pages/themes/types'
 
-const chatMessages: IChatMessage[] = [];
+const chatMessages: IChatMessage[] = []
 
 export const chatState = atom({
   key: 'chat',
   default: chatMessages,
-});
+})
 
 export const drawerState = atom({
   key: 'drawer',
   default: { isOpen: false },
-});
+})
 
 const areas = [...impactAreas, ...peopleImpactAreas].map((area) => ({
   id: area.id,
   name: area.name,
   checked: false,
-}));
+}))
 
 export const impactAreasState = atom({
   key: 'impactAreas',
   default: areas,
-});
+})
 
 export const themesState = atom({
   key: 'themes',
   default: Object.values(themes).map((theme) => theme),
-});
+})

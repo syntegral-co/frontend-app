@@ -1,6 +1,6 @@
-const watched = [1, 6];
-import { NavLink } from 'react-router-dom';
-import { companies } from '../../state/data';
+const watched = [1, 6]
+import { NavLink } from 'react-router-dom'
+import { companies } from '../../state/data'
 
 function Watchlist() {
   return (
@@ -20,7 +20,7 @@ function Watchlist() {
           </NavLink>
         ))}
     </div>
-  );
+  )
 }
 
-export default Watchlist;
+export default Watchlist
