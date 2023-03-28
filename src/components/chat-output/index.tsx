@@ -14,11 +14,11 @@ function ChatOutput() {
   const { chatMessages, isLoading } = useChatBot()
 
   return (
-    <div className="flex h-1/2 w-full flex-col justify-between rounded-md p-4 duration-300">
+    <div className="flex h-full w-full flex-col justify-between rounded-md p-4 duration-300">
       <Outlet />
       <Drawer />
       <div className="divider"></div>
-      <div className="mt-4 h-56 overflow-y-scroll rounded-md pr-4">
+      <div className="mt-4 h-full overflow-y-scroll rounded-md pr-4">
         <div className="chat chat-start">
           <div className="chat-image avatar">
             <div className="w-10 rounded-full">
