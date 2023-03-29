@@ -3,8 +3,8 @@ import { useRecoilState } from 'recoil'
 import { useIsFetching, useQueries, useQuery } from '@tanstack/react-query'
 import { useCurrentCompany } from '../../pages/companies/hooks'
 import { useCurrentTheme } from '../../pages/themes/hooks'
-import { chatState, documentState } from '../../state/atom'
-import { chat, chatContext, chatMetrics, getDocument } from '../../utils/api'
+import { chatState } from '../../state/atom'
+import { chat, chatContext, chatMetrics } from '../../utils/api'
 import { IChatReply } from './types'
 
 function formatReferences(references: string[][]) {
@@ -53,6 +53,7 @@ export function useChatBot() {
 
   const isLoading = useIsFetching({ queryKey: ['chatbot'] })
   const isContextLoading = useIsFetching({ queryKey: ['chatbot-context'] })
+  const isMetricsLoading = useIsFetching({ queryKey: ['chatbot-metrics'] })
 
   useEffect(() => {
     if (status !== 'success' || !chatbotReply || chatbotReply.status !== 'successful') return
@@ -105,5 +106,5 @@ export function useChatBot() {
     setChatInput(text)
   }
 
-  return { chatMessages, sendMessage, isLoading: isLoading || isContextLoading }
+  return { chatMessages, sendMessage, isLoading, isContextLoading, isMetricsLoading }
 }

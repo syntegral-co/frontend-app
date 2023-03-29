@@ -14,7 +14,7 @@ import { documentState } from '../../state/atom'
 function ChatOutput() {
   const { user } = useAuth0()
   const company = useCurrentCompany()
-  const { chatMessages, isLoading } = useChatBot()
+  const { chatMessages, isLoading, isContextLoading, isMetricsLoading } = useChatBot()
   const [document, setDocument] = useRecoilState(documentState)
   const { isDrawerOpen, toggleDrawer } = useDrawer()
 
@@ -74,7 +74,7 @@ function ChatOutput() {
             </div>
           )
         })}
-        {isLoading > 0 && (
+        {(isLoading > 0 || isContextLoading > 0 || isMetricsLoading > 0) && (
           <div className="chat chat-start">
             <div className="chat-image avatar">
               <div className="w-10 rounded-full">
@@ -82,6 +82,15 @@ function ChatOutput() {
               </div>
             </div>
             <div className="chat-bubble bg-base-200">
+              {(isContextLoading > 0 || isMetricsLoading > 0) && (
+                <>
+                  <p>
+                    Please wait, I am searching for similar projects and relevant metrics on my research DB related to
+                    your question...
+                  </p>
+                  <br />
+                </>
+              )}
               <Loader />
             </div>
           </div>
