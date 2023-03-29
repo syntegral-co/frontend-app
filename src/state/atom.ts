@@ -1,4 +1,5 @@
 import { atom } from 'recoil'
+import { IDocument } from '../components/chat-input/types'
 import { IChatMessage } from '../components/chat-output/types'
 import { impactAreas, peopleImpactAreas } from '../pages/areas/types'
 import { themes } from '../pages/themes/types'
@@ -10,9 +11,14 @@ export const chatState = atom({
   default: chatMessages,
 })
 
+export const documentState = atom({
+  key: 'document',
+  default: '',
+})
+
 export const drawerState = atom({
   key: 'drawer',
-  default: { isOpen: false },
+  default: false,
 })
 
 const areas = [...impactAreas, ...peopleImpactAreas].map((area) => ({

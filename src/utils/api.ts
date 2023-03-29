@@ -33,7 +33,14 @@ export async function chatContext(message: string, impactType: string, answer: s
   return data
 }
 
-export async function getDocuments(pageId: number, minutes: number) {
+export async function chatMetrics(answer: string) {
+  const APIUrl = `${import.meta.env.VITE_CHATBOT_API_BASEPATH}/chatbot_metrics?&answer=${answer}`
+  const data = await callAPI(APIUrl)
+
+  return data
+}
+
+export async function getDocument(pageId: string, minutes: number) {
   const APIUrl = `${import.meta.env.VITE_DOC_API_BASEPATH}/doc-url?page_id=${pageId}&minutes=${minutes}`
   const data = await callAPI(APIUrl)
 

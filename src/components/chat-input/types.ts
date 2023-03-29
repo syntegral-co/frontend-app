@@ -1,16 +1,15 @@
 export interface IChatReply {
+  status: 'successful' | 'unsuccessful'
   answer: string
   categories: string
   references: {
-    list: number[]
+    list: string[][]
     text: string
   }
 }
 
-export interface IChatContextReply {
-  context_answer: string
-  context_references: {
-    list: number[]
-    text: string
-  }
+export interface IDocument {
+  id: string | null
+  pageId: string | null
+  url?: string
 }

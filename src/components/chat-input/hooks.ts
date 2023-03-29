@@ -1,11 +1,19 @@
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { useIsFetching, useQuery } from '@tanstack/react-query'
+import { useIsFetching, useQueries, useQuery } from '@tanstack/react-query'
 import { useCurrentCompany } from '../../pages/companies/hooks'
 import { useCurrentTheme } from '../../pages/themes/hooks'
-import { chatState } from '../../state/atom'
-import { chat, chatContext } from '../../utils/api'
-import { IChatContextReply, IChatReply } from './types'
+import { chatState, documentState } from '../../state/atom'
+import { chat, chatContext, chatMetrics, getDocument } from '../../utils/api'
+import { IChatReply } from './types'
+
+function formatReferences(references: string[][]) {
+  return references.map((reference) => ({
+    id: reference[0],
+    page: reference[1],
+    name: reference[2],
+  }))
+}
 
 export function useChatBot() {
   const [chatInput, setChatInput] = useState<string>('')
@@ -26,42 +34,66 @@ export function useChatBot() {
     enabled: chatInput !== '',
   })
 
-  const { status: contextStatus, data: chatbotContextReply }: { status: string; data: IChatContextReply | undefined } =
-    useQuery({
-      queryKey: ['chatbot-context', chatInput, chatbotReply],
-      queryFn: () => chatContext(chatInput, currentTheme!.id, chatbotReply!.answer),
-      staleTime: Infinity,
-      enabled: status === 'success',
-    })
+  const [contextQuery, metricsQuery] = useQueries({
+    queries: [
+      {
+        queryKey: ['chatbot-context', chatInput, chatbotReply],
+        queryFn: () => chatContext(chatInput, currentTheme!.id, chatbotReply!.answer),
+        staleTime: Infinity,
+        enabled: status === 'success',
+      },
+      {
+        queryKey: ['chatbot-metrics', chatbotReply],
+        queryFn: () => chatMetrics(chatbotReply!.answer),
+        staleTime: Infinity,
+        enabled: status === 'success',
+      },
+    ],
+  })
 
   const isLoading = useIsFetching({ queryKey: ['chatbot'] })
   const isContextLoading = useIsFetching({ queryKey: ['chatbot-context'] })
 
   useEffect(() => {
-    if (status === 'success') {
-      const answer = `${chatbotReply!.answer}<br />References: ${chatbotReply!.references!.text}`
-      const newMessage = {
-        author: 'bot',
-        text: answer,
-      }
+    if (status !== 'success' || !chatbotReply || chatbotReply.status !== 'successful') return
 
-      setChatMessages([...chatMessages, newMessage])
+    const references = formatReferences(chatbotReply!.references!.list)
+
+    const newMessage = {
+      header: chatbotReply!.categories,
+      author: 'bot',
+      text: chatbotReply!.answer,
+      links: references,
     }
+
+    setChatMessages([...chatMessages, newMessage])
   }, [chatbotReply, status])
 
   useEffect(() => {
-    if (contextStatus === 'success') {
-      const answer = `${chatbotContextReply!.context_answer}<br />References: ${
-        chatbotContextReply!.context_references!.text
-      }`
-      const newMessage = {
-        author: 'bot',
-        text: answer,
-      }
+    if (contextQuery.status !== 'success' || !contextQuery.data) return
 
-      setChatMessages([...chatMessages, newMessage])
+    //const references = formatReferences(contextQuery.data!.context_references!.list)
+    const answer = contextQuery.data!.context_answer
+
+    const newMessage = {
+      author: 'bot',
+      text: answer,
     }
-  }, [chatbotContextReply, contextStatus])
+
+    setChatMessages([...chatMessages, newMessage])
+  }, [contextQuery.status, contextQuery.data])
+
+  useEffect(() => {
+    if (metricsQuery.status !== 'success' || !metricsQuery.data) return
+
+    const answer = metricsQuery!.data!.metrics
+    const newMessage = {
+      author: 'bot',
+      text: answer,
+    }
+
+    setChatMessages([...chatMessages, newMessage])
+  }, [metricsQuery.status, metricsQuery.data])
 
   function sendMessage(text: string) {
     if (text === '') return

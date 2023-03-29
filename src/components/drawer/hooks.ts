@@ -2,11 +2,11 @@ import { useRecoilState } from 'recoil'
 import { drawerState } from '../../state/atom'
 
 export function useDrawer() {
-  const [stateObject, setStateObject] = useRecoilState(drawerState)
+  const [isOpen, setIsOpen] = useRecoilState(drawerState)
 
   function toggleDrawer() {
-    setStateObject({ isOpen: !stateObject.isOpen })
+    setIsOpen(!isOpen)
   }
 
-  return { isDrawerOpen: stateObject.isOpen, toggleDrawer }
+  return { isDrawerOpen: isOpen, toggleDrawer }
 }
