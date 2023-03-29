@@ -24,10 +24,10 @@ export async function chat(message: string, companyId: number) {
   return data
 }
 
-export async function chatContext(message: string, impactType: string, answer: string) {
+export async function chatContext(message: string, answer: string) {
   const APIUrl = `${
     import.meta.env.VITE_CHATBOT_API_BASEPATH
-  }/chatbot_context?question=${message}&impact_type=${impactType}&answer=${answer}`
+  }/chatbot_context?question=${message}&impact_type=people&answer=${answer}`
   const data = await callAPI(APIUrl)
 
   return data
