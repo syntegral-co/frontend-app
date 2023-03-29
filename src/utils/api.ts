@@ -33,8 +33,8 @@ export async function chatContext(message: string, impactType: string, answer: s
   return data
 }
 
-export async function chatMetrics(answer: string) {
-  const APIUrl = `${import.meta.env.VITE_CHATBOT_API_BASEPATH}/chatbot_metrics?&answer=${answer}`
+export async function chatMetrics(metric: 'iris' | 'sdg', answer: string) {
+  const APIUrl = `${import.meta.env.VITE_CHATBOT_API_BASEPATH}/chatbot_metrics?metric=${metric}&answer=${answer}`
   const data = await callAPI(APIUrl)
 
   return data

@@ -34,7 +34,7 @@ export function useChatBot() {
     enabled: chatInput !== '',
   })
 
-  const [contextQuery, metricsQuery] = useQueries({
+  const [contextQuery, irisMetricsQuery, sdgMetricsQuery] = useQueries({
     queries: [
       {
         queryKey: ['chatbot-context', chatInput, chatbotReply],
@@ -43,8 +43,14 @@ export function useChatBot() {
         enabled: status === 'success',
       },
       {
-        queryKey: ['chatbot-metrics', chatbotReply],
-        queryFn: () => chatMetrics(chatbotReply!.answer),
+        queryKey: ['chatbot-metrics', chatbotReply, 'iris'],
+        queryFn: () => chatMetrics('iris', chatbotReply!.answer),
+        staleTime: Infinity,
+        enabled: status === 'success',
+      },
+      {
+        queryKey: ['chatbot-metrics', chatbotReply, 'sdg'],
+        queryFn: () => chatMetrics('sdg', chatbotReply!.answer),
         staleTime: Infinity,
         enabled: status === 'success',
       },
@@ -84,16 +90,28 @@ export function useChatBot() {
   }, [contextQuery.status, contextQuery.data])
 
   useEffect(() => {
-    if (metricsQuery.status !== 'success' || !metricsQuery.data) return
+    if (irisMetricsQuery.status !== 'success' || !irisMetricsQuery.data) return
 
-    const answer = metricsQuery!.data!.metrics
+    const answer = irisMetricsQuery!.data!.metrics
     const newMessage = {
       author: 'bot',
       text: answer,
     }
 
     setChatMessages([...chatMessages, newMessage])
-  }, [metricsQuery.status, metricsQuery.data])
+  }, [irisMetricsQuery.status, irisMetricsQuery.data])
+
+  useEffect(() => {
+    if (sdgMetricsQuery.status !== 'success' || !sdgMetricsQuery.data) return
+
+    const answer = sdgMetricsQuery!.data!.metrics
+    const newMessage = {
+      author: 'bot',
+      text: answer,
+    }
+
+    setChatMessages([...chatMessages, newMessage])
+  }, [sdgMetricsQuery.status, sdgMetricsQuery.data])
 
   function sendMessage(text: string) {
     if (text === '') return
