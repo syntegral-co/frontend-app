@@ -8,7 +8,7 @@ export function useThemes() {
 export function useCurrentTheme() {
   const { theme: themeParam } = useParams()
 
-  if (!themeParam) return Object.values(themes).find((theme) => theme.id === 'people')
+  if (!themeParam) return null
 
   return Object.values(themes).find((theme) => theme.id === themeParam)
 }
