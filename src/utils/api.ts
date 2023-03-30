@@ -1,8 +1,11 @@
+const sessionId = localStorage.getItem('sessionId')
+
 async function callAPI(endpoint: string) {
   try {
     const response = await fetch(endpoint, {
       headers: {
         authorization: import.meta.env.VITE_API_KEY,
+        session: sessionId!,
       },
     })
 

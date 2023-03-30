@@ -1,5 +1,4 @@
 import { atom } from 'recoil'
-import { IDocument } from '../components/chat-input/types'
 import { IChatMessage } from '../components/chat-output/types'
 import { impactAreas, peopleImpactAreas } from '../pages/areas/types'
 import { themes } from '../pages/themes/types'
