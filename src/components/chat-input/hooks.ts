@@ -6,6 +6,7 @@ import { useCurrentTheme } from '../../pages/themes/hooks'
 import { chatState } from '../../state/atom'
 import { chat, chatContext, chatMetrics } from '../../utils/api'
 import { IChatReply } from './types'
+import { IChatMessage } from '../chat-output/types'
 
 function formatReferences(references: string[][]) {
   return references.map((reference) => ({
@@ -40,19 +41,19 @@ export function useChatBot() {
         queryKey: ['chatbot-context', chatInput, chatbotReply],
         queryFn: () => chatContext(chatInput, chatbotReply!.answer),
         staleTime: Infinity,
-        enabled: status === 'success',
+        enabled: status === 'success' && chatbotReply && chatbotReply.status === 'successful',
       },
       {
         queryKey: ['chatbot-metrics', chatbotReply, 'iris'],
         queryFn: () => chatMetrics('iris', chatbotReply!.answer),
         staleTime: Infinity,
-        enabled: status === 'success',
+        enabled: status === 'success' && chatbotReply && chatbotReply.status === 'successful',
       },
       {
         queryKey: ['chatbot-metrics', chatbotReply, 'sdg'],
         queryFn: () => chatMetrics('sdg', chatbotReply!.answer),
         staleTime: Infinity,
-        enabled: status === 'success',
+        enabled: status === 'success' && chatbotReply && chatbotReply.status === 'successful',
       },
     ],
   })
@@ -62,15 +63,18 @@ export function useChatBot() {
   const isMetricsLoading = useIsFetching({ queryKey: ['chatbot-metrics'] })
 
   useEffect(() => {
-    if (status !== 'success' || !chatbotReply || chatbotReply.status !== 'successful') return
+    if (status !== 'success' || !chatbotReply) return
 
-    const references = formatReferences(chatbotReply!.references!.list)
-
-    const newMessage = {
+    let newMessage: IChatMessage = {
       header: chatbotReply!.categories,
       author: 'bot',
       text: chatbotReply!.answer,
-      links: references,
+    }
+
+    if (chatbotReply.status === 'successful') {
+      const references = formatReferences(chatbotReply!.references!.list)
+
+      newMessage.links = references
     }
 
     setChatMessages([...chatMessages, newMessage])
