@@ -6,9 +6,9 @@ import { useCurrentTheme } from '../../pages/themes/hooks'
 import { chatState } from '../../state/atom'
 import { chat, chatContext, chatMetrics } from '../../utils/api'
 import { IChatReply } from './types'
-import { IChatMessage } from '../chat-output/types'
+import { IChatMessage, IChatMessageLink } from '../chat-output/types'
 
-function formatReferences(references: string[][]) {
+function formatReferences(references: string[][]): IChatMessageLink[] {
   return references.map((reference) => ({
     id: reference[0],
     page: reference[1],

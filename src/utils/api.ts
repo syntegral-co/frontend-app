@@ -43,8 +43,8 @@ export async function chatMetrics(metric: 'iris' | 'sdg' | 'all', answer: string
   return data
 }
 
-export async function getDocument(pageId: string, minutes: number) {
-  const APIUrl = `${import.meta.env.VITE_DOC_API_BASEPATH}/doc-url?page_id=${pageId}&minutes=${minutes}`
+export async function getDocument(filenameId: string, minutes: number) {
+  const APIUrl = `${import.meta.env.VITE_DOC_API_BASEPATH}/doc-url?filename_id=${filenameId}&minutes=${minutes}`
   const data = await callAPI(APIUrl)
 
   return data

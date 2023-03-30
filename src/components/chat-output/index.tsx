@@ -19,8 +19,8 @@ function ChatOutput() {
   const { isDrawerOpen, toggleDrawer } = useDrawer()
 
   function linkHandler(link: IChatMessageLink) {
-    if (document !== link.page) {
-      setDocument(link.page)
+    if (document !== link.id) {
+      setDocument(link.id)
     }
     if (!isDrawerOpen) {
       toggleDrawer()
