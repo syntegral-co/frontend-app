@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import logo from '@/assets/images/syntegral.png'
+import logo from '/assets/images/syntegral.png'
 
 interface INavLink {
   title: string

@@ -7,7 +7,7 @@ import { useDrawer } from '../drawer/hooks'
 import { Interweave } from 'interweave'
 import DocumentDrawer from '../drawer'
 import Loader from '../loader'
-import logo from '@/assets/images/syntegral.svg'
+import logo from '/assets/images/syntegral.svg'
 import { IChatMessage, IChatMessageLink } from './types'
 import { documentState } from '../../state/atom'
 
