@@ -43,6 +43,11 @@ The file structure follows the pattern:
 
 ```
 
+## Global state 🌍
+
+The app's global state is handled through [recoil](https://recoiljs.org/).
+The atoms are stored in `src/state/atoms.ts`.
+
 ## Development 💻
 
 ### Start the server
