@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil'
-import { impactAreasState } from '../../state/atom'
+import { impactAreasState } from '../../state/atoms'
 
 export function useImpactAreas() {
   const [impactAreas, setImpactAreas] = useRecoilState(impactAreasState)

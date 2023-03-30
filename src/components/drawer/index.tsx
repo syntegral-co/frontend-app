@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { useRecoilValue } from 'recoil'
-import { documentState } from '../../state/atom'
+import { documentState } from '../../state/atoms'
 import { useDrawer } from './hooks'
 import Loader from '../loader'
 import { getDocument } from '../../utils/api'

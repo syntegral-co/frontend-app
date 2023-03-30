@@ -9,7 +9,7 @@ import DocumentDrawer from '../drawer'
 import Loader from '../loader'
 import logo from '/assets/images/syntegral.svg'
 import { IChatMessage, IChatMessageLink } from './types'
-import { documentState } from '../../state/atom'
+import { documentState } from '../../state/atoms'
 
 function ChatOutput() {
   const { user } = useAuth0()

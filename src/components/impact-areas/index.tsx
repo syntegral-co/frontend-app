@@ -1,5 +1,5 @@
 import { useRecoilValue } from 'recoil'
-import { impactAreasState } from '../../state/atom'
+import { impactAreasState } from '../../state/atoms'
 import { useImpactAreas } from './hooks'
 
 function ImpactAreasToggles() {
