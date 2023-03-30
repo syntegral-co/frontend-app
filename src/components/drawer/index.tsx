@@ -12,15 +12,18 @@ function DocumentDrawer(): JSX.Element {
 
   const { status, data, refetch, fetchStatus } = useQuery({
     queryKey: ['document'],
-    queryFn: () => getDocument(document!, 5),
-    enabled: document !== '',
+    queryFn: () => getDocument(document!.id, 5),
+    enabled: document !== null,
+    staleTime: 300000,
   })
 
   useEffect(() => {
-    if (document === '') return
+    if (!document) return
 
     refetch()
   }, [document])
+
+  if (!document) return <></>
 
   const positionClass = isDrawerOpen ? 'right-0' : '-right-full'
   const classes = `transition-all absolute inset-y-0 z-20 h-screen w-1/2 bg-base-200 flex flex-col items-center justify-center ${positionClass}`
@@ -31,13 +34,13 @@ function DocumentDrawer(): JSX.Element {
       {status === 'success' && fetchStatus === 'idle' && (
         <object
           className="mb-4"
-          data={Object.values(data)[0] as string}
+          data={`${Object.values(data)[0]}#page=${document.page}`}
           type="application/pdf"
           width="100%"
           height="100%"
         >
           <p>
-            Link <a href={Object.values(data)[0] as string}>to the PDF!</a>
+            Link <a href={`${Object.values(data)[0]}#page=${document.page}`}>to the PDF!</a>
           </p>
         </object>
       )}

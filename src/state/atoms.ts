@@ -1,18 +1,16 @@
 import { atom } from 'recoil'
-import { IChatMessage } from '../components/chat-output/types'
+import { IChatMessage, IChatMessageLink } from '../components/chat-output/types'
 import { impactAreas, peopleImpactAreas } from '../pages/areas/types'
 import { themes } from '../pages/themes/types'
 
-const chatMessages: IChatMessage[] = []
-
 export const chatState = atom({
   key: 'chat',
-  default: chatMessages,
+  default: [] as IChatMessage[],
 })
 
 export const documentState = atom({
   key: 'document',
-  default: '',
+  default: null as IChatMessageLink | null,
 })
 
 export const drawerState = atom({

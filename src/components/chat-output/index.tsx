@@ -18,9 +18,9 @@ function ChatOutput() {
   const [document, setDocument] = useRecoilState(documentState)
   const { isDrawerOpen, toggleDrawer } = useDrawer()
 
-  function linkHandler(link: IChatMessageLink) {
-    if (document !== link.id) {
-      setDocument(link.id)
+  function documentLinkHandler(link: IChatMessageLink) {
+    if (!document || document.id !== link.id) {
+      setDocument(link)
     }
     if (!isDrawerOpen) {
       toggleDrawer()
@@ -63,7 +63,11 @@ function ChatOutput() {
                     <p className="mt-4">References:</p>
                     <ol className="list-disc pl-4">
                       {links.map((link, index) => (
-                        <li className="cursor-pointer hover:underline" onClick={() => linkHandler(link)} key={index}>
+                        <li
+                          className="cursor-pointer hover:underline"
+                          onClick={() => documentLinkHandler(link)}
+                          key={index}
+                        >
                           {link.name}
                         </li>
                       ))}
