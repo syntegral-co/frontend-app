@@ -2,11 +2,116 @@ import { ICompany } from '../pages/companies/types'
 import { IChatMessage } from '../components/chat-output/types'
 
 export const companies: ICompany[] = [
-  { id: 1, name: 'BUA Cement Plc' },
-  { id: 2, name: 'Dangote Group' },
-  { id: 3, name: 'Guinness Nigeria' },
-  { id: 4, name: 'Okomu Oil Palm PLC' },
-  { id: 5, name: 'Presco PLC' },
+  {
+    id: 1,
+    name: 'BUA Cement Plc',
+    themes: {
+      purpose: { score: 25 },
+      people: {
+        score: 60,
+        impactAreas: {
+          'food-and-security': 30,
+          'education-and-child-care': 12,
+          'womens-empowerment': 25,
+          'affordable-housing': 58,
+          'income-and-work': 10,
+          'access-to-energy': 2,
+          'youth-empowerment': 75,
+          'lgbtq-empowerment': 84,
+        },
+      },
+      profit: { score: 50 },
+      planet: { score: 15 },
+    },
+  },
+  {
+    id: 2,
+    name: 'Dangote Group',
+    themes: {
+      purpose: { score: 25 },
+      people: {
+        score: 60,
+        impactAreas: {
+          'food-and-security': 30,
+          'education-and-child-care': 12,
+          'womens-empowerment': 25,
+          'affordable-housing': 58,
+          'income-and-work': 10,
+          'access-to-energy': 2,
+          'youth-empowerment': 75,
+          'lgbtq-empowerment': 84,
+        },
+      },
+      profit: { score: 50 },
+      planet: { score: 15 },
+    },
+  },
+  {
+    id: 3,
+    name: 'Guinness Nigeria',
+    themes: {
+      purpose: { score: 25 },
+      people: {
+        score: 60,
+        impactAreas: {
+          'food-and-security': 30,
+          'education-and-child-care': 12,
+          'womens-empowerment': 25,
+          'affordable-housing': 58,
+          'income-and-work': 10,
+          'access-to-energy': 2,
+          'youth-empowerment': 75,
+          'lgbtq-empowerment': 84,
+        },
+      },
+      profit: { score: 50 },
+      planet: { score: 15 },
+    },
+  },
+  {
+    id: 4,
+    name: 'Okomu Oil Palm PLC',
+    themes: {
+      purpose: { score: 25 },
+      people: {
+        score: 60,
+        impactAreas: {
+          'food-and-security': 30,
+          'education-and-child-care': 12,
+          'womens-empowerment': 25,
+          'affordable-housing': 58,
+          'income-and-work': 10,
+          'access-to-energy': 2,
+          'youth-empowerment': 75,
+          'lgbtq-empowerment': 84,
+        },
+      },
+      profit: { score: 50 },
+      planet: { score: 15 },
+    },
+  },
+  {
+    id: 5,
+    name: 'Presco PLC',
+    themes: {
+      purpose: { score: 25 },
+      people: {
+        score: 60,
+        impactAreas: {
+          'food-and-security': 30,
+          'education-and-child-care': 12,
+          'womens-empowerment': 25,
+          'affordable-housing': 58,
+          'income-and-work': 10,
+          'access-to-energy': 2,
+          'youth-empowerment': 75,
+          'lgbtq-empowerment': 84,
+        },
+      },
+      profit: { score: 50 },
+      planet: { score: 15 },
+    },
+  },
   {
     id: 6,
     name: 'Seplat Energy Plc',
