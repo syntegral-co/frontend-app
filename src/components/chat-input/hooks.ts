@@ -83,12 +83,19 @@ export function useChatBot() {
   useEffect(() => {
     if (contextQuery.status !== 'success' || !contextQuery.data) return
 
-    //const references = formatReferences(contextQuery.data!.context_references!.list)
     const answer = contextQuery.data!.context_answer
 
-    const newMessage = {
+    let newMessage: IChatMessage = {
+      header: 'Company Impact Assessment',
       author: 'bot',
       text: answer,
+      collapsible: true,
+    }
+
+    if (contextQuery.data!.context_references && contextQuery.data!.context_references.list) {
+      const references = formatReferences(contextQuery.data.context_references.list)
+
+      newMessage.links = references
     }
 
     setChatMessages([...chatMessages, newMessage])
@@ -98,9 +105,11 @@ export function useChatBot() {
     if (irisMetricsQuery.status !== 'success' || !irisMetricsQuery.data) return
 
     const answer = irisMetricsQuery!.data!.metrics
-    const newMessage = {
+    const newMessage: IChatMessage = {
+      header: 'IRIS+ Indicators',
       author: 'bot',
       text: answer,
+      collapsible: true,
     }
 
     setChatMessages([...chatMessages, newMessage])
@@ -111,8 +120,10 @@ export function useChatBot() {
 
     const answer = sdgMetricsQuery!.data!.metrics
     const newMessage = {
+      header: 'SDG Indicators',
       author: 'bot',
       text: answer,
+      collapsible: true,
     }
 
     setChatMessages([...chatMessages, newMessage])

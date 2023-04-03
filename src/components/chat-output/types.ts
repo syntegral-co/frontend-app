@@ -9,4 +9,5 @@ export interface IChatMessage {
   author: string
   text: string
   links?: IChatMessageLink[]
+  collapsible?: boolean
 }
