@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { v4 as uuidv4 } from 'uuid'
+import { useAuth0 } from '@auth0/auth0-react'
+import Mixpanel from './utils/tracking'
 import ProtectedRoute from './components/protected-route'
 import Demo from './pages'
 import CompanySwitcher from './components/company-switcher'
@@ -10,14 +11,16 @@ import Dashboard from './pages/dashboard'
 import NotFound from './pages/404'
 
 function App() {
-  useEffect(() => {
-    const sessionId = uuidv4()
-    localStorage.setItem('sessionId', sessionId)
+  const { user } = useAuth0()
 
-    return () => {
-      localStorage.removeItem('sessionId')
-    }
-  }, [])
+  useEffect(() => {
+    if (!user) return
+
+    localStorage.setItem('sessionId', user.sub!)
+
+    Mixpanel.identify(user.sub!)
+    Mixpanel.people.set({ email: user.email, name: user.name, nickname: user.nickname })
+  }, [user])
 
   return (
     <div className="container mx-auto mt-4 h-screen py-6">

@@ -1,3 +1,5 @@
+import Mixpanel from './tracking'
+
 const sessionId = localStorage.getItem('sessionId')
 
 async function callAPI(endpoint: string) {
@@ -21,6 +23,8 @@ async function callAPI(endpoint: string) {
 }
 
 export async function chat(message: string, companyId: number) {
+  Mixpanel.track('API CALL', { type: 'chatbot', question: message, companyId: companyId })
+
   const APIUrl = `${import.meta.env.VITE_CHATBOT_API_BASEPATH}/chatbot?question=${message}&company_id=${companyId}`
   const data = await callAPI(APIUrl)
 
@@ -28,6 +32,8 @@ export async function chat(message: string, companyId: number) {
 }
 
 export async function chatContext(message: string, answer: string) {
+  Mixpanel.track('API CALL', { type: 'chatbot_context', question: message, impactType: 'people', answer: answer })
+
   const APIUrl = `${
     import.meta.env.VITE_CHATBOT_API_BASEPATH
   }/chatbot_context?question=${message}&impact_type=people&answer=${answer}`
@@ -37,6 +43,8 @@ export async function chatContext(message: string, answer: string) {
 }
 
 export async function chatMetrics(metric: 'iris' | 'sdg' | 'all', answer: string) {
+  Mixpanel.track('API CALL', { type: 'chatbot_metrics', metric: metric, answer: answer })
+
   const APIUrl = `${import.meta.env.VITE_CHATBOT_API_BASEPATH}/chatbot_metrics?metric=${metric}&answer=${answer}`
   const data = await callAPI(APIUrl)
 
@@ -44,6 +52,8 @@ export async function chatMetrics(metric: 'iris' | 'sdg' | 'all', answer: string
 }
 
 export async function getDocument(filenameId: string, minutes: number) {
+  Mixpanel.track('API CALL', { type: 'doc_url', filenameId: filenameId })
+
   const APIUrl = `${import.meta.env.VITE_DOC_API_BASEPATH}/doc-url?filename_id=${filenameId}&minutes=${minutes}`
   const data = await callAPI(APIUrl)
 
