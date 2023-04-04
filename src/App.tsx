@@ -19,7 +19,7 @@ function App() {
     localStorage.setItem('sessionId', user.sub!)
 
     Mixpanel.identify(user.sub!)
-    Mixpanel.people.set({ email: user.email, name: user.name, nickname: user.nickname })
+    Mixpanel.people.set({ Email: user.email, Name: user.name, Nickname: user.nickname })
   }, [user])
 
   return (
