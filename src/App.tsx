@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import Mixpanel from './utils/tracking'
-import ProtectedRoute from './components/protected-route'
 import CompanySwitcher from './components/company-switcher'
 import Demo from './pages'
 import Company from './pages/companies'
@@ -26,14 +25,7 @@ function App() {
   return (
     <div className="container mx-auto mt-4 flex h-screen flex-col py-6">
       <Routes>
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <Demo />
-            </ProtectedRoute>
-          }
-        >
+        <Route path="/" element={<Demo />}>
           <Route index element={<CompanySwitcher />} />
           <Route path="companies/:company" element={<Company />} />
           <Route path="companies/:company/areas" element={<ImpactAreas />} />

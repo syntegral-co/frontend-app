@@ -1,5 +1,7 @@
 import { Outlet } from 'react-router-dom'
+import { withAuthenticationRequired } from '@auth0/auth0-react'
 import Nav from '../components/nav'
+import Spinner from '../components/spinner'
 
 function Demo() {
   return (
@@ -12,4 +14,6 @@ function Demo() {
   )
 }
 
-export default Demo
+export default withAuthenticationRequired(Demo, {
+  onRedirecting: () => <Spinner />,
+})
