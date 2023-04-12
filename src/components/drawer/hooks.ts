@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil'
-import { drawerState } from '../../state/atoms'
+import { drawerState } from './atoms'
 
 export function useDrawer() {
   const [isOpen, setIsOpen] = useRecoilState(drawerState)

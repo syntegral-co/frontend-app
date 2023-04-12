@@ -3,10 +3,11 @@ import { Route, Routes } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import Mixpanel from './utils/tracking'
 import ProtectedRoute from './components/protected-route'
-import Demo from './pages'
 import CompanySwitcher from './components/company-switcher'
+import Demo from './pages'
 import Company from './pages/companies'
 import ImpactAreas from './pages/areas'
+import Themes from './pages/themes'
 import Dashboard from './pages/dashboard'
 import NotFound from './pages/404'
 
@@ -23,7 +24,7 @@ function App() {
   }, [user])
 
   return (
-    <div className="container mx-auto mt-4 h-screen py-6">
+    <div className="container mx-auto mt-4 flex h-screen flex-col py-6">
       <Routes>
         <Route
           path="/"
@@ -34,8 +35,9 @@ function App() {
           }
         >
           <Route index element={<CompanySwitcher />} />
-          <Route path="companies/:company" element={<ImpactAreas />} />
-          <Route path="companies/:company/themes/:theme?" element={<Company />} />
+          <Route path="companies/:company" element={<Company />} />
+          <Route path="companies/:company/areas" element={<ImpactAreas />} />
+          <Route path="companies/:company/areas/themes/:theme?" element={<Themes />} />
         </Route>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="*" element={<NotFound />} />

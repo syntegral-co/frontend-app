@@ -2,7 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { Interweave } from 'interweave'
 import { useRecoilState } from 'recoil'
 import { useDrawer } from '../drawer/hooks'
-import { documentState } from '../../state/atoms'
+import { documentState } from './atoms'
 import { IChatMessage, IChatMessageLink } from './types'
 import logo from '/assets/images/syntegral.svg'
 
@@ -66,7 +66,7 @@ function ChatMessage({ message }: IChatMessageProps): JSX.Element {
           <img src={chatAvatar} />
         </div>
       </div>
-      <div className="chat-bubble bg-base-200 text-primary-content">{messageWrapper}</div>
+      <div className="chat-bubble bg-base-100 text-primary-content">{messageWrapper}</div>
     </div>
   )
 }

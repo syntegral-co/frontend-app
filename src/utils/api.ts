@@ -32,7 +32,7 @@ export async function chat(message: string, companyId: number) {
 }
 
 export async function chatContext(message: string, answer: string) {
-  Mixpanel.track('API Call', { type: 'chatbot_context', question: message, impactType: 'people', answer: answer })
+  Mixpanel.track('API Call', { type: 'chatbot_context', question: message, impactType: 'planet', answer: answer })
 
   const APIUrl = `${
     import.meta.env.VITE_CHATBOT_API_BASEPATH

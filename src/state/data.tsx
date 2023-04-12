@@ -136,7 +136,7 @@ export const companies: ICompany[] = [
   },
 ]
 
-export let chatbot: IChatMessage[] = [
+export const chatbot: IChatMessage[] = [
   {
     author: 'current',
     text: 'How is this company expanding learning opportunities for their employees and how are people impacted by their learning and development programs?',

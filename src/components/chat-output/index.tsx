@@ -2,6 +2,7 @@ import { useCurrentCompany } from '../../pages/companies/hooks'
 import { useChatBot } from '../chat-input/hooks'
 import { Outlet } from 'react-router-dom'
 import ChatMessage from './message'
+import ChatInput from '../chat-input'
 import DocumentDrawer from '../drawer'
 import Loader from '../loader'
 import logo from '/assets/images/syntegral.svg'
@@ -11,18 +12,17 @@ function ChatOutput() {
   const { chatMessages, isLoading, isContextLoading, isMetricsLoading } = useChatBot()
 
   return (
-    <div className="flex h-full w-full flex-col justify-between rounded-md p-4 duration-300">
+    <div className="max-height-screen flex h-full w-full flex-col justify-between rounded-md p-4">
       <Outlet />
       <DocumentDrawer />
-      <div className="divider"></div>
-      <div className="mt-4 h-full overflow-y-scroll rounded-md pr-4">
+      <div className="mt-4 overflow-y-scroll rounded-md pr-4">
         <div className="chat chat-start">
           <div className="chat-image avatar">
             <div className="w-10 rounded-full">
               <img src={logo} />
             </div>
           </div>
-          <div className="chat-bubble bg-base-200 text-primary-content">
+          <div className="chat-bubble bg-base-100 text-primary-content">
             Company name: {company!.name}. Overall score: 125.
             <br />
             Click on one of the 4 themes to see more data.
@@ -38,7 +38,7 @@ function ChatOutput() {
                 <img src={logo} />
               </div>
             </div>
-            <div className="chat-bubble bg-base-200">
+            <div className="chat-bubble bg-base-100">
               {(isContextLoading > 0 || isMetricsLoading > 0) && (
                 <>
                   <p>
@@ -53,6 +53,7 @@ function ChatOutput() {
           </div>
         )}
       </div>
+      <ChatInput />
     </div>
   )
 }

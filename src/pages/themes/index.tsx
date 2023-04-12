@@ -1,64 +1,57 @@
-import { useCurrentTheme } from './hooks'
-import { useImpactAreas } from '../../components/impact-areas/hooks'
-import { useSpring } from '@react-spring/web'
-import CircularProgress from '../../components/circular-progress'
-import { ITheme } from './types'
-import { ICompany } from '../companies/types'
-import LineTo from 'react-lineto'
+import { NavLink } from 'react-router-dom'
+import { useCurrentTheme, useThemes } from './hooks'
+import { useCurrentCompany } from '../companies/hooks'
+import ImpactAreasToggles from '../../components/impact-areas'
+import Sidebar from '../../components/sidebar'
+import Theme from './theme'
 
-interface IThemeProps {
-  company: ICompany
-  theme: ITheme
-}
-
-function Theme({ company, theme }: IThemeProps): JSX.Element {
+function Themes() {
+  const themes = useThemes()
+  const company = useCurrentCompany()
   const currentTheme = useCurrentTheme()
-  const { impactAreas } = useImpactAreas()
-
-  const selectedImpactAreas = impactAreas.filter((area) => area.checked)
-
-  if (!company || !company.themes) return <></>
-
-  let themePercentage = company.themes[theme.id].score
-  let impactAreasElements: JSX.Element[] = []
-
-  if (currentTheme && currentTheme.id === theme.id) {
-    impactAreasElements = selectedImpactAreas.map((area, index) => {
-      const score = company!.themes![theme.id].impactAreas![area.id]
-      themePercentage += score > 50 ? 5 : -5
-
-      return (
-        <CircularProgress
-          key={area.id}
-          color={score > 50 ? 'positive' : 'negative'}
-          percentage={score}
-          size="3rem"
-          thickness=".3rem"
-          subtheme={index}
-        >
-          <img
-            className="h-10 w-auto rounded-full bg-neutral-focus p-2"
-            src={`/assets/images/${currentTheme!.id}/${area.id}.svg`}
-          />
-        </CircularProgress>
-      )
-    })
-  }
-
-  const themeIcon: string = currentTheme && currentTheme.id === theme.id ? theme.id : `${theme.id}-alt`
 
   return (
     <>
-      <CircularProgress
-        color={currentTheme ? (currentTheme.id === theme.id ? theme.id : 'neutral') : theme.id}
-        percentage={themePercentage}
-      >
-        <img className="h-20 w-auto rounded-full bg-neutral-focus p-2" src={`/assets/images/${themeIcon}.svg`} />
-      </CircularProgress>
-      <span className="badge mt-2 border-none bg-primary text-primary-content">{theme.name}</span>
-      {impactAreasElements}
+      <Sidebar />
+      <div className="rounded-box w-full bg-base-200">
+        <div className="drawer drawer-end">
+          <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+          <div className="drawer-content">
+            <div className="badge badge-accent mt-4 ml-4 hover:bg-accent-focus">
+              <label htmlFor="my-drawer" className="cursor-pointer text-xs">
+                Choose impact areas
+              </label>
+            </div>
+
+            <div className="flex w-full flex-col flex-wrap items-center justify-around gap-2 rounded-md px-4 py-8 sm:flex-row">
+              {themes.map((theme) => {
+                let classes = 'relative flex flex-col items-center justify-center text-center'
+
+                if (currentTheme) {
+                  classes = 'relative flex-col items-center justify-center text-center hidden lg:flex'
+                }
+
+                if (currentTheme && currentTheme.id === theme.id) {
+                  classes = 'relative flex flex-col items-center justify-center text-center'
+                }
+                return (
+                  <NavLink key={theme.id} className={classes} to={`/companies/${company!.id}/areas/themes/${theme.id}`}>
+                    <Theme company={company!} theme={theme} />
+                  </NavLink>
+                )
+              })}
+            </div>
+          </div>
+          <div className="drawer-side pb-8">
+            <label htmlFor="my-drawer" className="drawer-overlay"></label>
+            <div className="flex flex-col flex-nowrap overflow-y-scroll bg-base-200 p-4">
+              <ImpactAreasToggles />
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
 
-export default Theme
+export default Themes

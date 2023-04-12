@@ -33,14 +33,13 @@ function ChatInput() {
   }
 
   return (
-    <form onSubmit={submitForm} className="relative flex w-full flex-row flex-nowrap gap-2 px-4">
-      <input
-        className="input w-full rounded-none bg-base-200"
-        type="text"
+    <form onSubmit={submitForm} className="relative flex w-full flex-row flex-nowrap gap-2 shadow-md">
+      <textarea
+        className="textarea h-8 w-full resize-none rounded-md bg-base-100"
         name="text"
         placeholder="What's on your mind?"
       />
-      <button className="btn absolute right-4 gap-2 rounded-none border-none text-accent" type="submit">
+      <button className="btn absolute right-0 gap-2 rounded-md rounded-l-none border-none text-accent" type="submit">
         <svg
           width="24"
           height="24"
