@@ -1,7 +1,7 @@
-import { useCurrentTheme } from '../themes/hooks'
+import { useCurrentTheme } from './themes/hooks'
 import { NavLink } from 'react-router-dom'
-import Sidebar from '../../components/sidebar'
-import ImpactAreasToggles from '../../components/impact-areas'
+import Sidebar from '../../../components/sidebar'
+import ImpactAreasToggles from '../../../components/impact-areas'
 
 function ImpactAreas() {
   const currentTheme = useCurrentTheme()
@@ -19,7 +19,10 @@ function ImpactAreas() {
             <div className="grid w-full grid-cols-2 gap-2 lg:grid-cols-3">
               <ImpactAreasToggles />
             </div>
-            <NavLink className="btn-outline btn-primary btn mx-auto" to={'./themes'}>
+            <NavLink
+              className="btn-primary btn-outline btn mx-auto"
+              to={`./themes/${currentTheme!.id}`}
+            >
               Scores
             </NavLink>
           </div>

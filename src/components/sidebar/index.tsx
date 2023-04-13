@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import classnames from 'classnames'
-import Icon from '../icon'
 import { useCurrentCompany } from '../../pages/companies/hooks'
+import Icon from '../icon'
 
 interface INavLink {
   title: string
@@ -53,9 +53,14 @@ function Sidebar() {
     <ul className="menu rounded-box self-start bg-base-200">
       {NAV_LINKS.map(({ to, title, icon, disabled }, index) => (
         <li key={index} className={classnames({ disabled: disabled })}>
-          <div className="tooltip tooltip-right tooltip-primary" data-tip={title}>
+          <div
+            className="tooltip tooltip-right tooltip-primary"
+            data-tip={title}
+          >
             <NavLink
-              className={({ isActive }) => (isActive ? 'h-14 text-accent shadow-md' : 'h-14 shadow-md')}
+              className={({ isActive }) =>
+                isActive ? 'h-14 text-accent shadow-md' : 'h-14 shadow-md'
+              }
               to={to}
               end
             >

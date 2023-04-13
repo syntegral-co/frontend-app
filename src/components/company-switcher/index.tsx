@@ -1,34 +1,106 @@
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { FormEvent, useState } from 'react'
+import { useRecoilState } from 'recoil'
+import { useNavigate } from 'react-router-dom'
+import { z } from 'zod'
+import { useThemes } from '../../pages/companies/areas/themes/hooks'
 import { ICompany } from '../../pages/companies/types'
-import { companies } from '../../state/data'
+import { companies } from '../../utils/data'
+import { themeState } from './atom'
 
-function isCompanyInSearchTerm(company: ICompany, searchTerm: string): company is ICompany {
+const companySwitcherSchema = z.object({
+  mode: z.enum(['single', 'double']),
+  first_company: z.number(),
+  second_company: z.number().optional(),
+  theme: z.enum(['people', 'profit', 'planet']),
+})
+
+function isCompanyInSearchTerm(
+  company: ICompany,
+  searchTerm: string,
+): company is ICompany {
   return company.name.toLowerCase().includes(searchTerm.toLowerCase())
 }
 
 function CompanySwitcher() {
-  const [searchTerm, setSearchTerm] = useState('')
+  const themes = useThemes()
+  const navigate = useNavigate()
+  const [mode, setMode] = useState('single')
+  const [firstSearchTerm, setFirstSearchTerm] = useState('')
+  const [firstCompany, setFirstCompany] = useState<number | null>(null)
+  const [secondSearchTerm, setSecondSearchTerm] = useState('')
+  const [secondCompany, setSecondCompany] = useState('')
+  const [theme, setTheme] = useRecoilState(themeState)
+
+  const submitForm = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+
+    const formData = new FormData(event.currentTarget)
+    const formObject = Object.fromEntries(formData.entries())
+
+    const parsedResults = companySwitcherSchema.safeParse(formObject)
+
+    if (!parsedResults.success) {
+      console.log('parsedResults: ', parsedResults.error.format())
+      return
+    }
+
+    navigate(`./companies/${firstCompany}`)
+  }
 
   return (
     <div className="flex h-96 w-full flex-col items-center justify-center self-center">
       {/* <h1 className="text-5xl font-bold text-primary-content">Hi! 👋🏻</h1>
       <p className="py-6 text-primary-content">What would you like to explore today?</p> */}
-      <form className="text-5xl text-primary-content">
-        <label htmlFor="company">I would like to know how</label>
+      <form
+        className="px-8 text-5xl text-primary-content md:px-0"
+        onSubmit={submitForm}
+      >
+        <label htmlFor="mode">I would like to</label>
+        <select
+          name="mode"
+          className="border-b-2 border-dotted border-accent bg-transparent p-2 text-accent focus:outline-none"
+          value={mode}
+          onChange={(event) => setMode(event.target.value)}
+        >
+          <option value="single">know how</option>
+          <option value="double">compare how</option>
+        </select>
+        <br />
         <input
           type="text"
-          name="company"
+          name="first_company"
           placeholder="this company"
           className="border-b-2 border-dotted border-accent bg-transparent p-2 text-accent focus:outline-none"
-          //onChange={(event) => setSearchTerm(event.target.value)}
+          onChange={(event) => setFirstSearchTerm(event.target.value)}
+          value={firstSearchTerm}
         />
-        {searchTerm !== '' && (
+        {mode === 'double' && (
+          <>
+            <label htmlFor="second_company">and</label>
+            <input
+              type="text"
+              name="second_company"
+              placeholder="this company"
+              className="border-b-2 border-dotted border-accent bg-transparent p-2 text-accent focus:outline-none"
+              onChange={(event) => setSecondCompany(event.target.value)}
+            />
+          </>
+        )}
+        {firstSearchTerm !== '' && (
           <ul className="menu w-full border border-base-200 bg-base-100 p-4 shadow-md">
             {companies
-              .filter((company) => isCompanyInSearchTerm(company, searchTerm))
+              .filter((company) =>
+                isCompanyInSearchTerm(company, firstSearchTerm),
+              )
               .map((company: ICompany) => (
-                <li key={company.id} className="text-primary-content hover:text-accent">
+                <li
+                  key={company.id}
+                  className="cursor-pointer text-primary-content hover:text-accent"
+                  onClick={() => {
+                    setFirstSearchTerm(company.name)
+                    setFirstCompany(company.id)
+                  }}
+                >
                   {company.name}
                   {/* <NavLink to={`/companies/${company.id}`}>{company.name}</NavLink> */}
                 </li>
@@ -36,13 +108,25 @@ function CompanySwitcher() {
           </ul>
         )}
         <br />
-        <label htmlFor="theme">behaves regarding</label>{' '}
-        <input
-          type="text"
+        <label htmlFor="theme">{`behave${
+          mode === 'single' ? 's' : ''
+        } regarding the`}</label>{' '}
+        <select
           name="theme"
-          placeholder="this area"
-          className="max-w-xs border-b-2 border-dotted border-accent bg-transparent p-2 text-accent focus:outline-none"
-        />
+          className="border-b-2 border-dotted border-accent bg-transparent p-2 text-accent focus:outline-none"
+          value={theme}
+          onChange={(event) => setTheme(event.target.value)}
+        >
+          {themes.map((theme) => (
+            <option key={theme.id} value={theme.id}>
+              {theme.name}
+            </option>
+          ))}
+        </select>
+        area
+        <div className="align-center mt-8 flex justify-center">
+          <input type="submit" className="btn-accent btn" value="Let's go" />
+        </div>
       </form>
     </div>
   )

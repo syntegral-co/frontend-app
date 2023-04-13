@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { companies } from '../../state/data'
+import { companies } from '../../utils/data'
 import { ICompany } from './types'
 
 export function useCurrentCompany() {

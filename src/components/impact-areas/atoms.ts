@@ -1,7 +1,15 @@
 import { atom } from 'recoil'
-import { impactAreas, peopleImpactAreas } from '../../pages/areas/types'
+import {
+  profitImpactAreas,
+  peopleImpactAreas,
+  planetImpactAreas,
+} from '../../pages/companies/areas/types'
 
-const areas = [...impactAreas, ...peopleImpactAreas].map((area) => ({
+const areas = [
+  ...planetImpactAreas,
+  ...peopleImpactAreas,
+  ...profitImpactAreas,
+].map((area) => ({
   id: area.id,
   name: area.name,
   checked: false,
