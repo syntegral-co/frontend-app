@@ -87,19 +87,11 @@ export async function getImpactSummary(companyId: number, theme: string) {
 }
 
 export async function getDocument(filenameId: string, minutes: number) {
-<<<<<<< HEAD
-  Mixpanel.track('API Call', { type: 'doc_url', filenameId: filenameId })
-
-  const APIUrl = `${import.meta.env.VITE_DOC_API_BASEPATH}/doc-url?filename_id=${filenameId}&minutes=${minutes}`
-||||||| 31270e7
-  const APIUrl = `${import.meta.env.VITE_DOC_API_BASEPATH}/doc-url?filename_id=${filenameId}&minutes=${minutes}`
-=======
   Mixpanel.track('API Call', { type: 'doc_url', filenameId: filenameId })
 
   const APIUrl = `${
     import.meta.env.VITE_DOC_API_BASEPATH
   }/doc-url?filename_id=${filenameId}&minutes=${minutes}`
->>>>>>> ui_revamp
   const data = await callAPI(APIUrl)
 
   return data
