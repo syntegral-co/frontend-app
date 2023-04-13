@@ -20,7 +20,20 @@ export const companies: ICompany[] = [
         },
       },
       profit: { score: 50 },
-      planet: { score: 15 },
+      planet: {
+        score: 15,
+        impactAreas: {
+          1: 30,
+          2: 12,
+          3: 25,
+          4: 58,
+          5: 10,
+          6: 2,
+          7: 75,
+          8: 84,
+          9: 10,
+        },
+      },
     },
   },
   {
