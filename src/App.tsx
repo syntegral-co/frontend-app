@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import { Route, Routes } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import Mixpanel from './utils/tracking'
@@ -17,7 +18,8 @@ function App() {
   useEffect(() => {
     if (!user) return
 
-    localStorage.setItem('sessionId', user.sub!)
+    const sessionId = uuidv4()
+    localStorage.setItem('sessionId', sessionId)
 
     Mixpanel.identify(user.sub!)
     Mixpanel.people.set({

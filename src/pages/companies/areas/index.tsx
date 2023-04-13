@@ -5,7 +5,6 @@ import ImpactAreasToggles from '../../../components/impact-areas'
 
 function ImpactAreas() {
   const currentTheme = useCurrentTheme()
-
   return (
     <>
       <Sidebar />

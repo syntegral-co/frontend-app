@@ -1,5 +1,6 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
+import { v4 as uuidv4 } from 'uuid'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
 import {
@@ -29,6 +30,12 @@ function CompanySwitcher() {
   const currentTheme = useCurrentTheme()
   const setCurrentTheme = useSetRecoilState(themeState)
   const [searchTerm, setSearchTerm] = useState('')
+
+  useEffect(() => {
+    const sessionId = uuidv4()
+    localStorage.removeItem('sessionId')
+    localStorage.setItem('sessionId', sessionId)
+  }, [])
 
   return (
     <div className="flex h-96 w-full flex-col items-center justify-center self-center">
