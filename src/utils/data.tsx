@@ -142,6 +142,7 @@ export const companies: ICompany[] = [
           22: 84,
         },
       },
+      profit: { score: 50 },
       planet: {
         score: 15,
         impactAreas: {
@@ -156,8 +157,6 @@ export const companies: ICompany[] = [
           9: 10,
         },
       },
-      profit: { score: 50 },
-      planet: { score: 15 },
     },
   },
 ]
