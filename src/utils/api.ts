@@ -37,11 +37,15 @@ export async function chat(message: string, companyId: number) {
   return data
 }
 
-export async function chatContext(message: string, answer: string) {
+export async function chatContext(
+  message: string,
+  impact: string,
+  answer: string,
+) {
   Mixpanel.track('API Call', {
     type: 'chatbot_context',
     question: message,
-    impactType: 'planet',
+    impactType: impact,
     answer: answer,
   })
 

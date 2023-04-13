@@ -32,7 +32,8 @@ export function useChatBot() {
     queries: [
       {
         queryKey: ['chatbot-context', chatInput, chatbotReply],
-        queryFn: () => chatContext(chatInput, chatbotReply!.answer),
+        queryFn: () =>
+          chatContext(chatInput, currentTheme!.id, chatbotReply!.answer),
         staleTime: Infinity,
         enabled:
           status === 'success' &&
