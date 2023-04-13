@@ -18,7 +18,7 @@ function ImpactArea() {
   const { onClickDocument } = useDrawer()
 
   const { data, fetchStatus } = useQuery({
-    queryKey: ['impact_summary'],
+    queryKey: ['impact_summary', impactArea!.name],
     queryFn: () => getImpactSummary(currentCompany!.id, impactArea!.name),
     staleTime: Infinity,
   })
