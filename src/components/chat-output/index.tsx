@@ -9,7 +9,8 @@ import logo from '/assets/images/syntegral.svg'
 
 function ChatOutput() {
   const company = useCurrentCompany()
-  const { chatMessages, isLoading, isContextLoading, isMetricsLoading } = useChatBot()
+  const { chatMessages, isLoading, isContextLoading, isMetricsLoading } =
+    useChatBot()
 
   return (
     <div className="max-height-screen flex h-full w-full flex-col justify-between rounded-md p-4">
@@ -42,8 +43,9 @@ function ChatOutput() {
               {(isContextLoading > 0 || isMetricsLoading > 0) && (
                 <>
                   <p>
-                    Please wait, I am searching for similar projects and relevant metrics on my research DB related to
-                    your question...
+                    Please wait, I am searching for similar projects and
+                    relevant metrics on my research DB related to your
+                    question...
                   </p>
                   <br />
                 </>
