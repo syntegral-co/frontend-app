@@ -1,13 +1,8 @@
-export interface IChatMessageLink {
-  id: string
-  page: string
-  name: string
-}
-
+import { IDocumentLink } from '../drawer/types'
 export interface IChatMessage {
   header?: string
   author: string
   text: string
-  links?: IChatMessageLink[]
+  links?: IDocumentLink[]
   collapsible?: boolean
 }

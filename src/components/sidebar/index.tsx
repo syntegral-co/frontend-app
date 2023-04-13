@@ -1,47 +1,72 @@
 import { NavLink } from 'react-router-dom'
-import logo from '/assets/images/syntegral.png'
+import classnames from 'classnames'
+import { useCurrentCompany } from '../../pages/companies/hooks'
+import Icon from '../icon'
 
 interface INavLink {
   title: string
   to: string
+  icon?: string
+  disabled?: boolean
 }
 
-const NAV_LINKS: INavLink[] = [
-  {
-    title: 'Account',
-    to: '/companies/6',
-  },
-  {
-    title: 'Discovery',
-    to: '/test',
-  },
-  {
-    title: 'Reporting',
-    to: '/test',
-  },
-  {
-    title: 'Download',
-    to: '/test',
-  },
-  {
-    title: 'Upload',
-    to: '/test',
-  },
-]
-
 function Sidebar() {
+  const currentCompany = useCurrentCompany()
+
+  const NAV_LINKS: INavLink[] = [
+    {
+      title: 'Discovery',
+      to: '/',
+      icon: 'compass',
+    },
+    {
+      title: 'Chat',
+      to: `/companies/${currentCompany?.id}`,
+      icon: 'bubbles',
+    },
+    {
+      title: 'Reporting',
+      to: `/companies/${currentCompany?.id}/areas`,
+      icon: 'pie',
+    },
+    {
+      title: 'Download',
+      to: '/test',
+      icon: 'cloud-download',
+      disabled: true,
+    },
+    {
+      title: 'Upload',
+      to: '/test',
+      icon: 'cloud-upload',
+      disabled: true,
+    },
+    {
+      title: 'Account',
+      to: '/account',
+      icon: 'user',
+      disabled: true,
+    },
+  ]
+
   return (
-    <ul className="menu menu-compact hidden w-96 rounded-md bg-base-200 p-2 px-6 lg:menu-normal md:block">
-      <img className="mx-auto mt-4 mb-8 h-16 w-auto" src={logo} />
-      {NAV_LINKS.map(({ title, to }, index) => (
-        <li className="border-md mb-4" key={index}>
-          <NavLink
-            className={({ isActive }) => (isActive ? 'h-14 text-accent shadow-md' : 'h-14 shadow-md')}
-            to={to}
-            end
+    <ul className="menu rounded-box self-start bg-base-200">
+      {NAV_LINKS.map(({ to, title, icon, disabled }, index) => (
+        <li key={index} className={classnames({ disabled: disabled })}>
+          <div
+            className="tooltip tooltip-right tooltip-primary"
+            data-tip={title}
           >
-            {title}
-          </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? 'h-14 text-accent shadow-md' : 'h-14 shadow-md'
+              }
+              to={to}
+              end
+            >
+              <Icon icon={icon!} size={20} />
+            </NavLink>
+          </div>
         </li>
       ))}
     </ul>

@@ -1,11 +1,19 @@
 import { Outlet } from 'react-router-dom'
+import { withAuthenticationRequired } from '@auth0/auth0-react'
+import Nav from '../components/nav'
+import Spinner from '../components/spinner'
 
 function Demo() {
   return (
-    <div className="flex h-full gap-4">
-      <Outlet />
-    </div>
+    <>
+      <Nav />
+      <div className="flex h-full gap-4">
+        <Outlet />
+      </div>
+    </>
   )
 }
 
-export default Demo
+export default withAuthenticationRequired(Demo, {
+  onRedirecting: () => <Spinner />,
+})

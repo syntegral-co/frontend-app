@@ -1,10 +1,9 @@
+import { NavLink } from 'react-router-dom'
 import { useCurrentTheme } from './hooks'
-import { useImpactAreas } from '../../components/impact-areas/hooks'
-import { useSpring } from '@react-spring/web'
-import CircularProgress from '../../components/circular-progress'
+import { useImpactAreas } from '../../../../components/impact-areas/hooks'
+import CircularProgress from '../../../../components/circular-progress'
 import { ITheme } from './types'
-import { ICompany } from '../companies/types'
-import LineTo from 'react-lineto'
+import { ICompany } from '../../types'
 
 interface IThemeProps {
   company: ICompany
@@ -36,26 +35,41 @@ function Theme({ company, theme }: IThemeProps): JSX.Element {
           thickness=".3rem"
           subtheme={index}
         >
-          <img
-            className="h-10 w-auto rounded-full bg-neutral-focus p-2"
-            src={`/assets/images/${currentTheme!.id}/${area.id}.svg`}
-          />
+          <NavLink to={`./${area.id}`}>
+            <div className="placeholder avatar">
+              <div className="w-10 rounded-full bg-neutral-focus text-neutral-content">
+                <span className="text-xl">{area.name.charAt(0)}</span>
+              </div>
+            </div>
+          </NavLink>
         </CircularProgress>
       )
     })
   }
 
-  const themeIcon: string = currentTheme && currentTheme.id === theme.id ? theme.id : `${theme.id}-alt`
+  const themeIcon: string =
+    currentTheme && currentTheme.id === theme.id ? theme.id : `${theme.id}-alt`
 
   return (
     <>
       <CircularProgress
-        color={currentTheme ? (currentTheme.id === theme.id ? theme.id : 'neutral') : theme.id}
+        color={
+          currentTheme
+            ? currentTheme.id === theme.id
+              ? theme.id
+              : 'neutral'
+            : theme.id
+        }
         percentage={themePercentage}
       >
-        <img className="h-20 w-auto rounded-full bg-neutral-focus p-2" src={`/assets/images/${themeIcon}.svg`} />
+        <img
+          className="h-20 w-auto rounded-full bg-neutral-focus p-2"
+          src={`/assets/images/${themeIcon}.svg`}
+        />
       </CircularProgress>
-      <span className="badge mt-2 border-none bg-primary text-primary-content">{theme.name}</span>
+      <span className="badge mt-2 border-none bg-primary text-primary-content">
+        {theme.name}
+      </span>
       {impactAreasElements}
     </>
   )

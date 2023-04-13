@@ -1,10 +1,10 @@
+import { useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useRecoilValue } from 'recoil'
-import { documentState } from '../../state/atoms'
 import { useDrawer } from './hooks'
-import Loader from '../loader'
+import { documentState } from './atoms'
 import { getDocument } from '../../utils/api'
-import { useEffect } from 'react'
+import Loader from '../loader'
 
 function DocumentDrawer(): JSX.Element {
   const { isDrawerOpen, toggleDrawer } = useDrawer()
@@ -40,11 +40,17 @@ function DocumentDrawer(): JSX.Element {
           height="100%"
         >
           <p>
-            Link <a href={`${Object.values(data)[0]}#page=${document.page}`}>to the PDF!</a>
+            Link{' '}
+            <a href={`${Object.values(data)[0]}#page=${document.page}`}>
+              to the PDF!
+            </a>
           </p>
         </object>
       )}
-      <button className="btn-outline btn-primary btn mx-auto mb-4 mt-auto" onClick={() => toggleDrawer()}>
+      <button
+        className="btn-primary btn-outline btn mx-auto mb-4 mt-auto"
+        onClick={() => toggleDrawer()}
+      >
         Close
       </button>
     </div>

@@ -2,19 +2,12 @@ import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { useIsFetching, useQueries, useQuery } from '@tanstack/react-query'
 import { useCurrentCompany } from '../../pages/companies/hooks'
-import { useCurrentTheme } from '../../pages/themes/hooks'
-import { chatState } from '../../state/atoms'
+import { useCurrentTheme } from '../../pages/companies/areas/themes/hooks'
+import { chatState } from './atoms'
 import { chat, chatContext, chatMetrics } from '../../utils/api'
+import { formatReferences } from '../../utils/helpers'
 import { IChatReply } from './types'
-import { IChatMessage, IChatMessageLink } from '../chat-output/types'
-
-function formatReferences(references: string[][]): IChatMessageLink[] {
-  return references.map((reference) => ({
-    id: reference[0],
-    page: reference[1],
-    name: reference[2],
-  }))
-}
+import { IChatMessage } from '../chat-output/types'
 
 export function useChatBot() {
   const [chatInput, setChatInput] = useState<string>('')
@@ -41,19 +34,28 @@ export function useChatBot() {
         queryKey: ['chatbot-context', chatInput, chatbotReply],
         queryFn: () => chatContext(chatInput, chatbotReply!.answer),
         staleTime: Infinity,
-        enabled: status === 'success' && chatbotReply && chatbotReply.status === 'successful',
+        enabled:
+          status === 'success' &&
+          chatbotReply &&
+          chatbotReply.status === 'successful',
       },
       {
         queryKey: ['chatbot-metrics', chatbotReply, 'iris'],
         queryFn: () => chatMetrics('iris', chatbotReply!.answer),
         staleTime: Infinity,
-        enabled: status === 'success' && chatbotReply && chatbotReply.status === 'successful',
+        enabled:
+          status === 'success' &&
+          chatbotReply &&
+          chatbotReply.status === 'successful',
       },
       {
         queryKey: ['chatbot-metrics', chatbotReply, 'sdg'],
         queryFn: () => chatMetrics('sdg', chatbotReply!.answer),
         staleTime: Infinity,
-        enabled: status === 'success' && chatbotReply && chatbotReply.status === 'successful',
+        enabled:
+          status === 'success' &&
+          chatbotReply &&
+          chatbotReply.status === 'successful',
       },
     ],
   })
@@ -92,8 +94,13 @@ export function useChatBot() {
       collapsible: true,
     }
 
-    if (contextQuery.data!.context_references && contextQuery.data!.context_references.list) {
-      const references = formatReferences(contextQuery.data.context_references.list)
+    if (
+      contextQuery.data!.context_references &&
+      contextQuery.data!.context_references.list
+    ) {
+      const references = formatReferences(
+        contextQuery.data.context_references.list,
+      )
 
       newMessage.links = references
     }
@@ -139,5 +146,11 @@ export function useChatBot() {
     setChatInput(text)
   }
 
-  return { chatMessages, sendMessage, isLoading, isContextLoading, isMetricsLoading }
+  return {
+    chatMessages,
+    sendMessage,
+    isLoading,
+    isContextLoading,
+    isMetricsLoading,
+  }
 }
