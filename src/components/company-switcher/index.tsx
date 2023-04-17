@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import { NavLink } from 'react-router-dom'
 import { ICompany } from '../../pages/companies/types'
 import { companies } from '../../utils/data'
@@ -12,6 +13,12 @@ function isCompanyInSearchTerm(
 
 function CompanySwitcher() {
   const [searchTerm, setSearchTerm] = useState('')
+
+  useEffect(() => {
+    const sessionId = uuidv4()
+    localStorage.removeItem('sessionId')
+    localStorage.setItem('sessionId', sessionId)
+  }, [])
 
   return (
     <div className="flex h-96 w-full flex-col items-center justify-center self-center">
