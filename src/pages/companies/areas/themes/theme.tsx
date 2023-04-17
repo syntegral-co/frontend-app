@@ -1,10 +1,10 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useCurrentCompany } from '../../hooks'
 import { useCurrentTheme } from './hooks'
 import { useImpactAreas } from '../../../../components/impact-areas/hooks'
-import CircularProgress from '../../../../components/circular-progress'
 import { ITheme } from './types'
 import { ICompany } from '../../types'
-import { useCurrentCompany } from '../../hooks'
+import CircularProgress from '../../../../components/circular-progress'
 
 interface IThemeProps {
   company: ICompany
@@ -15,6 +15,7 @@ function Theme({ company, theme }: IThemeProps): JSX.Element {
   const currentCompany = useCurrentCompany()
   const currentTheme = useCurrentTheme()
   const { impactAreas } = useImpactAreas()
+  const navigate = useNavigate()
 
   const selectedImpactAreas = impactAreas.filter((area) => area.checked)
 
@@ -67,6 +68,7 @@ function Theme({ company, theme }: IThemeProps): JSX.Element {
             : theme.id
         }
         percentage={themePercentage}
+        link={`/companies/${company!.id}/themes/${theme.id}/areas`}
       >
         <img
           className="h-20 w-auto rounded-full bg-neutral-focus p-2"

@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom'
 import { useCurrentTheme, useThemes } from './hooks'
 import { useCurrentCompany } from '../../hooks'
 import ImpactAreasToggles from '../../../../components/impact-areas'
@@ -18,7 +17,7 @@ function Themes() {
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content">
             {currentTheme && (
-              <div className="badge-accent badge mt-4 ml-4 hover:bg-accent-focus">
+              <div className="badge badge-accent mt-4 ml-4 hover:bg-accent-focus">
                 <label htmlFor="my-drawer" className="cursor-pointer text-xs">
                   Choose impact areas
                 </label>
@@ -46,13 +45,9 @@ function Themes() {
                       'relative flex flex-col items-center justify-center text-center'
                   }
                   return (
-                    <NavLink
-                      key={theme.id}
-                      className={classes}
-                      to={`/companies/${company!.id}/themes/${theme.id}/areas`}
-                    >
+                    <div key={theme.id} className={classes}>
                       <Theme company={company!} theme={theme} />
-                    </NavLink>
+                    </div>
                   )
                 })}
             </div>
