@@ -3,7 +3,7 @@ import {
   peopleImpactAreas,
   planetImpactAreas,
   profitImpactAreas,
-} from '../types'
+} from './areas/types'
 
 type ThemeName = 'People' | 'Profit' | 'Planet'
 export interface ITheme {

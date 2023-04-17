@@ -3,7 +3,7 @@ import {
   profitImpactAreas,
   peopleImpactAreas,
   planetImpactAreas,
-} from '../../pages/companies/areas/types'
+} from '../../pages/companies/themes/areas/types'
 
 const areas = [
   ...planetImpactAreas,

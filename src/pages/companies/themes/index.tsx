@@ -1,7 +1,7 @@
 import { useCurrentTheme, useThemes } from './hooks'
-import { useCurrentCompany } from '../../hooks'
-import ImpactAreasToggles from '../../../../components/impact-areas'
-import Sidebar from '../../../../components/sidebar'
+import { useCurrentCompany } from '../hooks'
+import ImpactAreasToggles from '../../../components/impact-areas'
+import Sidebar from '../../../components/sidebar'
 import Theme from './theme'
 
 function Themes() {
@@ -17,7 +17,7 @@ function Themes() {
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content">
             {currentTheme && (
-              <div className="badge badge-accent mt-4 ml-4 hover:bg-accent-focus">
+              <div className="badge-accent badge mt-4 ml-4 hover:bg-accent-focus">
                 <label htmlFor="my-drawer" className="cursor-pointer text-xs">
                   Choose impact areas
                 </label>

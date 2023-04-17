@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { useCurrentTheme } from '../hooks'
+import { useCurrentTheme } from '../../hooks'
 
 export function useCurrentImpactArea() {
   const currentTheme = useCurrentTheme()

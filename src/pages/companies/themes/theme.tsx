@@ -1,10 +1,10 @@
 import { NavLink, useNavigate } from 'react-router-dom'
-import { useCurrentCompany } from '../../hooks'
+import { useCurrentCompany } from '../hooks'
 import { useCurrentTheme } from './hooks'
-import { useImpactAreas } from '../../../../components/impact-areas/hooks'
+import { useImpactAreas } from '../../../components/impact-areas/hooks'
 import { ITheme } from './types'
-import { ICompany } from '../../types'
-import CircularProgress from '../../../../components/circular-progress'
+import { ICompany } from '../types'
+import CircularProgress from '../../../components/circular-progress'
 
 interface IThemeProps {
   company: ICompany

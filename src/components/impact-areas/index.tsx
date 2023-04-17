@@ -1,5 +1,5 @@
 import { useImpactAreas } from './hooks'
-import { useCurrentTheme } from '../../pages/companies/areas/themes/hooks'
+import { useCurrentTheme } from '../../pages/companies/themes/hooks'
 
 function ImpactAreasToggles() {
   const currentTheme = useCurrentTheme()
