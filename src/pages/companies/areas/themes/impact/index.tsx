@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { NavLink } from 'react-router-dom'
 import { useCurrentCompany } from '../../../hooks'
+import { useCurrentTheme } from '../hooks'
 import { useCurrentImpactArea } from './hooks'
 import { useDrawer } from '../../../../../components/drawer/hooks'
 import { getImpactSummary } from '../../../../../utils/api'
@@ -9,16 +11,17 @@ import { IDocumentLink } from '../../../../../components/drawer/types'
 import DocumentDrawer from '../../../../../components/drawer'
 import Sidebar from '../../../../../components/sidebar'
 import Spinner from '../../../../../components/spinner'
+import Icon from '../../../../../components/icon'
 
 function ImpactArea() {
   const [references, setReferences] = useState<IDocumentLink[]>([])
   const currentCompany = useCurrentCompany()
+  const currentTheme = useCurrentTheme()
   const impactArea = useCurrentImpactArea()
-  console.log('impactArea: ', impactArea)
   const { onClickDocument } = useDrawer()
 
   const { data, fetchStatus } = useQuery({
-    queryKey: ['impact_summary'],
+    queryKey: ['impact_summary', impactArea!.name],
     queryFn: () => getImpactSummary(currentCompany!.id, impactArea!.name),
     staleTime: Infinity,
   })
@@ -38,7 +41,17 @@ function ImpactArea() {
           <Spinner />
         ) : (
           <>
-            <h1 className="mb-4 text-3xl text-accent">{impactArea!.name}</h1>
+            <div className="mb-4 flex flex-row items-center justify-start text-accent">
+              <NavLink
+                to={`/companies/${currentCompany!.id}/themes/${
+                  currentTheme!.id
+                }/areas/score`}
+                className="mr-4 hover:text-accent-focus"
+              >
+                <Icon icon={'arrow-left2'} size={20} />
+              </NavLink>
+              <h1 className="text-3xl">{impactArea!.name}</h1>
+            </div>
             <p>{data.summary}</p>
             <ol className="mt-4 list-none pl-2">
               {references.map((link, index) => (

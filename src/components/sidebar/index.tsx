@@ -26,7 +26,7 @@ function Sidebar() {
     },
     {
       title: 'Reporting',
-      to: `/companies/${currentCompany?.id}/areas`,
+      to: `/companies/${currentCompany?.id}/themes`,
       icon: 'pie',
     },
     {

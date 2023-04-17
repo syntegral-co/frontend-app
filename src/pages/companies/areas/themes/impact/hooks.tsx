@@ -1,14 +1,9 @@
 import { useParams } from 'react-router-dom'
-import {
-  peopleImpactAreas,
-  planetImpactAreas,
-  profitImpactAreas,
-} from '../../types'
 import { useCurrentTheme } from '../hooks'
 
 export function useCurrentImpactArea() {
   const currentTheme = useCurrentTheme()
-  const { impactArea } = useParams()
+  const { area: impactArea } = useParams()
 
   if (!currentTheme || !impactArea) return null
 

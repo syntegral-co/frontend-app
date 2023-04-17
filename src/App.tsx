@@ -33,13 +33,17 @@ function App() {
         <Route path="/" element={<Demo />}>
           <Route index element={<CompanySwitcher />} />
           <Route path="companies/:company" element={<Company />} />
-          <Route path="companies/:company/areas" element={<ImpactAreas />} />
+          <Route path="companies/:company/themes" element={<Themes />} />
           <Route
-            path="companies/:company/areas/themes/:theme?"
+            path="companies/:company/themes/:theme/areas"
+            element={<ImpactAreas />}
+          />
+          <Route
+            path="companies/:company/themes/:theme/areas/score"
             element={<Themes />}
           />
           <Route
-            path="companies/:company/areas/themes/:theme/:impactArea"
+            path="companies/:company/themes/:theme/areas/score/:area"
             element={<ImpactArea />}
           />
         </Route>

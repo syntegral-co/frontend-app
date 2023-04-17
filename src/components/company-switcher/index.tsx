@@ -1,21 +1,7 @@
-import { FormEvent, useState } from 'react'
-import { useRecoilState, useSetRecoilState } from 'recoil'
-import { NavLink, useNavigate } from 'react-router-dom'
-import { z } from 'zod'
-import {
-  useCurrentTheme,
-  useThemes,
-} from '../../pages/companies/areas/themes/hooks'
+import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import { ICompany } from '../../pages/companies/types'
 import { companies } from '../../utils/data'
-import { themeState } from './atom'
-
-const companySwitcherSchema = z.object({
-  mode: z.enum(['single', 'double']),
-  first_company: z.number(),
-  second_company: z.number().optional(),
-  theme: z.enum(['people', 'profit', 'planet']),
-})
 
 function isCompanyInSearchTerm(
   company: ICompany,
@@ -25,29 +11,13 @@ function isCompanyInSearchTerm(
 }
 
 function CompanySwitcher() {
-  const themes = useThemes()
-  const currentTheme = useCurrentTheme()
-  const setCurrentTheme = useSetRecoilState(themeState)
   const [searchTerm, setSearchTerm] = useState('')
 
   return (
     <div className="flex h-96 w-full flex-col items-center justify-center self-center">
+      <p className="py-6 text-5xl text-primary-content">Hi 👋🏻</p>
       <p className="py-6 text-2xl text-primary-content">
-        Select a theme to explore
-      </p>
-      <select
-        className="input-bordered input w-full max-w-xs text-primary-content"
-        value={currentTheme!.id}
-        onChange={(event) => setCurrentTheme(event.target.value)}
-      >
-        {themes.map((theme) => (
-          <option key={theme.id} value={theme.id}>
-            {theme.name}
-          </option>
-        ))}
-      </select>
-      <p className="py-6 text-2xl text-primary-content">
-        and type the name of a company to start exploring!
+        Choose a company to start exploring!
       </p>
       <input
         type="text"

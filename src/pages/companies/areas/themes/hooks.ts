@@ -1,13 +1,12 @@
-import { useRecoilValue } from 'recoil'
-import { themeState } from '../../../../components/company-switcher/atom'
 import { themes } from './types'
+import { useParams } from 'react-router-dom'
 
 export function useThemes() {
   return Object.values(themes).map((theme) => theme)
 }
 
 export function useCurrentTheme() {
-  const currentTheme = useRecoilValue(themeState)
+  const { theme: currentTheme } = useParams()
 
   if (!currentTheme) return null
 

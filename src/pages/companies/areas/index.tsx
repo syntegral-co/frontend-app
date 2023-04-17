@@ -20,8 +20,8 @@ function ImpactAreas() {
               <ImpactAreasToggles />
             </div>
             <NavLink
-              className="btn-primary btn-outline btn mx-auto"
-              to={`./themes/${currentTheme!.id}`}
+              className="btn-outline btn-primary btn mx-auto"
+              to={`./score`}
             >
               Scores
             </NavLink>

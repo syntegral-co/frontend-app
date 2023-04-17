@@ -4,6 +4,7 @@ import { useImpactAreas } from '../../../../components/impact-areas/hooks'
 import CircularProgress from '../../../../components/circular-progress'
 import { ITheme } from './types'
 import { ICompany } from '../../types'
+import { useCurrentCompany } from '../../hooks'
 
 interface IThemeProps {
   company: ICompany
@@ -11,6 +12,7 @@ interface IThemeProps {
 }
 
 function Theme({ company, theme }: IThemeProps): JSX.Element {
+  const currentCompany = useCurrentCompany()
   const currentTheme = useCurrentTheme()
   const { impactAreas } = useImpactAreas()
 
@@ -35,7 +37,11 @@ function Theme({ company, theme }: IThemeProps): JSX.Element {
           thickness=".3rem"
           subtheme={index}
         >
-          <NavLink to={`./${area.id}`}>
+          <NavLink
+            to={`/companies/${currentCompany!.id}/themes/${
+              currentTheme.id
+            }/areas/score/${area.id}`}
+          >
             <div className="placeholder avatar">
               <div className="w-10 rounded-full bg-neutral-focus text-neutral-content">
                 <span className="text-xl">{area.name.charAt(0)}</span>
