@@ -1,9 +1,9 @@
 import { atom } from 'recoil'
-import { IDocumentLink } from './types'
+import { DocumentLink } from './types'
 
 export const documentState = atom({
   key: 'document',
-  default: null as IDocumentLink | null,
+  default: null as DocumentLink | null,
 })
 
 export const drawerState = atom({

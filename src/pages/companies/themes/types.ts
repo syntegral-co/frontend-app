@@ -6,14 +6,14 @@ import {
 } from './areas/types'
 
 type ThemeName = 'People' | 'Profit' | 'Planet'
-export interface ITheme {
+export interface Theme {
   id: number
   name: ThemeName
   impactAreas?: ImpactArea[]
   icon: string
 }
 
-export const themes: Record<ThemeName, ITheme> = {
+export const themes: Record<ThemeName, Theme> = {
   People: {
     id: 1,
     name: 'People',

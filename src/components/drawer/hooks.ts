@@ -1,12 +1,12 @@
 import { useRecoilState } from 'recoil'
 import { documentState, drawerState } from './atoms'
-import { IDocumentLink } from './types'
+import { DocumentLink } from './types'
 
 export function useDrawer() {
   const [isOpen, setIsOpen] = useRecoilState(drawerState)
   const [document, setDocument] = useRecoilState(documentState)
 
-  function documentLinkHandler(link: IDocumentLink) {
+  function documentLinkHandler(link: DocumentLink) {
     if (!document || document.id !== link.id) {
       setDocument(link)
     }

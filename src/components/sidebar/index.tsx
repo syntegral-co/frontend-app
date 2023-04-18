@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import { useCurrentCompany } from '../../pages/companies/hooks'
 import Icon from '../icon'
 
-interface INavLink {
+interface NavLink {
   title: string
   to: string
   icon?: string
@@ -13,7 +13,7 @@ interface INavLink {
 function Sidebar() {
   const currentCompany = useCurrentCompany()
 
-  const NAV_LINKS: INavLink[] = [
+  const NAV_LINKS: NavLink[] = [
     {
       title: 'Discovery',
       to: '/',

@@ -6,8 +6,8 @@ import { useCurrentTheme } from '../../pages/companies/themes/hooks'
 import { chatState } from './atoms'
 import { chat, chatContext, chatMetrics } from '../../utils/api'
 import { formatReferences } from '../../utils/helpers'
-import { IChatReply } from './types'
-import { IChatMessage } from '../chat-output/types'
+import { ChatReply } from './types'
+import { ChatMessage } from '../chat-output/types'
 
 export function useChatBot() {
   const [chatInput, setChatInput] = useState<string>('')
@@ -20,7 +20,7 @@ export function useChatBot() {
     data: chatbotReply,
   }: {
     status: string
-    data: IChatReply | undefined
+    data: ChatReply | undefined
   } = useQuery({
     queryKey: ['chatbot', chatInput],
     queryFn: () => chat(chatInput, currentCompany!.id),
@@ -67,7 +67,7 @@ export function useChatBot() {
   useEffect(() => {
     if (status !== 'success' || !chatbotReply) return
 
-    let newMessage: IChatMessage = {
+    let newMessage: ChatMessage = {
       header: chatbotReply!.categories,
       author: 'bot',
       text: chatbotReply!.answer,
@@ -87,7 +87,7 @@ export function useChatBot() {
 
     const answer = contextQuery.data!.context_answer
 
-    let newMessage: IChatMessage = {
+    let newMessage: ChatMessage = {
       header: 'Company Impact Assessment',
       author: 'bot',
       text: answer,
@@ -112,7 +112,7 @@ export function useChatBot() {
     if (irisMetricsQuery.status !== 'success' || !irisMetricsQuery.data) return
 
     const answer = irisMetricsQuery!.data!.metrics
-    const newMessage: IChatMessage = {
+    const newMessage: ChatMessage = {
       header: 'IRIS+ Indicators',
       author: 'bot',
       text: answer,

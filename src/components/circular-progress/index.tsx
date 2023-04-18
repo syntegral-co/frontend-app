@@ -1,7 +1,7 @@
 import { animated, useSpring } from '@react-spring/web'
 import { THEMES_POSITIONS } from '../../utils/constants'
 import { NavLink } from 'react-router-dom'
-interface ICircularProgressProps {
+interface CircularProgressProps {
   color: string | number
   percentage: number
   children: JSX.Element
@@ -18,7 +18,7 @@ function CircularProgress({
   thickness,
   subtheme,
   link,
-}: ICircularProgressProps): JSX.Element {
+}: CircularProgressProps): JSX.Element {
   let classes = 'bg-neutral radial-progress transition-all z-10 '
 
   let style = {

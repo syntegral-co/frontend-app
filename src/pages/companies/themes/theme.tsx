@@ -2,16 +2,16 @@ import { NavLink } from 'react-router-dom'
 import { useCurrentCompany } from '../hooks'
 import { useCurrentTheme } from './hooks'
 import { useImpactAreas } from '../../../components/impact-areas/hooks'
-import { ITheme } from './types'
-import { ICompany } from '../types'
+import { Theme } from './types'
+import { Company } from '../types'
 import CircularProgress from '../../../components/circular-progress'
 
-interface IThemeProps {
-  company: ICompany
-  theme: ITheme
+interface ThemeProps {
+  company: Company
+  theme: Theme
 }
 
-function Theme({ company, theme }: IThemeProps): JSX.Element {
+function Theme({ company, theme }: ThemeProps): JSX.Element {
   const currentCompany = useCurrentCompany()
   const currentTheme = useCurrentTheme()
   const { impactAreas } = useImpactAreas()

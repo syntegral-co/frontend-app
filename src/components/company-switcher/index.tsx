@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { NavLink } from 'react-router-dom'
-import { ICompany } from '../../pages/companies/types'
+import { Company } from '../../pages/companies/types'
 import { companies } from '../../utils/data'
 
 function isCompanyInSearchTerm(
-  company: ICompany,
+  company: Company,
   searchTerm: string,
-): company is ICompany {
+): company is Company {
   return company.name.toLowerCase().includes(searchTerm.toLowerCase())
 }
 
@@ -36,7 +36,7 @@ function CompanySwitcher() {
         <ul className="menu w-full max-w-xs border border-base-200 bg-base-100 p-4 shadow-md">
           {companies
             .filter((company) => isCompanyInSearchTerm(company, searchTerm))
-            .map((company: ICompany) => (
+            .map((company: Company) => (
               <li
                 key={company.id}
                 className="text-primary-content hover:text-accent"

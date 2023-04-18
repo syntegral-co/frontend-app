@@ -1,6 +1,6 @@
-import { ICompany } from '../pages/companies/types'
+import { Company } from '../pages/companies/types'
 
-export const companies: ICompany[] = [
+export const companies: Company[] = [
   {
     id: 1,
     name: 'BUA Cement Plc',

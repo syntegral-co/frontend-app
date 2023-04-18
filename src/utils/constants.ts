@@ -1,9 +1,9 @@
-interface IThemePosition {
+interface ThemePosition {
   x: number
   y: number
 }
 
-export const THEMES_POSITIONS: IThemePosition[] = [
+export const THEMES_POSITIONS: ThemePosition[] = [
   {
     x: 0,
     y: -220,

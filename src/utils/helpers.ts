@@ -1,6 +1,6 @@
-import { IDocumentLink } from '../components/drawer/types'
+import { DocumentLink } from '../components/drawer/types'
 
-export function formatReferences(references: string[][]): IDocumentLink[] {
+export function formatReferences(references: string[][]): DocumentLink[] {
   if (!references) return []
 
   return references.map((reference) => ({

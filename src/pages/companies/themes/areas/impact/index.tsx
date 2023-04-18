@@ -7,14 +7,14 @@ import { useCurrentImpactArea } from './hooks'
 import { useDrawer } from '../../../../../components/drawer/hooks'
 import { getImpactSummary } from '../../../../../utils/api'
 import { formatReferences } from '../../../../../utils/helpers'
-import { IDocumentLink } from '../../../../../components/drawer/types'
+import { DocumentLink } from '../../../../../components/drawer/types'
 import DocumentDrawer from '../../../../../components/drawer'
 import Sidebar from '../../../../../components/sidebar'
 import Spinner from '../../../../../components/spinner'
 import Icon from '../../../../../components/icon'
 
 function Area() {
-  const [references, setReferences] = useState<IDocumentLink[]>([])
+  const [references, setReferences] = useState<DocumentLink[]>([])
   const currentCompany = useCurrentCompany()
   const currentTheme = useCurrentTheme()
   const impactArea = useCurrentImpactArea()
