@@ -6,9 +6,9 @@ import Mixpanel from './utils/tracking'
 import CompanySwitcher from './components/company-switcher'
 import Demo from './pages'
 import Company from './pages/companies'
-import ImpactAreas from './pages/companies/themes/areas'
+import Areas from './pages/companies/themes/areas'
 import Themes from './pages/companies/themes'
-import ImpactArea from './pages/companies/themes/areas/impact'
+import Area from './pages/companies/themes/areas/impact'
 import Dashboard from './pages/dashboard'
 import NotFound from './pages/404'
 
@@ -38,15 +38,15 @@ function App() {
           <Route path="companies/:company/themes" element={<Themes />} />
           <Route
             path="companies/:company/themes/:theme/areas"
-            element={<ImpactAreas />}
+            element={<Areas />}
           />
           <Route
             path="companies/:company/themes/:theme/areas/score"
             element={<Themes />}
           />
           <Route
-            path="companies/:company/themes/:theme/areas/score/:area"
-            element={<ImpactArea />}
+            path="companies/:company/themes/:theme/areas/:area"
+            element={<Area />}
           />
         </Route>
         <Route path="/dashboard" element={<Dashboard />} />

@@ -2,7 +2,7 @@ import { animated, useSpring } from '@react-spring/web'
 import { THEMES_POSITIONS } from '../../utils/constants'
 import { NavLink } from 'react-router-dom'
 interface ICircularProgressProps {
-  color: string
+  color: string | number
   percentage: number
   children: JSX.Element
   size: string
@@ -41,16 +41,13 @@ function CircularProgress({
   }
 
   switch (color) {
-    case 'purpose':
-      classes += 'text-purpose'
-      break
-    case 'people':
+    case 1:
       classes += 'text-people'
       break
-    case 'profit':
+    case 2:
       classes += 'text-profit'
       break
-    case 'planet':
+    case 3:
       classes += 'text-planet'
       break
     case 'neutral':

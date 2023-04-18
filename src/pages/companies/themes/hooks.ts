@@ -10,5 +10,7 @@ export function useCurrentTheme() {
 
   if (!currentTheme) return null
 
-  return Object.values(themes).find((theme) => theme.id === currentTheme)
+  return Object.values(themes).find(
+    (theme) => theme.id.toString() === currentTheme,
+  )
 }

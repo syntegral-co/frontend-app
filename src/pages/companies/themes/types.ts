@@ -7,13 +7,29 @@ import {
 
 type ThemeName = 'People' | 'Profit' | 'Planet'
 export interface ITheme {
-  id: string
+  id: number
   name: ThemeName
   impactAreas?: ImpactArea[]
+  icon: string
 }
 
 export const themes: Record<ThemeName, ITheme> = {
-  People: { id: 'people', name: 'People', impactAreas: peopleImpactAreas },
-  Profit: { id: 'profit', name: 'Profit', impactAreas: profitImpactAreas },
-  Planet: { id: 'planet', name: 'Planet', impactAreas: planetImpactAreas },
+  People: {
+    id: 1,
+    name: 'People',
+    impactAreas: peopleImpactAreas,
+    icon: 'people',
+  },
+  Profit: {
+    id: 2,
+    name: 'Profit',
+    impactAreas: profitImpactAreas,
+    icon: 'profit',
+  },
+  Planet: {
+    id: 3,
+    name: 'Planet',
+    impactAreas: planetImpactAreas,
+    icon: 'planet',
+  },
 }

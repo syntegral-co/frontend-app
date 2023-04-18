@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useCurrentCompany } from '../hooks'
 import { useCurrentTheme } from './hooks'
 import { useImpactAreas } from '../../../components/impact-areas/hooks'
@@ -15,7 +15,6 @@ function Theme({ company, theme }: IThemeProps): JSX.Element {
   const currentCompany = useCurrentCompany()
   const currentTheme = useCurrentTheme()
   const { impactAreas } = useImpactAreas()
-  const navigate = useNavigate()
 
   const selectedImpactAreas = impactAreas.filter((area) => area.checked)
 
@@ -41,7 +40,7 @@ function Theme({ company, theme }: IThemeProps): JSX.Element {
           <NavLink
             to={`/companies/${currentCompany!.id}/themes/${
               currentTheme.id
-            }/areas/score/${area.id}`}
+            }/areas/${area.id}`}
           >
             <div className="placeholder avatar">
               <div className="w-10 rounded-full bg-neutral-focus text-neutral-content">
@@ -55,7 +54,9 @@ function Theme({ company, theme }: IThemeProps): JSX.Element {
   }
 
   const themeIcon: string =
-    currentTheme && currentTheme.id === theme.id ? theme.id : `${theme.id}-alt`
+    currentTheme && currentTheme.id === theme.id
+      ? theme.icon
+      : `${theme.icon}-alt`
 
   return (
     <>

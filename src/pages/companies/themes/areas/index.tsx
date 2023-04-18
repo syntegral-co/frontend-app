@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import Sidebar from '../../../../components/sidebar'
 import ImpactAreasToggles from '../../../../components/impact-areas'
 
-function ImpactAreas() {
+function Areas() {
   const currentTheme = useCurrentTheme()
   return (
     <>
@@ -19,7 +19,7 @@ function ImpactAreas() {
               <ImpactAreasToggles />
             </div>
             <NavLink
-              className="btn-primary btn-outline btn mx-auto"
+              className="btn-outline btn-primary btn mx-auto"
               to={`./score`}
             >
               Scores
@@ -31,4 +31,4 @@ function ImpactAreas() {
   )
 }
 
-export default ImpactAreas
+export default Areas

@@ -5,8 +5,7 @@ export const companies: ICompany[] = [
     id: 1,
     name: 'BUA Cement Plc',
     themes: {
-      purpose: { score: 25 },
-      people: {
+      1: {
         score: 60,
         impactAreas: {
           10: 30,
@@ -19,8 +18,8 @@ export const companies: ICompany[] = [
           22: 84,
         },
       },
-      profit: { score: 50 },
-      planet: {
+      2: { score: 50 },
+      3: {
         score: 15,
         impactAreas: {
           1: 30,
@@ -40,8 +39,7 @@ export const companies: ICompany[] = [
     id: 2,
     name: 'Dangote Group',
     themes: {
-      purpose: { score: 25 },
-      people: {
+      1: {
         score: 60,
         impactAreas: {
           10: 30,
@@ -54,16 +52,15 @@ export const companies: ICompany[] = [
           22: 84,
         },
       },
-      profit: { score: 50 },
-      planet: { score: 15 },
+      2: { score: 50 },
+      3: { score: 15 },
     },
   },
   {
     id: 3,
     name: 'Guinness Nigeria',
     themes: {
-      purpose: { score: 25 },
-      people: {
+      1: {
         score: 60,
         impactAreas: {
           10: 30,
@@ -76,16 +73,15 @@ export const companies: ICompany[] = [
           22: 84,
         },
       },
-      profit: { score: 50 },
-      planet: { score: 15 },
+      2: { score: 50 },
+      3: { score: 15 },
     },
   },
   {
     id: 4,
     name: 'Okomu Oil Palm PLC',
     themes: {
-      purpose: { score: 25 },
-      people: {
+      1: {
         score: 60,
         impactAreas: {
           10: 30,
@@ -98,16 +94,15 @@ export const companies: ICompany[] = [
           22: 84,
         },
       },
-      profit: { score: 50 },
-      planet: { score: 15 },
+      2: { score: 50 },
+      3: { score: 15 },
     },
   },
   {
     id: 5,
     name: 'Presco PLC',
     themes: {
-      purpose: { score: 25 },
-      people: {
+      1: {
         score: 60,
         impactAreas: {
           10: 30,
@@ -120,16 +115,15 @@ export const companies: ICompany[] = [
           22: 84,
         },
       },
-      profit: { score: 50 },
-      planet: { score: 15 },
+      2: { score: 50 },
+      3: { score: 15 },
     },
   },
   {
     id: 6,
     name: 'Seplat Energy Plc',
     themes: {
-      purpose: { score: 25 },
-      people: {
+      1: {
         score: 60,
         impactAreas: {
           10: 30,
@@ -142,8 +136,8 @@ export const companies: ICompany[] = [
           22: 84,
         },
       },
-      profit: { score: 50 },
-      planet: {
+      2: { score: 50 },
+      3: {
         score: 15,
         impactAreas: {
           1: 30,

@@ -13,7 +13,7 @@ import Sidebar from '../../../../../components/sidebar'
 import Spinner from '../../../../../components/spinner'
 import Icon from '../../../../../components/icon'
 
-function ImpactArea() {
+function Area() {
   const [references, setReferences] = useState<IDocumentLink[]>([])
   const currentCompany = useCurrentCompany()
   const currentTheme = useCurrentTheme()
@@ -74,4 +74,4 @@ function ImpactArea() {
   )
 }
 
-export default ImpactArea
+export default Area
