@@ -2,7 +2,7 @@
 
 Bootstrapped with [Vite](https://vitejs.dev/). Deployed on [Netlify](https://www.netlify.com/).
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/88b7cb6c-6669-4b79-ad0f-62ad2d6f5765/deploy-status)](https://app.netlify.com/sites/fanciful-capybara-1c2cf2/deploys?branch=main)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/88b7cb6c-6669-4b79-ad0f-62ad2d6f5765/deploy-status)](https://app.netlify.com/sites/fanciful-capybara-1c2cf2/deploys?branch=production)
 
 ## Main Features ⭐
 
@@ -48,6 +48,10 @@ The file structure follows the pattern:
 The app's global state is handled through [recoil](https://recoiljs.org/).
 The atoms are stored in `src/state/atoms.ts`.
 
+## Environmental variables
+
+The environmental variables used throughout the app are defined in `src/vite-env.d.ts`. Any new variable must be defined here to have autocompletion for `import.meta.env` in the IDE.
+
 ## Development 💻
 
 ### Start the server
@@ -58,6 +62,7 @@ After cloning it, create a local environment configuration file `.env.local` wit
 ```
 VITE_AUTH0_DOMAIN=
 VITE_AUTH0_CLIENTID=
+VITE_API_KEY=
 ```
 
 Ask your favourite developer for the keys.
