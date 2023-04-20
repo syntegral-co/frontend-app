@@ -5,7 +5,7 @@ import { useCurrentCompany } from '../../hooks'
 import { useCurrentCategory } from '../hooks'
 import { useCurrentTheme } from './hooks'
 import { useDrawer } from '../../../../components/drawer/hooks'
-import { getImpactSummary } from '../../../../utils/api'
+import { getThemeSummary } from '../../../../utils/api'
 import { formatReferences } from '../../../../utils/helpers'
 import { DocumentLink } from '../../../../components/drawer/types'
 import DocumentDrawer from '../../../../components/drawer'
@@ -22,7 +22,7 @@ function Theme() {
 
   const { data, fetchStatus } = useQuery({
     queryKey: ['impact_summary', theme!.name],
-    queryFn: () => getImpactSummary(currentCompany!.id, theme!.name),
+    queryFn: () => getThemeSummary(currentCompany!.id, theme!.name),
     staleTime: Infinity,
   })
 
@@ -43,9 +43,9 @@ function Theme() {
           <>
             <div className="mb-4 flex flex-row items-center justify-start text-accent">
               <NavLink
-                to={`/companies/${currentCompany!.id}/themes/${
+                to={`/companies/${currentCompany!.id}/categories/${
                   currentCategory!.id
-                }/areas/score`}
+                }/themes/score`}
                 className="mr-4 hover:text-accent-focus"
               >
                 <Icon icon={'arrow-left2'} size={20} />

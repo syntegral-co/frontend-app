@@ -9,7 +9,7 @@ function isCompanyInSearchTerm(
   company: Company,
   searchTerm: string,
 ): company is Company {
-  return company.name.toLowerCase().includes(searchTerm.toLowerCase())
+  return company.name.charAt(0).toLowerCase().includes(searchTerm.toLowerCase())
 }
 
 function CompanySwitcher() {

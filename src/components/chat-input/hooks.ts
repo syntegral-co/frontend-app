@@ -4,7 +4,7 @@ import { useIsFetching, useQueries, useQuery } from '@tanstack/react-query'
 import { useCurrentCompany } from '../../pages/companies/hooks'
 import { useCurrentCategory } from '../../pages/companies/categories/hooks'
 import { chatState } from './atoms'
-import { chat, chatContext, chatMetrics } from '../../utils/api'
+import { chat, getChatContext, getChatMetrics } from '../../utils/api'
 import { formatReferences } from '../../utils/helpers'
 import { ChatReply } from './types'
 import { ChatMessage } from '../chat-output/types'
@@ -32,7 +32,7 @@ export function useChatBot() {
     queries: [
       {
         queryKey: ['chatbot-context', chatInput, chatbotReply],
-        queryFn: () => chatContext(chatInput, chatbotReply!.answer),
+        queryFn: () => getChatContext(chatInput, chatbotReply!.answer),
         staleTime: Infinity,
         enabled:
           status === 'success' &&
@@ -41,7 +41,7 @@ export function useChatBot() {
       },
       {
         queryKey: ['chatbot-metrics', chatbotReply, 'iris'],
-        queryFn: () => chatMetrics('iris', chatbotReply!.answer),
+        queryFn: () => getChatMetrics('iris', chatbotReply!.answer),
         staleTime: Infinity,
         enabled:
           status === 'success' &&
@@ -50,7 +50,7 @@ export function useChatBot() {
       },
       {
         queryKey: ['chatbot-metrics', chatbotReply, 'sdg'],
-        queryFn: () => chatMetrics('sdg', chatbotReply!.answer),
+        queryFn: () => getChatMetrics('sdg', chatbotReply!.answer),
         staleTime: Infinity,
         enabled:
           status === 'success' &&
