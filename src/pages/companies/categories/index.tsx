@@ -1,62 +1,62 @@
-import { useCurrentTheme, useThemes } from './hooks'
+import { useCurrentCategory, useCategories } from './hooks'
 import { useCurrentCompany } from '../hooks'
-import ImpactAreasToggles from '../../../components/impact-areas'
+import ThemesToggles from '../../../components/themesToggles'
 import Sidebar from '../../../components/sidebar'
-import Theme from './theme'
+import Category from './category'
 
-function Themes() {
-  const themes = useThemes()
+function Categories() {
+  const categories = useCategories()
   const company = useCurrentCompany()
-  const currentTheme = useCurrentTheme()
+  const currentCategory = useCurrentCategory()
 
   return (
     <>
       <Sidebar />
-      <div className="rounded-box w-full bg-base-200">
+      <div className=" w-full bg-base-200">
         <div className="drawer drawer-end">
           <input id="my-drawer" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content">
-            {currentTheme && (
-              <div className="badge-accent badge mt-4 ml-4 hover:bg-accent-focus">
+            {currentCategory && (
+              <div className="badge badge-accent mt-4 ml-4 hover:bg-accent-focus">
                 <label htmlFor="my-drawer" className="cursor-pointer text-xs">
-                  Choose impact areas
+                  Choose themes
                 </label>
               </div>
             )}
 
-            <div className="flex w-full flex-col flex-wrap items-center justify-around gap-2 rounded-md px-4 py-8 sm:flex-row">
-              {themes
-                .filter((theme) => {
-                  if (!currentTheme) return true
+            <div className="flex w-full flex-col flex-wrap items-center justify-around gap-2  px-4 py-8 sm:flex-row">
+              {categories
+                .filter((category) => {
+                  if (!currentCategory) return true
 
-                  return theme.id === currentTheme!.id
+                  return category.id === currentCategory!.id
                 })
                 .map((theme) => {
                   let classes =
                     'relative flex flex-col items-center justify-center text-center'
 
-                  if (currentTheme) {
+                  if (currentCategory) {
                     classes =
                       'relative flex-col items-center justify-center text-center hidden lg:flex'
                   }
 
-                  if (currentTheme && currentTheme.id === theme.id) {
+                  if (currentCategory && currentCategory.id === theme.id) {
                     classes =
                       'relative flex flex-col items-center justify-center text-center'
                   }
                   return (
                     <div key={theme.id} className={classes}>
-                      <Theme company={company!} theme={theme} />
+                      <Category company={company!} category={theme} />
                     </div>
                   )
                 })}
             </div>
           </div>
-          {currentTheme && (
+          {currentCategory && (
             <div className="drawer-side pb-8">
               <label htmlFor="my-drawer" className="drawer-overlay"></label>
               <div className="flex flex-col flex-nowrap overflow-y-scroll bg-base-200 p-4">
-                <ImpactAreasToggles />
+                <ThemesToggles />
               </div>
             </div>
           )}
@@ -66,4 +66,4 @@ function Themes() {
   )
 }
 
-export default Themes
+export default Categories

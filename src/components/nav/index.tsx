@@ -49,7 +49,7 @@ function Nav() {
           </label>
           <ul
             tabIndex={0}
-            className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
+            className="dropdown-content menu  menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
           >
             {NAV_LINKS.map(({ title, to }, index) => (
               <li key={index}>
@@ -77,13 +77,13 @@ function Nav() {
         {isAuthenticated ? (
           <div className="dropdown dropdown-end">
             <div className="avatar cursor-pointer" tabIndex={0}>
-              <div className="w-8 rounded-full">
+              <div className="mask mask-hexagon w-8 rounded-full">
                 <img src={user?.picture} />
               </div>
             </div>
             <ul
               tabIndex={0}
-              className="dropdown-content menu rounded-box w-52 bg-base-200 p-2 shadow"
+              className="dropdown-content menu  w-52 bg-base-200 p-2 shadow"
             >
               <li>
                 <a

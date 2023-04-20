@@ -61,7 +61,7 @@ function ChatMessage({ message }: ChatMessageProps): JSX.Element {
   return (
     <div className={chatClasses}>
       <div className="chat-image avatar">
-        <div className="w-10 rounded-full">
+        <div className="mask mask-hexagon w-10 rounded-full">
           <img src={chatAvatar} />
         </div>
       </div>

@@ -7,7 +7,7 @@ export const companies: Company[] = [
     themes: {
       1: {
         score: 60,
-        impactAreas: {
+        themes: {
           10: 30,
           11: 12,
           14: 25,
@@ -21,7 +21,7 @@ export const companies: Company[] = [
       2: { score: 50 },
       3: {
         score: 15,
-        impactAreas: {
+        themes: {
           1: 30,
           2: 12,
           3: 25,
@@ -41,7 +41,7 @@ export const companies: Company[] = [
     themes: {
       1: {
         score: 60,
-        impactAreas: {
+        themes: {
           10: 30,
           11: 12,
           14: 25,
@@ -62,7 +62,7 @@ export const companies: Company[] = [
     themes: {
       1: {
         score: 60,
-        impactAreas: {
+        themes: {
           10: 30,
           11: 12,
           14: 25,
@@ -83,7 +83,7 @@ export const companies: Company[] = [
     themes: {
       1: {
         score: 60,
-        impactAreas: {
+        themes: {
           10: 30,
           11: 12,
           14: 25,
@@ -104,7 +104,7 @@ export const companies: Company[] = [
     themes: {
       1: {
         score: 60,
-        impactAreas: {
+        themes: {
           10: 30,
           11: 12,
           14: 25,
@@ -125,7 +125,7 @@ export const companies: Company[] = [
     themes: {
       1: {
         score: 60,
-        impactAreas: {
+        themes: {
           10: 30,
           11: 12,
           14: 25,
@@ -139,7 +139,7 @@ export const companies: Company[] = [
       2: { score: 50 },
       3: {
         score: 15,
-        impactAreas: {
+        themes: {
           1: 30,
           2: 12,
           3: 25,

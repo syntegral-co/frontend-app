@@ -1,6 +1,6 @@
 interface CompanyTheme {
   score: number
-  impactAreas?: Record<string, number>
+  themes?: Record<string, number>
 }
 export interface Company {
   id: number

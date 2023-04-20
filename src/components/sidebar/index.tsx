@@ -26,7 +26,7 @@ function Sidebar() {
     },
     {
       title: 'Reporting',
-      to: `/companies/${currentCompany?.id}/themes`,
+      to: `/companies/${currentCompany?.id}/categories`,
       icon: 'pie',
     },
     {
@@ -50,7 +50,7 @@ function Sidebar() {
   ]
 
   return (
-    <ul className="menu rounded-box self-start bg-base-200">
+    <ul className="menu self-start">
       {NAV_LINKS.map(({ to, title, icon, disabled }, index) => (
         <li key={index} className={classnames({ disabled: disabled })}>
           <div

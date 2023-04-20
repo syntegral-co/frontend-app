@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { NavLink } from 'react-router-dom'
 import { Company } from '../../pages/companies/types'
 import { companies } from '../../utils/data'
+import logo from '/assets/images/syntegral.svg'
 
 function isCompanyInSearchTerm(
   company: Company,
@@ -22,10 +23,10 @@ function CompanySwitcher() {
 
   return (
     <div className="flex h-96 w-full flex-col items-center justify-center self-center">
-      <p className="py-6 text-5xl text-primary-content">Hi 👋🏻</p>
-      <p className="py-6 text-2xl text-primary-content">
+      <img className="h-40" src={logo} />
+      <h1 className="py-6 text-2xl font-bold text-primary-content">
         Choose a company to start exploring!
-      </p>
+      </h1>
       <input
         type="text"
         placeholder="Type here"

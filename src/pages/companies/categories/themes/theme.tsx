@@ -1,28 +1,28 @@
 import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { NavLink } from 'react-router-dom'
-import { useCurrentCompany } from '../../../hooks'
-import { useCurrentTheme } from '../../hooks'
-import { useCurrentImpactArea } from './hooks'
-import { useDrawer } from '../../../../../components/drawer/hooks'
-import { getImpactSummary } from '../../../../../utils/api'
-import { formatReferences } from '../../../../../utils/helpers'
-import { DocumentLink } from '../../../../../components/drawer/types'
-import DocumentDrawer from '../../../../../components/drawer'
-import Sidebar from '../../../../../components/sidebar'
-import Spinner from '../../../../../components/spinner'
-import Icon from '../../../../../components/icon'
+import { useCurrentCompany } from '../../hooks'
+import { useCurrentCategory } from '../hooks'
+import { useCurrentTheme } from './hooks'
+import { useDrawer } from '../../../../components/drawer/hooks'
+import { getImpactSummary } from '../../../../utils/api'
+import { formatReferences } from '../../../../utils/helpers'
+import { DocumentLink } from '../../../../components/drawer/types'
+import DocumentDrawer from '../../../../components/drawer'
+import Sidebar from '../../../../components/sidebar'
+import Spinner from '../../../../components/spinner'
+import Icon from '../../../../components/icon'
 
-function Area() {
+function Theme() {
   const [references, setReferences] = useState<DocumentLink[]>([])
   const currentCompany = useCurrentCompany()
-  const currentTheme = useCurrentTheme()
-  const impactArea = useCurrentImpactArea()
+  const currentCategory = useCurrentCategory()
+  const theme = useCurrentTheme()
   const { onClickDocument } = useDrawer()
 
   const { data, fetchStatus } = useQuery({
-    queryKey: ['impact_summary', impactArea!.name],
-    queryFn: () => getImpactSummary(currentCompany!.id, impactArea!.name),
+    queryKey: ['impact_summary', theme!.name],
+    queryFn: () => getImpactSummary(currentCompany!.id, theme!.name),
     staleTime: Infinity,
   })
 
@@ -36,7 +36,7 @@ function Area() {
     <>
       <DocumentDrawer />
       <Sidebar />
-      <div className="h-full w-full items-center justify-center overflow-y-scroll rounded-md bg-base-200 px-4 py-2">
+      <div className="h-full w-full items-center justify-center overflow-y-scroll  bg-base-200 px-4 py-2">
         {fetchStatus === 'fetching' ? (
           <Spinner />
         ) : (
@@ -44,13 +44,13 @@ function Area() {
             <div className="mb-4 flex flex-row items-center justify-start text-accent">
               <NavLink
                 to={`/companies/${currentCompany!.id}/themes/${
-                  currentTheme!.id
+                  currentCategory!.id
                 }/areas/score`}
                 className="mr-4 hover:text-accent-focus"
               >
                 <Icon icon={'arrow-left2'} size={20} />
               </NavLink>
-              <h1 className="text-3xl">{impactArea!.name}</h1>
+              <h1 className="text-3xl">{theme!.name}</h1>
             </div>
             <p>{data.summary}</p>
             <ol className="mt-4 list-none pl-2">
@@ -74,4 +74,4 @@ function Area() {
   )
 }
 
-export default Area
+export default Theme

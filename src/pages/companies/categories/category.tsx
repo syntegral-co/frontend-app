@@ -1,36 +1,36 @@
 import { NavLink } from 'react-router-dom'
 import { useCurrentCompany } from '../hooks'
-import { useCurrentTheme } from './hooks'
-import { useImpactAreas } from '../../../components/impact-areas/hooks'
-import { Theme } from './types'
+import { useCurrentCategory } from './hooks'
+import { useThemes } from '../../../components/themesToggles/hooks'
+import { Category } from './types'
 import { Company } from '../types'
 import CircularProgress from '../../../components/circular-progress'
 
-interface ThemeProps {
+interface CategoryProps {
   company: Company
-  theme: Theme
+  category: Category
 }
 
-function Theme({ company, theme }: ThemeProps): JSX.Element {
+function Category({ company, category }: CategoryProps): JSX.Element {
   const currentCompany = useCurrentCompany()
-  const currentTheme = useCurrentTheme()
-  const { impactAreas } = useImpactAreas()
+  const currentCategory = useCurrentCategory()
+  const { themes } = useThemes()
 
-  const selectedImpactAreas = impactAreas.filter((area) => area.checked)
+  const selectedThemes = themes.filter((theme) => theme.checked)
 
   if (!company || !company.themes) return <></>
 
-  let themePercentage = company.themes[theme.id].score
+  let themePercentage = company.themes[category.id].score
   let impactAreasElements: JSX.Element[] = []
 
-  if (currentTheme && currentTheme.id === theme.id) {
-    impactAreasElements = selectedImpactAreas.map((area, index) => {
-      const score = company!.themes![theme.id].impactAreas![area.id]
+  if (currentCategory && currentCategory.id === category.id) {
+    impactAreasElements = selectedThemes.map((theme, index) => {
+      const score = company!.themes![category.id].themes![theme.id]
       themePercentage += score > 50 ? 5 : -5
 
       return (
         <CircularProgress
-          key={area.id}
+          key={theme.id}
           color={score > 50 ? 'positive' : 'negative'}
           percentage={score}
           size="3rem"
@@ -38,13 +38,13 @@ function Theme({ company, theme }: ThemeProps): JSX.Element {
           subtheme={index}
         >
           <NavLink
-            to={`/companies/${currentCompany!.id}/themes/${
-              currentTheme.id
-            }/areas/${area.id}`}
+            to={`/companies/${currentCompany!.id}/categories/${
+              currentCategory.id
+            }/themes/${theme.id}`}
           >
             <div className="placeholder avatar">
               <div className="w-10 rounded-full bg-neutral-focus text-neutral-content">
-                <span className="text-xl">{area.name.charAt(0)}</span>
+                <span className="text-xl">{theme.name.charAt(0)}</span>
               </div>
             </div>
           </NavLink>
@@ -54,22 +54,22 @@ function Theme({ company, theme }: ThemeProps): JSX.Element {
   }
 
   const themeIcon: string =
-    currentTheme && currentTheme.id === theme.id
-      ? theme.icon
-      : `${theme.icon}-alt`
+    currentCategory && currentCategory.id === category.id
+      ? category.icon
+      : `${category.icon}-alt`
 
   return (
     <>
       <CircularProgress
         color={
-          currentTheme
-            ? currentTheme.id === theme.id
-              ? theme.id
+          currentCategory
+            ? currentCategory.id === category.id
+              ? category.id
               : 'neutral'
-            : theme.id
+            : category.id
         }
         percentage={themePercentage}
-        link={`/companies/${company!.id}/themes/${theme.id}/areas`}
+        link={`/companies/${company!.id}/categories/${category.id}/themes`}
       >
         <img
           className="h-20 w-auto rounded-full bg-neutral-focus p-2"
@@ -77,11 +77,11 @@ function Theme({ company, theme }: ThemeProps): JSX.Element {
         />
       </CircularProgress>
       <span className="badge mt-2 border-none bg-primary text-primary-content">
-        {theme.name}
+        {category.name}
       </span>
       {impactAreasElements}
     </>
   )
 }
 
-export default Theme
+export default Category

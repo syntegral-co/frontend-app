@@ -7,6 +7,9 @@ module.exports = {
       profit: '#FF7E07',
       planet: '#06D7F6',
     },
+    fontFamily: {
+      sans: ['Jost'],
+    },
     extend: {
       animation: {
         loader: 'loader 0.6s infinite alternate',
@@ -28,18 +31,14 @@ module.exports = {
     themes: [
       {
         syntegral: {
-          primary: '#669BD0',
-          'primary-focus': '#669BD0',
+          primary: '#09E8D3',
+          'primary-focus': '#07B8A7',
           'primary-content': '#ffffff',
-          secondary: '#4063FF',
-          'secondary-focus': '#274BE5',
-          'secondary-content': '#B5B5B5',
-          accent: '#09E8DE',
-          'accent-focus': '#17D4CC',
-          'base-100': '#112D49',
-          'base-200': '#163A5C',
-          neutral: '#2B2C44',
-          'neutral-focus': '#171824',
+          accent: '#09E8D3',
+          'accent-focus': '#07B8A7',
+          'base-100': '#3E3E3E',
+          'base-200': '#292726',
+          'base-300': '#15191C',
           success: '#00D100',
           error: '#F93608',
         },

@@ -1,11 +1,11 @@
-export interface ImpactArea {
+export interface Theme {
   id: number
   name: string
   definition?: string
   checked?: boolean
 }
 
-export const planetImpactAreas: ImpactArea[] = [
+export const planetThemes: Theme[] = [
   {
     id: 1,
     name: 'Biodiversity Conservation',
@@ -62,7 +62,7 @@ export const planetImpactAreas: ImpactArea[] = [
   },
 ]
 
-export const peopleImpactAreas: ImpactArea[] = [
+export const peopleThemes: Theme[] = [
   {
     id: 10,
     name: 'Food Security',
@@ -155,7 +155,7 @@ export const peopleImpactAreas: ImpactArea[] = [
   },
 ]
 
-export const profitImpactAreas: ImpactArea[] = [
+export const profitThemes: Theme[] = [
   {
     id: 25,
     name: 'Brand Reputation',
@@ -217,13 +217,3 @@ export const profitImpactAreas: ImpactArea[] = [
       'Innovation involves the development and implementation of new ideas, products, processes, or business models that create value and drive positive change in society or the environment.',
   },
 ]
-
-// export const impactAreas: ImpactArea[] = [
-//   { id: 'peace-and-justice', name: 'Peace and Justice' },
-//   { id: 'social-and-racial-equity', name: 'Social & Racial Equity' },
-//   { id: 'general-health', name: 'General Health' },
-//   { id: 'mental-health', name: 'Mental Health' },
-//   { id: 'community-development', name: 'Community Development' },
-//   { id: 'enterprise-development', name: 'Enterprise Development' },
-//   { id: 'economic-inclusion', name: 'Economic Inclusion' },
-// ]

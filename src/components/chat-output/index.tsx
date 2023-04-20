@@ -13,13 +13,13 @@ function ChatOutput() {
     useChatBot()
 
   return (
-    <div className="max-height-screen flex h-full w-full flex-col justify-between rounded-md p-4">
+    <div className="max-height-screen flex h-full w-full flex-col justify-between p-4">
       <Outlet />
       <DocumentDrawer />
-      <div className="mt-4 overflow-y-scroll rounded-md pr-4">
+      <div className="mt-4 overflow-y-scroll pr-4">
         <div className="chat chat-start">
           <div className="chat-image avatar">
-            <div className="w-10 rounded-full">
+            <div className="mask mask-hexagon w-10 rounded-full">
               <img src={logo} />
             </div>
           </div>
@@ -35,7 +35,7 @@ function ChatOutput() {
         {(isLoading > 0 || isContextLoading > 0 || isMetricsLoading > 0) && (
           <div className="chat chat-start">
             <div className="chat-image avatar">
-              <div className="w-10 rounded-full">
+              <div className="mask mask-hexagon w-10 rounded-full">
                 <img src={logo} />
               </div>
             </div>

@@ -1,22 +1,23 @@
-import { useCurrentTheme } from '../hooks'
+import { useCurrentCategory } from '../hooks'
 import { NavLink } from 'react-router-dom'
 import Sidebar from '../../../../components/sidebar'
-import ImpactAreasToggles from '../../../../components/impact-areas'
+import ThemesToggles from '../../../../components/themesToggles'
 
-function Areas() {
-  const currentTheme = useCurrentTheme()
+function Themes() {
+  const currentCategory = useCurrentCategory()
+
   return (
     <>
       <Sidebar />
       <div className="flex h-full w-full flex-wrap justify-around gap-2">
         <div className="flex h-full w-full flex-col items-center bg-base-200">
-          <div className="align-center flex w-full flex-row flex-wrap gap-2 rounded-md px-4 py-8">
+          <div className="align-center flex w-full flex-row flex-wrap gap-2  px-4 py-8">
             <p className="text-xl text-primary-content">
-              Choose your Preferences in the {currentTheme?.name} Dimension:
+              Choose your Preferences in the {currentCategory?.name} Dimension:
             </p>
             <div className="divider w-full"></div>
             <div className="grid w-full grid-cols-2 gap-2 lg:grid-cols-3">
-              <ImpactAreasToggles />
+              <ThemesToggles />
             </div>
             <NavLink
               className="btn-outline btn-primary btn mx-auto"
@@ -31,4 +32,4 @@ function Areas() {
   )
 }
 
-export default Areas
+export default Themes

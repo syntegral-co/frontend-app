@@ -7,9 +7,9 @@ const chatSchema = z.object({
 })
 
 function ChatInput() {
-  const [formErrors, setFormErrors] = useState<ZodFormattedError<typeof chatSchema>>(
-    {} as ZodFormattedError<typeof chatSchema>,
-  )
+  const [formErrors, setFormErrors] = useState<
+    ZodFormattedError<typeof chatSchema>
+  >({} as ZodFormattedError<typeof chatSchema>)
 
   const { sendMessage } = useChatBot()
 
@@ -33,13 +33,19 @@ function ChatInput() {
   }
 
   return (
-    <form onSubmit={submitForm} className="relative flex w-full flex-row flex-nowrap gap-2 shadow-md">
+    <form
+      onSubmit={submitForm}
+      className="relative flex w-full flex-row flex-nowrap gap-2 shadow-md"
+    >
       <textarea
-        className="textarea h-8 w-full resize-none rounded-md bg-base-100"
+        className="textarea h-8 w-full resize-none rounded-none bg-base-100"
         name="text"
         placeholder="What's on your mind?"
       />
-      <button className="btn absolute right-0 gap-2 rounded-md rounded-l-none border-none text-accent" type="submit">
+      <button
+        className="btn absolute right-0 gap-2 rounded-none border-none text-accent"
+        type="submit"
+      >
         <svg
           width="24"
           height="24"
