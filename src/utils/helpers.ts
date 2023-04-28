@@ -9,3 +9,11 @@ export function formatReferences(references: string[][]): DocumentLink[] {
     name: reference[2],
   }))
 }
+
+export function getThemeScore(themeId: number, scores: any[]) {
+  const themeScore = scores.find((score) => score.themeId === themeId)
+
+  if (!themeScore) return 0
+
+  return themeScore.score
+}

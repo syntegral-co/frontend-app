@@ -21,7 +21,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icomoon": "^2.5.7",
-    "react-lineto": "^3.3.0",
     "react-router-dom": "^6.8.2",
     "react-tailwindcss-select": "^1.8.5",
     "recoil": "^0.7.7",

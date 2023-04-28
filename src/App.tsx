@@ -8,7 +8,6 @@ import Demo from './pages'
 import Company from './pages/companies'
 import Themes from './pages/companies/themes'
 import Theme from './pages/companies/themes/theme'
-import Dashboard from './pages/dashboard'
 import NotFound from './pages/404'
 
 function App() {
@@ -37,7 +36,6 @@ function App() {
           <Route path="companies/:company/themes" element={<Themes />} />
           <Route path="companies/:company/themes/:theme" element={<Theme />} />
         </Route>
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

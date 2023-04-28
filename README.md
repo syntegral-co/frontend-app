@@ -21,11 +21,9 @@ The file structure follows the pattern:
 | - src
 |  | - components
 |  |  | - sidebar
-|  |  | - protected-route
 |  |  | - chat-input
 |  |  | - spinner
 |  |  | - nav
-|  |  | - watchlist
 |  |  | - chat-output
 |  | - pages
 |  |  | - dashboard

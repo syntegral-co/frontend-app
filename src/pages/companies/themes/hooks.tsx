@@ -1,7 +1,7 @@
 import { useRecoilValue } from 'recoil'
 import { themesState } from '../../../components/themes-toggles/atoms'
 import { useParams } from 'react-router-dom'
-import { Theme } from './types'
+import { Theme } from '../types'
 
 export function useCurrentTheme() {
   let themes = useRecoilValue(themesState)

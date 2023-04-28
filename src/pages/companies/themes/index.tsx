@@ -7,14 +7,7 @@ import { Category, Theme } from '../types'
 import Sidebar from '../../../components/sidebar'
 import ThemesToggles from '../../../components/themes-toggles'
 import Ratings from '../../../components/ratings'
-
-function getThemeScore(themeId: number, scores: any[]) {
-  const themeScore = scores.find((score) => score.themeId === themeId)
-
-  if (!themeScore) return 0
-
-  return themeScore.score
-}
+import { getThemeScore } from '../../../utils/helpers'
 
 function Themes() {
   const currentCompany = useCurrentCompany()
