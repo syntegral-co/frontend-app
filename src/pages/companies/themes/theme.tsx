@@ -1,28 +1,24 @@
 import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { NavLink } from 'react-router-dom'
-import { useCurrentCompany } from '../../hooks'
-import { useCurrentCategory } from '../hooks'
+import { useCurrentCompany } from '../hooks'
 import { useCurrentTheme } from './hooks'
-import { useDrawer } from '../../../../components/drawer/hooks'
-import { getThemeSummary } from '../../../../utils/api'
-import { formatReferences } from '../../../../utils/helpers'
-import { DocumentLink } from '../../../../components/drawer/types'
-import DocumentDrawer from '../../../../components/drawer'
-import Sidebar from '../../../../components/sidebar'
-import Spinner from '../../../../components/spinner'
-import Icon from '../../../../components/icon'
+import { useDrawer } from '../../../components/drawer/hooks'
+import { getThemeSummary } from '../../../utils/api'
+import { formatReferences } from '../../../utils/helpers'
+import { DocumentLink } from '../../../components/drawer/types'
+import DocumentDrawer from '../../../components/drawer'
+import Sidebar from '../../../components/sidebar'
+import Spinner from '../../../components/spinner'
 
 function Theme() {
   const [references, setReferences] = useState<DocumentLink[]>([])
   const currentCompany = useCurrentCompany()
-  const currentCategory = useCurrentCategory()
   const theme = useCurrentTheme()
   const { onClickDocument } = useDrawer()
 
   const { data, fetchStatus } = useQuery({
-    queryKey: ['impact_summary', theme!.name],
-    queryFn: () => getThemeSummary(currentCompany!.id, theme!.name),
+    queryKey: ['impact_summary', theme!.id],
+    queryFn: () => getThemeSummary(currentCompany!.id, theme!.id),
     staleTime: Infinity,
   })
 
@@ -42,14 +38,6 @@ function Theme() {
         ) : (
           <>
             <div className="mb-4 flex flex-row items-center justify-start text-accent">
-              <NavLink
-                to={`/companies/${currentCompany!.id}/categories/${
-                  currentCategory!.id
-                }/themes/score`}
-                className="mr-4 hover:text-accent-focus"
-              >
-                <Icon icon={'arrow-left2'} size={20} />
-              </NavLink>
               <h1 className="text-3xl">{theme!.name}</h1>
             </div>
             <p>{data.summary}</p>

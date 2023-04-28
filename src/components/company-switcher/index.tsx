@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react'
+import { useRecoilValue } from 'recoil'
+import { companiesState } from './atom'
 import { v4 as uuidv4 } from 'uuid'
 import { NavLink } from 'react-router-dom'
 import { Company } from '../../pages/companies/types'
-import { companies } from '../../utils/data'
 import logo from '/assets/images/syntegral.svg'
 
 function isCompanyInSearchTerm(
   company: Company,
   searchTerm: string,
 ): company is Company {
-  return company.name.charAt(0).toLowerCase().includes(searchTerm.toLowerCase())
+  return company.name.toLowerCase().includes(searchTerm.toLowerCase())
 }
 
 function CompanySwitcher() {
   const [searchTerm, setSearchTerm] = useState('')
+  const companies = useRecoilValue(companiesState)
 
   useEffect(() => {
     const sessionId = uuidv4()
@@ -36,7 +38,9 @@ function CompanySwitcher() {
       {searchTerm !== '' && (
         <ul className="menu w-full max-w-xs border border-base-200 bg-base-100 p-4 shadow-md">
           {companies
-            .filter((company) => isCompanyInSearchTerm(company, searchTerm))
+            .filter((company: Company) =>
+              isCompanyInSearchTerm(company, searchTerm),
+            )
             .map((company: Company) => (
               <li
                 key={company.id}

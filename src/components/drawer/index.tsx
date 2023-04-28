@@ -6,7 +6,7 @@ import { documentState } from './atoms'
 import { getDocument } from '../../utils/api'
 import Loader from '../loader'
 
-function DocumentDrawer(): JSX.Element {
+function DocumentDrawer() {
   const { isDrawerOpen, toggleDrawer } = useDrawer()
   const document = useRecoilValue(documentState)
 
@@ -48,7 +48,7 @@ function DocumentDrawer(): JSX.Element {
         </object>
       )}
       <button
-        className="btn-primary btn-outline btn mx-auto mb-4 mt-auto"
+        className="btn-outline btn-primary btn mx-auto mb-4 mt-auto"
         onClick={() => toggleDrawer()}
       >
         Close

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { useIsFetching, useQueries, useQuery } from '@tanstack/react-query'
 import { useCurrentCompany } from '../../pages/companies/hooks'
-import { useCurrentCategory } from '../../pages/companies/categories/hooks'
 import { chatState } from './atoms'
 import { chat, getChatContext, getChatMetrics } from '../../utils/api'
 import { formatReferences } from '../../utils/helpers'
@@ -13,7 +12,6 @@ export function useChatBot() {
   const [chatInput, setChatInput] = useState<string>('')
   const [chatMessages, setChatMessages] = useRecoilState(chatState)
   const currentCompany = useCurrentCompany()
-  const currentTheme = useCurrentCategory()
 
   const {
     status,

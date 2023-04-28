@@ -4,7 +4,7 @@ export const companies: Company[] = [
   {
     id: 1,
     name: 'BUA Cement Plc',
-    themes: {
+    categories: {
       1: {
         score: 60,
         themes: {
@@ -18,7 +18,19 @@ export const companies: Company[] = [
           22: 84,
         },
       },
-      2: { score: 50 },
+      2: {
+        score: 50,
+        themes: {
+          23: 30,
+          24: 12,
+          25: 25,
+          26: 58,
+          27: 10,
+          28: 2,
+          29: 75,
+          30: 84,
+        },
+      },
       3: {
         score: 15,
         themes: {
@@ -38,7 +50,7 @@ export const companies: Company[] = [
   {
     id: 2,
     name: 'Dangote Group',
-    themes: {
+    categories: {
       1: {
         score: 60,
         themes: {
@@ -59,7 +71,7 @@ export const companies: Company[] = [
   {
     id: 3,
     name: 'Guinness Nigeria',
-    themes: {
+    categories: {
       1: {
         score: 60,
         themes: {
@@ -80,7 +92,7 @@ export const companies: Company[] = [
   {
     id: 4,
     name: 'Okomu Oil Palm PLC',
-    themes: {
+    categories: {
       1: {
         score: 60,
         themes: {
@@ -101,7 +113,7 @@ export const companies: Company[] = [
   {
     id: 5,
     name: 'Presco PLC',
-    themes: {
+    categories: {
       1: {
         score: 60,
         themes: {
@@ -122,7 +134,7 @@ export const companies: Company[] = [
   {
     id: 6,
     name: 'Seplat Energy Plc',
-    themes: {
+    categories: {
       1: {
         score: 60,
         themes: {

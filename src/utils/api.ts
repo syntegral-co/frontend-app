@@ -73,14 +73,50 @@ export async function getChatMetrics(
   return data
 }
 
-export async function getThemeSummary(companyId: number, theme: string) {
+export async function getCompanies() {
+  const APIUrl = `${import.meta.env.VITE_THEMES_API_BASEPATH}/company`
+  const data = await callAPI(APIUrl, {
+    type: 'company',
+  })
+
+  return data
+}
+
+export async function getCategories() {
+  const APIUrl = `${import.meta.env.VITE_THEMES_API_BASEPATH}/category`
+  const data = await callAPI(APIUrl, {
+    type: 'category',
+  })
+
+  return data
+}
+
+export async function getThemes() {
+  const APIUrl = `${import.meta.env.VITE_THEMES_API_BASEPATH}/theme`
+  const data = await callAPI(APIUrl, {
+    type: 'theme',
+  })
+
+  return data
+}
+
+export async function getThemesScores() {
+  const APIUrl = `${import.meta.env.VITE_THEMES_API_BASEPATH}/theme_score`
+  const data = await callAPI(APIUrl, {
+    type: 'theme_score',
+  })
+
+  return data
+}
+
+export async function getThemeSummary(companyId: number, themeId: number) {
   const APIUrl = `${
-    import.meta.env.VITE_SUMMARY_API_BASEPATH
-  }/theme_summary?company_id=${companyId}&theme=${theme}`
+    import.meta.env.VITE_THEMES_API_BASEPATH
+  }/theme_summary?company_id=${companyId}&theme_id=${themeId}`
   const data = await callAPI(APIUrl, {
     type: 'theme_summary',
     companyId: companyId.toString(),
-    theme,
+    themeId: themeId.toString(),
   })
 
   return data

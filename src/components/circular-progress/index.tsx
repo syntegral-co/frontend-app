@@ -18,7 +18,7 @@ function CircularProgress({
   thickness,
   subtheme,
   link,
-}: CircularProgressProps): JSX.Element {
+}: CircularProgressProps) {
   let classes = 'bg-neutral radial-progress transition-all z-10 '
 
   let style = {

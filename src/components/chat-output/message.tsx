@@ -8,7 +8,7 @@ interface ChatMessageProps {
   message: ChatMessage
 }
 
-function ChatMessage({ message }: ChatMessageProps): JSX.Element {
+function ChatMessage({ message }: ChatMessageProps) {
   const { user } = useAuth0()
   const { onClickDocument } = useDrawer()
 
