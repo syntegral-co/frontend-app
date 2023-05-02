@@ -6,16 +6,14 @@ interface RatingsProps {
 function Ratings({ id, rating }: RatingsProps) {
   let ratingsElements: JSX.Element[] = []
 
-  for (let i = 0; i < rating; i++) {
-    let checked = i + 1 >= rating
-
+  for (let i = 0; i < 5; i++) {
     ratingsElements.push(
       <input
         key={`rating-${id}-${i}`}
         type="radio"
         name={`rating-${id}`}
         className="mask mask-hexagon bg-accent"
-        checked={checked}
+        checked={i + 1 <= rating}
         readOnly
       />,
     )

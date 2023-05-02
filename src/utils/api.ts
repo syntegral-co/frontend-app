@@ -122,6 +122,15 @@ export async function getThemeSummary(companyId: number, themeId: number) {
   return data
 }
 
+export async function getThemeQA() {
+  const APIUrl = `${import.meta.env.VITE_THEMES_API_BASEPATH}/theme_q_and_a`
+  const data = await callAPI(APIUrl, {
+    type: 'theme_q_and_a',
+  })
+
+  return data
+}
+
 export async function getDocument(filenameId: string, minutes: number) {
   Mixpanel.track('API Call', { type: 'doc_url', filenameId: filenameId })
 

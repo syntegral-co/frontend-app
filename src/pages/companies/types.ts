@@ -14,3 +14,11 @@ export interface Theme {
   name: string
   definition: string
 }
+
+export interface QA {
+  id: number
+  companyId: number
+  themeId: number
+  question: string
+  answer: string
+}

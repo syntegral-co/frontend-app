@@ -1,5 +1,10 @@
 import { atom, selector } from 'recoil'
-import { getCategories, getThemes, getThemesScores } from '../../utils/api'
+import {
+  getCategories,
+  getThemeQA,
+  getThemes,
+  getThemesScores,
+} from '../../utils/api'
 
 export const categoriesState = selector({
   key: 'categories',
@@ -53,6 +58,25 @@ export const themesScoresState = selector({
       companyId: score[0],
       themeId: score[1],
       score: score[2],
+    }))
+  },
+})
+
+export const qaState = selector({
+  key: 'q_and_a',
+  get: async () => {
+    const response = await getThemeQA()
+
+    if (!response.data) {
+      return []
+    }
+
+    return response.data.map((question: any) => ({
+      id: question[0],
+      companyId: question[1],
+      themeId: question[2],
+      question: question[3],
+      answer: question[4],
     }))
   },
 })
