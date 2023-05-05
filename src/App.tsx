@@ -10,6 +10,7 @@ import Company from './pages/companies'
 import Themes from './pages/companies/themes'
 import Theme from './pages/companies/themes/theme'
 import NotFound from './pages/404'
+import DocumentDrawer from './components/drawer'
 
 function App() {
   const { user } = useAuth0()
@@ -29,22 +30,25 @@ function App() {
   }, [user])
 
   return (
-    <div className="container mx-auto mt-4 flex h-screen flex-col py-6">
-      <Suspense fallback={<Spinner />}>
-        <Routes>
-          <Route path="/" element={<Demo />}>
-            <Route index element={<CompanySwitcher />} />
-            <Route path="companies/:company" element={<Company />} />
-            <Route path="companies/:company/themes" element={<Themes />} />
-            <Route
-              path="companies/:company/themes/:theme"
-              element={<Theme />}
-            />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Suspense>
-    </div>
+    <>
+      <div className="container mx-auto mt-4 flex h-screen flex-col py-6">
+        <Suspense fallback={<Spinner />}>
+          <Routes>
+            <Route path="/" element={<Demo />}>
+              <Route index element={<CompanySwitcher />} />
+              <Route path="companies/:company" element={<Company />} />
+              <Route path="companies/:company/themes" element={<Themes />} />
+              <Route
+                path="companies/:company/themes/:theme"
+                element={<Theme />}
+              />
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </div>
+      <DocumentDrawer />
+    </>
   )
 }
 

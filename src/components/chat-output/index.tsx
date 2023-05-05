@@ -3,7 +3,6 @@ import { useChatBot } from '../chat-input/hooks'
 import { Outlet } from 'react-router-dom'
 import ChatMessage from './message'
 import ChatInput from '../chat-input'
-import DocumentDrawer from '../drawer'
 import Loader from '../loader'
 import logo from '/assets/images/syntegral.svg'
 
@@ -15,7 +14,6 @@ function ChatOutput() {
   return (
     <div className="max-height-screen flex h-full w-full flex-col justify-between p-4">
       <Outlet />
-      <DocumentDrawer />
       <div className="mt-4 overflow-y-scroll pr-4">
         <div className="chat chat-start">
           <div className="chat-image avatar">

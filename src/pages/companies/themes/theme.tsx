@@ -13,7 +13,6 @@ import {
 import { formatReferences, getThemeScore } from '../../../utils/helpers'
 import { Category, QA } from '../types'
 import { DocumentLink } from '../../../components/drawer/types'
-import DocumentDrawer from '../../../components/drawer'
 import Sidebar from '../../../components/sidebar'
 import Spinner from '../../../components/spinner'
 import Ratings from '../../../components/ratings'
@@ -52,7 +51,6 @@ function Theme() {
 
   return (
     <>
-      <DocumentDrawer />
       <Sidebar />
       <div className="flex flex-col items-start justify-start gap-2 md:flex-row">
         <div className="flex w-full flex-col gap-2 md:w-1/2">
@@ -118,35 +116,6 @@ function Theme() {
             </div>
           ) : null}
         </div>
-      </div>
-    </>
-  )
-
-  return (
-    <>
-      <DocumentDrawer />
-      <Sidebar />
-      <div className="h-full w-full items-center justify-center overflow-y-scroll  bg-base-200 px-4 py-2">
-        <>
-          <div className="mb-4 flex flex-row items-center justify-start text-accent">
-            <h1 className="text-3xl">{theme!.name}</h1>
-          </div>
-          <p>{data.summary}</p>
-          <ol className="mt-4 list-none pl-2">
-            {references.map((link, index) => (
-              <li
-                className="cursor-pointer"
-                onClick={() => onClickDocument(link)}
-                key={index}
-              >
-                📄
-                <span className="italic text-secondary hover:underline">
-                  {link.name}
-                </span>
-              </li>
-            ))}
-          </ol>
-        </>
       </div>
     </>
   )

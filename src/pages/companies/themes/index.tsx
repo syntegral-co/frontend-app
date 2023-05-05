@@ -1,22 +1,13 @@
 import { useRecoilValue } from 'recoil'
-import { categoriesState } from '../../../components/themes-toggles/atoms'
-import { NavLink } from 'react-router-dom'
-import { useCurrentCompany } from '../hooks'
-import { useThemes } from '../../../components/themes-toggles/hooks'
-import { Category, Theme } from '../types'
+import { viewModeState } from '../../../components/view-selector/atom'
 import Sidebar from '../../../components/sidebar'
 import ThemesToggles from '../../../components/themes-toggles'
-import Ratings from '../../../components/ratings'
-import { getThemeScore } from '../../../utils/helpers'
+import ViewSelector from '../../../components/view-selector'
+import ThemesList from '../../../components/themes-list'
+import ThemesTable from '../../../components/themes-table'
 
 function Themes() {
-  const currentCompany = useCurrentCompany()
-  const { themes, scores, selectedThemes } = useThemes()
-  const categories = useRecoilValue(categoriesState)
-
-  const companyScores = scores.filter(
-    (score: any) => score.companyId === currentCompany!.id,
-  )
+  const viewMode = useRecoilValue(viewModeState)
 
   return (
     <>
@@ -25,52 +16,10 @@ function Themes() {
         <div className="mb-4 h-auto w-full rounded-md bg-base-200 p-6">
           <ThemesToggles />
         </div>
-        <div className="grid h-auto w-full grid-cols-1 grid-rows-none gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {themes
-            .filter((theme: Theme) => {
-              if (!selectedThemes.length) return true
-
-              return selectedThemes.includes(theme.id)
-            })
-            .map((theme: Theme) => (
-              <div
-                className="group stats relative h-32 min-h-fit cursor-pointer overflow-hidden bg-base-200 shadow"
-                key={theme.id}
-              >
-                <div className="z-5 absolute -inset-full top-0 block h-auto w-1/2 -skew-x-12 transform bg-primary-content opacity-40 group-hover:animate-shine" />
-                <NavLink className="border-none" to={`./${theme.id}`}>
-                  <div className="stat">
-                    <div className="stat-figure text-secondary">
-                      <div className="avatar">
-                        <div className="w-20 rounded-full bg-base-100">
-                          <p className="h-full text-center align-middle text-5xl leading-relaxed">
-                            {theme.name.charAt(0)}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="stat-value">
-                      <Ratings
-                        id={theme.id}
-                        rating={getThemeScore(theme.id, companyScores)}
-                      />
-                    </div>
-                    <div className="stat-title w-2/3 overflow-hidden text-ellipsis">
-                      {theme.name}...
-                    </div>
-                    <div className="stat-desc italic text-accent">
-                      {
-                        categories.find(
-                          (category: Category) =>
-                            category.id === theme.categoryId,
-                        ).name
-                      }
-                    </div>
-                  </div>
-                </NavLink>
-              </div>
-            ))}
+        <div className="mb-4 h-auto w-full rounded-md bg-base-200 p-6">
+          <ViewSelector />
         </div>
+        {viewMode === 'list' ? <ThemesList /> : <ThemesTable />}
       </div>
     </>
   )

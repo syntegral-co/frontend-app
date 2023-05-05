@@ -29,7 +29,7 @@ function ThemesToggles() {
 
   return (
     <>
-      <label className="mb-2 block" htmlFor="themes">
+      <label className="mb-2 inline-block" htmlFor="themes">
         Choose a theme...
       </label>
       <Select
