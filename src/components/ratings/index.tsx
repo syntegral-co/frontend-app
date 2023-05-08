@@ -1,4 +1,4 @@
-interface RatingsProps {
+type RatingsProps = {
   id: number | string
   rating: number
 }

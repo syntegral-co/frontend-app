@@ -2,7 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { NavLink } from 'react-router-dom'
 import logo from '/assets/images/syntegral.png'
 
-interface NavLink {
+type NavLink = {
   title: string
   to: string
 }

@@ -1,5 +1,5 @@
 import { DocumentLink } from '../drawer/types'
-export interface ChatMessage {
+export type ChatMessage = {
   header?: string
   author: string
   text: string

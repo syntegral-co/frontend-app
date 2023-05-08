@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import { useCurrentCompany } from '../../pages/companies/hooks'
 import Icon from '../icon'
 
-interface NavLink {
+type NavLink = {
   title: string
   to: string
   icon?: string

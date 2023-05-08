@@ -1,5 +1,13 @@
 import { DocumentLink } from '../components/drawer/types'
 
+export function assertUnreachable(x: never): never {
+  throw new Error('Unreachable code!')
+}
+
+export function capitalize(string: string) {
+  return `${string.charAt(0).toUpperCase()}${string.slice(1, string.length)}`
+}
+
 export function formatReferences(references: string[][]): DocumentLink[] {
   if (!references) return []
 

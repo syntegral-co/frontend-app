@@ -38,6 +38,7 @@ function ThemesTable() {
             })
             .map((theme: Theme, index: number) => (
               <tr
+                key={theme.id}
                 className="hover cursor-pointer"
                 onClick={() => navigate(`./${theme.id}`)}
               >

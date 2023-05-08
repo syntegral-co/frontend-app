@@ -23,7 +23,7 @@ ChartJS.register(
   Legend,
 )
 
-interface ThemeChartProps {
+type ThemeChartProps = {
   theme: Theme
   company: Company
 }

@@ -1,21 +1,21 @@
-export interface Company {
+export type Company = {
   id: number
   name: string
 }
 
-export interface Category {
+export type Category = {
   id: number
   name: string
 }
 
-export interface Theme {
+export type Theme = {
   id: number
   categoryId: number
   name: string
   definition: string
 }
 
-export interface QA {
+export type QA = {
   id: number
   companyId: number
   themeId: number

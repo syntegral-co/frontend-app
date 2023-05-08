@@ -1,10 +1,8 @@
-import { SelectValue } from 'react-tailwindcss-select/dist/components/type'
 import { Theme } from '../../pages/companies/types'
 import { useThemes } from './hooks'
-//import Select, { Options } from 'react-select'
 import Select from 'react-tailwindcss-select'
 
-interface Option {
+type Option = {
   value: number
   label: string
 }

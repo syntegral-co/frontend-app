@@ -4,7 +4,7 @@ import { useDrawer } from '../drawer/hooks'
 import { ChatMessage } from './types'
 import logo from '/assets/images/syntegral.svg'
 
-interface ChatMessageProps {
+type ChatMessageProps = {
   message: ChatMessage
 }
 

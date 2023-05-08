@@ -2,7 +2,7 @@ import Mixpanel from './tracking'
 
 const sessionId = localStorage.getItem('sessionId')
 
-interface AnalyticsOptions {
+type AnalyticsOptions = {
   [key: string]: string
 }
 

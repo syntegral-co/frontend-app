@@ -13,6 +13,7 @@ import {
 import { formatReferences, getThemeScore } from '../../../utils/helpers'
 import { Category, QA } from '../types'
 import { DocumentLink } from '../../../components/drawer/types'
+import DocumentDrawer from '../../../components/drawer'
 import Sidebar from '../../../components/sidebar'
 import Spinner from '../../../components/spinner'
 import Ratings from '../../../components/ratings'
@@ -51,6 +52,7 @@ function Theme() {
 
   return (
     <>
+      <DocumentDrawer />
       <Sidebar />
       <div className="flex flex-col items-start justify-start gap-2 md:flex-row">
         <div className="flex w-full flex-col gap-2 md:w-1/2">
