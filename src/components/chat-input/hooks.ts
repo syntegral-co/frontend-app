@@ -20,7 +20,7 @@ export function useChatBot() {
     status: string
     data: ChatReply | undefined
   } = useQuery({
-    queryKey: ['chatbot', chatInput],
+    queryKey: ['chatbot', chatInput, currentCompany!.id],
     queryFn: () => chat(chatInput, currentCompany!.id),
     staleTime: Infinity,
     enabled: chatInput !== '',

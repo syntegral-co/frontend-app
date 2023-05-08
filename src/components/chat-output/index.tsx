@@ -22,9 +22,7 @@ function ChatOutput() {
             </div>
           </div>
           <div className="chat-bubble bg-base-100 text-primary-content">
-            Company name: {company!.name}. Overall score: 125.
-            <br />
-            Click on one of the 4 themes to see more data.
+            Hello! Ask me anything you'd like to know about {company!.name}!
           </div>
         </div>
         {chatMessages.map((message, index) => (
