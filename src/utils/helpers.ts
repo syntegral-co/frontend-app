@@ -1,4 +1,4 @@
-import { DocumentLink } from '../components/drawer/types'
+import { DocumentLink } from '../components/document-drawer/types'
 
 export function assertUnreachable(x: never): never {
   throw new Error('Unreachable code!')

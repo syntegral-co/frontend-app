@@ -10,7 +10,7 @@ import Company from './pages/companies'
 import Themes from './pages/companies/themes'
 import Theme from './pages/companies/themes/theme'
 import NotFound from './pages/404'
-import DocumentDrawer from './components/drawer'
+import DocumentDrawer from './components/document-drawer'
 
 function App() {
   const { user } = useAuth0()

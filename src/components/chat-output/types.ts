@@ -1,4 +1,4 @@
-import { DocumentLink } from '../drawer/types'
+import { DocumentLink } from '../document-drawer/types'
 export type ChatMessage = {
   header?: string
   author: string

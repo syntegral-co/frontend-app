@@ -29,35 +29,31 @@ function DocumentDrawer() {
   const classes = `transition-all absolute inset-y-0 z-20 h-screen w-1/2 bg-base-200 flex flex-col items-center justify-center ${positionClass}`
 
   return (
-    <>
-      <input type="checkbox" id="my-modal-6" className="modal-toggle" />
-      <div className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box">
-          {(status === 'loading' || fetchStatus === 'fetching') && <Loader />}
-          {status === 'success' && fetchStatus === 'idle' && (
-            <object
-              className="mb-4"
-              data={`${Object.values(data)[0]}#page=${document.page}`}
-              type="application/pdf"
-              width="100%"
-              height="100%"
-            >
-              <p>
-                Link{' '}
-                <a href={`${Object.values(data)[0]}#page=${document.page}`}>
-                  to the PDF!
-                </a>
-              </p>
-            </object>
-          )}
-          <div className="modal-action">
-            <label htmlFor="my-modal-6" className="btn">
-              Close
-            </label>
-          </div>
-        </div>
-      </div>
-    </>
+    <div className={classes}>
+      {(status === 'loading' || fetchStatus === 'fetching') && <Loader />}
+      {status === 'success' && fetchStatus === 'idle' && (
+        <object
+          className="mb-4"
+          data={`${Object.values(data)[0]}#page=${document.page}`}
+          type="application/pdf"
+          width="100%"
+          height="100%"
+        >
+          <p>
+            Link{' '}
+            <a href={`${Object.values(data)[0]}#page=${document.page}`}>
+              to the PDF!
+            </a>
+          </p>
+        </object>
+      )}
+      <button
+        className="btn-outline btn-primary btn mx-auto mb-4 mt-auto"
+        onClick={() => toggleDrawer()}
+      >
+        Close
+      </button>
+    </div>
   )
 }
 

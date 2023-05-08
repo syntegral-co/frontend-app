@@ -1,6 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { Interweave } from 'interweave'
-import { useDrawer } from '../drawer/hooks'
+import { useDrawer } from '../document-drawer/hooks'
 import { ChatMessage } from './types'
 import logo from '/assets/images/syntegral.svg'
 
