@@ -22,10 +22,11 @@ type ThemeChartProps = {
 function ThemeChart({ theme }: ThemeChartProps) {
   const companies = useRecoilValue(companiesState)
   const themeScores = useRecoilValue(themesScoresState)
+  const scores = themeScores.filter(
+    (themeScore) => themeScore.themeId === theme.id,
+  )
 
-  const scores = themeScores
-    .filter((themeScore) => themeScore.themeId === theme.id)
-    .map((themeScore) => themeScore.score)
+  const scoresCompaniesIds = scores.map((score) => score.companyId)
 
   if (!scores.length) return <p className="text-md">No data available</p>
 
@@ -42,14 +43,16 @@ function ThemeChart({ theme }: ThemeChartProps) {
     },
   }
 
-  const labels = companies.map((company) => company.name)
+  const labels = companies
+    .filter((company) => scoresCompaniesIds.includes(company.id))
+    .map((company) => company.name)
 
   const data = {
     labels,
     datasets: [
       {
         label: theme.name,
-        data: scores,
+        data: scores.map((themeScore) => themeScore.score),
         backgroundColor: 'rgba(9, 232, 211, 0.9)',
       },
     ],
