@@ -71,12 +71,12 @@ function Theme() {
         </div>
         <div className="flex w-full flex-col gap-2 md:w-1/2">
           <div className="rounded-md bg-base-200 p-4">
-            <h2 className="mb-4 text-2xl">Key Metrics</h2>
+            <h2 className="mb-4 text-2xl">Metrics</h2>
             <ThemeMetrics />
           </div>
-          {/* <div className="rounded-md bg-base-200 p-4">
-            <ThemeChart theme={theme!} company={currentCompany!} />
-          </div> */}
+          <div className="rounded-md bg-base-200 p-4">
+            <ThemeChart theme={theme!} />
+          </div>
           {themeQAs.length ? (
             <div className="rounded-md bg-base-200 p-4">
               <h2 className="mb-4 text-2xl">Questions</h2>

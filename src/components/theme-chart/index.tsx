@@ -2,33 +2,33 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  PointElement,
-  LineElement,
+  BarElement,
   Title,
   Tooltip,
-  Filler,
   Legend,
 } from 'chart.js'
-import { Line } from 'react-chartjs-2'
-import { Company, Theme } from '../../pages/companies/types'
+import { Bar } from 'react-chartjs-2'
+import { useRecoilValue } from 'recoil'
+import { companiesState } from '../company-switcher/atom'
+import { themesScoresState } from '../themes-toggles/atoms'
+import { Theme } from '../../pages/companies/types'
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Filler,
-  Legend,
-)
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 type ThemeChartProps = {
   theme: Theme
-  company: Company
 }
 
-function ThemeChart({ theme, company }: ThemeChartProps) {
+function ThemeChart({ theme }: ThemeChartProps) {
+  const companies = useRecoilValue(companiesState)
+  const themeScores = useRecoilValue(themesScoresState)
+
+  const scores = themeScores
+    .filter((themeScore) => themeScore.themeId === theme.id)
+    .map((themeScore) => themeScore.score)
+
+  if (!scores.length) return <p className="text-md">No data available</p>
+
   const options = {
     responsive: true,
     plugins: {
@@ -37,35 +37,25 @@ function ThemeChart({ theme, company }: ThemeChartProps) {
       },
       title: {
         display: true,
-        text: `Scores for ${company.name}`,
+        text: 'Companies comparison',
       },
     },
   }
 
-  const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-  ]
+  const labels = companies.map((company) => company.name)
 
   const data = {
     labels,
     datasets: [
       {
-        fill: true,
         label: theme.name,
-        data: labels.map(() => Math.random() * 1000),
-        borderColor: 'rgb(9, 232, 211)',
-        backgroundColor: 'rgba(9, 232, 211, 0.5)',
+        data: scores,
+        backgroundColor: 'rgba(9, 232, 211, 0.9)',
       },
     ],
   }
 
-  return <Line options={options} data={data} />
+  return <Bar options={options} data={data} />
 }
 
 export default ThemeChart

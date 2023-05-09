@@ -1,15 +1,12 @@
 import { useCurrentTheme } from '../../pages/companies/themes/hooks'
 import { useCurrentCompany } from '../../pages/companies/hooks'
 import { useRecoilValue } from 'recoil'
-import { categoriesState } from '../themes-toggles/atoms'
 import { metricsAnswersState, metricsState } from './atom'
-import { Category } from '../../pages/companies/types'
 import Icon from '../icon'
 
 function ThemeMetrics() {
   const theme = useCurrentTheme()
   const company = useCurrentCompany()
-  const categories = useRecoilValue(categoriesState)
   const metrics = useRecoilValue(metricsState)
   const metricsAnswers = useRecoilValue(metricsAnswersState)
 
@@ -22,15 +19,24 @@ function ThemeMetrics() {
   return (
     <div className="metrics">
       <ul>
-        {themeMetricAnswers.map((metricAnswer) => (
-          <li key={metricAnswer.id} className="text-md">
-            <p>
-              <Icon className="text-primary-focus" icon="pie" size={16} />{' '}
-              {metrics.find((metric) => metric.id === metricAnswer.id)!.name}
-            </p>
-            <q className="ml-2 text-lg">{metricAnswer.answer}</q>
-          </li>
-        ))}
+        {themeMetricAnswers.map((metricAnswer) => {
+          const metric = metrics.find((metric) => metric.id === metricAnswer.id)
+
+          if (!metric) return null
+
+          return (
+            <li key={metricAnswer.id} className="text-md">
+              <p>
+                <Icon className="text-primary-focus" icon="pie" size={16} />{' '}
+                {metric.name}
+              </p>
+              <p className="text-right text-xs text-accent opacity-90">
+                {metric.code}
+              </p>
+              <q className="ml-2 text-lg">{metricAnswer.answer}</q>
+            </li>
+          )
+        })}
       </ul>
     </div>
   )
