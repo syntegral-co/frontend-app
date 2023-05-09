@@ -74,9 +74,9 @@ function Theme() {
             <h2 className="mb-4 text-2xl">Key Metrics</h2>
             <ThemeMetrics />
           </div>
-          <div className="rounded-md bg-base-200 p-4">
+          {/* <div className="rounded-md bg-base-200 p-4">
             <ThemeChart theme={theme!} company={currentCompany!} />
-          </div>
+          </div> */}
           {themeQAs.length ? (
             <div className="rounded-md bg-base-200 p-4">
               <h2 className="mb-4 text-2xl">Questions</h2>
