@@ -15,6 +15,12 @@ export type Theme = {
   definition: string
 }
 
+export type ThemeScore = {
+  companyId: number
+  themeId: number
+  score: number
+}
+
 export type QA = {
   id: number
   companyId: number

@@ -4,7 +4,6 @@ import { useRecoilValue } from 'recoil'
 import { categoriesState } from '../themes-toggles/atoms'
 import { NavLink } from 'react-router-dom'
 import Ratings from '../ratings'
-import { Category, Theme } from '../../pages/companies/types'
 import { getThemeScore } from '../../utils/helpers'
 
 function ThemesList() {
@@ -19,12 +18,12 @@ function ThemesList() {
   return (
     <div className="grid h-auto w-full grid-cols-1 grid-rows-none gap-2 sm:grid-cols-2 lg:grid-cols-3">
       {themes
-        .filter((theme: Theme) => {
+        .filter((theme) => {
           if (!selectedThemes.length) return true
 
           return selectedThemes.includes(theme.id)
         })
-        .map((theme: Theme) => (
+        .map((theme) => (
           <div
             className="group stats relative h-32 min-h-fit cursor-pointer overflow-hidden bg-base-200 shadow"
             key={theme.id}
@@ -53,8 +52,8 @@ function ThemesList() {
                 <div className="stat-desc italic text-accent">
                   {
                     categories.find(
-                      (category: Category) => category.id === theme.categoryId,
-                    ).name
+                      (category) => category.id === theme.categoryId,
+                    )!.name
                   }
                 </div>
               </div>

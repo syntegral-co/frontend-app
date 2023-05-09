@@ -1,17 +1,12 @@
-import { Theme } from '../../pages/companies/types'
-import { useThemes } from './hooks'
 import Select from 'react-tailwindcss-select'
-
-type Option = {
-  value: number
-  label: string
-}
+import { useThemes } from './hooks'
+import { Option } from 'react-tailwindcss-select/dist/components/type'
 
 function ThemesToggles() {
   const { themes, selectedThemes, toggleThemes } = useThemes()
 
-  const options = themes.map((theme: Theme) => ({
-    value: theme.id,
+  const options: Option[] = themes.map((theme) => ({
+    value: theme.id.toString(),
     label: theme.name,
   }))
 
@@ -19,7 +14,7 @@ function ThemesToggles() {
     let selectedOptions: number[] = []
 
     if (options) {
-      selectedOptions = options.map((option: Option) => option.value)
+      selectedOptions = options.map((option: Option) => parseInt(option.value))
     }
 
     toggleThemes(selectedOptions)
@@ -31,8 +26,8 @@ function ThemesToggles() {
         Choose a theme...
       </label>
       <Select
-        value={options.filter((option: Option) =>
-          selectedThemes.includes(option.value),
+        value={options.filter((option) =>
+          selectedThemes.includes(parseInt(option.value)),
         )}
         primaryColor={'accent'}
         options={options}

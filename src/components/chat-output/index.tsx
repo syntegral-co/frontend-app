@@ -8,8 +8,7 @@ import logo from '/assets/images/syntegral.svg'
 
 function ChatOutput() {
   const company = useCurrentCompany()
-  const { chatMessages, isLoading, isContextLoading, isMetricsLoading } =
-    useChatBot()
+  const { chatMessages, isLoading, isMetricsLoading } = useChatBot()
 
   return (
     <div className="max-height-screen flex h-full w-full flex-col justify-between p-4">
@@ -28,7 +27,7 @@ function ChatOutput() {
         {chatMessages.map((message, index) => (
           <ChatMessage key={index} message={message} />
         ))}
-        {(isLoading > 0 || isContextLoading > 0 || isMetricsLoading > 0) && (
+        {(isLoading > 0 || isMetricsLoading > 0) && (
           <div className="chat chat-start">
             <div className="chat-image avatar">
               <div className="mask mask-hexagon w-10 rounded-full">
@@ -36,7 +35,7 @@ function ChatOutput() {
               </div>
             </div>
             <div className="chat-bubble bg-base-100">
-              {(isContextLoading > 0 || isMetricsLoading > 0) && (
+              {isMetricsLoading > 0 && (
                 <>
                   <p>
                     Please wait, I am searching for similar projects and

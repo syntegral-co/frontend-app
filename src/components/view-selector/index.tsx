@@ -15,10 +15,10 @@ function ViewSelector() {
   return (
     <div className="flex flex-row items-center justify-between gap-2">
       <div className="flex flex-row flex-nowrap gap-2">
-        <Icon icon="zoom-in" size={24} />
+        {/* <Icon icon="zoom-in" size={24} />
         <label className="inline-block" htmlFor="themes">
           Compare company
-        </label>
+        </label> */}
       </div>
       <div className="flex flex-row flex-nowrap gap-2">
         <label className="inline-block" htmlFor="themes">

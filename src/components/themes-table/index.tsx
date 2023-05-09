@@ -3,7 +3,6 @@ import { useCurrentCompany } from '../../pages/companies/hooks'
 import { useThemes } from '../themes-toggles/hooks'
 import { useNavigate } from 'react-router-dom'
 import { categoriesState } from '../themes-toggles/atoms'
-import { Category, Theme } from '../../pages/companies/types'
 import Ratings from '../ratings'
 import { getThemeScore } from '../../utils/helpers'
 
@@ -31,12 +30,12 @@ function ThemesTable() {
         </thead>
         <tbody>
           {themes
-            .filter((theme: Theme) => {
+            .filter((theme) => {
               if (!selectedThemes.length) return true
 
               return selectedThemes.includes(theme.id)
             })
-            .map((theme: Theme, index: number) => (
+            .map((theme, index) => (
               <tr
                 key={theme.id}
                 className="hover cursor-pointer"
@@ -53,8 +52,8 @@ function ThemesTable() {
                 <td>
                   {
                     categories.find(
-                      (category: Category) => category.id === theme.categoryId,
-                    ).name
+                      (category) => category.id === theme.categoryId,
+                    )!.name
                   }
                 </td>
               </tr>

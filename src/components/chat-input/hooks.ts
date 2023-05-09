@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil'
 import { useIsFetching, useQueries, useQuery } from '@tanstack/react-query'
 import { useCurrentCompany } from '../../pages/companies/hooks'
 import { chatState } from './atoms'
-import { chat, getChatContext, getChatMetrics } from '../../utils/api'
+import { chat, getChatMetrics } from '../../utils/api'
 import { formatReferences } from '../../utils/helpers'
 import { ChatReply } from './types'
 import { ChatMessage } from '../chat-output/types'
@@ -26,17 +26,8 @@ export function useChatBot() {
     enabled: chatInput !== '',
   })
 
-  const [contextQuery, irisMetricsQuery, sdgMetricsQuery] = useQueries({
+  const [irisMetricsQuery, sdgMetricsQuery] = useQueries({
     queries: [
-      {
-        queryKey: ['chatbot-context', chatInput, chatbotReply],
-        queryFn: () => getChatContext(chatInput, chatbotReply!.answer),
-        staleTime: Infinity,
-        enabled:
-          status === 'success' &&
-          chatbotReply &&
-          chatbotReply.status === 'successful',
-      },
       {
         queryKey: ['chatbot-metrics', chatbotReply, 'iris'],
         queryFn: () => getChatMetrics('iris', chatbotReply!.answer),
@@ -59,7 +50,6 @@ export function useChatBot() {
   })
 
   const isLoading = useIsFetching({ queryKey: ['chatbot'] })
-  const isContextLoading = useIsFetching({ queryKey: ['chatbot-context'] })
   const isMetricsLoading = useIsFetching({ queryKey: ['chatbot-metrics'] })
 
   useEffect(() => {
@@ -79,32 +69,6 @@ export function useChatBot() {
 
     setChatMessages([...chatMessages, newMessage])
   }, [chatbotReply, status])
-
-  useEffect(() => {
-    if (contextQuery.status !== 'success' || !contextQuery.data) return
-
-    const answer = contextQuery.data!.context_answer
-
-    let newMessage: ChatMessage = {
-      header: 'Company Impact Assessment',
-      author: 'bot',
-      text: answer,
-      collapsible: true,
-    }
-
-    if (
-      contextQuery.data!.context_references &&
-      contextQuery.data!.context_references.list
-    ) {
-      const references = formatReferences(
-        contextQuery.data.context_references.list,
-      )
-
-      newMessage.links = references
-    }
-
-    setChatMessages([...chatMessages, newMessage])
-  }, [contextQuery.status, contextQuery.data])
 
   useEffect(() => {
     if (irisMetricsQuery.status !== 'success' || !irisMetricsQuery.data) return
@@ -148,7 +112,6 @@ export function useChatBot() {
     chatMessages,
     sendMessage,
     isLoading,
-    isContextLoading,
     isMetricsLoading,
   }
 }

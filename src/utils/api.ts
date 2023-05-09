@@ -122,8 +122,30 @@ export async function getThemeSummary(companyId: number, themeId: number) {
   return data
 }
 
-export async function getThemeQA() {
-  const APIUrl = `${import.meta.env.VITE_THEMES_API_BASEPATH}/theme_q_and_a`
+export async function getMetrics() {
+  const APIUrl = `${import.meta.env.VITE_THEMES_API_BASEPATH}/metric`
+  const data = await callAPI(APIUrl, {
+    type: 'metric',
+  })
+
+  return data
+}
+
+export async function getMetricsAnswers() {
+  const APIUrl = `${
+    import.meta.env.VITE_THEMES_API_BASEPATH
+  }/theme_metric_answer`
+  const data = await callAPI(APIUrl, {
+    type: 'theme_metric_answer',
+  })
+
+  return data
+}
+
+export async function getThemesQA() {
+  const APIUrl = `${
+    import.meta.env.VITE_THEMES_API_BASEPATH
+  }/theme_question_answer`
   const data = await callAPI(APIUrl, {
     type: 'theme_q_and_a',
   })
