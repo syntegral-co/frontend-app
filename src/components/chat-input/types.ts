@@ -1,4 +1,4 @@
-export interface IChatReply {
+export type ChatReply = {
   status: 'successful' | 'unsuccessful'
   answer: string
   categories: string
@@ -8,7 +8,7 @@ export interface IChatReply {
   }
 }
 
-export interface IDocument {
+export type Document = {
   id: string | null
   pageId: string | null
   url?: string

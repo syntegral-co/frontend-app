@@ -7,9 +7,13 @@ module.exports = {
       profit: '#FF7E07',
       planet: '#06D7F6',
     },
+    fontFamily: {
+      sans: ['Jost'],
+    },
     extend: {
       animation: {
         loader: 'loader 0.6s infinite alternate',
+        shine: 'shine 1.2s',
       },
       keyframes: {
         loader: {
@@ -18,28 +22,31 @@ module.exports = {
             transform: 'translate3d(0, -.5rem, 0)',
           },
         },
+        shine: {
+          '100%': { left: '125%' },
+        },
       },
     },
   },
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
+    './node_modules/react-tailwindcss-select/dist/index.esm.js',
+  ],
   plugins: [require('daisyui')],
   daisyui: {
     styled: true,
     themes: [
       {
         syntegral: {
-          primary: '#669BD0',
-          'primary-focus': '#669BD0',
+          primary: '#09E8D3',
+          'primary-focus': '#07B8A7',
           'primary-content': '#ffffff',
-          secondary: '#4063FF',
-          'secondary-focus': '#274BE5',
-          'secondary-content': '#B5B5B5',
-          accent: '#09E8DE',
-          'accent-focus': '#17D4CC',
-          'base-100': '#112D49',
-          'base-200': '#163A5C',
-          neutral: '#2B2C44',
-          'neutral-focus': '#171824',
+          accent: '#09E8D3',
+          'accent-focus': '#07B8A7',
+          'base-100': '#141C1C',
+          'base-200': '#0D1313',
+          'base-300': '#0B0F0F',
           success: '#00D100',
           error: '#F93608',
         },

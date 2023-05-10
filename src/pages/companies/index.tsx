@@ -12,7 +12,7 @@ function Company() {
   return (
     <>
       <Sidebar />
-      <div className="rounded-box w-full bg-base-200">
+      <div className=" w-full bg-base-200">
         <ChatOutput />
       </div>
     </>

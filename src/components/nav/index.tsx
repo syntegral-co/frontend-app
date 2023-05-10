@@ -2,14 +2,14 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { NavLink } from 'react-router-dom'
 import logo from '/assets/images/syntegral.png'
 
-interface INavLink {
+type NavLink = {
   title: string
   to: string
 }
 
-const NAV_LINKS: INavLink[] = []
+const NAV_LINKS: NavLink[] = []
 
-const ACCOUNT_LINKS: INavLink[] = [
+const ACCOUNT_LINKS: NavLink[] = [
   {
     title: 'Your profile',
     to: '#',
@@ -21,7 +21,8 @@ const ACCOUNT_LINKS: INavLink[] = [
 ]
 
 function Nav() {
-  const { loginWithRedirect, logout, user, isAuthenticated, isLoading } = useAuth0()
+  const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
+    useAuth0()
 
   if (isLoading) return null
 
@@ -38,10 +39,18 @@ function Nav() {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h8m-8 6h16"
+              />
             </svg>
           </label>
-          <ul tabIndex={0} className="dropdown-content menu rounded-box menu-compact mt-3 w-52 bg-base-100 p-2 shadow">
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu  menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
+          >
             {NAV_LINKS.map(({ title, to }, index) => (
               <li key={index}>
                 <NavLink to={to}>{title}</NavLink>
@@ -68,11 +77,14 @@ function Nav() {
         {isAuthenticated ? (
           <div className="dropdown dropdown-end">
             <div className="avatar cursor-pointer" tabIndex={0}>
-              <div className="w-8 rounded-full">
+              <div className="mask mask-hexagon w-8 rounded-full">
                 <img src={user?.picture} />
               </div>
             </div>
-            <ul tabIndex={0} className="dropdown-content menu rounded-box w-52 bg-base-200 p-2 shadow">
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu  w-52 bg-base-200 p-2 shadow"
+            >
               <li>
                 <a
                   onClick={() =>

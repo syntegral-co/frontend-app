@@ -2,7 +2,11 @@ import Mixpanel from './tracking'
 
 const sessionId = localStorage.getItem('sessionId')
 
-async function callAPI(endpoint: string) {
+type AnalyticsOptions = {
+  [key: string]: string
+}
+
+async function callAPI(endpoint: string, analyticsOptions?: AnalyticsOptions) {
   try {
     const response = await fetch(endpoint, {
       headers: {
@@ -12,6 +16,11 @@ async function callAPI(endpoint: string) {
     })
 
     const data = await response.json()
+
+    if (analyticsOptions) {
+      Mixpanel.track('API Call', analyticsOptions)
+    }
+
     return data
   } catch (error) {
     if (error instanceof SyntaxError) {
@@ -23,69 +32,123 @@ async function callAPI(endpoint: string) {
 }
 
 export async function chat(message: string, companyId: number) {
-  Mixpanel.track('API Call', {
-    type: 'chatbot',
-    question: message,
-    companyId: companyId,
-  })
-
   const APIUrl = `${
     import.meta.env.VITE_CHATBOT_API_BASEPATH
   }/chatbot?question=${message}&company_id=${companyId}`
-  const data = await callAPI(APIUrl)
+  const data = await callAPI(APIUrl, {
+    type: 'chatbot',
+    question: message,
+    companyId: companyId.toString(),
+  })
 
   return data
 }
 
-export async function chatContext(
-  message: string,
-  impact: string,
-  answer: string,
-) {
-  Mixpanel.track('API Call', {
+export async function getChatContext(message: string, answer: string) {
+  const APIUrl = `${
+    import.meta.env.VITE_CHATBOT_API_BASEPATH
+  }/chatbot_context?question=${message}&answer=${answer}`
+  const data = await callAPI(APIUrl, {
     type: 'chatbot_context',
     question: message,
-    impactType: impact,
     answer: answer,
   })
 
-  const APIUrl = `${
-    import.meta.env.VITE_CHATBOT_API_BASEPATH
-  }/chatbot_context?question=${message}&impact_type=people&answer=${answer}`
-  const data = await callAPI(APIUrl)
-
   return data
 }
 
-export async function chatMetrics(
+export async function getChatMetrics(
   metric: 'iris' | 'sdg' | 'all',
   answer: string,
 ) {
-  Mixpanel.track('API Call', {
+  const APIUrl = `${
+    import.meta.env.VITE_CHATBOT_API_BASEPATH
+  }/chatbot_metrics?metric=${metric}&answer=${answer}`
+  const data = await callAPI(APIUrl, {
     type: 'chatbot_metrics',
     metric: metric,
     answer: answer,
   })
 
-  const APIUrl = `${
-    import.meta.env.VITE_CHATBOT_API_BASEPATH
-  }/chatbot_metrics?metric=${metric}&answer=${answer}`
-  const data = await callAPI(APIUrl)
+  return data
+}
+
+export async function getCompanies() {
+  const APIUrl = `${import.meta.env.VITE_IMPACT_API_BASEPATH}/company`
+  const data = await callAPI(APIUrl, {
+    type: 'company',
+  })
 
   return data
 }
 
-export async function getImpactSummary(companyId: number, theme: string) {
-  Mixpanel.track('API Call', {
-    type: 'impact_summary',
-    company_id: companyId,
-    theme: theme,
+export async function getCategories() {
+  const APIUrl = `${import.meta.env.VITE_IMPACT_API_BASEPATH}/category`
+  const data = await callAPI(APIUrl, {
+    type: 'category',
   })
 
+  return data
+}
+
+export async function getThemes() {
+  const APIUrl = `${import.meta.env.VITE_IMPACT_API_BASEPATH}/theme`
+  const data = await callAPI(APIUrl, {
+    type: 'theme',
+  })
+
+  return data
+}
+
+export async function getThemesScores() {
+  const APIUrl = `${import.meta.env.VITE_IMPACT_API_BASEPATH}/theme_score`
+  const data = await callAPI(APIUrl, {
+    type: 'theme_score',
+  })
+
+  return data
+}
+
+export async function getThemeSummary(companyId: number, themeId: number) {
   const APIUrl = `${
-    import.meta.env.VITE_CHATBOT_API_BASEPATH
-  }/impact_summary?company_id=${companyId}&theme=${theme}`
-  const data = await callAPI(APIUrl)
+    import.meta.env.VITE_IMPACT_API_BASEPATH
+  }/theme_summary?company_id=${companyId}&theme_id=${themeId}`
+  const data = await callAPI(APIUrl, {
+    type: 'theme_summary',
+    companyId: companyId.toString(),
+    themeId: themeId.toString(),
+  })
+
+  return data
+}
+
+export async function getMetrics() {
+  const APIUrl = `${import.meta.env.VITE_IMPACT_API_BASEPATH}/metric`
+  const data = await callAPI(APIUrl, {
+    type: 'metric',
+  })
+
+  return data
+}
+
+export async function getMetricsAnswers() {
+  const APIUrl = `${
+    import.meta.env.VITE_IMPACT_API_BASEPATH
+  }/theme_metric_answer`
+  const data = await callAPI(APIUrl, {
+    type: 'theme_metric_answer',
+  })
+
+  return data
+}
+
+export async function getThemesQA() {
+  const APIUrl = `${
+    import.meta.env.VITE_IMPACT_API_BASEPATH
+  }/theme_question_answer`
+  const data = await callAPI(APIUrl, {
+    type: 'theme_q_and_a',
+  })
 
   return data
 }

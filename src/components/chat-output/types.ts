@@ -1,8 +1,8 @@
-import { IDocumentLink } from '../drawer/types'
-export interface IChatMessage {
+import { DocumentLink } from '../document-drawer/types'
+export type ChatMessage = {
   header?: string
   author: string
   text: string
-  links?: IDocumentLink[]
+  links?: DocumentLink[]
   collapsible?: boolean
 }

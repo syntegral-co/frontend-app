@@ -1,14 +1,14 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { Interweave } from 'interweave'
-import { useDrawer } from '../drawer/hooks'
-import { IChatMessage } from './types'
+import { useDrawer } from '../document-drawer/hooks'
+import { ChatMessage } from './types'
 import logo from '/assets/images/syntegral.svg'
 
-interface IChatMessageProps {
-  message: IChatMessage
+type ChatMessageProps = {
+  message: ChatMessage
 }
 
-function ChatMessage({ message }: IChatMessageProps): JSX.Element {
+function ChatMessage({ message }: ChatMessageProps) {
   const { user } = useAuth0()
   const { onClickDocument } = useDrawer()
 
@@ -61,7 +61,7 @@ function ChatMessage({ message }: IChatMessageProps): JSX.Element {
   return (
     <div className={chatClasses}>
       <div className="chat-image avatar">
-        <div className="w-10 rounded-full">
+        <div className="mask mask-hexagon w-10 rounded-full">
           <img src={chatAvatar} />
         </div>
       </div>

@@ -1,35 +1,21 @@
-import { FormEvent, useEffect, useState } from 'react'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useEffect, useState } from 'react'
+import { useRecoilValue } from 'recoil'
+import { companiesState } from './atom'
 import { v4 as uuidv4 } from 'uuid'
-import { NavLink, useNavigate } from 'react-router-dom'
-import { z } from 'zod'
-import {
-  useCurrentTheme,
-  useThemes,
-} from '../../pages/companies/areas/themes/hooks'
-import { ICompany } from '../../pages/companies/types'
-import { companies } from '../../utils/data'
-import { themeState } from './atom'
-
-const companySwitcherSchema = z.object({
-  mode: z.enum(['single', 'double']),
-  first_company: z.number(),
-  second_company: z.number().optional(),
-  theme: z.enum(['people', 'profit', 'planet']),
-})
+import { NavLink } from 'react-router-dom'
+import { Company } from '../../pages/companies/types'
+import logo from '/assets/images/syntegral.svg'
 
 function isCompanyInSearchTerm(
-  company: ICompany,
+  company: Company,
   searchTerm: string,
-): company is ICompany {
+): company is Company {
   return company.name.toLowerCase().includes(searchTerm.toLowerCase())
 }
 
 function CompanySwitcher() {
-  const themes = useThemes()
-  const currentTheme = useCurrentTheme()
-  const setCurrentTheme = useSetRecoilState(themeState)
   const [searchTerm, setSearchTerm] = useState('')
+  const companies = useRecoilValue(companiesState)
 
   useEffect(() => {
     const sessionId = uuidv4()
@@ -39,23 +25,10 @@ function CompanySwitcher() {
 
   return (
     <div className="flex h-96 w-full flex-col items-center justify-center self-center">
-      <p className="py-6 text-2xl text-primary-content">
-        Select a theme to explore
-      </p>
-      <select
-        className="input-bordered input w-full max-w-xs text-primary-content"
-        value={currentTheme!.id}
-        onChange={(event) => setCurrentTheme(event.target.value)}
-      >
-        {themes.map((theme) => (
-          <option key={theme.id} value={theme.id}>
-            {theme.name}
-          </option>
-        ))}
-      </select>
-      <p className="py-6 text-2xl text-primary-content">
-        and type the name of a company to start exploring!
-      </p>
+      <img className="h-40" src={logo} />
+      <h1 className="py-6 text-2xl font-bold text-primary-content">
+        Choose a company to start exploring!
+      </h1>
       <input
         type="text"
         placeholder="Type here"
@@ -65,8 +38,10 @@ function CompanySwitcher() {
       {searchTerm !== '' && (
         <ul className="menu w-full max-w-xs border border-base-200 bg-base-100 p-4 shadow-md">
           {companies
-            .filter((company) => isCompanyInSearchTerm(company, searchTerm))
-            .map((company: ICompany) => (
+            .filter((company: Company) =>
+              isCompanyInSearchTerm(company, searchTerm),
+            )
+            .map((company: Company) => (
               <li
                 key={company.id}
                 className="text-primary-content hover:text-accent"
