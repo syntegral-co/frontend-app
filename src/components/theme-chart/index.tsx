@@ -11,15 +11,16 @@ import { Bar } from 'react-chartjs-2'
 import { useRecoilValue } from 'recoil'
 import { companiesState } from '../company-switcher/atom'
 import { themesScoresState } from '../themes-toggles/atoms'
-import { Theme } from '../../pages/companies/types'
+import { Company, Theme } from '../../pages/companies/types'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 type ThemeChartProps = {
   theme: Theme
+  company: Company
 }
 
-function ThemeChart({ theme }: ThemeChartProps) {
+function ThemeChart({ theme, company }: ThemeChartProps) {
   const companies = useRecoilValue(companiesState)
   const themeScores = useRecoilValue(themesScoresState)
   const scores = themeScores.filter(
@@ -38,22 +39,30 @@ function ThemeChart({ theme }: ThemeChartProps) {
       },
       title: {
         display: true,
-        text: 'Companies comparison',
+        text: `Companies comparison for ${theme.name}`,
       },
     },
   }
 
-  const labels = companies
-    .filter((company) => scoresCompaniesIds.includes(company.id))
-    .map((company) => company.name)
+  const labels = companies.filter((company) =>
+    scoresCompaniesIds.includes(company.id),
+  )
+
+  let backgroundColors = labels.map((companyLabel) => {
+    if (companyLabel.id === company.id) {
+      return 'rgb(9, 232, 211)'
+    }
+
+    return 'rgba(9, 232, 211, 0.5)'
+  })
 
   const data = {
-    labels,
+    labels: labels.map((company) => company.name),
     datasets: [
       {
-        label: theme.name,
+        label: 'Score',
         data: scores.map((themeScore) => themeScore.score),
-        backgroundColor: 'rgba(9, 232, 211, 0.9)',
+        backgroundColor: backgroundColors,
       },
     ],
   }

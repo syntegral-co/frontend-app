@@ -74,7 +74,7 @@ export async function getChatMetrics(
 }
 
 export async function getCompanies() {
-  const APIUrl = `${import.meta.env.VITE_THEMES_API_BASEPATH}/company`
+  const APIUrl = `${import.meta.env.VITE_IMPACT_API_BASEPATH}/company`
   const data = await callAPI(APIUrl, {
     type: 'company',
   })
@@ -83,7 +83,7 @@ export async function getCompanies() {
 }
 
 export async function getCategories() {
-  const APIUrl = `${import.meta.env.VITE_THEMES_API_BASEPATH}/category`
+  const APIUrl = `${import.meta.env.VITE_IMPACT_API_BASEPATH}/category`
   const data = await callAPI(APIUrl, {
     type: 'category',
   })
@@ -92,7 +92,7 @@ export async function getCategories() {
 }
 
 export async function getThemes() {
-  const APIUrl = `${import.meta.env.VITE_THEMES_API_BASEPATH}/theme`
+  const APIUrl = `${import.meta.env.VITE_IMPACT_API_BASEPATH}/theme`
   const data = await callAPI(APIUrl, {
     type: 'theme',
   })
@@ -101,7 +101,7 @@ export async function getThemes() {
 }
 
 export async function getThemesScores() {
-  const APIUrl = `${import.meta.env.VITE_THEMES_API_BASEPATH}/theme_score`
+  const APIUrl = `${import.meta.env.VITE_IMPACT_API_BASEPATH}/theme_score`
   const data = await callAPI(APIUrl, {
     type: 'theme_score',
   })
@@ -111,7 +111,7 @@ export async function getThemesScores() {
 
 export async function getThemeSummary(companyId: number, themeId: number) {
   const APIUrl = `${
-    import.meta.env.VITE_THEMES_API_BASEPATH
+    import.meta.env.VITE_IMPACT_API_BASEPATH
   }/theme_summary?company_id=${companyId}&theme_id=${themeId}`
   const data = await callAPI(APIUrl, {
     type: 'theme_summary',
@@ -123,7 +123,7 @@ export async function getThemeSummary(companyId: number, themeId: number) {
 }
 
 export async function getMetrics() {
-  const APIUrl = `${import.meta.env.VITE_THEMES_API_BASEPATH}/metric`
+  const APIUrl = `${import.meta.env.VITE_IMPACT_API_BASEPATH}/metric`
   const data = await callAPI(APIUrl, {
     type: 'metric',
   })
@@ -133,7 +133,7 @@ export async function getMetrics() {
 
 export async function getMetricsAnswers() {
   const APIUrl = `${
-    import.meta.env.VITE_THEMES_API_BASEPATH
+    import.meta.env.VITE_IMPACT_API_BASEPATH
   }/theme_metric_answer`
   const data = await callAPI(APIUrl, {
     type: 'theme_metric_answer',
@@ -144,7 +144,7 @@ export async function getMetricsAnswers() {
 
 export async function getThemesQA() {
   const APIUrl = `${
-    import.meta.env.VITE_THEMES_API_BASEPATH
+    import.meta.env.VITE_IMPACT_API_BASEPATH
   }/theme_question_answer`
   const data = await callAPI(APIUrl, {
     type: 'theme_q_and_a',

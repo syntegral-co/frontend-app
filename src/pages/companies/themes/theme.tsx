@@ -75,7 +75,7 @@ function Theme() {
             <ThemeMetrics />
           </div>
           <div className="rounded-md bg-base-200 p-4">
-            <ThemeChart theme={theme!} />
+            <ThemeChart theme={theme!} company={currentCompany!} />
           </div>
           {themeQAs.length ? (
             <div className="rounded-md bg-base-200 p-4">

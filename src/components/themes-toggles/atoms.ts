@@ -56,9 +56,10 @@ export const themesScoresState = selector({
     }
 
     return response.data.map((score: any) => ({
-      companyId: score[0],
-      themeId: score[1],
-      score: score[2],
+      id: score[0],
+      companyId: score[1],
+      themeId: score[2],
+      score: score[3],
     })) as ThemeScore[]
   },
 })

@@ -25,15 +25,17 @@ function ThemeMetrics() {
           if (!metric) return null
 
           return (
-            <li key={metricAnswer.id} className="text-md">
-              <p>
-                <Icon className="text-primary-focus" icon="pie" size={16} />{' '}
-                {metric.name}
-              </p>
-              <p className="text-right text-xs text-accent opacity-90">
-                {metric.code}
-              </p>
-              <q className="ml-2 text-lg">{metricAnswer.answer}</q>
+            <li key={metricAnswer.id} className="text-md my-4">
+              <div className="flex flex-row flex-wrap items-center justify-between">
+                <p>
+                  <Icon className="text-primary-focus" icon="pie" size={16} />{' '}
+                  {metric.name}
+                </p>
+                <p className="text-right text-xs text-accent opacity-90">
+                  {metric.code}
+                </p>
+              </div>
+              <q className="ml-6 text-lg">{metricAnswer.answer}</q>
             </li>
           )
         })}
