@@ -9,7 +9,6 @@ import { qaState } from '../../../components/themes-toggles/atoms'
 import { formatReferences } from '../../../utils/helpers'
 import { DocumentLink } from '../../../components/document-drawer/types'
 import DocumentDrawer from '../../../components/document-drawer'
-import Sidebar from '../../../components/sidebar'
 import Spinner from '../../../components/spinner'
 import Icon from '../../../components/icon'
 import ThemeChart from '../../../components/theme-chart'
@@ -42,7 +41,6 @@ function Theme() {
   return (
     <>
       <DocumentDrawer />
-      <Sidebar />
       <div className="flex flex-col items-start justify-start gap-2 md:flex-row">
         <div className="flex w-full flex-col gap-2 md:w-1/2">
           <div className="rounded-md bg-base-200 p-4">

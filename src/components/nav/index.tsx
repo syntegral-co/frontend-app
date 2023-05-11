@@ -1,15 +1,11 @@
+import { useCurrentCompany } from '../../pages/companies/hooks'
 import { useAuth0 } from '@auth0/auth0-react'
+import classnames from 'classnames'
 import { NavLink } from 'react-router-dom'
-import logo from '/assets/images/syntegral.png'
+import Icon from '../icon'
+import { NavbarLink } from './types'
 
-type NavLink = {
-  title: string
-  to: string
-}
-
-const NAV_LINKS: NavLink[] = []
-
-const ACCOUNT_LINKS: NavLink[] = [
+const ACCOUNT_LINKS: NavbarLink[] = [
   {
     title: 'Your profile',
     to: '#',
@@ -21,15 +17,62 @@ const ACCOUNT_LINKS: NavLink[] = [
 ]
 
 function Nav() {
+  const currentCompany = useCurrentCompany()
+  console.log('currentCompany: ', currentCompany)
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
     useAuth0()
 
   if (isLoading) return null
 
+  const NAV_LINKS: NavbarLink[] = [
+    {
+      title: 'Discovery',
+      to: '/',
+      icon: 'compass',
+    },
+    {
+      title: 'Chat',
+      to: `/companies/${currentCompany?.id}`,
+      icon: 'bubbles',
+      hidden: !currentCompany,
+    },
+    {
+      title: 'Reporting',
+      to: `/companies/${currentCompany?.id}/themes`,
+      icon: 'pie',
+      hidden: !currentCompany,
+    },
+    {
+      title: 'Download',
+      to: '/test',
+      icon: 'cloud-download',
+      disabled: true,
+    },
+    {
+      title: 'Upload',
+      to: '/test',
+      icon: 'cloud-upload',
+      disabled: true,
+    },
+  ]
+
+  const navLinksElement = NAV_LINKS.map(
+    ({ title, to, icon, disabled, hidden }, index) => (
+      <li
+        key={index}
+        className={classnames({ hidden: hidden, disabled: disabled })}
+      >
+        <NavLink to={to} end>
+          <Icon icon={icon!} size={20} />
+          {title}
+        </NavLink>
+      </li>
+    ),
+  )
+
   return (
     <div className="navbar mb-8 bg-base-100 px-4 md:px-0">
-      <div className="navbar-start lg:hidden">
-        <img className="h-8 w-auto" src={logo} alt="Syntegral" />
+      <div className="flex-none lg:hidden">
         <div className="dropdown">
           <label tabIndex={0} className="btn-ghost btn">
             <svg
@@ -51,29 +94,25 @@ function Nav() {
             tabIndex={0}
             className="dropdown-content menu  menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
           >
-            {NAV_LINKS.map(({ title, to }, index) => (
-              <li key={index}>
-                <NavLink to={to}>{title}</NavLink>
-              </li>
-            ))}
+            {navLinksElement}
           </ul>
         </div>
       </div>
       {isAuthenticated && (
-        <div className="navbar-start hidden lg:flex">
-          <a className="btn-ghost btn text-xl normal-case">
-            <img className="h-8 w-auto" src={logo} alt="Syntegral" />
-          </a>
-          <ul className="menu menu-horizontal px-1">
-            {NAV_LINKS.map(({ title, to }, index) => (
-              <li key={index}>
-                <NavLink to={to}>{title}</NavLink>
-              </li>
-            ))}
+        <div className="hidden flex-1 lg:flex">
+          <ul className="menu menu-horizontal w-full px-1">
+            {navLinksElement}
+            <li className="pointer-events-none flex items-center justify-center">
+              {currentCompany ? (
+                <div className="badge-primary badge-outline badge badge-xs">
+                  {currentCompany.name}
+                </div>
+              ) : null}
+            </li>
           </ul>
         </div>
       )}
-      <div className="navbar-end">
+      <div className="flex-none">
         {isAuthenticated ? (
           <div className="dropdown dropdown-end">
             <div className="avatar cursor-pointer" tabIndex={0}>
