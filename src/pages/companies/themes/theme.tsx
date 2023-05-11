@@ -42,7 +42,6 @@ function Theme() {
   return (
     <>
       <DocumentDrawer />
-      <Sidebar />
       <div className="flex flex-col items-start justify-start gap-2 md:flex-row">
         <div className="flex w-full flex-col gap-2 md:w-1/2">
           <div className="rounded-md bg-base-200 p-4">

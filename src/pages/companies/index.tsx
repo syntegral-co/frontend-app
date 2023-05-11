@@ -1,5 +1,4 @@
 import { useCurrentCompany } from './hooks'
-import Sidebar from '../../components/sidebar'
 import ChatOutput from '../../components/chat-output'
 
 function Company() {
@@ -10,12 +9,9 @@ function Company() {
   }
 
   return (
-    <>
-      <Sidebar />
-      <div className=" w-full bg-base-200">
-        <ChatOutput />
-      </div>
-    </>
+    <div className=" w-full bg-base-200">
+      <ChatOutput />
+    </div>
   )
 }
 
