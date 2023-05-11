@@ -102,6 +102,13 @@ function Nav() {
         <div className="hidden flex-1 lg:flex">
           <ul className="menu menu-horizontal w-full px-1">
             {navLinksElement}
+            <li className="pointer-events-none flex items-center justify-center">
+              {currentCompany ? (
+                <div className="badge-primary badge-outline badge badge-xs">
+                  {currentCompany.name}
+                </div>
+              ) : null}
+            </li>
           </ul>
         </div>
       )}
