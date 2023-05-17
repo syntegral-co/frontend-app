@@ -87,11 +87,9 @@ function Theme() {
                       <summary>{qa.question}</summary>
                       <p className="mt-2 bg-base-100 p-4 italic">{qa.answer}</p>
                     </details>
-                    {/* <p>
-                      <Icon icon="help" size={16} />
-                      
-                    </p> */}
-                    <div className="divider"></div>
+                    {index + 1 < themeQAs.length ? (
+                      <div className="divider"></div>
+                    ) : null}
                   </li>
                 ))}
               </ol>
