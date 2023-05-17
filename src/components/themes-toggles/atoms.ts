@@ -75,8 +75,8 @@ export const qaState = selector({
 
     return response.data.map((question: any) => ({
       id: question[0],
-      companyId: question[1],
-      themeId: question[2],
+      themeId: question[1],
+      companyId: question[2],
       question: question[3],
       answer: question[4],
     })) as QA[]
