@@ -35,11 +35,11 @@ function ThemeChart({ theme, company }: ThemeChartProps) {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top' as const,
+        display: false,
       },
       title: {
         display: true,
-        text: `Companies comparison for ${theme.name}`,
+        text: `Peer Group Comparison for ${theme.name}`,
       },
     },
   }
@@ -60,7 +60,6 @@ function ThemeChart({ theme, company }: ThemeChartProps) {
     labels: labels.map((company) => company.name),
     datasets: [
       {
-        label: 'Score',
         data: scores.map((themeScore) => themeScore.score),
         backgroundColor: backgroundColors,
       },

@@ -18,7 +18,6 @@ const ACCOUNT_LINKS: NavbarLink[] = [
 
 function Nav() {
   const currentCompany = useCurrentCompany()
-  console.log('currentCompany: ', currentCompany)
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
     useAuth0()
 
@@ -92,10 +91,17 @@ function Nav() {
           </label>
           <ul
             tabIndex={0}
-            className="dropdown-content menu  menu-compact mt-3 w-52 bg-base-100 p-2 shadow"
+            className="dropdown-content menu menu-compact mt-3 w-52 rounded-md border-2 border-accent-focus bg-base-100 p-2 shadow"
           >
             {navLinksElement}
           </ul>
+        </div>
+        <div className="flex cursor-default items-center justify-center">
+          {currentCompany ? (
+            <div className="badge-primary badge-outline badge badge-xs p-2">
+              {currentCompany.name}
+            </div>
+          ) : null}
         </div>
       </div>
       {isAuthenticated && (
@@ -112,7 +118,7 @@ function Nav() {
           </ul>
         </div>
       )}
-      <div className="flex-none">
+      <div className="ml-auto flex-none gap-2">
         {isAuthenticated ? (
           <div className="dropdown dropdown-end">
             <div className="avatar cursor-pointer" tabIndex={0}>
@@ -122,7 +128,7 @@ function Nav() {
             </div>
             <ul
               tabIndex={0}
-              className="dropdown-content menu  w-52 bg-base-200 p-2 shadow"
+              className="dropdown-content menu w-52 rounded-md border-2 border-accent-focus bg-base-200 p-2 shadow"
             >
               <li>
                 <a

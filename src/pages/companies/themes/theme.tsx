@@ -20,7 +20,9 @@ function Theme() {
   const theme = useCurrentTheme()
   const QAs = useRecoilValue(qaState)
 
-  const themeQAs = QAs.filter((qa) => qa.themeId === theme!.id)
+  const themeQAs = QAs.filter(
+    (qa) => qa.companyId === currentCompany!.id && qa.themeId === theme!.id,
+  )
 
   const { onClickDocument } = useDrawer()
 
@@ -80,12 +82,14 @@ function Theme() {
               <h2 className="mb-4 text-2xl">Questions</h2>
               <ol className="mt-4 list-none pl-2">
                 {themeQAs.map((qa, index) => (
-                  <li className="cursor-pointer" key={index}>
-                    <p>
-                      <Icon icon="help" size={16} />
-                      <span className="italic">{qa.question}</span>
-                    </p>
-                    <p>{qa.answer}</p>
+                  <li className="mt-2 mb-4 cursor-pointer" key={index}>
+                    <details>
+                      <summary>{qa.question}</summary>
+                      <p className="mt-2 bg-base-100 p-4 italic">{qa.answer}</p>
+                    </details>
+                    {index + 1 < themeQAs.length ? (
+                      <div className="divider"></div>
+                    ) : null}
                   </li>
                 ))}
               </ol>
