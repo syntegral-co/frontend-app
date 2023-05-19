@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-      <div className="container mx-auto mt-4 flex h-screen flex-col py-6">
+      <div className="container mx-auto mt-4 flex h-screen flex-col py-6 px-4 md:px-0">
         <Suspense fallback={<Spinner />}>
           <Routes>
             <Route path="/" element={<Demo />}>

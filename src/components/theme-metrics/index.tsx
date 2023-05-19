@@ -20,7 +20,9 @@ function ThemeMetrics() {
     <div className="metrics">
       <ul>
         {themeMetricAnswers.map((metricAnswer) => {
-          const metric = metrics.find((metric) => metric.id === metricAnswer.id)
+          const metric = metrics.find(
+            (metric) => metric.id === metricAnswer.metricId,
+          )
 
           if (!metric) return null
 
