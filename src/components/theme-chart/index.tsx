@@ -32,6 +32,11 @@ function ThemeChart({ theme, company }: ThemeChartProps) {
   if (!scores.length) return <p className="text-md">No data available</p>
 
   const options = {
+    scales: {
+      y: {
+        max: 5,
+      },
+    },
     responsive: true,
     plugins: {
       legend: {
