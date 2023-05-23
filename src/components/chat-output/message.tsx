@@ -1,6 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { Interweave } from 'interweave'
-import { useDrawer } from '../document-drawer/hooks'
+import { useDocumentModal } from '../document-modal/hooks'
 import { ChatMessage } from './types'
 import logo from '/assets/images/syntegral.svg'
 
@@ -10,7 +10,7 @@ type ChatMessageProps = {
 
 function ChatMessage({ message }: ChatMessageProps) {
   const { user } = useAuth0()
-  const { onClickDocument } = useDrawer()
+  const { onClickDocument } = useDocumentModal()
 
   const { header, author, text, links, collapsible } = message
 

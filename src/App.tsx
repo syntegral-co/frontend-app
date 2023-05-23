@@ -10,7 +10,7 @@ import Company from './pages/companies'
 import Themes from './pages/companies/themes'
 import Theme from './pages/companies/themes/theme'
 import NotFound from './pages/404'
-import DocumentDrawer from './components/document-drawer'
+import DocumentModal from './components/document-modal'
 
 function App() {
   const { user } = useAuth0()
@@ -47,7 +47,6 @@ function App() {
           </Routes>
         </Suspense>
       </div>
-      <DocumentDrawer />
     </>
   )
 }

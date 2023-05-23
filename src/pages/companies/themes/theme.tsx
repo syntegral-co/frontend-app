@@ -3,12 +3,12 @@ import { useQuery } from '@tanstack/react-query'
 import { useRecoilValue } from 'recoil'
 import { useCurrentCompany } from '../hooks'
 import { useCurrentTheme } from './hooks'
-import { useDrawer } from '../../../components/document-drawer/hooks'
+import { useDocumentModal } from '../../../components/document-modal/hooks'
 import { getThemeSummary } from '../../../utils/api'
 import { qaState } from '../../../components/themes-toggles/atoms'
 import { formatReferences } from '../../../utils/helpers'
-import { DocumentLink } from '../../../components/document-drawer/types'
-import DocumentDrawer from '../../../components/document-drawer'
+import { DocumentLink } from '../../../components/document-modal/types'
+import DocumentModal from '../../../components/document-modal'
 import Spinner from '../../../components/spinner'
 import Icon from '../../../components/icon'
 import ThemeChart from '../../../components/theme-chart'
@@ -24,7 +24,7 @@ function Theme() {
     (qa) => qa.companyId === currentCompany!.id && qa.themeId === theme!.id,
   )
 
-  const { onClickDocument } = useDrawer()
+  const { onClickDocument } = useDocumentModal()
 
   const { data, fetchStatus } = useQuery({
     queryKey: ['impact_summary', theme!.id],
@@ -42,7 +42,7 @@ function Theme() {
 
   return (
     <>
-      <DocumentDrawer />
+      <DocumentModal />
       <div className="flex flex-col items-start justify-start gap-2 md:flex-row">
         <div className="flex w-full flex-col gap-2 md:w-1/2">
           <div className="rounded-md bg-base-200 p-4">
