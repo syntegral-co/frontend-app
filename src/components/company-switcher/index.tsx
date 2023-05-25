@@ -26,9 +26,11 @@ function CompanySwitcher() {
   return (
     <div className="flex h-96 w-full flex-col items-center justify-center self-center">
       <img className="h-40" src={logo} />
-      <h1 className="py-6 text-2xl font-bold text-primary-content">
+      <h2 className="py-6 text-center text-2xl font-bold text-primary-content">
+        Welcome to the Nigerian stock exchange demo.
+        <br />
         Choose a company to start exploring!
-      </h1>
+      </h2>
       <input
         type="text"
         placeholder="Type here"
@@ -46,7 +48,7 @@ function CompanySwitcher() {
                 key={company.id}
                 className="text-primary-content hover:text-accent"
               >
-                <NavLink to={`/companies/${company.id}/themes`}>
+                <NavLink to={`./companies/${company.id}/themes`}>
                   {company.name}
                 </NavLink>
               </li>

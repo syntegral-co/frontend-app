@@ -1,3 +1,4 @@
+import { useCurrentAsset } from '../asset-switcher/hooks'
 import { useCurrentCompany } from '../../pages/companies/hooks'
 import { useAuth0 } from '@auth0/auth0-react'
 import classnames from 'classnames'
@@ -17,6 +18,7 @@ const ACCOUNT_LINKS: NavbarLink[] = [
 ]
 
 function Nav() {
+  const currentAsset = useCurrentAsset()
   const currentCompany = useCurrentCompany()
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
     useAuth0()
@@ -26,18 +28,19 @@ function Nav() {
   const NAV_LINKS: NavbarLink[] = [
     {
       title: 'Discovery',
-      to: '/',
+      to: `/${currentAsset}`,
       icon: 'compass',
+      hidden: !currentAsset,
     },
     {
       title: 'Chat',
-      to: `/companies/${currentCompany?.id}`,
+      to: `${currentAsset}/companies/${currentCompany?.id}`,
       icon: 'bubbles',
       hidden: !currentCompany,
     },
     {
       title: 'Reporting',
-      to: `/companies/${currentCompany?.id}/themes`,
+      to: `${currentAsset}/companies/${currentCompany?.id}/themes`,
       icon: 'pie',
       hidden: !currentCompany,
     },
@@ -46,12 +49,14 @@ function Nav() {
       to: '/test',
       icon: 'cloud-download',
       disabled: true,
+      hidden: !currentCompany,
     },
     {
       title: 'Upload',
       to: '/test',
       icon: 'cloud-upload',
       disabled: true,
+      hidden: !currentCompany,
     },
   ]
 
