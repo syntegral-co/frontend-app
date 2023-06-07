@@ -2,7 +2,7 @@ import { useRecoilState } from 'recoil'
 import { documentState, drawerState } from './atoms'
 import { DocumentLink } from './types'
 
-export function useDrawer() {
+export function useDocumentModal() {
   const [isOpen, setIsOpen] = useRecoilState(drawerState)
   const [document, setDocument] = useRecoilState(documentState)
 
@@ -16,13 +16,13 @@ export function useDrawer() {
     }
   }
 
-  function toggleDrawer() {
+  function toggleDocumentModal() {
     setIsOpen((isOpen) => !isOpen)
   }
 
   return {
-    isDrawerOpen: isOpen,
-    toggleDrawer,
+    isDocumentModalOpen: isOpen,
+    toggleDocumentModal,
     onClickDocument: documentLinkHandler,
   }
 }
