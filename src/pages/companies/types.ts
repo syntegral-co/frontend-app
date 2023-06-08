@@ -10,21 +10,21 @@ export type Category = {
 
 export type Theme = {
   id: number
-  categoryId: number
+  categoryId: Pick<Category, 'id'>
   name: string
   definition: string
 }
 
 export type ThemeScore = {
   companyId: number
-  themeId: number
+  themeId: Pick<Theme, 'id'>
   score: number
 }
 
 export type QA = {
   id: number
-  companyId: number
-  themeId: number
+  companyId: Pick<Category, 'id'>
+  themeId: Pick<Theme, 'id'>
   question: string
   answer: string
 }
