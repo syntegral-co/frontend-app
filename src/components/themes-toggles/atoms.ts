@@ -1,11 +1,34 @@
 import { atom, selector } from 'recoil'
 import {
+  getAssets,
   getCategories,
   getThemesQA,
   getThemes,
   getThemesScores,
 } from '../../utils/api'
-import { Category, QA, Theme, ThemeScore } from '../../pages/companies/types'
+import {
+  Asset,
+  Category,
+  QA,
+  Theme,
+  ThemeScore,
+} from '../../pages/companies/types'
+
+export const assetsState = selector({
+  key: 'assets',
+  get: async () => {
+    const response = await getAssets()
+
+    if (!response.data) {
+      return []
+    }
+
+    return response.data.map((asset: any) => ({
+      id: asset[0],
+      name: asset[1],
+    })) as Asset[]
+  },
+})
 
 export const categoriesState = selector({
   key: 'categories',
@@ -34,9 +57,10 @@ export const themesState = selector({
 
     return response.data.map((theme: any) => ({
       id: theme[0],
-      categoryId: theme[1],
-      name: theme[2],
-      definition: theme[3],
+      assetId: theme[1],
+      categoryId: theme[2],
+      name: theme[3],
+      definition: theme[4],
     })) as Theme[]
   },
 })
