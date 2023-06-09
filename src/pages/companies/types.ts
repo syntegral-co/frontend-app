@@ -1,3 +1,8 @@
+export type Asset = {
+  id: number
+  name: string
+}
+
 export type Company = {
   id: number
   name: string
@@ -10,21 +15,22 @@ export type Category = {
 
 export type Theme = {
   id: number
-  categoryId: Pick<Category, 'id'>
+  assetId: Asset['id']
+  categoryId: Category['id']
   name: string
   definition: string
 }
 
 export type ThemeScore = {
   companyId: number
-  themeId: Pick<Theme, 'id'>
+  themeId: Theme['id']
   score: number
 }
 
 export type QA = {
   id: number
-  companyId: Pick<Category, 'id'>
-  themeId: Pick<Theme, 'id'>
+  companyId: Company['id']
+  themeId: Theme['id']
   question: string
   answer: string
 }
