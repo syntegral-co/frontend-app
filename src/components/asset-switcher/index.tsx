@@ -1,6 +1,8 @@
-import { NavLink } from 'react-router-dom'
+import { useRecoilValue } from 'recoil'
+import { assetsState } from './atom'
 import classnames from 'classnames'
 import { NavbarLink } from '../nav/types'
+import { NavLink } from 'react-router-dom'
 import logo from '/assets/images/syntegral-white.png'
 import equity from '/assets/images/trend.png'
 import digital from '/assets/images/digital.png'
@@ -9,24 +11,26 @@ import real from '/assets/images/real-estate.png'
 const ASSET_LINKS: NavbarLink[] = [
   {
     title: 'Equities',
-    to: './equities',
+    to: './assets/1',
     icon: equity,
   },
   {
     title: 'Digital assets',
-    to: './digital',
+    to: './assets/2',
     disabled: true,
     icon: digital,
   },
   {
     title: 'Real estate',
-    to: './real',
+    to: './assets/3',
     disabled: true,
     icon: real,
   },
 ]
 
 function AssetSwitcher() {
+  const assets = useRecoilValue(assetsState)
+
   const assetLinksElement = ASSET_LINKS.map(({ title, to, disabled, icon }) => {
     return (
       <NavLink

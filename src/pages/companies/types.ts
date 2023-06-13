@@ -1,10 +1,8 @@
-export type Asset = {
-  id: number
-  name: string
-}
+import { Asset } from '../../components/asset-switcher/types'
 
 export type Company = {
   id: number
+  assetId: Asset['id']
   name: string
 }
 
