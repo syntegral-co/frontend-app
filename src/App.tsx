@@ -35,19 +35,19 @@ function App() {
       <div className="container mx-auto mt-4 flex h-screen flex-col py-6 px-4 md:px-0">
         <Suspense fallback={<Spinner />}>
           <Routes>
-            <Route path="/" element={<Demo />}>
+            <Route path="/swigco?" element={<Demo />}>
               <Route index element={<AssetSwitcher />} />
-              <Route path="/assets/:asset" element={<CompanySwitcher />} />
+              <Route path="assets/:asset" element={<CompanySwitcher />} />
               <Route
-                path="/assets/:asset/companies/:company"
+                path="assets/:asset/companies/:company"
                 element={<Company />}
               />
               <Route
-                path="/assets/:asset/companies/:company/themes"
+                path="assets/:asset/companies/:company/themes"
                 element={<Themes />}
               />
               <Route
-                path="/assets/:asset/companies/:company/themes/:theme"
+                path="assets/:asset/companies/:company/themes/:theme"
                 element={<Theme />}
               />
             </Route>
