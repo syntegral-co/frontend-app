@@ -23,6 +23,7 @@ const ASSET_LINKS: NavbarLink[] = [
   {
     title: 'Real estate',
     to: './assets/3',
+    disabled: true,
     icon: real,
   },
 ]
