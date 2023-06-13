@@ -28,9 +28,8 @@ function Nav() {
   const NAV_LINKS: NavbarLink[] = [
     {
       title: 'Discovery',
-      to: `/${currentAsset}`,
+      to: `/`,
       icon: 'compass',
-      hidden: !currentAsset,
     },
     {
       title: 'Chat',
@@ -46,17 +45,15 @@ function Nav() {
     },
     {
       title: 'Download',
-      to: '/test',
+      to: '/download',
       icon: 'cloud-download',
       disabled: true,
-      hidden: !currentCompany,
     },
     {
       title: 'Upload',
-      to: '/test',
+      to: '/upload',
       icon: 'cloud-upload',
       disabled: true,
-      hidden: !currentCompany,
     },
   ]
 

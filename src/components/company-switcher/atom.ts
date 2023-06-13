@@ -13,7 +13,8 @@ export const companiesState = selector({
 
     return response.data.map((category: any) => ({
       id: category[0],
-      name: category[1],
+      assetId: category[1],
+      name: category[2],
     })) as Company[]
   },
 })

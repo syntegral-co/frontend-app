@@ -10,6 +10,7 @@ import Spinner from './components/spinner'
 import Company from './pages/companies'
 import Themes from './pages/companies/themes'
 import Theme from './pages/companies/themes/theme'
+import Upload from './pages/upload'
 import NotFound from './pages/404'
 
 function App() {
@@ -36,17 +37,21 @@ function App() {
           <Routes>
             <Route path="/" element={<Demo />}>
               <Route index element={<AssetSwitcher />} />
-              <Route path=":asset" element={<CompanySwitcher />} />
-              <Route path=":asset/companies/:company" element={<Company />} />
+              <Route path="/assets/:asset" element={<CompanySwitcher />} />
               <Route
-                path=":asset/companies/:company/themes"
+                path="/assets/:asset/companies/:company"
+                element={<Company />}
+              />
+              <Route
+                path="/assets/:asset/companies/:company/themes"
                 element={<Themes />}
               />
               <Route
-                path=":asset/companies/:company/themes/:theme"
+                path="/assets/:asset/companies/:company/themes/:theme"
                 element={<Theme />}
               />
             </Route>
+            <Route path="upload" element={<Upload />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

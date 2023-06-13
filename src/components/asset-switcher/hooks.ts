@@ -1,9 +1,12 @@
+import { useRecoilValue } from 'recoil'
 import { useParams } from 'react-router-dom'
+import { assetsState } from './atom'
 
 export function useCurrentAsset() {
-  const { asset } = useParams()
+  const assets = useRecoilValue(assetsState)
+  const { asset: assetParam } = useParams()
 
-  if (!asset) return null
+  if (!assetParam) return null
 
-  return asset
+  return assets.find((asset) => asset.id === parseInt(assetParam))
 }

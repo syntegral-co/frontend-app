@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
+import { useCurrentAsset } from '../asset-switcher/hooks'
 import { companiesState } from './atom'
 import { v4 as uuidv4 } from 'uuid'
 import { NavLink } from 'react-router-dom'
@@ -15,6 +16,7 @@ function isCompanyInSearchTerm(
 
 function CompanySwitcher() {
   const [searchTerm, setSearchTerm] = useState('')
+  const currentAsset = useCurrentAsset()
   const companies = useRecoilValue(companiesState)
 
   useEffect(() => {
@@ -40,8 +42,10 @@ function CompanySwitcher() {
       {searchTerm !== '' && (
         <ul className="menu w-full max-w-xs border border-base-200 bg-base-100 p-4 shadow-md">
           {companies
-            .filter((company: Company) =>
-              isCompanyInSearchTerm(company, searchTerm),
+            .filter(
+              (company: Company) =>
+                company.assetId === currentAsset!.id &&
+                isCompanyInSearchTerm(company, searchTerm),
             )
             .map((company: Company) => (
               <li
