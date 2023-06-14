@@ -11,7 +11,7 @@ import { ChatMessage } from '../chat-output/types'
 export function useChatBot() {
   const [chatInput, setChatInput] = useState<string>('')
   const [chatMessages, setChatMessages] = useRecoilState(chatState)
-  const isSwigcoDemo = useIsSwigcoDemo()
+  const isSwigcoDemo = useIsSwigcoDemo(false)
   const currentCompany = useCurrentCompany()
 
   const {
