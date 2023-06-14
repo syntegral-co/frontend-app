@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { useIsFetching, useQueries, useQuery } from '@tanstack/react-query'
-import { useCurrentCompany } from '../../pages/companies/hooks'
+import { useCurrentCompany, useIsSwigcoDemo } from '../../pages/companies/hooks'
 import { chatState } from './atoms'
 import { chat, getChatMetrics } from '../../utils/api'
 import { formatReferences } from '../../utils/helpers'
@@ -11,6 +11,7 @@ import { ChatMessage } from '../chat-output/types'
 export function useChatBot() {
   const [chatInput, setChatInput] = useState<string>('')
   const [chatMessages, setChatMessages] = useRecoilState(chatState)
+  const isSwigcoDemo = useIsSwigcoDemo()
   const currentCompany = useCurrentCompany()
 
   const {
@@ -33,6 +34,7 @@ export function useChatBot() {
         queryFn: () => getChatMetrics('iris', chatbotReply!.answer),
         staleTime: Infinity,
         enabled:
+          !isSwigcoDemo &&
           status === 'success' &&
           chatbotReply &&
           chatbotReply.status === 'successful',
@@ -42,6 +44,7 @@ export function useChatBot() {
         queryFn: () => getChatMetrics('sdg', chatbotReply!.answer),
         staleTime: Infinity,
         enabled:
+          !isSwigcoDemo &&
           status === 'success' &&
           chatbotReply &&
           chatbotReply.status === 'successful',
