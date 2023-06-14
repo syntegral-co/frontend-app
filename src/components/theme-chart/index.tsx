@@ -29,7 +29,7 @@ function ThemeChart({ theme, company }: ThemeChartProps) {
 
   const scoresCompaniesIds = scores.map((score) => score.companyId)
 
-  if (!scores.length) return <p className="text-md">No data available</p>
+  if (!scores.length) return null
 
   const options = {
     scales: {
@@ -71,7 +71,11 @@ function ThemeChart({ theme, company }: ThemeChartProps) {
     ],
   }
 
-  return <Bar options={options} data={data} />
+  return (
+    <div className="rounded-md bg-base-200 p-4">
+      <Bar options={options} data={data} />
+    </div>
+  )
 }
 
 export default ThemeChart
