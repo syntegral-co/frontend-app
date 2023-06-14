@@ -25,3 +25,7 @@ export function getThemeScore(themeId: number, scores: any[]) {
 
   return themeScore.score
 }
+
+export function delay(ms: number) {
+  return new Promise((res) => setTimeout(res, ms))
+}
