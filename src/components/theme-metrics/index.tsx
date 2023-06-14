@@ -16,32 +16,39 @@ function ThemeMetrics() {
       metricAnswer.themeId === theme!.id,
   )
 
+  if (!themeMetricAnswers || !themeMetricAnswers.length) return null
+
   return (
-    <div className="metrics">
-      <ul>
-        {themeMetricAnswers.map((metricAnswer) => {
-          const metric = metrics.find(
-            (metric) => metric.id === metricAnswer.metricId,
-          )
+    <div className="rounded-md bg-base-200 p-4">
+      <h2 className="mb-4 text-2xl">Metrics</h2>
+      <div className="metrics">
+        <ul>
+          {themeMetricAnswers.map((metricAnswer) => {
+            const metric = metrics.find(
+              (metric) => metric.id === metricAnswer.metricId,
+            )
 
-          if (!metric) return null
+            if (!metric) return null
 
-          return (
-            <li key={metricAnswer.id} className="text-md my-4">
-              <div className="flex flex-row flex-wrap items-center justify-between">
-                <p>
-                  <Icon className="text-primary-focus" icon="pie" size={16} />{' '}
-                  {metric.name}
-                </p>
-                <p className="text-right text-xs text-accent opacity-90">
-                  {metric.code}
-                </p>
-              </div>
-              <q className="ml-6 text-lg">{metricAnswer.answer}</q>
-            </li>
-          )
-        })}
-      </ul>
+            return (
+              <li key={metricAnswer.id} className="text-md my-4">
+                <div className="flex flex-row flex-wrap items-center justify-between">
+                  <p>
+                    <Icon className="text-primary-focus" icon="pie" size={16} />{' '}
+                    {metric.name}
+                  </p>
+                  <p className="text-right text-xs text-accent opacity-90">
+                    {metric.code}
+                  </p>
+                </div>
+                {metricAnswer.answer !== 'Undisclosed/Unknown' && (
+                  <q className="ml-6 text-lg">{metricAnswer.answer}</q>
+                )}
+              </li>
+            )
+          })}
+        </ul>
+      </div>
     </div>
   )
 }
