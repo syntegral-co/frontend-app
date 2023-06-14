@@ -1,5 +1,5 @@
 import { useCurrentAsset } from '../asset-switcher/hooks'
-import { useCurrentCompany } from '../../pages/companies/hooks'
+import { useCurrentCompany, useIsSwigcoDemo } from '../../pages/companies/hooks'
 import { useAuth0 } from '@auth0/auth0-react'
 import classnames from 'classnames'
 import { NavLink } from 'react-router-dom'
@@ -18,6 +18,7 @@ const ACCOUNT_LINKS: NavbarLink[] = [
 ]
 
 function Nav() {
+  const isSwigcoDemo = useIsSwigcoDemo(false)
   const currentAsset = useCurrentAsset()
   const currentCompany = useCurrentCompany()
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
@@ -28,20 +29,20 @@ function Nav() {
   const NAV_LINKS: NavbarLink[] = [
     {
       title: 'Discovery',
-      to: `/`,
+      to: isSwigcoDemo ? '/swigco' : '/',
       icon: 'compass',
     },
     {
       title: 'Chat',
-      to: `${currentAsset}/companies/${currentCompany?.id}`,
+      to: `assets/${currentAsset?.id}/companies/${currentCompany?.id}`,
       icon: 'bubbles',
-      hidden: !currentCompany,
+      hidden: !currentAsset || !currentCompany,
     },
     {
       title: 'Reporting',
-      to: `${currentAsset}/companies/${currentCompany?.id}/themes`,
+      to: `assets/${currentAsset?.id}/companies/${currentCompany?.id}/themes`,
       icon: 'pie',
-      hidden: !currentCompany,
+      hidden: !currentAsset || !currentCompany,
     },
     {
       title: 'Download',

@@ -1,15 +1,12 @@
 import classnames from 'classnames'
 import { NavbarLink } from '../nav/types'
-import { NavLink, matchPath, useLocation } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import logo from '/assets/images/syntegral-white.png'
 import equity from '/assets/images/trend.png'
 import digital from '/assets/images/digital.png'
 import real from '/assets/images/real-estate.png'
 
 function AssetSwitcher() {
-  const { pathname } = useLocation()
-  const isSwigcoPath = matchPath('/swigco/*', pathname) !== null
-
   const ASSET_LINKS: NavbarLink[] = [
     {
       title: 'Equities',
@@ -25,7 +22,7 @@ function AssetSwitcher() {
     {
       title: 'Real estate',
       to: './assets/3',
-      disabled: !isSwigcoPath,
+      disabled: true,
       icon: real,
     },
   ]

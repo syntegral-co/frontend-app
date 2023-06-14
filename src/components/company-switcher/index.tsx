@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
+import { useIsSwigcoDemo } from '../../pages/companies/hooks'
 import { useCurrentAsset } from '../asset-switcher/hooks'
 import { companiesState } from './atom'
 import { v4 as uuidv4 } from 'uuid'
@@ -16,6 +17,7 @@ function isCompanyInSearchTerm(
 
 function CompanySwitcher() {
   const [searchTerm, setSearchTerm] = useState('')
+  const isSwigcoDemo = useIsSwigcoDemo(false)
   const currentAsset = useCurrentAsset()
   const companies = useRecoilValue(companiesState)
 
@@ -25,13 +27,24 @@ function CompanySwitcher() {
     localStorage.setItem('sessionId', sessionId)
   }, [])
 
+  const welcomeText = isSwigcoDemo ? (
+    <>
+      Welcome to your real asset due diligence portal. <br />
+      Choose your asset to start.
+    </>
+  ) : (
+    <>
+      Welcome to the Nigerian stock exchange demo.
+      <br />
+      Choose a company to start exploring!
+    </>
+  )
+
   return (
     <div className="flex h-96 w-full flex-col items-center justify-center self-center">
       <img className="h-40" src={logo} />
       <h2 className="py-6 text-center text-2xl font-bold text-primary-content">
-        Welcome to the Nigerian stock exchange demo.
-        <br />
-        Choose a company to start exploring!
+        {welcomeText}
       </h2>
       <input
         type="text"
