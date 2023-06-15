@@ -16,6 +16,7 @@ import ThemeMetrics from '../../../components/theme-metrics'
 
 function Theme() {
   const [references, setReferences] = useState<DocumentLink[]>([])
+  console.log('references: ', references)
   const currentCompany = useCurrentCompany()
   const theme = useCurrentTheme()
   const QAs = useRecoilValue(qaState)
@@ -34,6 +35,7 @@ function Theme() {
 
   useEffect(() => {
     if (!data || !data.references) return
+    console.log('data: ', data)
 
     setReferences(formatReferences(data!.references!))
   }, [data])
@@ -61,7 +63,7 @@ function Theme() {
                   >
                     <Icon icon="file-pdf" size={16} />
                     <span className="ml-2 italic text-secondary hover:underline">
-                      {link.name}
+                      {link.name}, page {link.page}
                     </span>
                   </li>
                 ))}

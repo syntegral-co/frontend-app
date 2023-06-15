@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, KeyboardEvent, useRef, useState } from 'react'
 import { useChatBot } from './hooks'
 import { z, ZodFormattedError } from 'zod'
 
@@ -7,11 +7,22 @@ const chatSchema = z.object({
 })
 
 function ChatInput() {
-  const [formErrors, setFormErrors] = useState<
-    ZodFormattedError<typeof chatSchema>
-  >({} as ZodFormattedError<typeof chatSchema>)
+  const textAreaRef = useRef<HTMLTextAreaElement>(null)
+  const submitButtonRef = useRef<HTMLButtonElement>(null)
+  // const [formErrors, setFormErrors] = useState<
+  //   ZodFormattedError<typeof chatSchema>
+  // >({} as ZodFormattedError<typeof chatSchema>)
 
   const { sendMessage } = useChatBot()
+
+  const handleKeyDownEvent = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (!submitButtonRef.current) return
+
+    if (event.key === 'Enter' && !event.shiftKey) {
+      submitButtonRef.current.click()
+      textAreaRef!.current!.value = ''
+    }
+  }
 
   const submitForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -22,14 +33,14 @@ function ChatInput() {
     const parsedResults = chatSchema.safeParse(formObject)
 
     if (!parsedResults.success) {
-      setFormErrors(parsedResults.error.format())
+      //setFormErrors(parsedResults.error.format())
       return
     }
 
-    sendMessage(parsedResults.data.text)
+    sendMessage(parsedResults.data.text.trim())
     event.currentTarget.reset()
 
-    setFormErrors({} as ZodFormattedError<typeof chatSchema>)
+    //setFormErrors({} as ZodFormattedError<typeof chatSchema>)
   }
 
   return (
@@ -38,11 +49,14 @@ function ChatInput() {
       className="relative flex w-full flex-row flex-nowrap gap-2 shadow-md"
     >
       <textarea
+        ref={textAreaRef}
         className="textarea h-8 w-full resize-none rounded-none bg-base-100"
         name="text"
         placeholder="What's on your mind?"
+        onKeyDown={handleKeyDownEvent}
       />
       <button
+        ref={submitButtonRef}
         className="btn absolute right-0 gap-2 rounded-none border-none text-accent"
         type="submit"
       >

@@ -1,4 +1,4 @@
-import { useCurrentCompany } from '../../pages/companies/hooks'
+import { useCurrentCompany, useIsSwigcoDemo } from '../../pages/companies/hooks'
 import { useThemes } from '../themes-toggles/hooks'
 import { useRecoilValue } from 'recoil'
 import { categoriesState } from '../themes-toggles/atoms'
@@ -7,6 +7,7 @@ import Ratings from '../ratings'
 import { getThemeScore } from '../../utils/helpers'
 
 function ThemesList() {
+  const isSwigcoDemo = useIsSwigcoDemo(false)
   const currentCompany = useCurrentCompany()
   const { themes, scores, selectedThemes } = useThemes()
   const categories = useRecoilValue(categoriesState)
@@ -41,13 +42,15 @@ function ThemesList() {
                   </div>
                 </div>
                 <div className="stat-value">
-                  <Ratings
-                    id={theme.id}
-                    rating={getThemeScore(theme.id, companyScores)}
-                  />
+                  {!isSwigcoDemo && (
+                    <Ratings
+                      id={theme.id}
+                      rating={getThemeScore(theme.id, companyScores)}
+                    />
+                  )}
                 </div>
                 <div className="stat-title w-2/3 overflow-hidden text-ellipsis">
-                  {theme.name}...
+                  {theme.name}
                 </div>
                 <div className="stat-desc italic text-accent">
                   {
