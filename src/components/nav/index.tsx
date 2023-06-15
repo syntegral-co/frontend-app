@@ -94,14 +94,14 @@ function Nav() {
           </label>
           <ul
             tabIndex={0}
-            className="dropdown-content menu menu-compact mt-3 w-52 rounded-md border-2 border-accent-focus bg-base-100 p-2 shadow"
+            className="menu-compact dropdown-content menu mt-3 w-52 rounded-md border-2 border-accent-focus bg-base-100 p-2 shadow"
           >
             {navLinksElement}
           </ul>
         </div>
         <div className="flex cursor-default items-center justify-center">
           {currentCompany ? (
-            <div className="badge-primary badge-outline badge badge-xs p-2">
+            <div className="badge badge-primary badge-outline badge-xs p-2">
               {currentCompany.name}
             </div>
           ) : null}
@@ -113,7 +113,7 @@ function Nav() {
             {navLinksElement}
             <li className="pointer-events-none flex items-center justify-center">
               {currentCompany ? (
-                <div className="badge-primary badge-outline badge badge-xs">
+                <div className="badge badge-primary badge-outline badge-xs flex">
                   {currentCompany.name}
                 </div>
               ) : null}
@@ -123,7 +123,7 @@ function Nav() {
       )}
       <div className="ml-auto flex-none gap-2">
         {isAuthenticated ? (
-          <div className="dropdown dropdown-end">
+          <div className="dropdown-end dropdown">
             <div className="avatar cursor-pointer" tabIndex={0}>
               <div className="mask mask-hexagon w-8 rounded-full">
                 <img src={user?.picture} />
