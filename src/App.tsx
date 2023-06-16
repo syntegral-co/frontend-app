@@ -11,6 +11,7 @@ import Asset from './pages/assets'
 import Themes from './pages/assets/themes'
 import Theme from './pages/assets/themes/theme'
 import Upload from './pages/upload'
+import Download from './pages/download'
 import NotFound from './pages/404'
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
               />
             </Route>
             <Route path="upload" element={<Upload />} />
+            <Route path="swigco?/download/:asset" element={<Download />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
