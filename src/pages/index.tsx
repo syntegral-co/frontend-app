@@ -1,4 +1,4 @@
-import { useIsSwigcoDemo } from './companies/hooks'
+import { useIsSwigcoDemo } from './assets/hooks'
 import { Navigate, Outlet } from 'react-router-dom'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 import Nav from '../components/nav'

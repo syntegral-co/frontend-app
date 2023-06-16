@@ -31,14 +31,14 @@ async function callAPI(endpoint: string, analyticsOptions?: AnalyticsOptions) {
   }
 }
 
-export async function chat(message: string, companyId: number) {
+export async function chat(message: string, assetId: number) {
   const APIUrl = `${
     import.meta.env.VITE_CHATBOT_API_BASEPATH
-  }/chatbot?question=${message}&company_id=${companyId}`
+  }/chatbot?question=${message}&asset_id=${assetId}`
   const data = await callAPI(APIUrl, {
     type: 'chatbot',
     question: message,
-    companyId: companyId.toString(),
+    assetId: assetId.toString(),
   })
 
   return data
@@ -73,19 +73,19 @@ export async function getChatMetrics(
   return data
 }
 
-export async function getCompanies() {
-  const APIUrl = `${import.meta.env.VITE_IMPACT_API_BASEPATH}/company`
+export async function getAssets() {
+  const APIUrl = `${import.meta.env.VITE_IMPACT_API_BASEPATH}/asset`
   const data = await callAPI(APIUrl, {
-    type: 'company',
+    type: 'asset',
   })
 
   return data
 }
 
-export async function getAssets() {
-  const APIUrl = `${import.meta.env.VITE_IMPACT_API_BASEPATH}/asset`
+export async function getAssetClasses() {
+  const APIUrl = `${import.meta.env.VITE_IMPACT_API_BASEPATH}/asset_class`
   const data = await callAPI(APIUrl, {
-    type: 'asset',
+    type: 'asset_class',
   })
 
   return data
@@ -118,13 +118,13 @@ export async function getThemesScores() {
   return data
 }
 
-export async function getThemeSummary(companyId: number, themeId: number) {
+export async function getThemeSummary(assetId: number, themeId: number) {
   const APIUrl = `${
     import.meta.env.VITE_IMPACT_API_BASEPATH
-  }/theme_summary?company_id=${companyId}&theme_id=${themeId}`
+  }/theme_summary?asset_id=${assetId}&theme_id=${themeId}`
   const data = await callAPI(APIUrl, {
     type: 'theme_summary',
-    companyId: companyId.toString(),
+    assetId: assetId.toString(),
     themeId: themeId.toString(),
   })
 

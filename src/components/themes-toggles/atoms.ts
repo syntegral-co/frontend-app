@@ -5,7 +5,7 @@ import {
   getThemes,
   getThemesScores,
 } from '../../utils/api'
-import { Category, QA, Theme, ThemeScore } from '../../pages/companies/types'
+import { Category, QA, Theme, ThemeScore } from '../../pages/assets/types'
 
 export const categoriesState = selector({
   key: 'categories',
@@ -58,7 +58,7 @@ export const themesScoresState = selector({
 
     return response.data.map((score: any) => ({
       id: score[0],
-      companyId: score[1],
+      assetId: score[1],
       themeId: score[2],
       score: score[3],
     })) as ThemeScore[]
@@ -77,7 +77,7 @@ export const qaState = selector({
     return response.data.map((question: any) => ({
       id: question[0],
       themeId: question[1],
-      companyId: question[2],
+      assetId: question[2],
       question: question[3],
       answer: question[4],
       references: question[5],

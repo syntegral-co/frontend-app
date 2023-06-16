@@ -1,19 +1,20 @@
 import { useRecoilValue } from 'recoil'
-import { useCurrentCompany, useIsSwigcoDemo } from '../../pages/companies/hooks'
+import { useCurrentAsset, useIsSwigcoDemo } from '../../pages/assets/hooks'
 import { useThemes } from '../themes-toggles/hooks'
 import { useNavigate } from 'react-router-dom'
 import { categoriesState } from '../themes-toggles/atoms'
 import Ratings from '../ratings'
 import { getThemeScore } from '../../utils/helpers'
+import { ThemeScore } from '../../pages/assets/types'
 
 function ThemesTable() {
   const isSwigcoDemo = useIsSwigcoDemo(false)
-  const currentCompany = useCurrentCompany()
+  const currentAsset = useCurrentAsset()
   const { themes, scores, selectedThemes } = useThemes()
   const categories = useRecoilValue(categoriesState)
 
-  const companyScores = scores.filter(
-    (score: any) => score.companyId === currentCompany!.id,
+  const assetScore = scores.filter(
+    (score: ThemeScore) => score.assetId === currentAsset!.id,
   )
 
   const navigate = useNavigate()
@@ -48,7 +49,7 @@ function ThemesTable() {
                   <td>
                     <Ratings
                       id={theme.id}
-                      rating={getThemeScore(theme.id, companyScores)}
+                      rating={getThemeScore(theme.id, assetScore)}
                     />
                   </td>
                 )}

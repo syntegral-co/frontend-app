@@ -1,19 +1,20 @@
-import { useCurrentCompany, useIsSwigcoDemo } from '../../pages/companies/hooks'
+import { useCurrentAsset, useIsSwigcoDemo } from '../../pages/assets/hooks'
 import { useThemes } from '../themes-toggles/hooks'
 import { useRecoilValue } from 'recoil'
 import { categoriesState } from '../themes-toggles/atoms'
 import { NavLink } from 'react-router-dom'
 import Ratings from '../ratings'
 import { getThemeScore } from '../../utils/helpers'
+import { ThemeScore } from '../../pages/assets/types'
 
 function ThemesList() {
   const isSwigcoDemo = useIsSwigcoDemo(false)
-  const currentCompany = useCurrentCompany()
+  const currentAsset = useCurrentAsset()
   const { themes, scores, selectedThemes } = useThemes()
   const categories = useRecoilValue(categoriesState)
 
-  const companyScores = scores.filter(
-    (score: any) => score.companyId === currentCompany!.id,
+  const assetScore = scores.filter(
+    (score: ThemeScore) => score.assetId === currentAsset!.id,
   )
 
   return (
@@ -45,7 +46,7 @@ function ThemesList() {
                   {!isSwigcoDemo && (
                     <Ratings
                       id={theme.id}
-                      rating={getThemeScore(theme.id, companyScores)}
+                      rating={getThemeScore(theme.id, assetScore)}
                     />
                   )}
                 </div>

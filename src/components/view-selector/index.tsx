@@ -17,7 +17,7 @@ function ViewSelector() {
       <div className="flex flex-row flex-nowrap gap-2">
         {/* <Icon icon="zoom-in" size={24} />
         <label className="inline-block" htmlFor="themes">
-          Compare company
+          Compare asset
         </label> */}
       </div>
       <div className="flex flex-row flex-nowrap gap-2">

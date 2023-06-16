@@ -1,3 +1,5 @@
+import { Asset, Theme } from '../../pages/assets/types'
+
 export type Metric = {
   id: number
   code: string
@@ -6,8 +8,8 @@ export type Metric = {
 
 export type MetricAnswer = {
   id: number
-  companyId: number
-  themeId: number
-  metricId: number
+  assetId: Asset['id']
+  themeId: Theme['id']
+  metricId: Metric['id']
   answer: string
 }

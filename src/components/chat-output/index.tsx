@@ -1,4 +1,4 @@
-import { useCurrentCompany } from '../../pages/companies/hooks'
+import { useCurrentAsset } from '../../pages/assets/hooks'
 import { useChatBot } from '../chat-input/hooks'
 import { Outlet } from 'react-router-dom'
 import ChatMessage from './message'
@@ -7,7 +7,7 @@ import Loader from '../loader'
 import logo from '/assets/images/syntegral.svg'
 
 function ChatOutput() {
-  const company = useCurrentCompany()
+  const currentAsset = useCurrentAsset()
   const { chatMessages, isLoading, isMetricsLoading } = useChatBot()
 
   return (
@@ -21,7 +21,8 @@ function ChatOutput() {
             </div>
           </div>
           <div className="chat-bubble bg-base-100 text-primary-content">
-            Hello! Ask me anything you'd like to know about {company!.name}!
+            Hello! Ask me anything you'd like to know about {currentAsset!.name}
+            !
           </div>
         </div>
         {chatMessages.map((message, index) => (
