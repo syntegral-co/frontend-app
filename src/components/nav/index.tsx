@@ -27,6 +27,9 @@ function Nav() {
 
   if (isLoading) return null
 
+  const isSwigcoDownloadEnabled =
+    isSwigcoDemo && (currentAsset ? currentAsset.id === 19 : false)
+
   const NAV_LINKS: NavbarLink[] = [
     {
       title: 'Discovery',
@@ -47,9 +50,9 @@ function Nav() {
     },
     {
       title: 'Download',
-      to: '/download',
+      to: `./download/${currentAsset?.id}`,
       icon: 'cloud-download',
-      disabled: true,
+      disabled: !isSwigcoDownloadEnabled,
     },
     {
       title: 'Upload',
@@ -63,7 +66,10 @@ function Nav() {
     ({ title, to, icon, disabled, hidden }, index) => (
       <li
         key={index}
-        className={classnames({ hidden: hidden, disabled: disabled })}
+        className={classnames({
+          hidden: hidden,
+          'disabled pointer-events-none': disabled,
+        })}
       >
         <NavLink to={to} end>
           <Icon icon={icon!} size={20} />
