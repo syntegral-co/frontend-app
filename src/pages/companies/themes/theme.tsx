@@ -35,7 +35,6 @@ function Theme() {
 
   useEffect(() => {
     if (!data || !data.references) return
-    console.log('data: ', data)
 
     setReferences(formatReferences(data!.references!))
   }, [data])
@@ -50,26 +49,26 @@ function Theme() {
           <div className="rounded-md bg-base-200 p-4">
             <h1 className="mb-4 text-3xl text-accent">{theme!.name}</h1>
             <p>{data.summary}</p>
+            {references.length > 0 ? (
+              <>
+                <h2 className="mt-4 mb-4 text-2xl">References</h2>
+                <ol className="mt-4 list-none pl-2">
+                  {references.map((link, index) => (
+                    <li
+                      className="cursor-pointer"
+                      onClick={() => onClickDocument(link)}
+                      key={index}
+                    >
+                      <Icon icon="file-pdf" size={16} />
+                      <span className="ml-2 italic text-secondary hover:underline">
+                        {link.name}, page {link.page}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+              </>
+            ) : null}
           </div>
-          {references.length > 0 ? (
-            <div className="rounded-md bg-base-200 p-4">
-              <h2 className="mb-4 text-2xl">Documents</h2>
-              <ol className="mt-4 list-none pl-2">
-                {references.map((link, index) => (
-                  <li
-                    className="cursor-pointer"
-                    onClick={() => onClickDocument(link)}
-                    key={index}
-                  >
-                    <Icon icon="file-pdf" size={16} />
-                    <span className="ml-2 italic text-secondary hover:underline">
-                      {link.name}, page {link.page}
-                    </span>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          ) : null}
         </div>
         <div className="flex w-full flex-col gap-2 md:w-1/2">
           <ThemeMetrics />
