@@ -1,8 +1,8 @@
 import { selector } from 'recoil'
 import { getAssets } from '../../utils/api'
-import { Asset } from './types'
+import { Asset } from '../../pages/assets/types'
 
-export const assetsState = selector({
+export const AssetsState = selector({
   key: 'assets',
   get: async () => {
     const response = await getAssets()
@@ -13,7 +13,8 @@ export const assetsState = selector({
 
     return response.data.map((asset: any) => ({
       id: asset[0],
-      name: asset[1],
+      assetClassId: asset[1],
+      name: asset[2],
     })) as Asset[]
   },
 })

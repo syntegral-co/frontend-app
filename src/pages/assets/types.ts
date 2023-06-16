@@ -1,8 +1,8 @@
-import { Asset } from '../../components/asset-switcher/types'
+import { AssetClass } from '../../components/asset-class-switcher/types'
 
-export type Company = {
+export type Asset = {
   id: number
-  assetId: Asset['id']
+  assetClassId: AssetClass['id']
   name: string
 }
 
@@ -13,21 +13,21 @@ export type Category = {
 
 export type Theme = {
   id: number
-  assetId: Asset['id']
+  assetClassId: AssetClass['id']
   categoryId: Category['id']
   name: string
   definition: string
 }
 
 export type ThemeScore = {
-  companyId: number
+  assetId: Asset['id']
   themeId: Theme['id']
   score: number
 }
 
 export type QA = {
   id: number
-  companyId: Company['id']
+  assetId: Asset['id']
   themeId: Theme['id']
   question: string
   answer: string

@@ -1,15 +1,15 @@
 import { matchPath, useLocation, useParams } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
-import { companiesState } from '../../components/company-switcher/atom'
-import { Company } from './types'
+import { AssetsState } from '../../components/asset-switcher/atom'
+import { Asset } from './types'
 
-export function useCurrentCompany() {
-  const companies = useRecoilValue(companiesState)
-  const { company } = useParams()
+export function useCurrentAsset() {
+  const assets = useRecoilValue(AssetsState)
+  const { asset } = useParams()
 
-  if (!company) return null
+  if (!asset) return null
 
-  return companies.find((c: Company) => c.id === parseInt(company)) as Company
+  return assets.find((c: Asset) => c.id === parseInt(asset)) as Asset
 }
 
 export function useIsSwigcoDemo(isRoot = true) {

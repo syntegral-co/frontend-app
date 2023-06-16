@@ -4,12 +4,12 @@ import { Route, Routes } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import Mixpanel from './utils/tracking'
 import Demo from './pages'
+import AssetClassSwitcher from './components/asset-class-switcher'
 import AssetSwitcher from './components/asset-switcher'
-import CompanySwitcher from './components/company-switcher'
 import Spinner from './components/spinner'
-import Company from './pages/companies'
-import Themes from './pages/companies/themes'
-import Theme from './pages/companies/themes/theme'
+import Asset from './pages/assets'
+import Themes from './pages/assets/themes'
+import Theme from './pages/assets/themes/theme'
 import Upload from './pages/upload'
 import NotFound from './pages/404'
 
@@ -36,18 +36,15 @@ function App() {
         <Suspense fallback={<Spinner />}>
           <Routes>
             <Route path="/swigco?" element={<Demo />}>
-              <Route index element={<AssetSwitcher />} />
-              <Route path="assets/:asset" element={<CompanySwitcher />} />
+              <Route index element={<AssetClassSwitcher />} />
+              <Route path="classes/:class" element={<AssetSwitcher />} />
+              <Route path="classes/:class/assets/:asset" element={<Asset />} />
               <Route
-                path="assets/:asset/companies/:company"
-                element={<Company />}
-              />
-              <Route
-                path="assets/:asset/companies/:company/themes"
+                path="classes/:class/assets/:asset/themes"
                 element={<Themes />}
               />
               <Route
-                path="assets/:asset/companies/:company/themes/:theme"
+                path="classes/:class/assets/:asset/themes/:theme"
                 element={<Theme />}
               />
             </Route>

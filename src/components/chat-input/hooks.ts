@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { useIsFetching, useQueries, useQuery } from '@tanstack/react-query'
-import { useCurrentCompany, useIsSwigcoDemo } from '../../pages/companies/hooks'
+import { useCurrentAsset, useIsSwigcoDemo } from '../../pages/assets/hooks'
 import { chatState } from './atoms'
 import { chat, getChatMetrics } from '../../utils/api'
 import { formatReferences } from '../../utils/helpers'
@@ -12,7 +12,7 @@ export function useChatBot() {
   const [chatInput, setChatInput] = useState<string>('')
   const [chatMessages, setChatMessages] = useRecoilState(chatState)
   const isSwigcoDemo = useIsSwigcoDemo(false)
-  const currentCompany = useCurrentCompany()
+  const currentAsset = useCurrentAsset()
 
   const {
     status,
@@ -21,8 +21,8 @@ export function useChatBot() {
     status: string
     data: ChatReply | undefined
   } = useQuery({
-    queryKey: ['chatbot', chatInput, currentCompany!.id],
-    queryFn: () => chat(chatInput, currentCompany!.id),
+    queryKey: ['chatbot', chatInput, currentAsset!.id],
+    queryFn: () => chat(chatInput, currentAsset!.id),
     staleTime: Infinity,
     enabled: chatInput !== '',
   })

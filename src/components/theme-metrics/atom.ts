@@ -30,7 +30,7 @@ export const metricsAnswersState = selector({
 
     return response.data.map((metric: any) => ({
       id: metric[0],
-      companyId: metric[1],
+      assetId: metric[1],
       themeId: metric[2],
       metricId: metric[3],
       answer: metric[4],

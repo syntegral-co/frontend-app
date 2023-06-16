@@ -9,25 +9,25 @@ import {
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
 import { useRecoilValue } from 'recoil'
-import { companiesState } from '../company-switcher/atom'
+import { AssetsState } from '../asset-switcher/atom'
 import { themesScoresState } from '../themes-toggles/atoms'
-import { Company, Theme } from '../../pages/companies/types'
+import { Asset, Theme } from '../../pages/assets/types'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 type ThemeChartProps = {
   theme: Theme
-  company: Company
+  asset: Asset
 }
 
-function ThemeChart({ theme, company }: ThemeChartProps) {
-  const companies = useRecoilValue(companiesState)
+function ThemeChart({ theme, asset }: ThemeChartProps) {
+  const assets = useRecoilValue(AssetsState)
   const themeScores = useRecoilValue(themesScoresState)
   const scores = themeScores.filter(
     (themeScore) => themeScore.themeId === theme.id,
   )
 
-  const scoresCompaniesIds = scores.map((score) => score.companyId)
+  const scoresCompaniesIds = scores.map((score) => score.assetId)
 
   if (!scores.length) return null
 
@@ -49,12 +49,10 @@ function ThemeChart({ theme, company }: ThemeChartProps) {
     },
   }
 
-  const labels = companies.filter((company) =>
-    scoresCompaniesIds.includes(company.id),
-  )
+  const labels = assets.filter((asset) => scoresCompaniesIds.includes(asset.id))
 
-  let backgroundColors = labels.map((companyLabel) => {
-    if (companyLabel.id === company.id) {
+  let backgroundColors = labels.map((assetLabel) => {
+    if (assetLabel.id === asset.id) {
       return 'rgb(9, 232, 211)'
     }
 
@@ -62,7 +60,7 @@ function ThemeChart({ theme, company }: ThemeChartProps) {
   })
 
   const data = {
-    labels: labels.map((company) => company.name),
+    labels: labels.map((asset) => asset.name),
     datasets: [
       {
         data: scores.map((themeScore) => themeScore.score),

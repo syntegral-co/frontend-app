@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useRecoilValue } from 'recoil'
-import { useCurrentCompany } from '../hooks'
+import { useCurrentAsset } from '../hooks'
 import { useCurrentTheme } from './hooks'
 import { useDocumentModal } from '../../../components/document-modal/hooks'
 import { getThemeSummary } from '../../../utils/api'
@@ -16,20 +16,19 @@ import ThemeMetrics from '../../../components/theme-metrics'
 
 function Theme() {
   const [references, setReferences] = useState<DocumentLink[]>([])
-  console.log('references: ', references)
-  const currentCompany = useCurrentCompany()
+  const currentAsset = useCurrentAsset()
   const theme = useCurrentTheme()
   const QAs = useRecoilValue(qaState)
 
   const themeQAs = QAs.filter(
-    (qa) => qa.companyId === currentCompany!.id && qa.themeId === theme!.id,
+    (qa) => qa.assetId === currentAsset!.id && qa.themeId === theme!.id,
   )
 
   const { onClickDocument } = useDocumentModal()
 
   const { data, fetchStatus } = useQuery({
     queryKey: ['impact_summary', theme!.id],
-    queryFn: () => getThemeSummary(currentCompany!.id, theme!.id),
+    queryFn: () => getThemeSummary(currentAsset!.id, theme!.id),
     staleTime: Infinity,
   })
 
@@ -72,7 +71,7 @@ function Theme() {
         </div>
         <div className="flex w-full flex-col gap-2 md:w-1/2">
           <ThemeMetrics />
-          <ThemeChart theme={theme!} company={currentCompany!} />
+          <ThemeChart theme={theme!} asset={currentAsset!} />
           {themeQAs.length ? (
             <div className="rounded-md bg-base-200 p-4">
               <h2 className="mb-4 text-2xl">Questions</h2>

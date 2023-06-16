@@ -1,5 +1,5 @@
-import { useCurrentAsset } from '../asset-switcher/hooks'
-import { useCurrentCompany, useIsSwigcoDemo } from '../../pages/companies/hooks'
+import { useCurrentAssetClass } from '../asset-class-switcher/hooks'
+import { useCurrentAsset, useIsSwigcoDemo } from '../../pages/assets/hooks'
 import { useAuth0 } from '@auth0/auth0-react'
 import classnames from 'classnames'
 import { NavLink } from 'react-router-dom'
@@ -20,8 +20,8 @@ const ACCOUNT_LINKS: NavbarLink[] = [
 
 function Nav() {
   const isSwigcoDemo = useIsSwigcoDemo(false)
+  const currentAssetClass = useCurrentAssetClass()
   const currentAsset = useCurrentAsset()
-  const currentCompany = useCurrentCompany()
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
     useAuth0()
 
@@ -35,15 +35,15 @@ function Nav() {
     },
     {
       title: 'Chat',
-      to: `assets/${currentAsset?.id}/companies/${currentCompany?.id}`,
+      to: `classes/${currentAssetClass?.id}/assets/${currentAsset?.id}`,
       icon: 'bubbles',
-      hidden: !currentAsset || !currentCompany,
+      hidden: !currentAssetClass || !currentAsset,
     },
     {
       title: 'Reporting',
-      to: `assets/${currentAsset?.id}/companies/${currentCompany?.id}/themes`,
+      to: `classes/${currentAssetClass?.id}/assets/${currentAsset?.id}/themes`,
       icon: 'pie',
-      hidden: !currentAsset || !currentCompany,
+      hidden: !currentAssetClass || !currentAsset,
     },
     {
       title: 'Download',
@@ -101,9 +101,9 @@ function Nav() {
           </ul>
         </div>
         <div className="flex cursor-default items-center justify-center">
-          {currentCompany ? (
+          {currentAsset ? (
             <div className="badge badge-primary badge-outline badge-xs p-2">
-              {currentCompany.name}
+              {currentAsset.name}
             </div>
           ) : null}
         </div>
@@ -113,9 +113,9 @@ function Nav() {
           <ul className="menu menu-horizontal w-full px-1">
             {navLinksElement}
             <li className="pointer-events-none flex items-center justify-center">
-              {currentCompany ? (
+              {currentAsset ? (
                 <div className="badge badge-primary badge-outline badge-xs flex">
-                  {currentCompany.name}
+                  {currentAsset.name}
                 </div>
               ) : null}
             </li>

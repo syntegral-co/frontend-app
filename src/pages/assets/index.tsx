@@ -1,11 +1,11 @@
-import { useCurrentCompany } from './hooks'
+import { useCurrentAsset } from './hooks'
 import DocumentModal from '../../components/document-modal'
 import ChatOutput from '../../components/chat-output'
 
-function Company() {
-  const company = useCurrentCompany()
+function Asset() {
+  const asset = useCurrentAsset()
 
-  if (!company) {
+  if (!asset) {
     return null
   }
 
@@ -17,4 +17,4 @@ function Company() {
   )
 }
 
-export default Company
+export default Asset

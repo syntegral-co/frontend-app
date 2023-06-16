@@ -1,18 +1,18 @@
-import { useCurrentTheme } from '../../pages/companies/themes/hooks'
-import { useCurrentCompany } from '../../pages/companies/hooks'
+import { useCurrentTheme } from '../../pages/assets/themes/hooks'
+import { useCurrentAsset } from '../../pages/assets/hooks'
 import { useRecoilValue } from 'recoil'
 import { metricsAnswersState, metricsState } from './atom'
 import Icon from '../icon'
 
 function ThemeMetrics() {
   const theme = useCurrentTheme()
-  const company = useCurrentCompany()
+  const currentAsset = useCurrentAsset()
   const metrics = useRecoilValue(metricsState)
   const metricsAnswers = useRecoilValue(metricsAnswersState)
 
   const themeMetricAnswers = metricsAnswers.filter(
     (metricAnswer) =>
-      metricAnswer.companyId === company!.id &&
+      metricAnswer.assetId === currentAsset!.id &&
       metricAnswer.themeId === theme!.id,
   )
 
