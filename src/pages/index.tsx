@@ -7,7 +7,7 @@ import Spinner from '../components/spinner'
 function Demo() {
   const isSwigcoDemo = useIsSwigcoDemo()
 
-  if (isSwigcoDemo) return <Navigate to="/swigco/assets/3" />
+  if (isSwigcoDemo) return <Navigate to="/swigco/classes/3" />
 
   return (
     <>

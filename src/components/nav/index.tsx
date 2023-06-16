@@ -35,13 +35,13 @@ function Nav() {
     },
     {
       title: 'Chat',
-      to: `assets/${currentAssetClass?.id}/companies/${currentAsset?.id}`,
+      to: `classes/${currentAssetClass?.id}/assets/${currentAsset?.id}`,
       icon: 'bubbles',
       hidden: !currentAssetClass || !currentAsset,
     },
     {
       title: 'Reporting',
-      to: `assets/${currentAssetClass?.id}/companies/${currentAsset?.id}/themes`,
+      to: `classes/${currentAssetClass?.id}/assets/${currentAsset?.id}/themes`,
       icon: 'pie',
       hidden: !currentAssetClass || !currentAsset,
     },

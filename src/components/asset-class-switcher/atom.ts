@@ -3,7 +3,7 @@ import { getAssetClasses } from '../../utils/api'
 import { AssetClass } from './types'
 
 export const assetClassesState = selector({
-  key: 'assets',
+  key: 'assetClasses',
   get: async () => {
     const response = await getAssetClasses()
 

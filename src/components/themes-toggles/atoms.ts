@@ -34,7 +34,7 @@ export const themesState = selector({
 
     return response.data.map((theme: any) => ({
       id: theme[0],
-      assetId: theme[1],
+      assetClassId: theme[1],
       categoryId: theme[2],
       name: theme[3],
       definition: theme[4],

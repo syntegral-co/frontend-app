@@ -37,10 +37,16 @@ function App() {
           <Routes>
             <Route path="/swigco?" element={<Demo />}>
               <Route index element={<AssetClassSwitcher />} />
-              <Route path="class/:class" element={<AssetSwitcher />} />
-              <Route path="assets/:asset" element={<Asset />} />
-              <Route path="themes" element={<Themes />} />
-              <Route path="themes/:theme" element={<Theme />} />
+              <Route path="classes/:class" element={<AssetSwitcher />} />
+              <Route path="classes/:class/assets/:asset" element={<Asset />} />
+              <Route
+                path="classes/:class/assets/:asset/themes"
+                element={<Themes />}
+              />
+              <Route
+                path="classes/:class/assets/:asset/themes/:theme"
+                element={<Theme />}
+              />
             </Route>
             <Route path="upload" element={<Upload />} />
             <Route path="*" element={<NotFound />} />

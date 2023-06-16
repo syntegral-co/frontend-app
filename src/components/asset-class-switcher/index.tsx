@@ -10,18 +10,18 @@ function AssetClassSwitcher() {
   const ASSET_LINKS: NavbarLink[] = [
     {
       title: 'Equities',
-      to: './assets/1',
+      to: './classes/1',
       icon: equity,
     },
     {
       title: 'Digital assets',
-      to: './assets/2',
+      to: './classes/2',
       disabled: true,
       icon: digital,
     },
     {
       title: 'Real estate',
-      to: './assets/3',
+      to: './classes/3',
       disabled: true,
       icon: real,
     },
