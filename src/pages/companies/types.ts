@@ -31,4 +31,5 @@ export type QA = {
   themeId: Theme['id']
   question: string
   answer: string
+  references?: string
 }

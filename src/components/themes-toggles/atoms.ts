@@ -80,6 +80,7 @@ export const qaState = selector({
       companyId: question[2],
       question: question[3],
       answer: question[4],
+      references: question[5],
     })) as QA[]
   },
 })
