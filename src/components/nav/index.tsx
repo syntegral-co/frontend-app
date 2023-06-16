@@ -95,7 +95,7 @@ function Nav() {
           </label>
           <ul
             tabIndex={0}
-            className="menu-compact dropdown-content menu mt-3 w-52 rounded-md border-2 border-accent-focus bg-base-100 p-2 shadow"
+            className="menu-compact dropdown-content menu z-10 mt-3 w-52 rounded-md border-2 border-accent-focus bg-base-100 p-2 shadow"
           >
             {navLinksElement}
           </ul>

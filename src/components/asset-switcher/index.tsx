@@ -62,7 +62,7 @@ function AssetSwitcher() {
                 key={asset.id}
                 className="text-primary-content hover:text-accent"
               >
-                <NavLink to={`./assets/${asset.id}/themes`}>
+                <NavLink className="flex" to={`./assets/${asset.id}/themes`}>
                   {asset.name}
                 </NavLink>
               </li>
