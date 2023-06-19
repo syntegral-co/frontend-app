@@ -8,23 +8,21 @@ import {
   Legend,
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
+import { useCurrentAsset } from '../../pages/assets/hooks'
+import { useCurrentTheme } from '../../pages/assets/themes/hooks'
 import { useRecoilValue } from 'recoil'
 import { AssetsState } from '../asset-switcher/atom'
 import { themesScoresState } from '../themes-toggles/atoms'
-import { Asset, Theme } from '../../pages/assets/types'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
-type ThemeChartProps = {
-  theme: Theme
-  asset: Asset
-}
-
-function ThemeChart({ theme, asset }: ThemeChartProps) {
+function ThemeChart() {
+  const currentAsset = useCurrentAsset()
+  const theme = useCurrentTheme()
   const assets = useRecoilValue(AssetsState)
   const themeScores = useRecoilValue(themesScoresState)
   const scores = themeScores.filter(
-    (themeScore) => themeScore.themeId === theme.id,
+    (themeScore) => themeScore.themeId === theme!.id,
   )
 
   const scoresCompaniesIds = scores.map((score) => score.assetId)
@@ -44,7 +42,7 @@ function ThemeChart({ theme, asset }: ThemeChartProps) {
       },
       title: {
         display: true,
-        text: `Peer Group Comparison for ${theme.name}`,
+        text: `Peer Group Comparison for ${theme!.name}`,
       },
     },
   }
@@ -52,7 +50,7 @@ function ThemeChart({ theme, asset }: ThemeChartProps) {
   const labels = assets.filter((asset) => scoresCompaniesIds.includes(asset.id))
 
   let backgroundColors = labels.map((assetLabel) => {
-    if (assetLabel.id === asset.id) {
+    if (assetLabel.id === currentAsset!.id) {
       return 'rgb(9, 232, 211)'
     }
 
