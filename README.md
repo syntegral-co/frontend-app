@@ -12,6 +12,7 @@ Bootstrapped with [Vite](https://vitejs.dev/). Deployed on [Netlify](https://www
 - Queries with [React Query](https://react-query-v3.tanstack.com/)
 - Authentication via [Auth0](https://auth0.com/)
 - State via [recoil](https://recoiljs.org/)
+- Icons from [Icomoon](https://icomoon.io/)
 
 ## File structure 📂
 
@@ -41,12 +42,27 @@ The file structure follows the pattern:
 
 ```
 
+### Utilities 🧰
+
+The `src/utils` folder contains some utility files:
+
+- api.ts: all API calls are listed here
+- helpers.ts: some general-purpose functions
+- session.ts: handles the user session management
+- tracking.ts: contains some Mixpanel functions
+- icons.json: lists all icons downloaded from Icomoon
+
 ## Global state 🌍
 
 The app's global state is handled through [recoil](https://recoiljs.org/).
-The atoms are stored in `src/state/atoms.ts`.
+Every component handles its own state in its _atom.ts_ file.
 
 ## Environmental variables
+
+The app uses two kinds of environmental variables:
+
+- **public**: listed in the _.env_ file
+- **private**: not commited to the GitLab repo and listed in a _.env.local_ file, which is in the .gitignore file.
 
 The environmental variables used throughout the app are defined in `src/vite-env.d.ts`. Any new variable must be defined here to have autocompletion for `import.meta.env` in the IDE.
 
