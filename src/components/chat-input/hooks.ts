@@ -7,6 +7,7 @@ import { chat, getChatMetrics } from '../../utils/api'
 import { formatReferences } from '../../utils/helpers'
 import { ChatReply } from './types'
 import { ChatMessage } from '../chat-output/types'
+import UserSession from '../../utils/session'
 
 export function useChatBot() {
   const [chatInput, setChatInput] = useState<string>('')
@@ -103,17 +104,26 @@ export function useChatBot() {
 
   function sendMessage(text: string) {
     if (text === '') return
+
     const newMessage = {
       author: 'current',
       text,
     }
+
     setChatMessages([...chatMessages, newMessage])
     setChatInput(text)
+  }
+
+  function startNewChat() {
+    UserSession.reset()
+    setChatInput('')
+    setChatMessages([])
   }
 
   return {
     chatMessages,
     sendMessage,
+    startNewChat,
     isLoading,
     isMetricsLoading,
   }

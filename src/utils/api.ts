@@ -1,6 +1,7 @@
+import UserSession from './session'
 import Mixpanel from './tracking'
 
-const sessionId = localStorage.getItem('sessionId')
+const sessionId = UserSession.get()
 
 type AnalyticsOptions = {
   [key: string]: string

@@ -3,7 +3,7 @@ import { useRecoilValue } from 'recoil'
 import { useIsSwigcoDemo } from '../../pages/assets/hooks'
 import { useCurrentAssetClass } from '../asset-class-switcher/hooks'
 import { AssetsState } from './atom'
-import { v4 as uuidv4 } from 'uuid'
+import UserSession from '../../utils/session'
 import { NavLink } from 'react-router-dom'
 import { Asset } from '../../pages/assets/types'
 import logo from '/assets/images/syntegral-white.png'
@@ -19,10 +19,8 @@ function AssetSwitcher() {
   const assets = useRecoilValue(AssetsState)
 
   useEffect(() => {
-    const sessionId = uuidv4()
-    localStorage.removeItem('sessionId')
-    localStorage.setItem('sessionId', sessionId)
-  }, [])
+    UserSession.reset()
+  }, [UserSession])
 
   const welcomeText = isSwigcoDemo ? (
     <>
