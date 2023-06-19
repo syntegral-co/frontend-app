@@ -13,7 +13,15 @@ function ThemeQA() {
 
   const themeQAs = QAs.filter(
     (qa) => qa.assetId === currentAsset!.id && qa.themeId === theme!.id,
-  )
+  ).sort((a, b) => {
+    if (
+      a.answer ===
+      'No information for this question exists within the documentation for this asset.'
+    )
+      return 1
+
+    return -1
+  })
 
   const { onClickDocument } = useDocumentModal()
 
