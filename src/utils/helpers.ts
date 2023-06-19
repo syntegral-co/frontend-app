@@ -8,8 +8,21 @@ export function capitalize(string: string) {
   return `${string.charAt(0).toUpperCase()}${string.slice(1, string.length)}`
 }
 
-export function formatReferences(references: string[][]): DocumentLink[] {
+export function formatReferences(
+  references: string[][] | string[] | undefined,
+): DocumentLink[] {
   if (!references) return []
+
+  return references.map((reference) => ({
+    id: reference[0],
+    page: reference[1],
+    name: reference[2],
+  }))
+}
+
+export function formatQAReferences(references: string[]): DocumentLink[] {
+  if (!references) return []
+  console.log('references: ', references)
 
   return references.map((reference) => ({
     id: reference[0],

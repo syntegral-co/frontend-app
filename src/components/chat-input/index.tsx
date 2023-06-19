@@ -1,26 +1,33 @@
 import { FormEvent, KeyboardEvent, useRef, useState } from 'react'
 import { useChatBot } from './hooks'
 import { z, ZodFormattedError } from 'zod'
+import classnames from 'classnames'
+import Icon from '../icon'
 
 const chatSchema = z.object({
-  text: z.string().min(1),
+  text: z.string().min(2),
 })
 
-function ChatInput() {
-  const textAreaRef = useRef<HTMLTextAreaElement>(null)
-  const submitButtonRef = useRef<HTMLButtonElement>(null)
-  // const [formErrors, setFormErrors] = useState<
-  //   ZodFormattedError<typeof chatSchema>
-  // >({} as ZodFormattedError<typeof chatSchema>)
+const chatSchemaShape = chatSchema.shape
 
-  const { sendMessage } = useChatBot()
+function ChatInput() {
+  const submitButtonRef = useRef<HTMLButtonElement>(null)
+  const [formErrors, setFormErrors] = useState<
+    ZodFormattedError<typeof chatSchemaShape>
+  >({} as ZodFormattedError<typeof chatSchemaShape>)
+
+  const { sendMessage, startNewChat } = useChatBot()
 
   const handleKeyDownEvent = (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if (!submitButtonRef.current) return
 
     if (event.key === 'Enter' && !event.shiftKey) {
       submitButtonRef.current.click()
-      textAreaRef!.current!.value = ''
+      const textArea = document.getElementById(
+        'chat-input',
+      ) as HTMLTextAreaElement
+
+      textArea.value = textArea.value.replace(/(\r\n|\n|\r)/gm, '')
     }
   }
 
@@ -33,14 +40,15 @@ function ChatInput() {
     const parsedResults = chatSchema.safeParse(formObject)
 
     if (!parsedResults.success) {
-      //setFormErrors(parsedResults.error.format())
+      const t = parsedResults.error.format()
+      setFormErrors(parsedResults.error.format())
       return
     }
 
     sendMessage(parsedResults.data.text.trim())
     event.currentTarget.reset()
 
-    //setFormErrors({} as ZodFormattedError<typeof chatSchema>)
+    setFormErrors({} as ZodFormattedError<typeof chatSchemaShape>)
   }
 
   return (
@@ -48,16 +56,35 @@ function ChatInput() {
       onSubmit={submitForm}
       className="relative flex w-full flex-row flex-nowrap gap-2 shadow-md"
     >
+      <button
+        className="tooltip-accent btn tooltip gap-2 rounded-none border-none text-primary-content"
+        data-tip="Start new chat"
+        type="button"
+        onClick={startNewChat}
+      >
+        <Icon className="cursor-pointer" icon="plus" size={24} />
+      </button>
       <textarea
-        ref={textAreaRef}
-        className="textarea h-8 w-full resize-none rounded-none bg-base-100"
+        id="chat-input"
+        className={classnames(
+          'textarea h-8 w-full resize-none rounded-none bg-base-100',
+          {
+            'border-error': formErrors.text?._errors,
+          },
+        )}
         name="text"
         placeholder="What's on your mind?"
         onKeyDown={handleKeyDownEvent}
       />
       <button
         ref={submitButtonRef}
-        className="btn absolute right-0 gap-2 rounded-none border-none text-accent"
+        className={classnames(
+          'btn gap-2 rounded-none border-none text-accent',
+          {
+            'tooltip-error tooltip': formErrors.text?._errors,
+          },
+        )}
+        data-tip={formErrors.text?._errors[0]}
         type="submit"
       >
         <svg

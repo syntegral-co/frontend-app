@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { useRecoilValue } from 'recoil'
 import { useCurrentAsset } from '../hooks'
 import { useCurrentTheme } from './hooks'
 import { useDocumentModal } from '../../../components/document-modal/hooks'
 import { getThemeSummary } from '../../../utils/api'
-import { qaState } from '../../../components/themes-toggles/atoms'
 import { formatReferences } from '../../../utils/helpers'
 import { DocumentLink } from '../../../components/document-modal/types'
 import DocumentModal from '../../../components/document-modal'
@@ -13,16 +11,12 @@ import Spinner from '../../../components/spinner'
 import Icon from '../../../components/icon'
 import ThemeChart from '../../../components/theme-chart'
 import ThemeMetrics from '../../../components/theme-metrics'
+import ThemeQA from '../../../components/theme-qa'
 
 function Theme() {
   const [references, setReferences] = useState<DocumentLink[]>([])
   const currentAsset = useCurrentAsset()
   const theme = useCurrentTheme()
-  const QAs = useRecoilValue(qaState)
-
-  const themeQAs = QAs.filter(
-    (qa) => qa.assetId === currentAsset!.id && qa.themeId === theme!.id,
-  )
 
   const { onClickDocument } = useDocumentModal()
 
@@ -71,25 +65,8 @@ function Theme() {
         </div>
         <div className="flex w-full flex-col gap-2 md:w-1/2">
           <ThemeMetrics />
-          <ThemeChart theme={theme!} asset={currentAsset!} />
-          {themeQAs.length ? (
-            <div className="rounded-md bg-base-200 p-4">
-              <h2 className="mb-4 text-2xl">Questions</h2>
-              <ol className="mt-4 list-none pl-2">
-                {themeQAs.map((qa, index) => (
-                  <li className="mt-2 mb-4 cursor-pointer" key={index}>
-                    <details>
-                      <summary>{qa.question}</summary>
-                      <p className="mt-2 bg-base-100 p-4 italic">{qa.answer}</p>
-                    </details>
-                    {index + 1 < themeQAs.length ? (
-                      <div className="divider"></div>
-                    ) : null}
-                  </li>
-                ))}
-              </ol>
-            </div>
-          ) : null}
+          <ThemeChart />
+          <ThemeQA />
         </div>
       </div>
     </>

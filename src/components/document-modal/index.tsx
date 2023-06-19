@@ -46,7 +46,7 @@ function DocumentModal() {
           </object>
         )}
         <button
-          className="btn-outline btn-primary btn mx-auto mb-4 mt-auto"
+          className="btn-primary btn-outline btn mx-auto mb-4 mt-auto"
           onClick={() => toggleDocumentModal()}
         >
           Close

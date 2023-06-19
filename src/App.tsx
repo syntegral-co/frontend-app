@@ -1,7 +1,7 @@
 import { Suspense, useEffect } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 import { Route, Routes } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
+import UserSession from './utils/session'
 import Mixpanel from './utils/tracking'
 import Demo from './pages'
 import AssetClassSwitcher from './components/asset-class-switcher'
@@ -20,8 +20,7 @@ function App() {
   useEffect(() => {
     if (!user) return
 
-    const sessionId = uuidv4()
-    localStorage.setItem('sessionId', sessionId)
+    UserSession.set()
 
     Mixpanel.identify(user.sub!)
     Mixpanel.people.set({
