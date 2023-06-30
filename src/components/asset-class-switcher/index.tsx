@@ -22,7 +22,6 @@ function AssetClassSwitcher() {
     {
       title: 'Real estate',
       to: './classes/3',
-      disabled: true,
       icon: real,
     },
   ]

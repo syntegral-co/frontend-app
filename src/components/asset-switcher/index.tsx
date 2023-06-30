@@ -55,7 +55,7 @@ function AssetSwitcher() {
                 return asset.id === 19
               }
 
-              return true
+              return asset.id !== 19
             })
             .filter(
               (asset: Asset) =>
