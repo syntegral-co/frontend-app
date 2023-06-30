@@ -22,18 +22,19 @@ function AssetSwitcher() {
     UserSession.reset()
   }, [UserSession])
 
-  const welcomeText = isSwigcoDemo ? (
-    <>
-      Welcome to your real asset due diligence portal. <br />
-      Choose your asset to start.
-    </>
-  ) : (
-    <>
-      Welcome to the Nigerian stock exchange demo.
-      <br />
-      Choose an asset to start exploring!
-    </>
-  )
+  const welcomeText =
+    currentAssetClass?.id === 3 ? (
+      <>
+        Welcome to your real asset due diligence portal. <br />
+        Choose your asset to start.
+      </>
+    ) : (
+      <>
+        Welcome to the Nigerian stock exchange demo.
+        <br />
+        Choose an asset to start exploring!
+      </>
+    )
 
   return (
     <div className="flex h-96 w-full flex-col items-center justify-center self-center">
@@ -55,7 +56,7 @@ function AssetSwitcher() {
                 return asset.id === 19
               }
 
-              return true
+              return asset.id !== 19
             })
             .filter(
               (asset: Asset) =>
