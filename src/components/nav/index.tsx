@@ -32,7 +32,7 @@ function Nav() {
 
   const NAV_LINKS: NavbarLink[] = [
     {
-      title: 'Discovery',
+      title: 'Home',
       to: isSwigcoDemo ? '/swigco' : '/',
       icon: 'compass',
     },
