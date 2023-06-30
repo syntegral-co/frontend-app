@@ -43,13 +43,20 @@ function AssetSwitcher() {
       </h2>
       <input
         type="text"
-        placeholder="Type here"
+        placeholder="Start typing what you're looking for..."
         className="input-bordered input w-full max-w-xs text-primary-content"
         onChange={(event) => setSearchTerm(event.target.value)}
       />
       {searchTerm !== '' && (
         <ul className="menu w-full max-w-xs border border-base-200 bg-base-100 p-4 shadow-md">
           {assets
+            .filter((asset: Asset) => {
+              if (isSwigcoDemo) {
+                return asset.id === 19
+              }
+
+              return true
+            })
             .filter(
               (asset: Asset) =>
                 asset.assetClassId === currentAssetClass!.id &&
