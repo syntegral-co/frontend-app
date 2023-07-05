@@ -1,8 +1,6 @@
 import UserSession from './session'
 import Mixpanel from './tracking'
 
-const sessionId = UserSession.get()
-
 type AnalyticsOptions = {
   [key: string]: string
 }
@@ -12,7 +10,7 @@ async function callAPI(endpoint: string, analyticsOptions?: AnalyticsOptions) {
     const response = await fetch(endpoint, {
       headers: {
         authorization: import.meta.env.VITE_API_KEY,
-        session: sessionId!,
+        session: UserSession.get()!,
       },
     })
 
