@@ -71,7 +71,17 @@ The environmental variables used throughout the app are defined in `src/vite-env
 ### Start the server
 
 To start the development, clone this repository.
-After cloning it, create a local environment configuration file `.env.local` with the following keys:
+
+After cloning it, create a local environment configuration file `.env` with the following keys:
+
+```
+VITE_CHATBOT_API_BASEPATH=
+VITE_IMPACT_API_BASEPATH=
+VITE_DOC_API_BASEPATH=
+VITE_MIXPANEL_PROJECT_TOKEN=
+```
+
+Then, create a local environment configuration file `.env.local` with the following keys:
 
 ```
 VITE_AUTH0_DOMAIN=
