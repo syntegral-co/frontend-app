@@ -2,10 +2,10 @@ import { useCurrentAsset } from '../assets/hooks'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 import Nav from '../../components/nav'
 import Spinner from '../../components/spinner'
-import pdf from '/assets/documents/1290-1310 Terra Bella Avenue_ ESG Due Diligence Assessment.pdf'
 
 function Download() {
   const currentAsset = useCurrentAsset()
+  const pdf = import.meta.env.VITE_SWIGCO_PDF_REPORT
 
   if (!currentAsset) return <Spinner />
 
