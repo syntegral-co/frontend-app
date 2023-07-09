@@ -2,7 +2,7 @@ import mixpanel from 'mixpanel-browser'
 
 const isProduction = import.meta.env.MODE === 'production'
 mixpanel.init(import.meta.env.VITE_MIXPANEL_PROJECT_TOKEN, {
-  debug: isProduction,
+  debug: !isProduction,
 })
 
 const Mixpanel = {

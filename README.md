@@ -13,6 +13,8 @@ Bootstrapped with [Vite](https://vitejs.dev/). Deployed on [Netlify](https://www
 - Authentication via [Auth0](https://auth0.com/)
 - State via [recoil](https://recoiljs.org/)
 - Icons from [Icomoon](https://icomoon.io/)
+- Tracking via [Mixpanel](https://mixpanel.com/)
+- Error logging via [Sentry](https://sentry.io/)
 
 ## File structure 📂
 
@@ -87,6 +89,7 @@ Then, create a local environment configuration file `.env.local` with the follow
 VITE_AUTH0_DOMAIN=
 VITE_AUTH0_CLIENTID=
 VITE_API_KEY=
+VITE_SENTRY_AUTH_TOKEN=
 ```
 
 Ask your favourite developer for the keys.
