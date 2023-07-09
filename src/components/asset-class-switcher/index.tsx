@@ -52,6 +52,7 @@ function AssetClassSwitcher() {
 
   return (
     <div className="flex h-96 w-full flex-col items-center justify-center self-center">
+      <button onClick={() => methodDoesNotExist()}>Break the world</button>;
       <img className="h-40" src={logo} />
       <h1 className="py-6 text-2xl font-bold text-primary-content">
         Select what kind of asset you want to explore
