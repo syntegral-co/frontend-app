@@ -59,6 +59,10 @@ The `src/utils` folder contains some utility files:
 The app's global state is handled through [recoil](https://recoiljs.org/).
 Every component handles its own state in its _atom.ts_ file.
 
+## API Calls 🤙🏻
+
+The app's general API calls are handled and tracked in `src/utils/api.ts` while each component handles its own API calls in its _api.ts_ file.
+
 ## Environmental variables
 
 The app uses two kinds of environmental variables:

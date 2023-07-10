@@ -1,10 +1,5 @@
 import { atom, selector } from 'recoil'
-import {
-  getCategories,
-  getThemesQA,
-  getThemes,
-  getThemesScores,
-} from '../../utils/api'
+import { getCategories, getThemes, getThemesScores, getThemesQA } from './api'
 import { Category, QA, Theme, ThemeScore } from '../../pages/assets/types'
 
 export const categoriesState = selector({

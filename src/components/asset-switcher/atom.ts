@@ -1,5 +1,5 @@
 import { selector } from 'recoil'
-import { getAssets } from '../../utils/api'
+import { getAssets } from './api'
 import { Asset } from '../../pages/assets/types'
 
 export const AssetsState = selector({

@@ -1,5 +1,5 @@
 import { selector } from 'recoil'
-import { getMetrics, getMetricsAnswers } from '../../utils/api'
+import { getMetrics, getMetricsAnswers } from './api'
 import { Metric, MetricAnswer } from './types'
 
 export const metricsState = selector({
