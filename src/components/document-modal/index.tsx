@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useRecoilValue } from 'recoil'
 import { useDocumentModal } from './hooks'
 import { documentState } from './atoms'
-import { getDocument } from '../../utils/api'
+import { getDocument } from './api'
 import Loader from '../loader'
 
 function DocumentModal() {

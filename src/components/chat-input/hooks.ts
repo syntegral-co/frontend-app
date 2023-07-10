@@ -8,7 +8,7 @@ import {
 } from '@tanstack/react-query'
 import { useCurrentAsset, useIsSwigcoDemo } from '../../pages/assets/hooks'
 import { chatState } from './atoms'
-import { chat, getChatMetrics } from '../../utils/api'
+import { chat, getChatMetrics } from './api'
 import { formatReferences } from '../../utils/helpers'
 import { ChatReply } from './types'
 import { ChatMessage } from '../chat-output/types'
