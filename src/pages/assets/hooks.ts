@@ -1,4 +1,5 @@
 import { matchPath, useLocation, useParams } from 'react-router-dom'
+import { useAuth0 } from '@auth0/auth0-react'
 import { useRecoilValue } from 'recoil'
 import { AssetsState } from '../../components/asset-switcher/atom'
 import { Asset } from './types'
@@ -13,9 +14,9 @@ export function useCurrentAsset() {
 }
 
 export function useIsSwigcoDemo(isRoot = true) {
-  const { pathname } = useLocation()
-  const pattern = isRoot ? 'swigco' : 'swigco/*'
-  const isSwigcoDemo = matchPath(pattern, pathname) !== null
+  const { user } = useAuth0()
 
-  return isSwigcoDemo
+  if (!user) return false
+
+  return user.email === import.meta.env.VITE_SWIGCO_USER_EMAIL
 }

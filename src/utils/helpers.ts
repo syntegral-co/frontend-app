@@ -22,7 +22,6 @@ export function formatReferences(
 
 export function formatQAReferences(references: string[]): DocumentLink[] {
   if (!references) return []
-  console.log('references: ', references)
 
   return references.map((reference) => ({
     id: reference[0],
