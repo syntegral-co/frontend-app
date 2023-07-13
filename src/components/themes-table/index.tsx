@@ -1,5 +1,5 @@
 import { useRecoilValue } from 'recoil'
-import { useCurrentAsset, useIsSwigcoDemo } from '../../pages/assets/hooks'
+import { useCurrentAsset, useIsSwigcoUser } from '../../pages/assets/hooks'
 import { useThemes } from '../themes-toggles/hooks'
 import { useNavigate } from 'react-router-dom'
 import { categoriesState } from '../themes-toggles/atoms'
@@ -8,7 +8,7 @@ import { getThemeScore } from '../../utils/helpers'
 import { ThemeScore } from '../../pages/assets/types'
 
 function ThemesTable() {
-  const isSwigcoDemo = useIsSwigcoDemo(false)
+  const isSwigcoUser = useIsSwigcoUser()
   const currentAsset = useCurrentAsset()
   const { themes, scores, selectedThemes } = useThemes()
   const categories = useRecoilValue(categoriesState)
@@ -26,7 +26,7 @@ function ThemesTable() {
           <tr>
             <th></th>
             <th>Theme</th>
-            {!isSwigcoDemo && <th>Rating</th>}
+            {!isSwigcoUser && <th>Rating</th>}
             <th>Category</th>
           </tr>
         </thead>
@@ -45,7 +45,7 @@ function ThemesTable() {
               >
                 <th>{index + 1}</th>
                 <td>{theme.name}</td>
-                {!isSwigcoDemo && (
+                {!isSwigcoUser && (
                   <td>
                     <Ratings
                       id={theme.id}

@@ -5,14 +5,17 @@ import Spinner from '../../components/spinner'
 
 function Download() {
   const currentAsset = useCurrentAsset()
-  const pdf = import.meta.env.VITE_SWIGCO_PDF_REPORT
+
+  const pdf =
+    currentAsset!.id === 19
+      ? import.meta.env.VITE_SWIGCO_PDF_REPORT
+      : import.meta.env.VITE_FAKE_PDF_REPORT
 
   if (!currentAsset) return <Spinner />
 
   return (
     <>
-      <Nav />
-      <div className="flex h-full flex-col gap-4 text-center">
+      <div className="flex h-full w-full flex-col gap-4 text-center">
         <h1 className="text-3xl">Download your report</h1>
         <p>Here is your report on {currentAsset!.name}</p>
         <object

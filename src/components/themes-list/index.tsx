@@ -1,4 +1,4 @@
-import { useCurrentAsset, useIsSwigcoDemo } from '../../pages/assets/hooks'
+import { useCurrentAsset, useIsSwigcoUser } from '../../pages/assets/hooks'
 import { useThemes } from '../themes-toggles/hooks'
 import { useRecoilValue } from 'recoil'
 import { categoriesState } from '../themes-toggles/atoms'
@@ -8,7 +8,7 @@ import { getThemeScore } from '../../utils/helpers'
 import { ThemeScore } from '../../pages/assets/types'
 
 function ThemesList() {
-  const isSwigcoDemo = useIsSwigcoDemo(false)
+  const isSwigcoUser = useIsSwigcoUser()
   const currentAsset = useCurrentAsset()
   const { themes, scores, selectedThemes } = useThemes()
   const categories = useRecoilValue(categoriesState)
@@ -43,7 +43,7 @@ function ThemesList() {
                   </div>
                 </div>
                 <div className="stat-value">
-                  {!isSwigcoDemo && (
+                  {!isSwigcoUser && (
                     <Ratings
                       id={theme.id}
                       rating={getThemeScore(theme.id, assetScore)}

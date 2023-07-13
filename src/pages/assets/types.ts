@@ -1,5 +1,7 @@
 import { AssetClass } from '../../components/asset-class-switcher/types'
 
+export type UserRole = string
+
 export type Asset = {
   id: number
   assetClassId: AssetClass['id']

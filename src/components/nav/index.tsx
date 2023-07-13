@@ -1,5 +1,9 @@
 import { useCurrentAssetClass } from '../asset-class-switcher/hooks'
-import { useCurrentAsset, useIsSwigcoDemo } from '../../pages/assets/hooks'
+import {
+  useCurrentAsset,
+  useIsSwigcoUser,
+  useIsSysadminUser,
+} from '../../pages/assets/hooks'
 import { useAuth0 } from '@auth0/auth0-react'
 import classnames from 'classnames'
 import { NavLink } from 'react-router-dom'
@@ -19,7 +23,8 @@ const ACCOUNT_LINKS: NavbarLink[] = [
 ]
 
 function Nav() {
-  const isSwigcoDemo = useIsSwigcoDemo(false)
+  const isSysadmin = useIsSysadminUser()
+  const isSwigcoUser = useIsSwigcoUser()
   const currentAssetClass = useCurrentAssetClass()
   const currentAsset = useCurrentAsset()
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
@@ -27,13 +32,12 @@ function Nav() {
 
   if (isLoading) return null
 
-  const isSwigcoDownloadEnabled =
-    isSwigcoDemo && (currentAsset ? currentAsset.id === 19 : false)
+  const isSwigcoDownloadEnabled = isSysadmin || isSwigcoUser
 
   const NAV_LINKS: NavbarLink[] = [
     {
       title: 'Home',
-      to: isSwigcoDemo ? '/swigco' : '/',
+      to: isSwigcoUser ? '/swigco' : '/',
       icon: 'compass',
     },
     {
@@ -50,9 +54,9 @@ function Nav() {
     },
     {
       title: 'Download',
-      to: `./download/${currentAsset?.id}`,
+      to: `classes/${currentAssetClass?.id}/assets/${currentAsset?.id}/download`,
       icon: 'cloud-download',
-      disabled: !isSwigcoDownloadEnabled,
+      disabled: !currentAssetClass || !currentAsset || !isSwigcoDownloadEnabled,
     },
     {
       title: 'Upload',
@@ -131,7 +135,7 @@ function Nav() {
       <div className="ml-auto flex-none gap-2">
         {isAuthenticated ? (
           <div className="dropdown-end dropdown">
-            {isSwigcoDemo ? (
+            {isSwigcoUser ? (
               <div className="cursor-pointer" tabIndex={0}>
                 <img src={swigco} className="h-8 w-auto" />
               </div>

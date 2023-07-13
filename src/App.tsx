@@ -48,9 +48,12 @@ function App() {
                 path="classes/:class/assets/:asset/themes/:theme"
                 element={<Theme />}
               />
+              <Route
+                path="classes/:class/assets/:asset/download"
+                element={<Download />}
+              />
             </Route>
             <Route path="upload" element={<Upload />} />
-            <Route path="swigco?/download/:asset" element={<Download />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

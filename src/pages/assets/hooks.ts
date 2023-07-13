@@ -2,7 +2,7 @@ import { matchPath, useLocation, useParams } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useRecoilValue } from 'recoil'
 import { AssetsState } from '../../components/asset-switcher/atom'
-import { Asset } from './types'
+import { Asset, UserRole } from './types'
 
 export function useCurrentAsset() {
   const assets = useRecoilValue(AssetsState)
@@ -13,10 +13,25 @@ export function useCurrentAsset() {
   return assets.find((c: Asset) => c.id === parseInt(asset)) as Asset
 }
 
-export function useIsSwigcoDemo(isRoot = true) {
+export function useUserRoles() {
   const { user } = useAuth0()
 
-  if (!user) return false
+  if (!user) return [] as UserRole[]
 
-  return user.email === import.meta.env.VITE_SWIGCO_USER_EMAIL
+  const userNameSpace = `${import.meta.env.VITE_APP_URL}/roles`
+  const userRoles: UserRole[] = user[userNameSpace]
+
+  return userRoles
+}
+
+export function useIsSysadminUser() {
+  const userRoles = useUserRoles()
+
+  return userRoles.includes('Sysadmin')
+}
+
+export function useIsSwigcoUser() {
+  const userRoles = useUserRoles()
+
+  return userRoles.includes('SwigCo')
 }
