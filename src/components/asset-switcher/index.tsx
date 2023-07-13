@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
-import { useIsSwigcoDemo } from '../../pages/assets/hooks'
+import { useIsSwigcoUser, useIsSysadminUser } from '../../pages/assets/hooks'
 import { useCurrentAssetClass } from '../asset-class-switcher/hooks'
 import { AssetsState } from './atom'
 import UserSession from '../../utils/session'
@@ -14,7 +14,8 @@ function isAssetInSearchTerm(asset: Asset, searchTerm: string): asset is Asset {
 
 function AssetSwitcher() {
   const [searchTerm, setSearchTerm] = useState('')
-  const isSwigcoDemo = useIsSwigcoDemo(false)
+  const isSysadmin = useIsSysadminUser()
+  const isSwigcoUser = useIsSwigcoUser()
   const currentAssetClass = useCurrentAssetClass()
   const assets = useRecoilValue(AssetsState)
 
@@ -52,7 +53,11 @@ function AssetSwitcher() {
         <ul className="menu w-full max-w-xs border border-base-200 bg-base-100 p-4 shadow-md">
           {assets
             .filter((asset: Asset) => {
-              if (isSwigcoDemo) {
+              if (isSysadmin) {
+                return true
+              }
+
+              if (isSwigcoUser) {
                 return asset.id === 19
               }
 
