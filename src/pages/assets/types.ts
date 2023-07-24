@@ -1,6 +1,6 @@
 import { AssetClass } from '../../components/asset-class-switcher/types'
 
-export type UserRole = string
+export type UserRole = 'Sysadmin' | 'SwigCo' | 'Demo_EQ' | 'Demo_RE'
 
 export type Asset = {
   id: number
