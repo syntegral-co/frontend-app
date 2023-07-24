@@ -1,3 +1,4 @@
+import { useUserRoles } from '../../pages/assets/hooks'
 import classnames from 'classnames'
 import { NavbarLink } from '../nav/types'
 import { NavLink } from 'react-router-dom'
@@ -7,22 +8,28 @@ import digital from '/assets/images/digital.png'
 import real from '/assets/images/real-estate.png'
 
 function AssetClassSwitcher() {
+  const userRoles = useUserRoles()
+
   const ASSET_LINKS: NavbarLink[] = [
     {
       title: 'Equities',
       to: './classes/1',
       icon: equity,
+      disabled:
+        !userRoles.includes('Sysadmin') && !userRoles.includes('Demo_EQ'),
     },
     {
       title: 'Digital assets',
       to: './classes/2',
-      disabled: true,
       icon: digital,
+      disabled: true,
     },
     {
       title: 'Real estate',
       to: './classes/3',
       icon: real,
+      disabled:
+        !userRoles.includes('Sysadmin') && !userRoles.includes('Demo_RE'),
     },
   ]
 
