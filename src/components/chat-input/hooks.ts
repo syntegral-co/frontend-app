@@ -64,6 +64,12 @@ export function useChatBot() {
   const isMetricsLoading = useIsFetching({ queryKey: ['chatbot-metrics'] })
 
   useEffect(() => {
+    setChatInput('')
+    setChatMessages([])
+    queryClient.removeQueries()
+  }, [currentAsset!.id])
+
+  useEffect(() => {
     if (status !== 'success' || !chatbotReply) return
 
     let newMessage: ChatMessage = {
