@@ -1,6 +1,5 @@
 import { useCurrentAsset } from '../assets/hooks'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
-import Nav from '../../components/nav'
 import Spinner from '../../components/spinner'
 
 function Download() {

@@ -23,7 +23,6 @@ const ACCOUNT_LINKS: NavbarLink[] = [
 ]
 
 function Nav() {
-  const isSysadmin = useIsSysadminUser()
   const isSwigcoUser = useIsSwigcoUser()
   const currentAssetClass = useCurrentAssetClass()
   const currentAsset = useCurrentAsset()
@@ -31,8 +30,6 @@ function Nav() {
     useAuth0()
 
   if (isLoading) return null
-
-  const isSwigcoDownloadEnabled = isSysadmin || isSwigcoUser
 
   const NAV_LINKS: NavbarLink[] = [
     {
@@ -56,7 +53,8 @@ function Nav() {
       title: 'Download',
       to: `classes/${currentAssetClass?.id}/assets/${currentAsset?.id}/download`,
       icon: 'cloud-download',
-      disabled: !currentAssetClass || !currentAsset || !isSwigcoDownloadEnabled,
+      disabled:
+        !currentAssetClass || !currentAsset || currentAssetClass.id !== 3,
     },
     {
       title: 'Upload',
