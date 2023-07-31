@@ -17,7 +17,7 @@ function ChatOutput() {
         <div className="chat chat-start">
           <div className="chat-image avatar">
             <div className="mask mask-hexagon w-10 rounded-full">
-              <img src={logo} />
+              <img src={logo} alt="Chatbot avatar" />
             </div>
           </div>
           <div className="chat-bubble bg-base-100 text-primary-content">
@@ -32,7 +32,7 @@ function ChatOutput() {
           <div className="chat chat-start">
             <div className="chat-image avatar">
               <div className="mask mask-hexagon w-10 rounded-full">
-                <img src={logo} />
+                <img src={logo} alt="Chatbot avatar" />
               </div>
             </div>
             <div className="chat-bubble bg-base-100">

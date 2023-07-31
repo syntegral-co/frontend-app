@@ -48,7 +48,7 @@ function AssetClassSwitcher() {
           ) : null}
           <div className="mask mask-hexagon flex h-32 w-32 items-center justify-center bg-base-200 transition-transform hover:scale-105">
             <p className="text-3xl text-primary-content">
-              <img className="h-auto w-16" src={icon} />
+              <img className="h-auto w-16" src={icon} alt={title} />
             </p>
           </div>
           <p>{title}</p>
@@ -59,7 +59,7 @@ function AssetClassSwitcher() {
 
   return (
     <div className="flex h-96 w-full flex-col items-center justify-center self-center">
-      <img className="h-40" src={logo} />
+      <img className="h-40" src={logo} alt="Syntegral logo" />
       <h1 className="py-6 text-2xl font-bold text-primary-content">
         Select what kind of asset you want to explore
       </h1>
