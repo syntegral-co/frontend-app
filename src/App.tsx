@@ -1,5 +1,5 @@
 import { Suspense, useEffect } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import UserSession from './utils/session'
 import Mixpanel from './utils/tracking'
@@ -14,6 +14,43 @@ import Theme from './pages/assets/themes/theme'
 import Upload from './pages/upload'
 import Download from './pages/download'
 import NotFound from './pages/404'
+
+const router = createBrowserRouter([
+  {
+    path: '/swigco?',
+    element: <Demo />,
+    children: [
+      {
+        index: true,
+        element: <AssetClassSwitcher />,
+      },
+      {
+        path: 'classes/:class',
+        element: <AssetSwitcher />,
+      },
+      {
+        path: 'classes/:class/assets/:asset',
+        element: <Asset />,
+      },
+      {
+        path: 'classes/:class/assets/:asset/themes',
+        element: <Themes />,
+      },
+      {
+        path: 'classes/:class/assets/:asset/themes/:theme',
+        element: <Theme />,
+      },
+    ],
+  },
+  {
+    path: 'upload',
+    element: <Upload />,
+  },
+  {
+    path: '*',
+    element: <NotFound />,
+  },
+])
 
 function App() {
   const { user } = useAuth0()
@@ -35,27 +72,7 @@ function App() {
     <>
       <div className="container mx-auto mt-4 flex h-screen flex-col py-6 px-4 md:px-0">
         <Suspense fallback={<Spinner />}>
-          <Routes>
-            <Route path="/swigco?" element={<Demo />}>
-              <Route index element={<AssetClassSwitcher />} />
-              <Route path="classes/:class" element={<AssetSwitcher />} />
-              <Route path="classes/:class/assets/:asset" element={<Asset />} />
-              <Route
-                path="classes/:class/assets/:asset/themes"
-                element={<Themes />}
-              />
-              <Route
-                path="classes/:class/assets/:asset/themes/:theme"
-                element={<Theme />}
-              />
-              <Route
-                path="classes/:class/assets/:asset/download"
-                element={<Download />}
-              />
-            </Route>
-            <Route path="upload" element={<Upload />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <RouterProvider router={router} />
         </Suspense>
       </div>
     </>

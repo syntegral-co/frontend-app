@@ -57,7 +57,7 @@ function AssetSwitcher() {
 
   return (
     <div className="flex h-96 w-full flex-col items-center justify-center self-center">
-      <img className="h-40" src={logo} />
+      <img className="h-40" src={logo} alt="Syntegral logo" />
       <h2 className="py-6 text-center text-2xl font-bold text-primary-content">
         {welcomeText}
       </h2>

@@ -135,12 +135,12 @@ function Nav() {
           <div className="dropdown-end dropdown">
             {isSwigcoUser ? (
               <div className="cursor-pointer" tabIndex={0}>
-                <img src={swigco} className="h-8 w-auto" />
+                <img className="h-8 w-auto" src={swigco} alt="SwigCo logo" />
               </div>
             ) : (
               <div className="avatar cursor-pointer" tabIndex={0}>
                 <div className="mask mask-hexagon w-8 rounded-full">
-                  <img src={user?.picture} />
+                  <img src={user?.picture} alt={`${user!.name} avatar`} />
                 </div>
               </div>
             )}

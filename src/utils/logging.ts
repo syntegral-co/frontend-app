@@ -1,4 +1,4 @@
-import React from 'react'
+import { useEffect } from 'react'
 import {
   createRoutesFromChildren,
   matchRoutes,
@@ -15,7 +15,7 @@ Sentry.init({
   integrations: [
     new Sentry.BrowserTracing({
       routingInstrumentation: Sentry.reactRouterV6Instrumentation(
-        React.useEffect,
+        useEffect,
         useLocation,
         useNavigationType,
         createRoutesFromChildren,
