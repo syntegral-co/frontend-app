@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ErrorBoundary } from '@sentry/react'
 import { Auth0Provider } from '@auth0/auth0-react'
-import { BrowserRouter } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
@@ -23,14 +22,12 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           redirect_uri: window.location.origin,
         }}
       >
-        <BrowserRouter>
-          <RecoilRoot>
-            <QueryClientProvider client={queryClient}>
-              <App />
-              <ReactQueryDevtools initialIsOpen={false} />
-            </QueryClientProvider>
-          </RecoilRoot>
-        </BrowserRouter>
+        <RecoilRoot>
+          <QueryClientProvider client={queryClient}>
+            <App />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
+        </RecoilRoot>
       </Auth0Provider>
     </ErrorBoundary>
   </React.StrictMode>,
