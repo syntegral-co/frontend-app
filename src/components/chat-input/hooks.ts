@@ -6,7 +6,8 @@ import {
   useQuery,
   useQueryClient,
 } from '@tanstack/react-query'
-import { useCurrentAsset, useIsSwigcoUser } from '../../pages/assets/hooks'
+import { useCurrentAssetClass } from '../asset-class-switcher/hooks'
+import { useCurrentAsset } from '../../pages/assets/hooks'
 import { chatState } from './atoms'
 import { chat, getChatMetrics } from './api'
 import { formatReferences } from '../../utils/helpers'
@@ -17,7 +18,7 @@ import UserSession from '../../utils/session'
 export function useChatBot() {
   const [chatInput, setChatInput] = useState<string>('')
   const [chatMessages, setChatMessages] = useRecoilState(chatState)
-  const isSwigcoUser = useIsSwigcoUser()
+  const currentAssetClass = useCurrentAssetClass()
   const currentAsset = useCurrentAsset()
   const queryClient = useQueryClient()
 
@@ -42,7 +43,8 @@ export function useChatBot() {
         queryFn: () => getChatMetrics('iris', chatbotReply!.answer),
         staleTime: Infinity,
         enabled:
-          !isSwigcoUser &&
+          currentAssetClass!.id !== 3 &&
+          currentAssetClass!.id !== 4 &&
           status === 'success' &&
           chatbotReply &&
           chatbotReply.status === 'successful',
@@ -52,7 +54,8 @@ export function useChatBot() {
         queryFn: () => getChatMetrics('sdg', chatbotReply!.answer),
         staleTime: Infinity,
         enabled:
-          !isSwigcoUser &&
+          currentAssetClass!.id !== 3 &&
+          currentAssetClass!.id !== 4 &&
           status === 'success' &&
           chatbotReply &&
           chatbotReply.status === 'successful',

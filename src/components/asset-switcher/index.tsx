@@ -23,19 +23,37 @@ function AssetSwitcher() {
     UserSession.reset()
   }, [UserSession])
 
-  const welcomeText =
-    currentAssetClass?.id === 3 ? (
-      <>
-        Welcome to your real asset due diligence portal. <br />
-        Choose your asset to start.
-      </>
-    ) : (
-      <>
-        Welcome to the Nigerian stock exchange demo.
-        <br />
-        Choose an asset to start exploring!
-      </>
-    )
+  let welcomeText
+
+  switch (currentAssetClass?.id) {
+    case 4:
+      welcomeText = (
+        <>
+          Welcome to the INERIA demo assessment. <br />
+          Choose your asset to start.
+        </>
+      )
+      break
+
+    case 3:
+      welcomeText = (
+        <>
+          Welcome to your real asset due diligence portal. <br />
+          Choose your asset to start.
+        </>
+      )
+      break
+
+    case 1:
+    default:
+      welcomeText = (
+        <>
+          Welcome to the Nigerian stock exchange demo.
+          <br />
+          Choose an asset to start exploring!
+        </>
+      )
+  }
 
   return (
     <div className="flex h-96 w-full flex-col items-center justify-center self-center">

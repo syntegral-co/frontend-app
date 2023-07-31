@@ -1,4 +1,4 @@
 export type AssetClass = {
-  id: number
+  id: 1 | 2 | 3 | 4
   name: string
 }
