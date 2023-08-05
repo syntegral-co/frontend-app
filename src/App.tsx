@@ -33,6 +33,10 @@ const router = createBrowserRouter([
         element: <Asset />,
       },
       {
+        path: 'classes/:class/assets/:asset/download',
+        element: <Download />,
+      },
+      {
         path: 'classes/:class/assets/:asset/themes',
         element: <Themes />,
       },
@@ -41,10 +45,6 @@ const router = createBrowserRouter([
         element: <Theme />,
       },
     ],
-  },
-  {
-    path: 'upload',
-    element: <Upload />,
   },
   {
     path: '*',
