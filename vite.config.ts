@@ -15,6 +15,7 @@ export default defineConfig(({ mode }) => {
         org: 'syntegral',
         project: 'syntegral-frontend-app',
         authToken: env.VITE_SENTRY_AUTH_TOKEN,
+        telemetry: false,
       }),
     ],
   }
