@@ -1,9 +1,5 @@
 import { useCurrentAssetClass } from '../asset-class-switcher/hooks'
-import {
-  useCurrentAsset,
-  useIsSwigcoUser,
-  useIsSysadminUser,
-} from '../../pages/assets/hooks'
+import { useCurrentAsset, useIsSwigcoUser } from '../../pages/assets/hooks'
 import { useAuth0 } from '@auth0/auth0-react'
 import classnames from 'classnames'
 import { NavLink } from 'react-router-dom'
@@ -82,7 +78,7 @@ function Nav() {
   )
 
   return (
-    <div className="navbar mb-8 bg-base-100 px-4 md:px-0">
+    <nav className="navbar mb-8 px-4 md:px-0">
       <div className="flex-none lg:hidden">
         <div className="dropdown">
           <label tabIndex={0} className="btn-ghost btn">
@@ -130,7 +126,7 @@ function Nav() {
           </ul>
         </div>
       )}
-      <div className="ml-auto flex-none gap-2">
+      <div className="ml-auto mr-4 flex-none gap-2">
         {isAuthenticated ? (
           <div className="dropdown-end dropdown">
             {isSwigcoUser ? (
@@ -167,7 +163,7 @@ function Nav() {
           </a>
         )}
       </div>
-    </div>
+    </nav>
   )
 }
 

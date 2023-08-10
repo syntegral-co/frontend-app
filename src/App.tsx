@@ -70,7 +70,7 @@ function App() {
 
   return (
     <>
-      <div className="container mx-auto mt-4 flex h-screen flex-col py-6 px-4 md:px-0">
+      <div className="container mx-auto mt-4 flex h-screen flex-col bg-base-100/50 bg-syntegral-face bg-cover bg-center py-6 px-4 md:px-0">
         <Suspense fallback={<Spinner />}>
           <RouterProvider router={router} />
         </Suspense>

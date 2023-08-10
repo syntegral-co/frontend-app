@@ -11,6 +11,10 @@ module.exports = {
       sans: ['Jost'],
     },
     extend: {
+      backgroundImage: {
+        'syntegral-face':
+          "url('/public/assets/images/syntegral-background.webp')",
+      },
       animation: {
         loader: 'loader 0.6s infinite alternate',
         shine: 'shine 1.2s',
