@@ -6,7 +6,7 @@ import NotFound from '../pages/404'
 import Asset from '../pages/assets'
 import Themes from '../pages/assets/themes'
 import Theme from '../pages/assets/themes/theme'
-import Upload from '../pages/upload'
+import Download from '../pages/download'
 
 export const routes: RouteObject[] = [
   {
@@ -33,11 +33,11 @@ export const routes: RouteObject[] = [
         path: 'classes/:class/assets/:asset/themes/:theme',
         element: <Theme />,
       },
+      {
+        path: 'classes/:class/assets/:asset/download',
+        element: <Download />,
+      },
     ],
-  },
-  {
-    path: 'upload',
-    element: <Upload />,
   },
   {
     path: '*',
