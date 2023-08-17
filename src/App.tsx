@@ -3,54 +3,11 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 import UserSession from './utils/session'
 import Mixpanel from './utils/tracking'
-import './utils/logging'
-import Demo from './pages'
-import AssetClassSwitcher from './components/asset-class-switcher'
-import AssetSwitcher from './components/asset-switcher'
 import Spinner from './components/spinner'
-import Asset from './pages/assets'
-import Themes from './pages/assets/themes'
-import Theme from './pages/assets/themes/theme'
-import Upload from './pages/upload'
-import Download from './pages/download'
-import NotFound from './pages/404'
+import { routes } from './utils/routes'
+import './utils/logging'
 
-const router = createBrowserRouter([
-  {
-    path: '/swigco?',
-    element: <Demo />,
-    children: [
-      {
-        index: true,
-        element: <AssetClassSwitcher />,
-      },
-      {
-        path: 'classes/:class',
-        element: <AssetSwitcher />,
-      },
-      {
-        path: 'classes/:class/assets/:asset',
-        element: <Asset />,
-      },
-      {
-        path: 'classes/:class/assets/:asset/download',
-        element: <Download />,
-      },
-      {
-        path: 'classes/:class/assets/:asset/themes',
-        element: <Themes />,
-      },
-      {
-        path: 'classes/:class/assets/:asset/themes/:theme',
-        element: <Theme />,
-      },
-    ],
-  },
-  {
-    path: '*',
-    element: <NotFound />,
-  },
-])
+const router = createBrowserRouter(routes)
 
 function App() {
   const { user } = useAuth0()

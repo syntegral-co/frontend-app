@@ -13,7 +13,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'syntegral-face':
-          "url('/public/assets/images/syntegral-background.webp')",
+          "url('/public/assets/images/syntegral-background.jpg')",
       },
       animation: {
         loader: 'loader 0.6s infinite alternate',
