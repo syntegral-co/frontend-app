@@ -1,5 +1,5 @@
 import { useUserRoles } from '../../pages/assets/hooks'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { NavbarLink } from '../nav/types'
 import { NavLink } from 'react-router-dom'
 import logo from '/assets/images/syntegral-white.png'
@@ -37,7 +37,7 @@ function AssetClassSwitcher() {
     return (
       <NavLink
         key={to}
-        className={classnames({ 'pointer-events-none': disabled })}
+        className={clsx({ 'pointer-events-none': disabled })}
         to={to}
       >
         <div className="relative flex flex-col items-center justify-center">

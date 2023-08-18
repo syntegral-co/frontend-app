@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 import { FileWithPath, useDropzone } from 'react-dropzone'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import Nav from '../../components/nav'
 import Spinner from '../../components/spinner'
 
@@ -51,7 +51,7 @@ function Upload() {
       <Nav />
       <div className="flex h-full flex-col gap-4">
         <div
-          className={classnames(
+          className={clsx(
             'relative flex h-96 w-full items-center justify-center rounded-md border-2 border-dashed border-primary-content',
             {
               'border-accent': isDragActive || isFocused,

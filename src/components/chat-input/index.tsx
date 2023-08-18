@@ -1,7 +1,7 @@
 import { FormEvent, KeyboardEvent, useRef, useState } from 'react'
 import { useChatBot } from './hooks'
 import { z, ZodFormattedError } from 'zod'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import Icon from '../icon'
 
 const chatSchema = z.object({
@@ -66,7 +66,7 @@ function ChatInput() {
       </button>
       <textarea
         id="chat-input"
-        className={classnames(
+        className={clsx(
           'textarea h-8 w-full resize-none rounded-none bg-base-100',
           {
             'border-error': formErrors.text?._errors,
@@ -78,12 +78,9 @@ function ChatInput() {
       />
       <button
         ref={submitButtonRef}
-        className={classnames(
-          'btn gap-2 rounded-none border-none text-accent',
-          {
-            'tooltip-error tooltip': formErrors.text?._errors,
-          },
-        )}
+        className={clsx('btn gap-2 rounded-none border-none text-accent', {
+          'tooltip-error tooltip': formErrors.text?._errors,
+        })}
         data-tip={formErrors.text?._errors[0]}
         type="submit"
       >

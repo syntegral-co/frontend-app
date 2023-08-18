@@ -1,7 +1,7 @@
 import { useCurrentAssetClass } from '../asset-class-switcher/hooks'
 import { useCurrentAsset, useIsSwigcoUser } from '../../pages/assets/hooks'
 import { useAuth0 } from '@auth0/auth0-react'
-import classnames from 'classnames'
+import clsx from 'clsx'
 import { NavLink } from 'react-router-dom'
 import Icon from '../icon'
 import { NavbarLink } from './types'
@@ -64,7 +64,7 @@ function Nav() {
     ({ title, to, icon, disabled, hidden }, index) => (
       <li
         key={index}
-        className={classnames({
+        className={clsx({
           hidden: hidden,
           'disabled pointer-events-none': disabled,
         })}
