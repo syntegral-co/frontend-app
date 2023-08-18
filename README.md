@@ -12,6 +12,7 @@ Bootstrapped with [Vite](https://vitejs.dev/). Deployed on [Netlify](https://www
 - Queries with [React Query](https://react-query-v3.tanstack.com/)
 - Authentication via [Auth0](https://auth0.com/)
 - State via [recoil](https://recoiljs.org/)
+- Testing via [Vitest](https://vitest.dev/)
 - Icons from [Icomoon](https://icomoon.io/)
 - Tracking via [Mixpanel](https://mixpanel.com/)
 - Error logging via [Sentry](https://sentry.io/)

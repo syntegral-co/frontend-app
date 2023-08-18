@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "test": "vitest --coverage",
+    "test": "vitest",
+    "coverage": "vitest --coverage",
     "build": "vitest --watch=false && tsc && vite build ",
     "preview": "vite preview",
     "pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\""
