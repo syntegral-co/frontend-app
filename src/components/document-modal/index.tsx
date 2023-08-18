@@ -1,6 +1,6 @@
-import { useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { useRecoilValue } from 'recoil'
+import { DocumentRequest } from './types'
 import { useDocumentModal } from './hooks'
 import { documentState } from './atoms'
 import { getDocument } from './api'
@@ -10,20 +10,14 @@ function DocumentModal() {
   const { isDocumentModalOpen, toggleDocumentModal } = useDocumentModal()
   const document = useRecoilValue(documentState)
 
-  const { status, data, refetch, fetchStatus } = useQuery({
-    queryKey: ['document'],
+  const { status, data, fetchStatus }: DocumentRequest = useQuery({
+    queryKey: ['document', document?.id],
     queryFn: () => getDocument(document!.id, 5),
     enabled: document !== null,
     staleTime: 300000,
   })
 
-  useEffect(() => {
-    if (!document) return
-
-    refetch()
-  }, [document])
-
-  if (!document || !isDocumentModalOpen) return <></>
+  if (!data || !document || !isDocumentModalOpen) return <></>
 
   return (
     <div className="fixed left-1/2 top-1/2 z-10 m-auto h-5/6 w-5/6 -translate-y-1/2 -translate-x-1/2 rounded-md border-2 border-accent bg-base-100 shadow-lg">

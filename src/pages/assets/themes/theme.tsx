@@ -12,6 +12,7 @@ import Icon from '../../../components/icon'
 import ThemeChart from '../../../components/theme-chart'
 import ThemeMetrics from '../../../components/theme-metrics'
 import ThemeQA from '../../../components/theme-qa'
+import { ThemeSummaryRequest } from './types'
 
 function Theme() {
   const [references, setReferences] = useState<DocumentLink[]>([])
@@ -20,7 +21,7 @@ function Theme() {
 
   const { onClickDocument } = useDocumentModal()
 
-  const { data, fetchStatus } = useQuery({
+  const { data, fetchStatus }: ThemeSummaryRequest = useQuery({
     queryKey: ['impact_summary', theme!.id],
     queryFn: () => getThemeSummary(currentAsset!.id, theme!.id),
     staleTime: Infinity,
@@ -41,7 +42,7 @@ function Theme() {
         <div className="flex w-full flex-col gap-2 md:w-1/2">
           <div className="rounded-md bg-base-200 p-4">
             <h1 className="mb-4 text-3xl text-accent">{theme!.name}</h1>
-            <p>{data.summary}</p>
+            <p>{data!.summary}</p>
             {references.length > 0 ? (
               <>
                 <h2 className="mt-4 mb-4 text-2xl">References</h2>

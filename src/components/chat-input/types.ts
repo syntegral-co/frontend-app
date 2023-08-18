@@ -1,3 +1,10 @@
+import { QueryStatus } from '@tanstack/react-query'
+
+export type ChatRequest = {
+  status: QueryStatus
+  data: ChatReply | undefined
+}
+
 export type ChatReply = {
   status: 'successful' | 'unsuccessful'
   answer: string

@@ -11,7 +11,7 @@ import { useCurrentAsset } from '../../pages/assets/hooks'
 import { chatState } from './atoms'
 import { chat, getChatMetrics } from './api'
 import { formatReferences } from '../../utils/helpers'
-import { ChatReply } from './types'
+import { ChatRequest } from './types'
 import { ChatMessage } from '../chat-output/types'
 import UserSession from '../../utils/session'
 
@@ -22,13 +22,7 @@ export function useChatBot() {
   const currentAsset = useCurrentAsset()
   const queryClient = useQueryClient()
 
-  const {
-    status,
-    data: chatbotReply,
-  }: {
-    status: string
-    data: ChatReply | undefined
-  } = useQuery({
+  const { status, data: chatbotReply }: ChatRequest = useQuery({
     queryKey: ['chatbot', chatInput, currentAsset!.id],
     queryFn: () => chat(chatInput, currentAsset!.id),
     staleTime: Infinity,
