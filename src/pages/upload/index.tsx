@@ -1,7 +1,6 @@
 import { useCallback, useState } from 'react'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 import { FileWithPath, useDropzone } from 'react-dropzone'
-import { delay } from '../../utils/helpers'
 import classnames from 'classnames'
 import Nav from '../../components/nav'
 import Spinner from '../../components/spinner'
@@ -12,28 +11,10 @@ function Upload() {
 
   const onDrop = useCallback(async () => {
     setShowLoader(true)
-
-    await delay(3000)
-
-    setProgress(35)
-
-    await delay(1000)
-
-    setProgress(68)
-
-    await delay(2000)
-
-    setProgress(99)
-
-    await delay(500)
-
     setProgress(100)
-
-    await delay(500)
-
     setShowLoader(false)
     setProgress(0)
-  }, [setShowLoader, delay, setProgress])
+  }, [setShowLoader, setProgress])
 
   const {
     acceptedFiles,

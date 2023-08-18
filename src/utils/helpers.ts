@@ -2,10 +2,6 @@
 import { DocumentLink } from '../components/document-modal/types'
 import { ThemeScore } from '../pages/assets/types'
 
-export function assertUnreachable(x: never): never {
-  throw new Error('Unreachable code!')
-}
-
 export function capitalize(string: string) {
   return `${string.charAt(0).toUpperCase()}${string.slice(1, string.length)}`
 }
@@ -28,9 +24,4 @@ export function getThemeScore(themeId: number, scores: ThemeScore[]) {
   if (!themeScore) return 0
 
   return themeScore.score
-}
-
-/* c8 ignore next 3 */
-export function delay(ms: number) {
-  return new Promise((res) => setTimeout(res, ms))
 }

@@ -4,7 +4,6 @@ import ThemesToggles from '../../../components/themes-toggles'
 import ViewSelector from '../../../components/view-selector'
 import ThemesList from '../../../components/themes-list'
 import ThemesTable from '../../../components/themes-table'
-import { assertUnreachable } from '../../../utils/helpers'
 
 function Themes() {
   const viewMode = useRecoilValue(viewModeState)
@@ -25,7 +24,7 @@ function Themes() {
       break
 
     default:
-      return assertUnreachable(viewMode)
+      viewMode satisfies never
   }
 
   return (
