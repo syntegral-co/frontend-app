@@ -18,7 +18,7 @@ function ThemesSatellites() {
         .map((theme) => (
           <div
             key={theme.id}
-            className="card max-h-64 w-48 cursor-pointer border-2 border-neutral bg-base-100 shadow-xl duration-300 ease-in-out hover:z-10 hover:scale-125"
+            className="card max-h-64 w-48 cursor-pointer border-2 bg-base-200 shadow-xl duration-300 ease-in-out hover:z-10 hover:scale-125"
             onClick={() => navigate(`./${theme.id}`)}
           >
             <figure className="mx-auto mt-4 flex h-20 w-20 items-center justify-center rounded-full bg-[#000]">
