@@ -25,7 +25,8 @@ function AssetSwitcher() {
 
   let welcomeText
 
-  switch (currentAssetClass?.id) {
+  switch (currentAssetClass!.id) {
+    case 5:
     case 4:
       welcomeText = (
         <>
@@ -44,8 +45,8 @@ function AssetSwitcher() {
       )
       break
 
+    case 2:
     case 1:
-    default:
       welcomeText = (
         <>
           Welcome to the Nigerian stock exchange demo.
@@ -53,6 +54,10 @@ function AssetSwitcher() {
           Choose an asset to start exploring!
         </>
       )
+      break
+
+    default:
+      currentAssetClass!.id satisfies never
   }
 
   return (

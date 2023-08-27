@@ -1,12 +1,12 @@
-import { useRecoilValue } from 'recoil'
-import { viewModeState } from '../../../components/view-selector/atom'
+import { useCurrentViewMode } from './hooks'
 import ThemesToggles from '../../../components/themes-toggles'
 import ViewSelector from '../../../components/view-selector'
 import ThemesList from '../../../components/themes-list'
 import ThemesTable from '../../../components/themes-table'
+import ThemesSatellites from '../../../components/themes-satellite'
 
 function Themes() {
-  const viewMode = useRecoilValue(viewModeState)
+  const viewMode = useCurrentViewMode()
 
   let themesView: JSX.Element = <></>
 
@@ -20,7 +20,11 @@ function Themes() {
       break
 
     case 'compare':
-      themesView = <div></div>
+      themesView = <div>{viewMode}</div>
+      break
+
+    case 'satellite':
+      themesView = <ThemesSatellites />
       break
 
     default:
@@ -32,9 +36,11 @@ function Themes() {
       <div className="mb-4 h-auto w-full rounded-md bg-base-200 p-6">
         <ThemesToggles />
       </div>
-      <div className="mb-4 h-auto w-full rounded-md bg-base-200 p-6">
-        <ViewSelector />
-      </div>
+      {viewMode !== 'satellite' && (
+        <div className="mb-4 h-auto w-full rounded-md bg-base-200 p-6">
+          <ViewSelector />
+        </div>
+      )}
       {themesView}
     </div>
   )

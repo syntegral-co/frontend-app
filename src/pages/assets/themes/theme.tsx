@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { useCurrentAssetClass } from '../../../components/asset-class-switcher/hooks'
 import { useCurrentAsset } from '../hooks'
 import { useCurrentTheme } from './hooks'
 import { useDocumentModal } from '../../../components/document-modal/hooks'
 import { getThemeSummary } from './api'
 import { formatReferences } from '../../../utils/helpers'
 import { DocumentLink } from '../../../components/document-modal/types'
+import clsx from 'clsx'
 import DocumentModal from '../../../components/document-modal'
 import Spinner from '../../../components/spinner'
 import Icon from '../../../components/icon'
@@ -16,6 +18,7 @@ import { ThemeSummaryRequest } from './types'
 
 function Theme() {
   const [references, setReferences] = useState<DocumentLink[]>([])
+  const currentAssetClass = useCurrentAssetClass()
   const currentAsset = useCurrentAsset()
   const theme = useCurrentTheme()
 
@@ -38,8 +41,17 @@ function Theme() {
   return (
     <>
       <DocumentModal />
-      <div className="flex flex-col items-start justify-start gap-2 md:flex-row">
-        <div className="flex w-full flex-col gap-2 md:w-1/2">
+      <div
+        className={clsx(
+          'flex flex-col items-start justify-start gap-2 md:flex-row',
+          { '!flex-col': currentAssetClass!.id === 5 },
+        )}
+      >
+        <div
+          className={clsx('flex w-full flex-col gap-2 md:w-1/2', {
+            '!w-full': currentAssetClass!.id === 5,
+          })}
+        >
           <div className="rounded-md bg-base-200 p-4">
             <h1 className="mb-4 text-3xl text-accent">{theme!.name}</h1>
             <p>{data!.summary}</p>
@@ -64,7 +76,11 @@ function Theme() {
             ) : null}
           </div>
         </div>
-        <div className="flex w-full flex-col gap-2 md:w-1/2">
+        <div
+          className={clsx('flex w-full flex-col gap-2 md:w-1/2', {
+            '!w-full': currentAssetClass!.id === 5,
+          })}
+        >
           <ThemeMetrics />
           <ThemeChart />
           <ThemeQA />
