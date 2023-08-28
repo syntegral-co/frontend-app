@@ -1,1 +1,1 @@
-export type ViewMode = 'table' | 'list' | 'compare'
+export type ViewMode = 'table' | 'list' | 'compare' | 'satellite'
