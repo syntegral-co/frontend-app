@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "preinstall": "npx -y only-allow pnpm",
     "dev": "vite",
     "test": "vitest",
     "test-ui": "vitest --ui",

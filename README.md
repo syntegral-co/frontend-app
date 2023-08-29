@@ -75,6 +75,8 @@ The environmental variables used throughout the app are defined in `src/vite-env
 
 ## Development 💻
 
+The repository uses _pnpm_. It will give you an error if you try to install its dependencies with npm or yarn.
+
 ### Start the server
 
 To start the development, clone this repository.
@@ -88,20 +90,36 @@ VITE_DOC_API_BASEPATH=
 VITE_MIXPANEL_PROJECT_TOKEN=
 ```
 
-Then, create a local environment configuration file `.env.local` with the following keys:
-
-```
-VITE_AUTH0_DOMAIN=
-VITE_AUTH0_CLIENTID=
-VITE_API_KEY=
-VITE_SENTRY_AUTH_TOKEN=
-```
+Then, create a local environment configuration file `.env.local` by duplicating `env.sample`.
 
 Ask your favourite developer for the keys.
 Afterwards, run:
 
 ```bash
 cd frontend-app
-yarn install
-yarn dev
+pnpm install
+pnpm dev
 ```
+
+### Testing
+
+To run tests use:
+
+```bash
+pnpm test
+```
+
+this will run the testing in watch mode.
+Other useful commands are:
+
+```bash
+pnpm test-ui
+```
+
+or
+
+```bash
+pnpm coverage
+```
+
+The first command opens a testing UI in the browser, while the second one run the testing suite in watch mode with code coverage informations.
