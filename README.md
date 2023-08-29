@@ -80,14 +80,10 @@ The repository uses _pnpm_. It will give you an error if you try to install its 
 ### Start the server
 
 To start the development, clone this repository.
+After cloning it, run:
 
-After cloning it, create a local environment configuration file `.env` with the following keys:
-
-```
-VITE_CHATBOT_API_BASEPATH=
-VITE_IMPACT_API_BASEPATH=
-VITE_DOC_API_BASEPATH=
-VITE_MIXPANEL_PROJECT_TOKEN=
+```bash
+cd frontend-app
 ```
 
 Then, create a local environment configuration file `.env.local` by duplicating `env.sample`.
@@ -96,7 +92,6 @@ Ask your favourite developer for the keys.
 Afterwards, run:
 
 ```bash
-cd frontend-app
 pnpm install
 pnpm dev
 ```
@@ -109,7 +104,7 @@ To run tests use:
 pnpm test
 ```
 
-this will run the testing in watch mode.
+this will run the testing suite in watch mode.
 Other useful commands are:
 
 ```bash
