@@ -3,8 +3,13 @@ import { capitalize, formatReferences, getThemeScore } from './helpers'
 
 describe('Helpers', () => {
   describe('String formatting helpers', () => {
+    const lowercaseString = 'lorem ipsum'
+
+    test('Capitalize does not return a lowercase string', () => {
+      expect(capitalize(lowercaseString)).not.toBe('lorem ipsum')
+    })
+
     test('Capitalize returns a capialized string', () => {
-      const lowercaseString = 'lorem ipsum'
       expect(capitalize(lowercaseString)).toBe('Lorem ipsum')
     })
   })
