@@ -7,7 +7,8 @@ Bootstrapped with [Vite](https://vitejs.dev/). Deployed on [Netlify](https://www
 ## Main Features ⭐
 
 - React JS + Typescript
-- Styling and components by [Tailwind CSS](https://tailwindcss.com/)
+- Styling by [Tailwind CSS](https://tailwindcss.com/)
+- Components and UI by [daisyUI](https://daisyui.com/)
 - Validation via [Zod](https://zod.dev/)
 - Queries with [React Query](https://react-query-v3.tanstack.com/)
 - Authentication via [Auth0](https://auth0.com/)
