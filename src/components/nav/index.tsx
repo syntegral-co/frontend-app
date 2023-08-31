@@ -131,7 +131,7 @@ function Nav() {
             <div className="avatar cursor-pointer" tabIndex={0}>
               {user!.app_metadata.picture ? (
                 <img
-                  className="h-6 sm:h-8 w-auto"
+                  className="h-6 sm:h-8 max-h-16 w-auto"
                   src={user!.app_metadata.picture}
                   alt={`${user!.name} logo`}
                 />
