@@ -1,16 +1,10 @@
 import { useCurrentAssetClass } from '../asset-class-switcher/hooks'
-import {
-  useCurrentAsset,
-  useIsSwigcoUser,
-  useIsIneriaUser,
-} from '../../pages/assets/hooks'
+import { useCurrentAsset, useIsSwigcoUser } from '../../pages/assets/hooks'
 import { useAuth0 } from '@auth0/auth0-react'
 import clsx from 'clsx'
 import { NavLink } from 'react-router-dom'
 import Icon from '../icon'
 import { NavbarLink } from './types'
-import swigco from '/assets/images/swigco/swigco-logo.png'
-import ineria from '/assets/images/ineria/ineria-logo.png'
 
 const ACCOUNT_LINKS: NavbarLink[] = [
   {
@@ -25,7 +19,6 @@ const ACCOUNT_LINKS: NavbarLink[] = [
 
 function Nav() {
   const isSwigcoUser = useIsSwigcoUser()
-  const isIneriaUser = useIsIneriaUser()
   const currentAssetClass = useCurrentAssetClass()
   const currentAsset = useCurrentAsset()
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
@@ -83,30 +76,6 @@ function Nav() {
     ),
   )
 
-  let userAvatar = (
-    <div className="avatar cursor-pointer" tabIndex={0}>
-      <div className="mask mask-hexagon w-8 rounded-full">
-        <img src={user?.picture} alt={`${user!.name} avatar`} />
-      </div>
-    </div>
-  )
-
-  if (isSwigcoUser) {
-    userAvatar = (
-      <div className="cursor-pointer" tabIndex={0}>
-        <img className="h-6 sm:h-8 w-auto" src={swigco} alt="SwigCo logo" />
-      </div>
-    )
-  }
-
-  if (isIneriaUser) {
-    userAvatar = (
-      <div className="cursor-pointer" tabIndex={0}>
-        <img className="h-6 sm:h-8 w-auto" src={ineria} alt="Ineria logo" />
-      </div>
-    )
-  }
-
   return (
     <nav className="navbar mb-8 px-4 md:px-0">
       <div className="flex-none lg:hidden">
@@ -159,7 +128,19 @@ function Nav() {
       <div className="ml-auto mr-4 flex-none gap-2">
         {isAuthenticated ? (
           <div className="dropdown-end dropdown">
-            {userAvatar}
+            <div className="avatar cursor-pointer" tabIndex={0}>
+              {user!.app_metadata.picture ? (
+                <img
+                  className="h-6 sm:h-8 w-auto"
+                  src={user!.app_metadata.picture}
+                  alt={`${user!.name} logo`}
+                />
+              ) : (
+                <div className="mask mask-hexagon w-8 rounded-full">
+                  <img src={user?.picture} alt={`${user!.name} avatar`} />
+                </div>
+              )}
+            </div>
             <ul
               tabIndex={0}
               className="dropdown-content menu w-52 rounded-md border-2 border-accent-focus bg-base-200 p-2 shadow"
