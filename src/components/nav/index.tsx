@@ -5,7 +5,6 @@ import clsx from 'clsx'
 import { NavLink } from 'react-router-dom'
 import Icon from '../icon'
 import { NavbarLink } from './types'
-import swigco from '/assets/images/swigco-logo.png'
 
 const ACCOUNT_LINKS: NavbarLink[] = [
   {
@@ -129,17 +128,19 @@ function Nav() {
       <div className="ml-auto mr-4 flex-none gap-2">
         {isAuthenticated ? (
           <div className="dropdown-end dropdown">
-            {isSwigcoUser ? (
-              <div className="cursor-pointer" tabIndex={0}>
-                <img className="h-8 w-auto" src={swigco} alt="SwigCo logo" />
-              </div>
-            ) : (
-              <div className="avatar cursor-pointer" tabIndex={0}>
+            <div className="avatar cursor-pointer" tabIndex={0}>
+              {user!.app_metadata.picture ? (
+                <img
+                  className="h-6 sm:h-8 w-auto"
+                  src={user!.app_metadata.picture}
+                  alt={`${user!.name} logo`}
+                />
+              ) : (
                 <div className="mask mask-hexagon w-8 rounded-full">
                   <img src={user?.picture} alt={`${user!.name} avatar`} />
                 </div>
-              </div>
-            )}
+              )}
+            </div>
             <ul
               tabIndex={0}
               className="dropdown-content menu w-52 rounded-md border-2 border-accent-focus bg-base-200 p-2 shadow"

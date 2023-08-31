@@ -18,8 +18,7 @@ export function useUserRoles() {
 
   if (!user) return [] as UserRole[]
 
-  const userNameSpace = `${import.meta.env.VITE_APP_URL}/roles`
-  const userRoles: UserRole[] = user[userNameSpace]
+  const userRoles: UserRole[] = user.app_metadata.roles
 
   return userRoles
 }

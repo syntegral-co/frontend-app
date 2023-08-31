@@ -118,3 +118,19 @@ pnpm coverage
 ```
 
 The first command opens a testing UI in the browser, while the second one run the testing suite in watch mode with code coverage informations.
+
+### Preview
+
+Vite offers a command to preview the built application via a local web sever:
+
+```bash
+pnpm preview
+```
+
+### Build
+
+To build the application locally, run:
+
+```bash
+pnpm build
+```
