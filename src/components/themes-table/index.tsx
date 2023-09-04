@@ -1,11 +1,11 @@
 import { useRecoilValue } from 'recoil'
-import { useCurrentAsset, useIsSwigcoUser } from '../../pages/assets/hooks'
-import { useThemes } from '../themes-toggles/hooks'
 import { useNavigate } from 'react-router-dom'
-import { categoriesState } from '../themes-toggles/atoms'
-import Ratings from '../ratings'
-import { getThemeScore } from '../../utils/helpers'
-import { ThemeScore } from '../../pages/assets/types'
+import { useCurrentAsset, useIsSwigcoUser } from 'pages/assets/hooks'
+import { ThemeScore } from 'pages/assets/types'
+import { useThemes } from 'components/themes-toggles/hooks'
+import { categoriesState } from 'components/themes-toggles/atoms'
+import Ratings from 'components/ratings'
+import { getThemeScore } from 'utils/helpers'
 
 function ThemesTable() {
   const isSwigcoUser = useIsSwigcoUser()

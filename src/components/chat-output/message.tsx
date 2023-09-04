@@ -2,7 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { Interweave } from 'interweave'
 import { useDocumentModal } from '../document-modal/hooks'
 import { ChatMessage } from './types'
-import logo from '/assets/images/syntegral.svg'
+import logo from 'assets/images/syntegral.svg'
 
 type ChatMessageProps = {
   message: ChatMessage

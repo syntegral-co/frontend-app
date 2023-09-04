@@ -18,11 +18,25 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "assets/*": [
+        "/assets/*"
+      ],
+      "utils/*": [
+        "./src/utils/*"
+      ],
+      "components/*": [
+        "./src/components/*"
+      ],
+      "pages/*": [
+        "./src/pages/*"
+      ],
+    }
   },
   "include": [
     "src",
-    "prettier.config.js"
+    "prettier.config.js",
   ],
   "references": [
     {
@@ -31,10 +45,5 @@
   ],
   "types": [
     "vite/client"
-  ],
-  "paths": {
-    "@/*": [
-      "./src/*"
-    ]
-  }
+  ]
 }

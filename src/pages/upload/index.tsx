@@ -2,8 +2,8 @@ import { useCallback, useState } from 'react'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 import { FileWithPath, useDropzone } from 'react-dropzone'
 import clsx from 'clsx'
-import Nav from '../../components/nav'
-import Spinner from '../../components/spinner'
+import Nav from 'components/nav'
+import Spinner from 'components/spinner'
 
 function Upload() {
   const [showLoader, setShowLoader] = useState(false)

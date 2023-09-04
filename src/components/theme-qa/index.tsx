@@ -1,10 +1,10 @@
-import { useCurrentAsset } from '../../pages/assets/hooks'
-import { useCurrentTheme } from '../../pages/assets/themes/hooks'
 import { useRecoilValue } from 'recoil'
-import { qaState } from '../themes-toggles/atoms'
-import { formatReferences } from '../../utils/helpers'
-import { useDocumentModal } from '../document-modal/hooks'
-import Icon from '../icon'
+import { useCurrentAsset } from 'pages/assets/hooks'
+import { useCurrentTheme } from 'pages/assets/themes/hooks'
+import { qaState } from 'components/themes-toggles/atoms'
+import { useDocumentModal } from 'components/document-modal/hooks'
+import Icon from 'components/icon'
+import { formatReferences } from 'utils/helpers'
 
 function ThemeQA() {
   const currentAsset = useCurrentAsset()

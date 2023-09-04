@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
-import { useRecoilValue } from 'recoil'
-import { useIsSwigcoUser, useIsSysadminUser } from '../../pages/assets/hooks'
-import { useCurrentAssetClass } from '../asset-class-switcher/hooks'
-import { AssetsState } from './atom'
-import UserSession from '../../utils/session'
 import { NavLink } from 'react-router-dom'
-import { Asset } from '../../pages/assets/types'
-import logo from '/assets/images/syntegral-white.png'
+import { useRecoilValue } from 'recoil'
+import { useIsSwigcoUser, useIsSysadminUser } from 'pages/assets/hooks'
+import { Asset } from 'pages/assets/types'
+import { useCurrentAssetClass } from 'components/asset-class-switcher/hooks'
+import { AssetsState } from './atom'
+import UserSession from 'utils/session'
+import logo from 'assets/images/syntegral-white.png'
 
 function isAssetInSearchTerm(asset: Asset, searchTerm: string): asset is Asset {
   return asset.name.toLowerCase().includes(searchTerm.toLowerCase())

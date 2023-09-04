@@ -1,10 +1,10 @@
-import { useCurrentAsset } from '../../pages/assets/hooks'
-import { useChatBot } from '../chat-input/hooks'
 import { Outlet } from 'react-router-dom'
+import { useCurrentAsset } from 'pages/assets/hooks'
+import { useChatBot } from 'components/chat-input/hooks'
+import ChatInput from 'components/chat-input'
+import Loader from 'components/loader'
+import logo from 'assets/images/syntegral.svg'
 import ChatMessage from './message'
-import ChatInput from '../chat-input'
-import Loader from '../loader'
-import logo from '/assets/images/syntegral.svg'
 
 function ChatOutput() {
   const currentAsset = useCurrentAsset()

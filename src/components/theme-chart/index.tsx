@@ -1,3 +1,4 @@
+import { useRecoilValue } from 'recoil'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,11 +9,10 @@ import {
   Legend,
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
-import { useCurrentAsset } from '../../pages/assets/hooks'
-import { useCurrentTheme } from '../../pages/assets/themes/hooks'
-import { useRecoilValue } from 'recoil'
-import { AssetsState } from '../asset-switcher/atom'
-import { themesScoresState } from '../themes-toggles/atoms'
+import { useCurrentAsset } from 'pages/assets/hooks'
+import { useCurrentTheme } from 'pages/assets/themes/hooks'
+import { AssetsState } from 'components/asset-switcher/atom'
+import { themesScoresState } from 'components/themes-toggles/atoms'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 

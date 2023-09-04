@@ -1,12 +1,12 @@
 import { RouteObject } from 'react-router-dom'
-import Demo from '../pages'
-import AssetClassSwitcher from '../components/asset-class-switcher'
-import AssetSwitcher from '../components/asset-switcher'
-import NotFound from '../pages/404'
-import Asset from '../pages/assets'
-import Themes from '../pages/assets/themes'
-import Theme from '../pages/assets/themes/theme'
-import Download from '../pages/download'
+import Demo from 'pages/index'
+import NotFound from 'pages/404'
+import Asset from 'pages/assets'
+import Themes from 'pages/assets/themes'
+import Theme from 'pages/assets/themes/theme'
+import Download from 'pages/download'
+import AssetClassSwitcher from 'components/asset-class-switcher'
+import AssetSwitcher from 'components/asset-switcher'
 
 export const routes: RouteObject[] = [
   {

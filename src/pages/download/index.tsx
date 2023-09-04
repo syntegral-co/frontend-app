@@ -1,6 +1,6 @@
 import { useCurrentAsset } from '../assets/hooks'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
-import Spinner from '../../components/spinner'
+import Spinner from 'components/spinner'
 
 function Download() {
   const currentAsset = useCurrentAsset()

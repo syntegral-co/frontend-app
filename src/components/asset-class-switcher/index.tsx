@@ -1,11 +1,11 @@
-import { useUserRoles } from '../../pages/assets/hooks'
-import clsx from 'clsx'
-import { NavbarLink } from '../nav/types'
 import { NavLink } from 'react-router-dom'
-import logo from '/assets/images/syntegral-white.png'
-import equity from '/assets/images/trend.png'
-import digital from '/assets/images/digital.png'
-import real from '/assets/images/real-estate.png'
+import clsx from 'clsx'
+import { useUserRoles } from 'pages/assets/hooks'
+import { NavbarLink } from 'components/nav/types'
+import logo from 'assets/images/syntegral-white.png'
+import equity from 'assets/images/trend.png'
+import digital from 'assets/images/digital.png'
+import real from 'assets/images/real-estate.png'
 
 function AssetClassSwitcher() {
   const userRoles = useUserRoles()

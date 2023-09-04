@@ -1,8 +1,8 @@
-import { useCurrentTheme } from '../../pages/assets/themes/hooks'
-import { useCurrentAsset } from '../../pages/assets/hooks'
 import { useRecoilValue } from 'recoil'
+import { useCurrentTheme } from 'pages/assets/themes/hooks'
+import { useCurrentAsset } from 'pages/assets/hooks'
 import { metricsAnswersState, metricsState } from './atom'
-import Icon from '../icon'
+import Icon from 'components/icon'
 
 function ThemeMetrics() {
   const theme = useCurrentTheme()
