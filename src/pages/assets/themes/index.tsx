@@ -1,9 +1,9 @@
 import { useCurrentViewMode } from './hooks'
-import ThemesToggles from '../../../components/themes-toggles'
-import ViewSelector from '../../../components/view-selector'
-import ThemesList from '../../../components/themes-list'
-import ThemesTable from '../../../components/themes-table'
-import ThemesSatellites from '../../../components/themes-satellite'
+import ThemesToggles from 'components/themes-toggles'
+import ViewSelector from 'components/view-selector'
+import ThemesList from 'components/themes-list'
+import ThemesTable from 'components/themes-table'
+import ThemesSatellites from 'components/themes-satellite'
 
 function Themes() {
   const viewMode = useCurrentViewMode()

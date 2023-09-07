@@ -1,9 +1,9 @@
 import { useCurrentAssetClass } from '../asset-class-switcher/hooks'
-import { useCurrentAsset, useIsSwigcoUser } from '../../pages/assets/hooks'
+import { useCurrentAsset, useIsSwigcoUser } from 'pages/assets/hooks'
 import { useAuth0 } from '@auth0/auth0-react'
 import clsx from 'clsx'
 import { NavLink } from 'react-router-dom'
-import Icon from '../icon'
+import Icon from 'components/icon'
 import { NavbarLink } from './types'
 
 const ACCOUNT_LINKS: NavbarLink[] = [

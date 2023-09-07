@@ -1,28 +1,25 @@
-import { useRecoilState } from 'recoil'
-import { documentState, drawerState } from './atoms'
-import { DocumentLink } from './types'
+import { useSearchParams } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import { getDocument } from './api'
+import { DocumentRequest } from './types'
 
 export function useDocumentModal() {
-  const [isOpen, setIsOpen] = useRecoilState(drawerState)
-  const [document, setDocument] = useRecoilState(documentState)
+  const [params] = useSearchParams()
+  const documentId = params.get('document_id')
+  const documentPage = params.get('document_page')
 
-  function documentLinkHandler(link: DocumentLink) {
-    if (!document || document.id !== link.id) {
-      setDocument(link)
-    }
-
-    if (!isOpen) {
-      setIsOpen((isOpen) => !isOpen)
-    }
-  }
-
-  function toggleDocumentModal() {
-    setIsOpen((isOpen) => !isOpen)
-  }
+  const { status, data, fetchStatus }: DocumentRequest = useQuery({
+    queryKey: ['document', documentId],
+    queryFn: () => getDocument(documentId!, 5),
+    enabled: documentId !== null,
+    staleTime: 300000,
+  })
 
   return {
-    isDocumentModalOpen: isOpen,
-    toggleDocumentModal,
-    onClickDocument: documentLinkHandler,
+    documentId,
+    documentPage,
+    documentUrl: data,
+    status,
+    fetchStatus,
   }
 }

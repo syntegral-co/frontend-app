@@ -1,9 +1,9 @@
 import { useRecoilValue } from 'recoil'
-import { themesState } from '../../../components/themes-toggles/atoms'
-import { viewModeState } from '../../../components/view-selector/atom'
+import { themesState } from 'components/themes-toggles/atoms'
+import { viewModeState } from 'components/view-selector/atom'
 import { useParams } from 'react-router-dom'
-import { useCurrentAssetClass } from '../../../components/asset-class-switcher/hooks'
-import { ViewMode } from '../../../components/view-selector/types'
+import { useCurrentAssetClass } from 'components/asset-class-switcher/hooks'
+import { ViewMode } from 'components/view-selector/types'
 
 export function useCurrentTheme() {
   let themes = useRecoilValue(themesState)

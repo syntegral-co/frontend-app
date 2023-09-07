@@ -1,23 +1,11 @@
-import { useQuery } from '@tanstack/react-query'
-import { useRecoilValue } from 'recoil'
-import { DocumentRequest } from './types'
 import { useDocumentModal } from './hooks'
-import { documentState } from './atoms'
-import { getDocument } from './api'
+import { Link } from 'react-router-dom'
 import Loader from '../loader'
 
 function DocumentModal() {
-  const { isDocumentModalOpen, toggleDocumentModal } = useDocumentModal()
-  const document = useRecoilValue(documentState)
+  const { documentPage, documentUrl, status, fetchStatus } = useDocumentModal()
 
-  const { status, data, fetchStatus }: DocumentRequest = useQuery({
-    queryKey: ['document', document?.id],
-    queryFn: () => getDocument(document!.id, 5),
-    enabled: document !== null,
-    staleTime: 300000,
-  })
-
-  if (!data || !document || !isDocumentModalOpen) return <></>
+  if (!documentUrl || !documentPage) return <></>
 
   return (
     <div className="fixed left-1/2 top-1/2 z-10 m-auto h-5/6 w-5/6 -translate-y-1/2 -translate-x-1/2 rounded-md border-2 border-accent bg-base-100 shadow-lg">
@@ -26,25 +14,26 @@ function DocumentModal() {
         {status === 'success' && fetchStatus === 'idle' && (
           <object
             className="mb-4"
-            data={`${Object.values(data)[0]}#page=${document.page}`}
+            data={`${Object.values(documentUrl)[0]}#page=${documentPage}`}
             type="application/pdf"
             width="100%"
             height="100%"
           >
             <p>
               Link{' '}
-              <a href={`${Object.values(data)[0]}#page=${document.page}`}>
+              <a href={`${Object.values(documentUrl)[0]}#page=${documentPage}`}>
                 to the PDF!
               </a>
             </p>
           </object>
         )}
-        <button
+        <Link
           className="btn-primary btn-outline btn mx-auto mb-4 mt-auto"
-          onClick={() => toggleDocumentModal()}
+          to="./"
+          relative="path"
         >
           Close
-        </button>
+        </Link>
       </div>
     </div>
   )

@@ -1,8 +1,8 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
 import { useUserRoles } from './assets/hooks'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
-import Nav from '../components/nav'
-import Spinner from '../components/spinner'
+import Nav from 'components/nav'
+import Spinner from 'components/spinner'
 
 function Demo() {
   const { pathname } = useLocation()

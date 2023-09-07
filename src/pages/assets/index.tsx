@@ -1,6 +1,6 @@
 import { useCurrentAsset } from './hooks'
-import DocumentModal from '../../components/document-modal'
-import ChatOutput from '../../components/chat-output'
+import DocumentModal from 'components/document-modal'
+import ChatOutput from 'components/chat-output'
 
 function Asset() {
   const asset = useCurrentAsset()

@@ -1,11 +1,11 @@
 import { Suspense, useEffect } from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
-import UserSession from './utils/session'
-import Mixpanel from './utils/tracking'
-import Spinner from './components/spinner'
-import { routes } from './utils/routes'
-import './utils/logging'
+import UserSession from 'utils/session'
+import Mixpanel from 'utils/tracking'
+import { routes } from 'utils/routes'
+import Spinner from 'components/spinner/'
+import 'utils/logging'
 
 const router = createBrowserRouter(routes)
 
