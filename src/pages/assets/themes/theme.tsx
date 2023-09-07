@@ -3,15 +3,14 @@ import { useQuery } from '@tanstack/react-query'
 import { useCurrentAssetClass } from 'components/asset-class-switcher/hooks'
 import { useCurrentAsset } from '../hooks'
 import { useCurrentTheme } from './hooks'
-import { useDocumentModal } from 'components/document-modal/hooks'
 import { DocumentLink } from 'components/document-modal/types'
 import clsx from 'clsx'
 import DocumentModal from 'components/document-modal'
 import Spinner from 'components/spinner'
-import Icon from 'components/icon'
 import ThemeChart from 'components/theme-chart'
 import ThemeMetrics from 'components/theme-metrics'
 import ThemeQA from 'components/theme-qa'
+import References from 'components/references'
 import { formatReferences } from 'utils/helpers'
 import { getThemeSummary } from './api'
 import { ThemeSummaryRequest } from './types'
@@ -21,8 +20,6 @@ function Theme() {
   const currentAssetClass = useCurrentAssetClass()
   const currentAsset = useCurrentAsset()
   const theme = useCurrentTheme()
-
-  const { onClickDocument } = useDocumentModal()
 
   const { data, fetchStatus }: ThemeSummaryRequest = useQuery({
     queryKey: ['impact_summary', theme!.id],
@@ -59,18 +56,7 @@ function Theme() {
               <>
                 <h2 className="mt-4 mb-4 text-2xl">References</h2>
                 <ol className="mt-4 list-none pl-2">
-                  {references.map((link, index) => (
-                    <li
-                      className="cursor-pointer"
-                      onClick={() => onClickDocument(link)}
-                      key={index}
-                    >
-                      <Icon icon="file-pdf" size={16} />
-                      <span className="ml-2 italic text-secondary hover:underline">
-                        {link.name}, page {link.page}
-                      </span>
-                    </li>
-                  ))}
+                  <References documents={references} />
                 </ol>
               </>
             ) : null}

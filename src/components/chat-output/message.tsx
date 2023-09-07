@@ -1,7 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { Interweave } from 'interweave'
-import { useDocumentModal } from '../document-modal/hooks'
 import { ChatMessage } from './types'
+import References from 'components/references'
 import logo from 'assets/images/syntegral.svg'
 
 type ChatMessageProps = {
@@ -10,7 +10,6 @@ type ChatMessageProps = {
 
 function ChatMessage({ message }: ChatMessageProps) {
   const { user } = useAuth0()
-  const { onClickDocument } = useDocumentModal()
 
   const { header, author, text, links, collapsible } = message
 
@@ -24,18 +23,7 @@ function ChatMessage({ message }: ChatMessageProps) {
         <>
           <p className="mt-4">References:</p>
           <ol className="list-none pl-2">
-            {links.map((link, index) => (
-              <li
-                className="cursor-pointer"
-                onClick={() => onClickDocument(link)}
-                key={index}
-              >
-                📄{' '}
-                <span className="italic text-secondary hover:underline">
-                  {link.name}
-                </span>
-              </li>
-            ))}
+            <References documents={links} />
           </ol>
         </>
       )}

@@ -2,9 +2,8 @@ import { useRecoilValue } from 'recoil'
 import { useCurrentAsset } from 'pages/assets/hooks'
 import { useCurrentTheme } from 'pages/assets/themes/hooks'
 import { qaState } from 'components/themes-toggles/atoms'
-import { useDocumentModal } from 'components/document-modal/hooks'
-import Icon from 'components/icon'
 import { formatReferences } from 'utils/helpers'
+import References from 'components/references'
 
 function ThemeQA() {
   const currentAsset = useCurrentAsset()
@@ -22,8 +21,6 @@ function ThemeQA() {
 
     return -1
   })
-
-  const { onClickDocument } = useDocumentModal()
 
   if (!themeQAs.length) return null
 
@@ -45,18 +42,7 @@ function ThemeQA() {
                       <div className="divider"></div>
                       <p className="mt-4 font-bold">References</p>
                       <ol>
-                        {references.map((link, index) => (
-                          <li
-                            className="cursor-pointer"
-                            onClick={() => onClickDocument(link)}
-                            key={index}
-                          >
-                            <Icon icon="file-pdf" size={10} />
-                            <span className="ml-2 italic text-secondary hover:underline">
-                              {link.name}, page {link.page}
-                            </span>
-                          </li>
-                        ))}
+                        <References documents={references} />
                       </ol>
                     </>
                   ) : null}
