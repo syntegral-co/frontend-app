@@ -26,8 +26,18 @@ function AssetSwitcher() {
   let welcomeText
 
   switch (currentAssetClass!.id) {
+    case 6:
+      welcomeText = (
+        <>
+          Welcome to the News Radar.
+          <br /> Enter a standard to start.
+        </>
+      )
+      break
+
     case 5:
     case 4:
+    case 7:
       welcomeText = (
         <>
           Welcome to the INERIA demo assessment. <br />

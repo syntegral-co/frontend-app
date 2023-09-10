@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
 import { useCurrentAsset, useIsSwigcoUser } from 'pages/assets/hooks'
 import { ThemeScore } from 'pages/assets/types'
@@ -6,6 +6,8 @@ import { useThemes } from 'components/themes-toggles/hooks'
 import { categoriesState } from 'components/themes-toggles/atoms'
 import Ratings from 'components/ratings'
 import { getThemeScore } from 'utils/helpers'
+import clsx from 'clsx'
+import { disabledThemes } from './constants'
 
 function ThemesList() {
   const isSwigcoUser = useIsSwigcoUser()
@@ -30,8 +32,24 @@ function ThemesList() {
             className="group stats relative h-32 min-h-fit cursor-pointer overflow-hidden bg-base-200 shadow"
             key={theme.id}
           >
-            <div className="z-5 absolute -inset-full top-0 block h-auto w-1/2 -skew-x-12 transform bg-primary-content opacity-40 group-hover:animate-shine" />
-            <NavLink className="border-none" to={`./${theme.id}`}>
+            <div
+              className={clsx(
+                'z-5 absolute -inset-full top-0 block h-auto w-1/2 -skew-x-12 transform bg-primary-content opacity-40',
+                {
+                  'group-hover:animate-shine': !disabledThemes.includes(
+                    theme.id,
+                  ),
+                },
+              )}
+            />
+            <Link
+              className={clsx('border-none', {
+                'opacity-30 pointer-events-none': disabledThemes.includes(
+                  theme.id,
+                ),
+              })}
+              to={`./${theme.id}`}
+            >
               <div className="stat">
                 <div className="stat-figure text-secondary">
                   <div className="avatar">
@@ -61,7 +79,7 @@ function ThemesList() {
                   }
                 </div>
               </div>
-            </NavLink>
+            </Link>
           </div>
         ))}
     </div>

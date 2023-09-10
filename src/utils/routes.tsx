@@ -7,6 +7,7 @@ import Theme from 'pages/assets/themes/theme'
 import Download from 'pages/download'
 import AssetClassSwitcher from 'components/asset-class-switcher'
 import AssetSwitcher from 'components/asset-switcher'
+import NewsRadar from 'pages/assets/themes/news'
 
 export const routes: RouteObject[] = [
   {
@@ -32,6 +33,10 @@ export const routes: RouteObject[] = [
       {
         path: 'classes/:class/assets/:asset/themes/:theme',
         element: <Theme />,
+      },
+      {
+        path: 'classes/6/assets/:asset/themes/:theme',
+        element: <NewsRadar />,
       },
       {
         path: 'classes/:class/assets/:asset/download',

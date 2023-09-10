@@ -18,5 +18,7 @@ export function useCurrentViewMode() {
   const viewMode = useRecoilValue(viewModeState)
   const currentAssetClass = useCurrentAssetClass()
 
-  return currentAssetClass!.id === 5 ? 'satellite' : (viewMode as ViewMode)
+  return [5, 7].includes(currentAssetClass!.id)
+    ? 'satellite'
+    : (viewMode as ViewMode)
 }

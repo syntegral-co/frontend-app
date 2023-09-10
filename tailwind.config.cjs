@@ -70,6 +70,7 @@ module.exports = {
           'primary-focus': '#07B8A7',
           'primary-content': '#ffffff',
           accent: '#09E8D3',
+          'accent-2': '#6EC1E3',
           'accent-focus': '#07B8A7',
           'base-100': '#141C1C',
           'base-200': '#0D1313',

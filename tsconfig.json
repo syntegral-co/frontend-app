@@ -2,11 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": false,
@@ -20,30 +16,17 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "assets/*": [
-        "/assets/*"
-      ],
-      "utils/*": [
-        "./src/utils/*"
-      ],
-      "components/*": [
-        "./src/components/*"
-      ],
-      "pages/*": [
-        "./src/pages/*"
-      ],
+      "assets/*": ["/assets/*"],
+      "utils/*": ["./src/utils/*"],
+      "components/*": ["./src/components/*"],
+      "pages/*": ["./src/pages/*"]
     }
   },
-  "include": [
-    "src",
-    "prettier.config.js",
-  ],
+  "include": ["src", "prettier.config.js"],
   "references": [
     {
       "path": "./tsconfig.node.json"
     }
   ],
-  "types": [
-    "vite/client"
-  ]
+  "types": ["vite/client"]
 }

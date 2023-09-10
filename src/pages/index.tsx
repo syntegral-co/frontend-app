@@ -33,5 +33,5 @@ function Demo() {
 }
 
 export default withAuthenticationRequired(Demo, {
-  onRedirecting: () => <Spinner />,
+  onRedirecting: () => <Spinner context="user data" />,
 })
