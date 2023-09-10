@@ -94,5 +94,5 @@ function Upload() {
 }
 
 export default withAuthenticationRequired(Upload, {
-  onRedirecting: () => <Spinner />,
+  onRedirecting: () => <Spinner context="user data" />,
 })

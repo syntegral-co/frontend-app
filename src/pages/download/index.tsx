@@ -10,7 +10,7 @@ function Download() {
       ? import.meta.env.VITE_SWIGCO_PDF_REPORT
       : import.meta.env.VITE_FAKE_PDF_REPORT
 
-  if (!currentAsset) return <Spinner />
+  if (!currentAsset) return <Spinner context="asset" />
 
   return (
     <>
@@ -34,5 +34,5 @@ function Download() {
 }
 
 export default withAuthenticationRequired(Download, {
-  onRedirecting: () => <Spinner />,
+  onRedirecting: () => <Spinner context="user data" />,
 })

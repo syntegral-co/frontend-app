@@ -6,6 +6,8 @@ import { useThemes } from 'components/themes-toggles/hooks'
 import { categoriesState } from 'components/themes-toggles/atoms'
 import Ratings from 'components/ratings'
 import { getThemeScore } from 'utils/helpers'
+import clsx from 'clsx'
+import { disabledThemes } from 'components/themes-list/constants'
 
 function ThemesTable() {
   const isSwigcoUser = useIsSwigcoUser()
@@ -40,7 +42,11 @@ function ThemesTable() {
             .map((theme, index) => (
               <tr
                 key={theme.id}
-                className="hover cursor-pointer"
+                className={clsx('hover cursor-pointer', {
+                  'opacity-30 pointer-events-none': disabledThemes.includes(
+                    theme.id,
+                  ),
+                })}
                 onClick={() => navigate(`./${theme.id}`)}
               >
                 <th>{index + 1}</th>

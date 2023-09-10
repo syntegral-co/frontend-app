@@ -30,5 +30,7 @@ export async function callAPI(
     } else {
       console.log('There was an error', error)
     }
+
+    return {}
   }
 }

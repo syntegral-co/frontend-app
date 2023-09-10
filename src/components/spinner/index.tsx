@@ -1,8 +1,15 @@
-function Spinner() {
+type SpinnerProps = {
+  context?: string
+}
+
+function Spinner({ context }: SpinnerProps) {
   return (
-    <div className="flex h-full w-full items-center justify-center text-center text-accent">
-      <span className="loading loading-spinner loading-lg"></span>
-      <span className="sr-only">Loading...</span>
+    <div className="flex h-full w-full items-center justify-center text-center flex-col">
+      <div className="text-accent">
+        <span className="loading loading-spinner loading-lg"></span>
+        <span className="sr-only">Loading...</span>
+      </div>
+      {context && <p>Loading {context}...</p>}
     </div>
   )
 }

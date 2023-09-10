@@ -1,5 +1,6 @@
 import { useCurrentViewMode } from './hooks'
 import ThemesToggles from 'components/themes-toggles'
+import ThemesCategories from 'components/themes-categories'
 import ViewSelector from 'components/view-selector'
 import ThemesList from 'components/themes-list'
 import ThemesTable from 'components/themes-table'
@@ -36,6 +37,11 @@ function Themes() {
       <div className="mb-4 h-auto w-full rounded-md bg-base-200 p-6">
         <ThemesToggles />
       </div>
+      {viewMode === 'satellite' && (
+        <div className="mx-auto mb-4 h-auto w-auto rounded-md bg-base-200 p-6">
+          <ThemesCategories />
+        </div>
+      )}
       {viewMode !== 'satellite' && (
         <div className="mb-4 h-auto w-full rounded-md bg-base-200 p-6">
           <ViewSelector />

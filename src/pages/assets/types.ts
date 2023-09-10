@@ -13,12 +13,20 @@ export type Category = {
   name: string
 }
 
+export type ThemeNewsData = {
+  url: string
+  imageUrl: string
+  title: string
+  description: string
+}
+
 export type Theme = {
   id: number
   assetClassId: AssetClass['id']
   categoryId: Category['id']
   name: string
   definition: string
+  newsData: ThemeNewsData[]
 }
 
 export type ThemeScore = {

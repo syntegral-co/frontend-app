@@ -11,6 +11,16 @@ export const icons: ineriaIcons = {
   48: '/assets/images/ineria/transportation.svg',
   49: '/assets/images/ineria/waste.svg',
   50: '/assets/images/ineria/water.svg',
+  51: '/assets/images/ineria/energy.svg',
+  52: '/assets/images/ineria/health_wellbeing.svg',
+  53: '/assets/images/ineria/innovation.svg',
+  54: '/assets/images/ineria/land_use_ecology.svg',
+  55: '/assets/images/ineria/management.svg',
+  56: '/assets/images/ineria/materials.svg',
+  57: '/assets/images/ineria/pollution.svg',
+  58: '/assets/images/ineria/transportation.svg',
+  59: '/assets/images/ineria/waste.svg',
+  60: '/assets/images/ineria/water.svg',
 }
 
 export const colors: ineriaColors = {
