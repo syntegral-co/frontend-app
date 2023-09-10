@@ -1,6 +1,4 @@
-import { useRecoilValue } from 'recoil'
 import { useNavigate } from 'react-router-dom'
-import { categoriesState } from 'components/themes-toggles/atoms'
 import { useThemes } from '../themes-toggles/hooks'
 import { twMerge } from 'tailwind-merge'
 import { disabledThemes } from 'components/themes-list/constants'
@@ -11,7 +9,6 @@ import { useCurrentCategory } from 'components/themes-categories/hooks'
 function ThemesSatellites() {
   const { themes, selectedThemes } = useThemes()
   const currentCategory = useCurrentCategory()
-  const categories = useRecoilValue(categoriesState)
   const navigate = useNavigate()
 
   return (
@@ -90,13 +87,6 @@ function ThemesSatellites() {
               )}
               onClick={() => navigate(`./${theme.id}`)}
             >
-              <div className="badge badge-sm badge-ghost border-2 border-accent px-4 py-2 mx-auto my-4">
-                {
-                  categories.find(
-                    (category) => category.id === theme.categoryId,
-                  )!.name
-                }
-              </div>
               <figure className="mx-auto mt-4 flex h-20 w-20 items-center justify-center rounded-full bg-[#000]">
                 <img
                   src={icons[theme.id] || '/assets/images/syntegral.svg'}
