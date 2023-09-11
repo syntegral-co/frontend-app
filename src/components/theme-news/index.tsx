@@ -18,9 +18,13 @@ function ThemeNews({ summary, news }: ThemeNewsProps) {
         alt={news.title}
       />
       <h1 className="text-2xl font-bold">{news.title}</h1>
-      <p className="py-6">
-        {news.description || `${summary.split(' ').splice(0, 20).join(' ')}...`}
-      </p>
+      <p className="py-6">{news.description}</p>
+      <details>
+        <summary className="font-xl cursor-pointer text-primary-content">
+          Continue reading...
+        </summary>
+        {summary}
+      </details>
       <Link className="btn btn-link" to={news.url} target="_blank">
         Read more
       </Link>
