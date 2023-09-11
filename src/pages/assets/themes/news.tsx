@@ -19,13 +19,22 @@ function NewsRadar() {
   if (fetchStatus === 'fetching') return <Spinner context="news" />
 
   const news = data!.references?.map((newsData) => (
-    <ThemeNews key={newsData.id} summary={data!.summary} news={newsData} />
+    <ThemeNews key={newsData.id} news={newsData} />
   ))
 
   return (
-    <div className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      {news}
-    </div>
+    <>
+      <div className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="col-span-full rounded-md bg-base-200 p-4 mb-4">
+          <h1 className="mb-4 text-3xl text-accent">{theme!.name}</h1>
+          <p>{data!.summary}</p>
+        </div>
+        <h2 className="col-span-full mb-4 text-2xl text-accent">
+          Source articles
+        </h2>
+        {news}
+      </div>
+    </>
   )
 }
 
