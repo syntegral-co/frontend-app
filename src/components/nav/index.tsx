@@ -1,9 +1,5 @@
 import { useCurrentAssetClass } from '../asset-class-switcher/hooks'
-import {
-  useCurrentAsset,
-  useIsIneriaUser,
-  useIsSwigcoUser,
-} from 'pages/assets/hooks'
+import { useCurrentAsset, useIsIneriaUser } from 'pages/assets/hooks'
 import { useAuth0 } from '@auth0/auth0-react'
 import clsx from 'clsx'
 import { NavLink } from 'react-router-dom'
@@ -22,7 +18,6 @@ const ACCOUNT_LINKS: NavbarLink[] = [
 ]
 
 function Nav() {
-  const isSwigcoUser = useIsSwigcoUser()
   const isIneriaUser = useIsIneriaUser()
   const currentAssetClass = useCurrentAssetClass()
   const currentAsset = useCurrentAsset()
@@ -34,7 +29,7 @@ function Nav() {
   const NAV_LINKS: NavbarLink[] = [
     {
       title: 'Home',
-      to: isSwigcoUser ? '/swigco' : isIneriaUser ? '/ineria/classes/7/' : '/',
+      to: '/',
       icon: 'compass',
     },
     {
