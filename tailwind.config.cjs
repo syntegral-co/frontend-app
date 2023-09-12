@@ -26,6 +26,9 @@ module.exports = {
         waste: '-2px 2px 20px -6px rgba(158,137,193,1)',
         water: '-2px 2px 20px -6px rgba(184,224,233,1)',
       },
+      dropShadow: {
+        asset_class: '0px 0px 7px #09E8D3',
+      },
       colors: {
         energy: 'rgba(223, 0, 108, 1)',
         health_wellbeing: 'rgba(183, 212, 154, 1)',

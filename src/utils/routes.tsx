@@ -9,40 +9,52 @@ import AssetClassSwitcher from 'components/asset-class-switcher'
 import AssetSwitcher from 'components/asset-switcher'
 import NewsRadar from 'pages/assets/themes/news'
 
+const childrenRoutes: RouteObject[] = [
+  {
+    index: true,
+    element: <AssetClassSwitcher />,
+  },
+  {
+    path: 'classes/:class',
+    element: <AssetSwitcher />,
+  },
+  {
+    path: 'classes/:class/assets/:asset',
+    element: <Asset />,
+  },
+  {
+    path: 'classes/:class/assets/:asset/themes',
+    element: <Themes />,
+  },
+  {
+    path: 'classes/:class/assets/:asset/themes/:theme',
+    element: <Theme />,
+  },
+  {
+    path: 'classes/6/assets/:asset/themes/:theme',
+    element: <NewsRadar />,
+  },
+  {
+    path: 'classes/:class/assets/:asset/download',
+    element: <Download />,
+  },
+]
+
 export const routes: RouteObject[] = [
   {
-    path: '/swigco?',
+    path: '/',
     element: <Demo />,
-    children: [
-      {
-        index: true,
-        element: <AssetClassSwitcher />,
-      },
-      {
-        path: 'classes/:class',
-        element: <AssetSwitcher />,
-      },
-      {
-        path: 'classes/:class/assets/:asset',
-        element: <Asset />,
-      },
-      {
-        path: 'classes/:class/assets/:asset/themes',
-        element: <Themes />,
-      },
-      {
-        path: 'classes/:class/assets/:asset/themes/:theme',
-        element: <Theme />,
-      },
-      {
-        path: 'classes/6/assets/:asset/themes/:theme',
-        element: <NewsRadar />,
-      },
-      {
-        path: 'classes/:class/assets/:asset/download',
-        element: <Download />,
-      },
-    ],
+    children: childrenRoutes,
+  },
+  {
+    path: '/swigco',
+    element: <Demo />,
+    children: childrenRoutes,
+  },
+  {
+    path: '/ineria',
+    element: <Demo />,
+    children: childrenRoutes,
   },
   {
     path: '*',

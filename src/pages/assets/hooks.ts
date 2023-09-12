@@ -34,3 +34,9 @@ export function useIsSwigcoUser() {
 
   return userRoles.includes('SwigCo')
 }
+
+export function useIsIneriaUser() {
+  const userRoles = useUserRoles()
+
+  return userRoles.includes('Ineria')
+}

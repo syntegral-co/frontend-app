@@ -1,5 +1,5 @@
 import { useCurrentAssetClass } from '../asset-class-switcher/hooks'
-import { useCurrentAsset, useIsSwigcoUser } from 'pages/assets/hooks'
+import { useCurrentAsset, useIsIneriaUser } from 'pages/assets/hooks'
 import { useAuth0 } from '@auth0/auth0-react'
 import clsx from 'clsx'
 import { NavLink } from 'react-router-dom'
@@ -18,7 +18,7 @@ const ACCOUNT_LINKS: NavbarLink[] = [
 ]
 
 function Nav() {
-  const isSwigcoUser = useIsSwigcoUser()
+  const isIneriaUser = useIsIneriaUser()
   const currentAssetClass = useCurrentAssetClass()
   const currentAsset = useCurrentAsset()
   const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
@@ -29,14 +29,14 @@ function Nav() {
   const NAV_LINKS: NavbarLink[] = [
     {
       title: 'Home',
-      to: isSwigcoUser ? '/swigco' : '/',
+      to: '/',
       icon: 'compass',
     },
     {
       title: 'Chat',
       to: `classes/${currentAssetClass?.id}/assets/${currentAsset?.id}`,
       icon: 'bubbles',
-      hidden: !currentAssetClass || !currentAsset,
+      hidden: !currentAssetClass || !currentAsset || isIneriaUser,
     },
     {
       title: 'Reporting',
@@ -68,7 +68,13 @@ function Nav() {
           'disabled pointer-events-none': disabled,
         })}
       >
-        <NavLink to={to} end>
+        <NavLink
+          to={to}
+          className={({ isActive }) =>
+            clsx({ 'text-accent font-bold': isActive })
+          }
+          end
+        >
           <Icon icon={icon!} size={20} />
           {title}
         </NavLink>

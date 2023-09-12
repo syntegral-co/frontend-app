@@ -34,11 +34,13 @@ function Themes() {
 
   return (
     <div className="flex w-full flex-col">
-      <div className="mb-4 h-auto w-full rounded-md bg-base-200 p-6">
-        <ThemesToggles />
-      </div>
+      {viewMode !== 'satellite' && (
+        <div className="mb-4 h-auto w-full rounded-md bg-base-200 p-6">
+          <ThemesToggles />
+        </div>
+      )}
       {viewMode === 'satellite' && (
-        <div className="mx-auto mb-4 h-auto w-auto rounded-md bg-base-200 p-6">
+        <div className="mx-auto mb-8 h-auto w-auto rounded-md bg-base-200 p-6">
           <ThemesCategories />
         </div>
       )}
