@@ -22,6 +22,20 @@ function Demo() {
   )
     return <Navigate to="/" />
 
+  if (
+    userRoles.includes('Ineria') &&
+    !userRoles.includes('Sysadmin') &&
+    !pathname.includes('ineria/classes/7')
+  )
+    return <Navigate to="/ineria/classes/7" />
+
+  if (
+    !userRoles.includes('Ineria') &&
+    !userRoles.includes('Sysadmin') &&
+    pathname.includes('ineria')
+  )
+    return <Navigate to="/" />
+
   return (
     <>
       <Nav />
