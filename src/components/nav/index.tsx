@@ -68,7 +68,13 @@ function Nav() {
           'disabled pointer-events-none': disabled,
         })}
       >
-        <NavLink to={to} end>
+        <NavLink
+          to={to}
+          className={({ isActive }) =>
+            clsx({ 'text-accent font-bold': isActive })
+          }
+          end
+        >
           <Icon icon={icon!} size={20} />
           {title}
         </NavLink>
