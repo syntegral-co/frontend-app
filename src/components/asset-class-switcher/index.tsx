@@ -15,7 +15,7 @@ function AssetClassSwitcher() {
         !userRoles.includes('Sysadmin') && !userRoles.includes('Demo_EQ'),
     },
     {
-      title: 'Real estate',
+      title: 'Real Estate',
       to: './classes/3',
       disabled:
         !userRoles.includes('Sysadmin') && !userRoles.includes('Demo_RE'),
