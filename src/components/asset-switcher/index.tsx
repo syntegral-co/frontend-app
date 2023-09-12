@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
-import { useIsSwigcoUser, useIsSysadminUser } from 'pages/assets/hooks'
+import {
+  useIsIneriaUser,
+  useIsSwigcoUser,
+  useIsSysadminUser,
+} from 'pages/assets/hooks'
 import { Asset } from 'pages/assets/types'
 import { useCurrentAssetClass } from 'components/asset-class-switcher/hooks'
 import { AssetsState } from './atom'
@@ -16,6 +20,7 @@ function AssetSwitcher() {
   const [searchTerm, setSearchTerm] = useState('')
   const isSysadmin = useIsSysadminUser()
   const isSwigcoUser = useIsSwigcoUser()
+  const isIneriaUser = useIsIneriaUser()
   const currentAssetClass = useCurrentAssetClass()
   const assets = useRecoilValue(AssetsState)
 
@@ -92,6 +97,10 @@ function AssetSwitcher() {
 
               if (isSwigcoUser) {
                 return asset.id === 19
+              }
+
+              if (isIneriaUser) {
+                return asset.id !== 26
               }
 
               return asset.id !== 19
