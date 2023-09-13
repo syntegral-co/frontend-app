@@ -1,5 +1,11 @@
 import { describe, expect, test } from 'vitest'
-import { capitalize, formatReferences, getThemeScore } from './helpers'
+import {
+  capitalize,
+  formatReferences,
+  getThemeScore,
+  isSearchTermAnAsset,
+} from './helpers'
+import { Asset } from 'pages/assets/types'
 
 describe('Helpers', () => {
   describe('String formatting helpers', () => {
@@ -11,6 +17,34 @@ describe('Helpers', () => {
 
     test('Capitalize returns a capialized string', () => {
       expect(capitalize(lowercaseString)).toBe('Lorem ipsum')
+    })
+  })
+
+  describe('Asset search helper', () => {
+    test('String "ipsum" is not a valid asset name', () => {
+      expect(
+        isSearchTermAnAsset(
+          {
+            id: 1,
+            assetClassId: 1,
+            name: 'Lorem',
+          } as Asset,
+          'ipsum',
+        ),
+      ).toBeFalsy()
+    })
+
+    test('String "Lorem" is a valid asset name', () => {
+      expect(
+        isSearchTermAnAsset(
+          {
+            id: 1,
+            assetClassId: 1,
+            name: 'Lorem',
+          } as Asset,
+          'Lorem',
+        ),
+      ).toBeTruthy()
     })
   })
 

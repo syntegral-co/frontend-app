@@ -6,7 +6,7 @@ export function capitalize(string: string) {
   return `${string.charAt(0).toUpperCase()}${string.slice(1, string.length)}`
 }
 
-export function isAssetInSearchTerm(
+export function isSearchTermAnAsset(
   asset: Asset,
   searchTerm: string,
 ): asset is Asset {

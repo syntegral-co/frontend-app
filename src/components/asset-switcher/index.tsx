@@ -9,7 +9,7 @@ import {
 import { Asset } from 'pages/assets/types'
 import { useCurrentAssetClass } from 'components/asset-class-switcher/hooks'
 import { AssetsState } from './atom'
-import { isAssetInSearchTerm } from 'utils/helpers'
+import { isSearchTermAnAsset } from 'utils/helpers'
 import UserSession from 'utils/session'
 import logo from 'assets/images/syntegral-white.png'
 
@@ -112,7 +112,7 @@ function AssetSwitcher() {
 
                 return (
                   asset.assetClassId === currentAssetClass!.id &&
-                  isAssetInSearchTerm(asset, searchTerm)
+                  isSearchTermAnAsset(asset, searchTerm)
                 )
               })
               .map((asset: Asset) => (
