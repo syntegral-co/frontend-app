@@ -9,15 +9,13 @@ import {
 import { Asset } from 'pages/assets/types'
 import { useCurrentAssetClass } from 'components/asset-class-switcher/hooks'
 import { AssetsState } from './atom'
+import { isSearchTermAnAsset } from 'utils/helpers'
 import UserSession from 'utils/session'
 import logo from 'assets/images/syntegral-white.png'
 
-function isAssetInSearchTerm(asset: Asset, searchTerm: string): asset is Asset {
-  return asset.name.toLowerCase().includes(searchTerm.toLowerCase())
-}
-
 function AssetSwitcher() {
   const [searchTerm, setSearchTerm] = useState('')
+  const [isInputFocus, setIsInputFocus] = useState(false)
   const isSysadmin = useIsSysadminUser()
   const isSwigcoUser = useIsSwigcoUser()
   const isIneriaUser = useIsIneriaUser()
@@ -81,47 +79,56 @@ function AssetSwitcher() {
       <h2 className="py-6 text-center text-2xl font-bold text-primary-content">
         {welcomeText}
       </h2>
-      <input
-        type="text"
-        placeholder="Start typing what you're looking for..."
-        className="input-bordered input w-full max-w-xs text-primary-content"
-        onChange={(event) => setSearchTerm(event.target.value)}
-      />
-      {searchTerm !== '' && (
-        <ul className="menu w-full max-w-xs border border-base-200 bg-base-100 p-4 shadow-md">
-          {assets
-            .filter((asset: Asset) => {
-              if (isSysadmin) {
-                return true
-              }
+      <div className="relative w-full flex flex-col items-center justify-start">
+        <input
+          type="text"
+          placeholder="Start typing what you're looking for..."
+          className="input-bordered input w-full h-12 max-w-xs text-primary-content"
+          onFocus={() => setIsInputFocus(true)}
+          onBlur={() => setIsInputFocus(false)}
+          onChange={(event) => setSearchTerm(event.target.value)}
+        />
+        {(searchTerm !== '' || isInputFocus) && (
+          <ul className="menu w-full max-w-xs border border-base-200 bg-base-100 p-4 shadow-md">
+            {assets
+              .filter((asset: Asset) => {
+                if (isSysadmin) {
+                  return true
+                }
 
-              if (isSwigcoUser) {
-                return asset.id === 19
-              }
+                if (isSwigcoUser) {
+                  return asset.id === 19
+                }
 
-              if (isIneriaUser) {
-                return asset.id !== 26
-              }
+                if (isIneriaUser) {
+                  return asset.id !== 26
+                }
 
-              return asset.id !== 19
-            })
-            .filter(
-              (asset: Asset) =>
-                asset.assetClassId === currentAssetClass!.id &&
-                isAssetInSearchTerm(asset, searchTerm),
-            )
-            .map((asset: Asset) => (
-              <li
-                key={asset.id}
-                className="text-primary-content hover:text-accent"
-              >
-                <NavLink className="flex" to={`./assets/${asset.id}/themes`}>
-                  {asset.name}
-                </NavLink>
-              </li>
-            ))}
-        </ul>
-      )}
+                return asset.id !== 19
+              })
+              .filter((asset: Asset) => {
+                if (isInputFocus && searchTerm === '')
+                  return asset.assetClassId === currentAssetClass!.id
+
+                return (
+                  asset.assetClassId === currentAssetClass!.id &&
+                  isSearchTermAnAsset(asset, searchTerm)
+                )
+              })
+              .map((asset: Asset) => (
+                <li
+                  key={asset.id}
+                  className="text-primary-content hover:text-accent"
+                  ss
+                >
+                  <NavLink className="flex" to={`./assets/${asset.id}/themes`}>
+                    {asset.name}
+                  </NavLink>
+                </li>
+              ))}
+          </ul>
+        )}
+      </div>
     </div>
   )
 }

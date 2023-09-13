@@ -1,9 +1,16 @@
 /* c8 ignore next 7 */
 import { DocumentLink } from '../components/document-modal/types'
-import { ThemeScore } from '../pages/assets/types'
+import { Asset, ThemeScore } from '../pages/assets/types'
 
 export function capitalize(string: string) {
   return `${string.charAt(0).toUpperCase()}${string.slice(1, string.length)}`
+}
+
+export function isSearchTermAnAsset(
+  asset: Asset,
+  searchTerm: string,
+): asset is Asset {
+  return asset.name.toLowerCase().includes(searchTerm.toLowerCase())
 }
 
 export function formatReferences(
