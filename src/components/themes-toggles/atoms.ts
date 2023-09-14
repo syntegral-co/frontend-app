@@ -14,6 +14,7 @@ export const categoriesState = selector({
     return response.data.map((category: any) => ({
       id: category[0],
       name: category[1],
+      newsData: category[2],
     })) as Category[]
   },
 })

@@ -1,6 +1,7 @@
 import { useCurrentViewMode } from './hooks'
 import ThemesToggles from 'components/themes-toggles'
 import ThemesCategories from 'components/themes-categories'
+import CategoriesNews from 'components/categories-news/news'
 import ViewSelector from 'components/view-selector'
 import ThemesList from 'components/themes-list'
 import ThemesTable from 'components/themes-table'
@@ -50,6 +51,12 @@ function Themes() {
         </div>
       )}
       {themesView}
+      {viewMode === 'satellite' && (
+        <div className="mx-auto mb-8 h-auto w-full rounded-md py-2 mt-4">
+          <div className="divider">News Radar</div>
+          <CategoriesNews />
+        </div>
+      )}
     </div>
   )
 }

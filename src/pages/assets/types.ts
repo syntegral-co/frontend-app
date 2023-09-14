@@ -11,6 +11,7 @@ export type Asset = {
 export type Category = {
   id: number
   name: string
+  newsData: string
 }
 
 export type ThemeNewsData = {
