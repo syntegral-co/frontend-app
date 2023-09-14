@@ -32,16 +32,6 @@ function ThemesList() {
             className="group stats relative h-32 min-h-fit cursor-pointer overflow-hidden bg-base-200 shadow"
             key={theme.id}
           >
-            <div
-              className={clsx(
-                'z-5 absolute -inset-full top-0 block h-auto w-1/2 -skew-x-12 transform bg-primary-content opacity-40',
-                {
-                  'group-hover:animate-shine': !disabledThemes.includes(
-                    theme.id,
-                  ),
-                },
-              )}
-            />
             <Link
               className={clsx('border-none', {
                 'opacity-30 pointer-events-none': disabledThemes.includes(
@@ -50,6 +40,16 @@ function ThemesList() {
               })}
               to={`./${theme.id}`}
             >
+              <div
+                className={clsx(
+                  'z-5 absolute -inset-full top-0 block h-auto w-1/2 -skew-x-12 transform bg-primary-content opacity-40',
+                  {
+                    'group-hover:animate-shine': !disabledThemes.includes(
+                      theme.id,
+                    ),
+                  },
+                )}
+              />
               <div className="stat">
                 <div className="stat-figure text-secondary">
                   <div className="avatar">
