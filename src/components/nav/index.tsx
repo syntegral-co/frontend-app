@@ -49,7 +49,9 @@ function Nav() {
       to: `classes/${currentAssetClass?.id}/assets/${currentAsset?.id}/download`,
       icon: 'cloud-download',
       disabled:
-        !currentAssetClass || !currentAsset || currentAssetClass.id !== 3,
+        !currentAssetClass ||
+        !currentAsset ||
+        (currentAssetClass.id !== 3 && currentAssetClass.id !== 7),
     },
     {
       title: 'Upload',

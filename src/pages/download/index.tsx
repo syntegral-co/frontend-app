@@ -1,16 +1,33 @@
 import { useCurrentAsset } from '../assets/hooks'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 import Spinner from 'components/spinner'
+import { Navigate } from 'react-router-dom'
 
 function Download() {
   const currentAsset = useCurrentAsset()
 
-  const pdf =
-    currentAsset!.id === 19
-      ? import.meta.env.VITE_SWIGCO_PDF_REPORT
-      : import.meta.env.VITE_FAKE_PDF_REPORT
+  let pdf = null
+
+  switch (currentAsset!.id) {
+    case 19:
+      pdf = import.meta.env.VITE_SWIGCO_PDF_REPORT
+      break
+
+    case 20:
+      pdf = import.meta.env.VITE_FAKE_PDF_REPORT
+      break
+
+    case 27:
+      pdf = import.meta.env.VITE_INERIA_PDF_REPORT
+      break
+
+    default:
+      pdf = null
+  }
 
   if (!currentAsset) return <Spinner context="asset" />
+
+  if (!pdf) return <Navigate to="../" />
 
   return (
     <>
