@@ -89,7 +89,10 @@ function AssetSwitcher() {
           onChange={(event) => setSearchTerm(event.target.value)}
         />
         {(searchTerm !== '' || isInputFocus) && (
-          <ul className="menu w-full max-w-xs border border-base-200 bg-base-100 p-4 shadow-md">
+          <ul
+            className="menu w-full max-w-xs border border-base-200 bg-base-100 p-4 shadow-md"
+            onMouseDown={(event) => event.preventDefault()}
+          >
             {assets
               .filter((asset: Asset) => {
                 if (isSysadmin) {
