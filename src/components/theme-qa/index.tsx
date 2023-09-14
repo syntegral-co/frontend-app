@@ -19,6 +19,8 @@ function ThemeQA() {
     )
       return 1
 
+    if (a.answer === 'Insufficient data.') return 1
+
     return -1
   })
 

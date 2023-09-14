@@ -5,15 +5,15 @@ import clsx from 'clsx'
 import { Link } from 'react-router-dom'
 
 function ThemesCategories() {
-  const categories = useRecoilValue(categoriesState)
   const currentCategory = useCurrentCategory()
+  const categories = useRecoilValue(categoriesState)
 
   const tabs = [5, 6, 7].map((category, index) => (
     <Link
       key={index}
       to={`?category=${category}`}
       className={clsx('tab', {
-        'tab-active': currentCategory === category,
+        'tab-active !text-base-200': currentCategory!.id === category,
       })}
     >
       {categories.find((ctg) => ctg.id === category)!.name}

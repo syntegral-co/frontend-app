@@ -19,7 +19,7 @@ function ThemesSatellites() {
 
           return selectedThemes.includes(theme.id)
         })
-        .filter((theme) => theme.categoryId === currentCategory)
+        .filter((theme) => theme.categoryId === currentCategory!.id)
         .map((theme) => {
           let hoverStyles = ''
 
