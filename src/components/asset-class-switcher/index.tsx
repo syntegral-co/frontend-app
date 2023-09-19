@@ -9,7 +9,7 @@ function AssetClassSwitcher() {
 
   const ASSET_LINKS: NavbarLink[] = [
     {
-      title: 'Finance',
+      title: 'Equities',
       to: './classes/1',
       disabled:
         !userRoles.includes('Sysadmin') && !userRoles.includes('Demo_EQ'),
