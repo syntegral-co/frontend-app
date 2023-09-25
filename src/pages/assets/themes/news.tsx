@@ -12,7 +12,7 @@ function NewsRadar() {
   const currentAsset = useCurrentAsset()
 
   const { data, fetchStatus }: ThemeNewsRequest = useQuery({
-    queryKey: ['impact_summary', theme!.id],
+    queryKey: ['impact_summary', currentAsset!.id, theme!.id],
     queryFn: () => getThemeSummary(currentAsset!.id, theme!.id),
     staleTime: Infinity,
   })
