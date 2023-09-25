@@ -2,13 +2,17 @@
 module.exports = {
   theme: {
     colors: {
-      purpose: '#9747FF',
-      people: '#16FFAC',
-      profit: '#FF7E07',
-      planet: '#06D7F6',
+      grey: '#333333',
+      white: '#f5f5f5',
+      teal: '#09E8DE',
+      orange: '#F15F57',
+      pink: '#B8336A',
+      purple: '#A8A7D3',
+      yellow: '#FFF275',
     },
     fontFamily: {
-      sans: ['Jost'],
+      montserrat: ['Montserrat', 'sans-serif'],
+      conthax: ['conthrax', 'sans-serif'],
     },
     extend: {
       backgroundImage: {

@@ -16,7 +16,7 @@ function ThemeNews({ news }: ThemeNewsProps) {
         src={image}
         alt={news.title}
       />
-      <h1 className="text-xl font-bold">{news.title}</h1>
+      <h1 className="text-xl font-bold font-conthax">{news.title}</h1>
       <p className="py-4">{news.description}</p>
       <Link className="btn btn-link" to={news.url} target="_blank">
         Read more

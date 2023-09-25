@@ -32,7 +32,7 @@ function Download() {
   return (
     <>
       <div className="flex h-full w-full flex-col gap-4 text-center">
-        <h1 className="text-3xl">Download your report</h1>
+        <h1 className="text-3xl font-conthax">Download your report</h1>
         <p>Here is your report on {currentAsset!.name}</p>
         <object
           className="mx-auto mb-4 mt-2"

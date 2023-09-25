@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom'
 import { useThemes } from '../themes-toggles/hooks'
 import { twMerge } from 'tailwind-merge'
+import clsx from 'clsx'
 import { disabledThemes } from 'components/themes-list/constants'
 import { icons } from './constants'
-import clsx from 'clsx'
 import { useCurrentCategory } from 'components/themes-categories/hooks'
 
 function ThemesSatellites() {
@@ -74,16 +74,16 @@ function ThemesSatellites() {
           return (
             <div
               key={theme.id}
-              className={clsx(
-                twMerge(
+              className={twMerge(
+                clsx(
                   'card max-h-72 w-48 cursor-pointer border-2 bg-base-200 shadow-xl duration-300 ease-in-out hover:z-10 hover:scale-125',
-                  hoverStyles,
+                  {
+                    'opacity-30 pointer-events-none': disabledThemes.includes(
+                      theme.id,
+                    ),
+                  },
                 ),
-                {
-                  'opacity-30 pointer-events-none': disabledThemes.includes(
-                    theme.id,
-                  ),
-                },
+                hoverStyles,
               )}
               onClick={() => navigate(`./${theme.id}`)}
             >
