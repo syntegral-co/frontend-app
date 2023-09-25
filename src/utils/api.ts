@@ -25,12 +25,16 @@ export async function callAPI(
 
     return data
   } catch (error) {
+    let errorMessage = ''
+
     if (error instanceof SyntaxError) {
-      console.log('There was a SyntaxError', error)
+      errorMessage = 'There was a SyntaxError'
+      console.log(errorMessage, error)
     } else {
-      console.log('There was an error', error)
+      errorMessage = 'There was an error'
+      console.log(errorMessage, error)
     }
 
-    return {}
+    throw new Error(errorMessage)
   }
 }
