@@ -22,7 +22,7 @@ function Theme() {
   const theme = useCurrentTheme()
 
   const { data, fetchStatus }: ThemeSummaryRequest = useQuery({
-    queryKey: ['impact_summary', theme!.id],
+    queryKey: ['impact_summary', currentAsset!.id, theme!.id],
     queryFn: () => getThemeSummary(currentAsset!.id, theme!.id),
     staleTime: Infinity,
   })
