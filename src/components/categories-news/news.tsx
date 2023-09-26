@@ -8,10 +8,12 @@ function CategoriesNews() {
   if (!currentCategory!.newsData) return null
 
   const newsData: CategoryNews[] = JSON.parse(currentCategory!.newsData)
-  console.log('newsData: ', newsData)
 
   const newsDataElements = newsData.map((news) => (
-    <div className="collapse collapse-arrow join-item border-b-2 border-accent-focus opacit-90">
+    <div
+      key={news.id}
+      className="collapse collapse-arrow join-item border-b-2 border-accent-focus opacit-90"
+    >
       <input type="radio" name="accordion-news" />
       <div className="collapse-title text-xl font-medium">{news.title}</div>
       <div className="collapse-content flex flex-row items-center justify-start gap-4">
