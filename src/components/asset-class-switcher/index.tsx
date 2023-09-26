@@ -64,7 +64,13 @@ function AssetClassSwitcher() {
 
   return (
     <div className="flex h-96 w-full flex-col items-center justify-center self-center">
-      <img className="h-40" src={logo} alt="Syntegral logo" />
+      <img
+        className="h-40"
+        src={logo}
+        alt="Syntegral logo"
+        width="205"
+        height="160"
+      />
       <h1 className="py-6 text-2xl font-conthax font-bold text-teal text-center">
         Select to start exploring!
       </h1>
