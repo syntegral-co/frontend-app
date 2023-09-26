@@ -27,10 +27,12 @@ function NewsRadar() {
     <>
       <div className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <div className="col-span-full rounded-md bg-base-200 p-4 mb-4">
-          <h1 className="mb-4 text-3xl text-accent">{theme!.name}</h1>
+          <h1 className="mb-4 text-3xl text-accent font-conthax">
+            {theme!.name}
+          </h1>
           <Interweave content={data!.summary} />
         </div>
-        <h2 className="col-span-full mb-4 text-2xl text-accent">
+        <h2 className="col-span-full mb-4 text-2xl text-accent font-conthax">
           Source articles
         </h2>
         {news}
