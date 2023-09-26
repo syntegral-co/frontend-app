@@ -6,7 +6,7 @@
 
 @font-face {
     font-family: "Conthrax";
-    src: url("../public/assets/fonts/conthrax-sb.otf");
+    src: url("/assets/fonts/conthrax-sb.otf");
 }
 
 @layer utilities {
