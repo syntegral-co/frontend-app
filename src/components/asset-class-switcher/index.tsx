@@ -41,7 +41,7 @@ function AssetClassSwitcher() {
         className={clsx({ 'pointer-events-none': disabled })}
         to={to}
       >
-        <div className="relative flex flex-row md:flex-col items-center justify-start md:justify-center">
+        <div className="relative flex flex-col items-center justify-start md:justify-center">
           <div className="group transition hover:drop-shadow-asset_class">
             <div
               className={clsx(
