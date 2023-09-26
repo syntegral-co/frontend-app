@@ -29,6 +29,16 @@ function ParticlesAnimation() {
         interactivity: {
           events: {
             resize: true,
+            onHover: {
+              enable: true,
+              mode: 'repulse',
+            },
+          },
+          modes: {
+            repulse: {
+              distance: 200,
+              duration: 0.4,
+            },
           },
         },
         particles: {
