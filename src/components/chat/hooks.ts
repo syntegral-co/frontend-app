@@ -11,8 +11,7 @@ import { useCurrentAsset } from '../../pages/assets/hooks'
 import { chatState } from './atoms'
 import { chat, getChatMetrics } from './api'
 import { formatReferences } from '../../utils/helpers'
-import { ChatRequest } from './types'
-import { ChatMessage } from '../chat-output/types'
+import { ChatMessage, ChatRequest } from './types'
 import UserSession from '../../utils/session'
 
 export function useChatBot() {

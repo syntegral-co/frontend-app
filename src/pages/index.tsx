@@ -1,7 +1,8 @@
 import { Outlet } from 'react-router-dom'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
-import Nav from 'components/nav'
 import Spinner from 'components/spinner'
+import Nav from 'components/nav'
+import DocumentModal from 'components/document-modal'
 
 function Demo() {
   return (
@@ -10,6 +11,7 @@ function Demo() {
       <div className="flex h-full gap-4">
         <Outlet />
       </div>
+      <DocumentModal />
     </>
   )
 }

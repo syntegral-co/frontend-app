@@ -5,7 +5,6 @@ import { useCurrentAsset } from '../hooks'
 import { useCurrentTheme } from './hooks'
 import { DocumentLink } from 'components/document-modal/types'
 import clsx from 'clsx'
-import DocumentModal from 'components/document-modal'
 import Spinner from 'components/spinner'
 import ThemeChart from 'components/theme-chart'
 import ThemeMetrics from 'components/theme-metrics'
@@ -36,45 +35,42 @@ function Theme() {
   if (fetchStatus === 'fetching') return <Spinner context="data" />
 
   return (
-    <>
-      <DocumentModal />
+    <div
+      className={clsx(
+        'flex flex-col items-start justify-start gap-2 md:flex-row',
+        { '!flex-col': currentAssetClass!.id === 5 },
+      )}
+    >
       <div
-        className={clsx(
-          'flex flex-col items-start justify-start gap-2 md:flex-row',
-          { '!flex-col': currentAssetClass!.id === 5 },
-        )}
+        className={clsx('flex w-full flex-col gap-2 md:w-1/2', {
+          '!w-full': currentAssetClass!.id === 5,
+        })}
       >
-        <div
-          className={clsx('flex w-full flex-col gap-2 md:w-1/2', {
-            '!w-full': currentAssetClass!.id === 5,
-          })}
-        >
-          <div className="rounded-md bg-base-200 p-4">
-            <h1 className="mb-4 text-3xl text-accent font-conthax">
-              {theme!.name}
-            </h1>
-            {data?.summary && <p>{data?.summary}</p>}
-            {!!references.length && (
-              <>
-                <h2 className="mt-4 mb-4 text-2xl font-conthax">References</h2>
-                <ol className="mt-4 list-none pl-2">
-                  <References documents={references} />
-                </ol>
-              </>
-            )}
-          </div>
-        </div>
-        <div
-          className={clsx('flex w-full flex-col gap-2 md:w-1/2', {
-            '!w-full': currentAssetClass!.id === 5,
-          })}
-        >
-          <ThemeMetrics />
-          <ThemeChart />
-          <ThemeQA />
+        <div className="rounded-md bg-base-200 p-4">
+          <h1 className="mb-4 text-3xl text-accent font-conthax">
+            {theme!.name}
+          </h1>
+          {data?.summary && <p>{data?.summary}</p>}
+          {!!references.length && (
+            <>
+              <h2 className="mt-4 mb-4 text-2xl font-conthax">References</h2>
+              <ol className="mt-4 list-none pl-2">
+                <References documents={references} />
+              </ol>
+            </>
+          )}
         </div>
       </div>
-    </>
+      <div
+        className={clsx('flex w-full flex-col gap-2 md:w-1/2', {
+          '!w-full': currentAssetClass!.id === 5,
+        })}
+      >
+        <ThemeMetrics />
+        <ThemeChart />
+        <ThemeQA />
+      </div>
+    </div>
   )
 }
 
