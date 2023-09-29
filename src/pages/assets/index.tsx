@@ -1,5 +1,6 @@
+import { Outlet } from 'react-router-dom'
+import Chat from 'components/chat'
 import { useCurrentAsset } from './hooks'
-import ChatOutput from 'components/chat-output'
 
 function Asset() {
   const asset = useCurrentAsset()
@@ -9,8 +10,9 @@ function Asset() {
   }
 
   return (
-    <div className=" w-full bg-base-200">
-      <ChatOutput />
+    <div className="w-full">
+      <Outlet />
+      <Chat />
     </div>
   )
 }

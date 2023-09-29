@@ -21,22 +21,24 @@ const childrenRoutes: RouteObject[] = [
   {
     path: 'classes/:class/assets/:asset',
     element: <Asset />,
-  },
-  {
-    path: 'classes/:class/assets/:asset/themes',
-    element: <Themes />,
-  },
-  {
-    path: 'classes/:class/assets/:asset/themes/:theme',
-    element: <Theme />,
-  },
-  {
-    path: 'classes/6/assets/:asset/themes/:theme',
-    element: <NewsRadar />,
-  },
-  {
-    path: 'classes/:class/assets/:asset/download',
-    element: <Download />,
+    children: [
+      {
+        path: 'themes',
+        element: <Themes />,
+      },
+      {
+        path: 'themes/:theme',
+        element: <Theme />,
+      },
+      {
+        path: 'themes/:theme/news',
+        element: <NewsRadar />,
+      },
+      {
+        path: 'download',
+        element: <Download />,
+      },
+    ],
   },
 ]
 

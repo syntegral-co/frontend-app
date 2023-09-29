@@ -33,12 +33,6 @@ function Nav() {
       icon: 'compass',
     },
     {
-      title: 'Chat',
-      to: `classes/${currentAssetClass?.id}/assets/${currentAsset?.id}`,
-      icon: 'bubbles',
-      hidden: !currentAssetClass || !currentAsset || isIneriaUser,
-    },
-    {
       title: 'Reporting',
       to: `classes/${currentAssetClass?.id}/assets/${currentAsset?.id}/themes`,
       icon: 'pie',
