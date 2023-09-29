@@ -14,9 +14,9 @@ function ChatOutput() {
     <>
       <label
         htmlFor="my-drawer-4"
-        className="absolute top-0 right-0 drawer-button btn btn-link z-10"
+        className="absolute top-0 right-0 drawer-button btn hover:text-primary z-10"
       >
-        <Icon icon="cross" size={10} />
+        <Icon icon="cross" size={15} />
       </label>
       <div className="max-height-screen flex h-full w-full sm:w-2/3 md:w-1/3 flex-col justify-between p-4 bg-base-200">
         <div className="mt-4 overflow-y-scroll pr-4">
