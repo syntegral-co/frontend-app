@@ -12,4 +12,5 @@ type ImportMetaEnv = {
   readonly VITE_SENTRY_AUTH_TOKEN: string
   readonly VITE_SWIGCO_PDF_REPORT: string
   readonly VITE_FAKE_PDF_REPORT: string
+  readonly VITE_INERIA_PDF_REPORT: string
 }
