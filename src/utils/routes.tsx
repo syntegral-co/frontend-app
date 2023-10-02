@@ -8,6 +8,7 @@ import Download from 'pages/download'
 import AssetClassSwitcher from 'components/asset-class-switcher'
 import AssetSwitcher from 'components/asset-switcher'
 import NewsRadar from 'pages/assets/themes/news'
+import Catalogue from 'pages/catalogue'
 
 const childrenRoutes: RouteObject[] = [
   {
@@ -61,5 +62,9 @@ export const routes: RouteObject[] = [
   {
     path: '*',
     element: <NotFound />,
+  },
+  {
+    path: '/catalogue',
+    element: <Catalogue />,
   },
 ]
