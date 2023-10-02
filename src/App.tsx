@@ -4,7 +4,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import UserSession from 'utils/session'
 import Mixpanel from 'utils/tracking'
 import { routes } from 'utils/routes'
-import Spinner from 'components/spinner/'
+import Spinner from 'components/spinner'
 import ParticlesAnimation from 'components/particles'
 import 'utils/logging'
 
@@ -27,7 +27,7 @@ function App() {
   }, [user])
 
   return (
-    <div className="container mx-auto flex h-full min-h-screen max-w-full flex-col bg-base-100/50 py-6 px-4 md:px-20">
+    <div className="container h-screen mx-auto flex min-h-screen max-w-full flex-col bg-base-100/50 py-6 px-4 md:px-20">
       <ParticlesAnimation />
       <Suspense fallback={<Spinner context="data" />}>
         <RouterProvider router={router} />
