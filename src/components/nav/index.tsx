@@ -80,7 +80,7 @@ function Nav() {
 
   return (
     <nav className="navbar mb-8 px-4 md:px-0">
-      <div className="flex-none lg:hidden">
+      <div className="flex-none lg:hidden w-2/3">
         <div className="dropdown">
           <label tabIndex={0} className="btn-ghost btn">
             <svg
@@ -105,13 +105,9 @@ function Nav() {
             {navLinksElement}
           </ul>
         </div>
-        <div className="flex cursor-default items-center justify-center">
-          {currentAsset ? (
-            <div className="badge badge-primary badge-outline badge-xs p-2">
-              {currentAsset.name}
-            </div>
-          ) : null}
-        </div>
+        {currentAsset && (
+          <p className="text-primary text-xs">{currentAsset!.name}</p>
+        )}
       </div>
       {isAuthenticated && (
         <div className="hidden flex-1 lg:flex">
