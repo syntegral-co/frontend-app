@@ -25,6 +25,10 @@
     }
 }
 
+object {
+    height: 100vh;
+}
+
 .tooltip {
     --tooltip-tail: 9px;
 }

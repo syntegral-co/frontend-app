@@ -7,7 +7,7 @@ function Catalogue() {
 
   return (
     <div className="mx-auto max-w-7xl p-2 sm:p-6 lg:p-8 bg-base-200">
-      <h1 className="text-center text-xl font-bold font-conthax">
+      <h1 className="text-center text-2xl font-bold font-conthax">
         Components catalogue
       </h1>
       <div className="overflow-x-auto">

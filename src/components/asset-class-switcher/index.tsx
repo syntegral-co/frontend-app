@@ -71,7 +71,7 @@ function AssetClassSwitcher() {
         width="205"
         height="160"
       />
-      <h1 className="py-6 text-2xl font-conthax font-bold text-teal text-center">
+      <h1 className="py-6 text-2xl font-conthax font-bold text-teal">
         Select to start exploring!
       </h1>
       <div className="flex flex-col md:flex-row gap-4">{assetLinksElement}</div>

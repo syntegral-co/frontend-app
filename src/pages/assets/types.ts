@@ -1,4 +1,4 @@
-import { AssetClass } from '../../components/asset-class-switcher/types'
+import { AssetClass } from 'components/asset-class-switcher/types'
 
 export type UserRole = 'Sysadmin' | 'SwigCo' | 'Ineria' | 'Demo_EQ' | 'Demo_RE'
 

@@ -10,10 +10,10 @@ function Asset() {
   }
 
   return (
-    <div className="w-full">
+    <>
       <Outlet />
       <Chat />
-    </div>
+    </>
   )
 }
 

@@ -8,9 +8,7 @@ function Demo() {
   return (
     <>
       <Nav />
-      <div className="flex h-full gap-4">
-        <Outlet />
-      </div>
+      <Outlet />
       <DocumentModal />
     </>
   )

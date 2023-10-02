@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     test: {
-      environment: 'jsdom'
+      environment: 'jsdom',
     },
     build: {
       sourcemap: true,
