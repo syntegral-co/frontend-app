@@ -52,7 +52,7 @@ function Upload() {
       <div className="flex h-full flex-col gap-4">
         <div
           className={clsx(
-            'relative flex h-96 w-full items-center justify-center rounded-md border-2 border-dashed border-primary-content',
+            'relative flex h-full w-full items-center justify-center rounded-md border-2 border-dashed border-primary-content',
             {
               'border-accent': isDragActive || isFocused,
               'borde-error': isDragReject,

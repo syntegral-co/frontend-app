@@ -27,7 +27,7 @@ function App() {
   }, [user])
 
   return (
-    <div className="container mx-auto mt-4 flex h-screen max-w-full flex-col bg-base-100/50 py-6 px-4 md:px-20">
+    <div className="container mx-auto flex h-full min-h-screen max-w-full flex-col bg-base-100/50 py-6 px-4 md:px-20">
       <ParticlesAnimation />
       <Suspense fallback={<Spinner context="data" />}>
         <RouterProvider router={router} />

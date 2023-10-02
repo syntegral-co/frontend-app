@@ -26,7 +26,7 @@
 }
 
 .tooltip {
-    --tooltip-tail: 9px;;
+    --tooltip-tail: 9px;
 }
 
 .tooltip:before {
