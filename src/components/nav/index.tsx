@@ -127,9 +127,11 @@ function Nav() {
         {isAuthenticated ? (
           <div className="dropdown-end dropdown">
             <div className="cursor-pointer" tabIndex={0}>
-              <div className="h-6 sm:h-8 max-h-16 w-auto sm:max-w-[90px]">
-                <img src={user?.picture} alt={`${user!.name} avatar`} />
-              </div>
+              <img
+                className="h-6 sm:h-8 max-h-16 w-auto sm:max-w-[90px] object-contain"
+                src={user?.picture}
+                alt={`${user!.name} avatar`}
+              />
             </div>
             <ul
               tabIndex={0}
