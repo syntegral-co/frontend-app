@@ -15,22 +15,10 @@ function DocumentModal() {
           <Spinner context="document" />
         )}
         {status === 'success' && fetchStatus === 'idle' && (
-          <object
-            className="mb-4"
-            data={`${Object.values(documentUrl!)[0]}#page=${documentPage}`}
-            type="application/pdf"
-            width="100%"
-            height="100%"
-          >
-            <p>
-              Link{' '}
-              <a
-                href={`${Object.values(documentUrl!)[0]}#page=${documentPage}`}
-              >
-                to the PDF!
-              </a>
-            </p>
-          </object>
+          <iframe
+            className="w-full h-full mb-4"
+            src={`${Object.values(documentUrl!)[0]}#page=${documentPage}`}
+          ></iframe>
         )}
         <Link
           className="btn-primary btn-outline btn mx-auto mb-4 mt-auto"
