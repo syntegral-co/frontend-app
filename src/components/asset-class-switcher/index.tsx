@@ -63,7 +63,7 @@ function AssetClassSwitcher() {
   })
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center self-center">
+    <div className="flex h-auto md:h-full w-full flex-col items-center justify-center self-center">
       <img
         className="h-40"
         src={logo}

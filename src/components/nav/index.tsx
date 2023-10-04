@@ -126,18 +126,10 @@ function Nav() {
       <div className="ml-auto mr-4 flex-none gap-2">
         {isAuthenticated ? (
           <div className="dropdown-end dropdown">
-            <div className="avatar cursor-pointer" tabIndex={0}>
-              {user!.app_metadata.picture ? (
-                <img
-                  className="h-6 sm:h-8 max-h-16 w-auto"
-                  src={user!.app_metadata.picture}
-                  alt={`${user!.name} logo`}
-                />
-              ) : (
-                <div className="mask mask-hexagon w-8 rounded-full">
-                  <img src={user?.picture} alt={`${user!.name} avatar`} />
-                </div>
-              )}
+            <div className="cursor-pointer" tabIndex={0}>
+              <div className="h-6 sm:h-8 max-h-16 w-auto sm:max-w-[90px]">
+                <img src={user?.picture} alt={`${user!.name} avatar`} />
+              </div>
             </div>
             <ul
               tabIndex={0}
