@@ -20,6 +20,10 @@ const childrenRoutes: RouteObject[] = [
     element: <AssetSwitcher />,
   },
   {
+    path: 'classes/6/assets/:asset/themes/:theme',
+    element: <NewsRadar />,
+  },
+  {
     path: 'classes/:class/assets/:asset',
     element: <Asset />,
     children: [
@@ -30,10 +34,6 @@ const childrenRoutes: RouteObject[] = [
       {
         path: 'themes/:theme',
         element: <Theme />,
-      },
-      {
-        path: 'themes/:theme/news',
-        element: <NewsRadar />,
       },
       {
         path: 'download',
