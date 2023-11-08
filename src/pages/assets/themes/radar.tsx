@@ -22,7 +22,6 @@ function UpdatedNewsRadar() {
   if (fetchStatus === 'fetching') return <Spinner context="news" />
 
   const news = data!.references?.articles?.map((newsData, index) => {
-    console.log('newsData: ', newsData);
     const formattedNews = {
       title: newsData[0],
       url: newsData[1]

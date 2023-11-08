@@ -16,11 +16,11 @@ if (documentURI) {
     enabled: documentURI !== null,
     staleTime: 300000,
   })
-
+  
   return {
-    documentId,
+    documentId: documentURI,
     documentPage,
-    documentUrl: data,
+    documentUrl: [data],
     status,
     fetchStatus,
   }

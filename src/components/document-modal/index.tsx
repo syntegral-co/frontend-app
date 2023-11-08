@@ -4,8 +4,8 @@ import Spinner from 'components/spinner'
 
 function DocumentModal() {
   const { documentId, documentPage, documentUrl, status, fetchStatus } =
-    useDocumentModal()
-
+  useDocumentModal()
+  
   if (!documentId || !documentPage) return <></>
 
   return (

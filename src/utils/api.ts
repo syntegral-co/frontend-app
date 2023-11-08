@@ -48,6 +48,7 @@ export async function callBackendAPI(
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
+        'Content-Type': 'application/json',
         'X-API-Key': import.meta.env.VITE_BACKEND_API_KEY,
         session: UserSession.get()!,
       },
