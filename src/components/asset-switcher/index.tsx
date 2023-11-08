@@ -30,6 +30,7 @@ function AssetSwitcher() {
 
   switch (currentAssetClass!.id) {
     case 6:
+    case 8:
       welcomeText = (
         <>
           Welcome to the News Radar.
