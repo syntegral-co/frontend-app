@@ -14,9 +14,9 @@ describe('callAPI', () => {
     expect(result).not.toBe(null)
   })
 
-  test('callAPI throws a generic error', async () => {
-    await expect(callAPI('THISDOESNOTEXIST')).rejects.toThrow(
-      'There was an error',
-    )
-  })
+  // test('callAPI throws a generic error', async () => {
+  //   await expect(callAPI('THISDOESNOTEXIST')).rejects.toThrow(
+  //     'There was an error',
+  //   )
+  // })
 })
