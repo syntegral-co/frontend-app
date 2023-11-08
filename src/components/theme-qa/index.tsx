@@ -28,7 +28,7 @@ function ThemeQA() {
 
   return (
     <div className="rounded-md bg-base-200 p-4">
-      <h2 className="mb-4 text-2xl font-conthax">Questions</h2>
+      <h2 className="mb-4 text-2xl ">Questions</h2>
       <ol className="mt-4 list-none pl-2">
         {themeQAs.map((qa, index) => {
           const references = formatReferences(qa.references)

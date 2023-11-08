@@ -20,7 +20,7 @@ function ThemeMetrics() {
 
   return (
     <div className="rounded-md bg-base-200 p-4">
-      <h2 className="mb-4 text-2xl font-conthax">Metrics</h2>
+      <h2 className="mb-4 text-2xl ">Metrics</h2>
       <div className="metrics">
         <ul>
           {themeMetricAnswers.map((metricAnswer) => {

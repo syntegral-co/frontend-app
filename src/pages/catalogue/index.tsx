@@ -7,7 +7,7 @@ function Catalogue() {
 
   return (
     <div className="mx-auto max-w-7xl p-2 sm:p-6 lg:p-8 bg-base-200">
-      <h1 className="text-center text-2xl font-bold font-conthax">
+      <h1 className="text-center text-2xl font-bold ">
         Components catalogue
       </h1>
       <div className="overflow-x-auto">
@@ -79,7 +79,7 @@ function Catalogue() {
                 </div>
               </td>
               <td>
-                <h1 className="text-2xl font-conthax font-bold text-teal">
+                <h1 className="text-2xl  font-bold text-teal">
                   This is a title
                 </h1>
               </td>
@@ -107,7 +107,7 @@ function Catalogue() {
                 </div>
               </td>
               <td>
-                <h2 className="text-xl font-conthax font-bold text-teal">
+                <h2 className="text-xl  font-bold text-teal">
                   This is a sub heading
                 </h2>
               </td>

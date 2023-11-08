@@ -1,9 +1,6 @@
 import {
   FetchStatus,
-  QueryObserverResult,
   QueryStatus,
-  RefetchOptions,
-  RefetchQueryFilters,
 } from '@tanstack/react-query'
 
 export type DocumentRequest = {
@@ -18,6 +15,7 @@ export type Document = {
 
 export type DocumentLink = {
   id: string
+  url?: string,
   page: string
   name: string
 }
