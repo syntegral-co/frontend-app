@@ -1,6 +1,8 @@
 import { describe, expect, test } from 'vitest'
 import {
   capitalize,
+  decryptString,
+  encryptString,
   formatReferences,
   getThemeScore,
   isSearchTermAnAsset,
@@ -17,6 +19,15 @@ describe('Helpers', () => {
 
     test('Capitalize returns a capialized string', () => {
       expect(capitalize(lowercaseString)).toBe('Lorem ipsum')
+    })
+
+    describe('String encryption helpers', () => {
+      test('Decrypted string equals to "🦄"', () => {
+        const encryptedString = encryptString('🦄')
+        const decryptedString = decryptString(encryptedString)
+  
+        expect(decryptedString).toEqual('🦄')
+      })
     })
   })
 

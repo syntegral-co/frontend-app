@@ -40,8 +40,8 @@ function UpdatedNewsRadar() {
           <Interweave content={data!.summary} />
           <h2 className="mt-4 mb-4 text-2xl">References</h2>
           <ol className="mt-4 list-none pl-2">
-                <References retrieval_type="uri" documents={formatReferences(data!.references?.documents)} />
-              </ol>
+            <References retrieval_type="uri" documents={formatReferences(data!.references?.documents)} />
+          </ol>
         </div>
         <h2 className="col-span-full mb-4 text-2xl text-accent ">
           Source articles

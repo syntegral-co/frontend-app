@@ -29,6 +29,9 @@ importers:
       clsx:
         specifier: ^2.0.0
         version: 2.0.0
+      crypto-js:
+        specifier: ^4.2.0
+        version: 4.2.0
       daisyui:
         specifier: ^3.7.7
         version: 3.7.7
@@ -81,6 +84,9 @@ importers:
       '@sentry/vite-plugin':
         specifier: ^2.7.1
         version: 2.7.1
+      '@types/crypto-js':
+        specifier: ^4.2.1
+        version: 4.2.1
       '@types/mixpanel-browser':
         specifier: ^2.47.2
         version: 2.47.2
@@ -789,6 +795,10 @@ packages:
     resolution: {integrity: sha512-VOVRLM1mBxIRxydiViqPcKn6MIxZytrbMpd6RJLIWKxUNr3zux8no0Oc7kJx0WAPIitgZ0gkrDS+btlqQpubpw==}
     dev: true
 
+  /@types/crypto-js@4.2.1:
+    resolution: {integrity: sha512-FSPGd9+OcSok3RsM0UZ/9fcvMOXJ1ENE/ZbLfOPlBWj7BgXtEAM8VYfTtT760GiLbQIMoVozwVuisjvsVwqYWw==}
+    dev: true
+
   /@types/istanbul-lib-coverage@2.0.4:
     resolution: {integrity: sha512-z/QT1XN4K4KYuslS23k62yDIDLwLFkzxOuMplDtObz0+y7VqJCaO2o+SPwHCvLFZh7xazvvoor2tA/hPz9ee7g==}
     dev: true
@@ -1107,6 +1117,10 @@ packages:
     engines: {node: '>=12.13'}
     dependencies:
       is-what: 4.1.15
+    dev: false
+
+  /crypto-js@4.2.0:
+    resolution: {integrity: sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==}
     dev: false
 
   /css-selector-tokenizer@0.8.0:
