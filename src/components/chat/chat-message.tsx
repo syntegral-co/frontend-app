@@ -2,7 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { ChatMessage } from './types'
 import { Interweave } from 'interweave'
 import References from 'components/references'
-import logo from 'assets/images/syntegral.svg'
+import logo from 'assets/images/syntegral-logo.webp'
 
 type ChatMessageProps = {
   message: ChatMessage

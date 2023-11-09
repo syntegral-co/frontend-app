@@ -34,16 +34,16 @@ function UpdatedNewsRadar() {
     <>
       <div className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <div className="col-span-full rounded-md bg-base-200 p-4 mb-4">
-          <h1 className="mb-4 text-3xl text-accent ">
+          <h1 className="mb-4 text-teal font-maven font-bold text-2xl md:text-3xl">
             {theme!.name}
           </h1>
           <Interweave content={data!.summary} />
-          <h2 className="mt-4 mb-4 text-2xl">References</h2>
+          <h2 className="mt-4 mb-4 font-bold text-lg">References</h2>
           <ol className="mt-4 list-none pl-2">
             <References retrieval_type="uri" documents={formatReferences(data!.references?.documents)} />
           </ol>
         </div>
-        <h2 className="col-span-full mb-4 text-2xl text-accent ">
+        <h2 className="col-span-full mb-4 font-bold text-lg text-accent">
           Source articles
         </h2>
         {news}

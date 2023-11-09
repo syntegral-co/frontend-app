@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 import clsx from 'clsx'
 import { useUserRoles } from 'pages/assets/hooks'
 import { NavbarLink } from 'components/nav/types'
-import logo from 'assets/images/syntegral-white.png'
+import logo from 'assets/images/syntegral-logo.webp'
 
 function AssetClassSwitcher() {
   const userRoles = useUserRoles()
@@ -28,7 +28,7 @@ function AssetClassSwitcher() {
     },
     {
       title: 'News Radar',
-      to: './classes/6',
+      to: './classes/8',
       disabled:
         !userRoles.includes('Sysadmin') && !userRoles.includes('Ineria'),
     },
@@ -65,13 +65,13 @@ function AssetClassSwitcher() {
   return (
     <div className="flex h-auto md:h-full w-full flex-col items-center justify-center self-center">
       <img
-        className="h-40"
+        className="h-52 w-auto"
         src={logo}
         alt="Syntegral logo"
-        width="205"
-        height="160"
+        width="4167"
+        height="4167"
       />
-      <h1 className="py-6 text-2xl font-bold text-teal text-center">
+      <h1 className="py-6 text-teal text-center font-maven font-bold text-2xl md:text-3xl">
         Select to start exploring!
       </h1>
       <div className="flex flex-col md:flex-row gap-4">{assetLinksElement}</div>

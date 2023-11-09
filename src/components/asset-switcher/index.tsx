@@ -11,7 +11,7 @@ import { useCurrentAssetClass } from 'components/asset-class-switcher/hooks'
 import { AssetsState } from './atom'
 import { isSearchTermAnAsset } from 'utils/helpers'
 import UserSession from 'utils/session'
-import logo from 'assets/images/syntegral-white.png'
+import logo from 'assets/images/syntegral-logo.webp'
 
 function AssetSwitcher() {
   const [searchTerm, setSearchTerm] = useState('')
@@ -76,8 +76,8 @@ function AssetSwitcher() {
 
   return (
     <div className="flex h-auto md:h-full w-full flex-col items-center justify-center self-center">
-      <img className="h-40" src={logo} alt="Syntegral logo" />
-      <h2 className="py-6 text-center text-2xl font-bold  text-primary-content">
+      <img className="h-52 w-auto" src={logo} alt="Syntegral logo" width="4167" height="4167" />
+      <h2 className="py-6 text-center font-bold text-lg text-primary-content">
         {welcomeText}
       </h2>
       <div className="relative w-full flex flex-col items-center justify-start">

@@ -48,13 +48,13 @@ function Theme() {
         })}
       >
         <div className="rounded-md bg-base-200 p-4">
-          <h1 className="mb-4 text-3xl text-accent">
+          <h1 className="mb-4 text-teal font-maven font-bold text-2xl md:text-3xl">
             {theme!.name}
           </h1>
           {data?.summary && <p>{data?.summary}</p>}
           {!!references.length && (
             <>
-              <h2 className="mt-4 mb-4 text-2xl">References</h2>
+              <h2 className="mt-4 mb-4 font-bold text-lg">References</h2>
               <ol className="mt-4 list-none pl-2">
                 <References documents={references} />
               </ol>
