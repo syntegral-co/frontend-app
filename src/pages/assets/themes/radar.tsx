@@ -32,7 +32,7 @@ function UpdatedNewsRadar() {
 
   return (
     <>
-      <div className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="gap-2 flex flex-col items-start justify-start">
         <div className="col-span-full rounded-md bg-base-200 p-4 mb-4">
           <h1 className="mb-4 text-teal font-maven font-bold text-2xl md:text-3xl">
             {theme!.name}
@@ -46,7 +46,9 @@ function UpdatedNewsRadar() {
         <h2 className="col-span-full mb-4 font-bold text-lg text-accent">
           Source articles
         </h2>
-        {news}
+        <div className="flex flex-row gap-2 flex-wrap items-strat justify-between">
+          {news}
+        </div>
       </div>
     </>
   )

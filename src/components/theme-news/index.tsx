@@ -6,7 +6,7 @@ type ThemeNewsProps = {
 }
 
 function ThemeNews({ news }: ThemeNewsProps) {
-  return (<div className="card w-96 bg-base-200 text-primary-content">
+  return (<div className="card w-full lg:w-96 bg-base-200 text-primary-content">
       <div className="card-body">
         <h2 className="card-title font-bold text-lg">{news.title}</h2>
         <p>{news.description}</p>
