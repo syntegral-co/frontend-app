@@ -22,7 +22,7 @@ function Themes() {
       break
 
     case 'compare':
-      themesView = <div>{viewMode}</div>
+      themesView = <div>{viewMode}</div> //COMING SOON!
       break
 
     case 'satellite':
@@ -36,18 +36,18 @@ function Themes() {
   return (
     <div className="flex w-full flex-col">
       {viewMode !== 'satellite' && (
-        <div className="mb-4 h-auto w-full rounded-md bg-base-200 p-6">
-          <ThemesToggles />
-        </div>
+        <>
+          <div className="mb-4 h-auto w-full rounded-md bg-base-200 p-6">
+            <ThemesToggles />
+          </div>
+          <div className="mb-4 h-auto w-full rounded-md bg-base-200 p-6">
+            <ViewSelector />
+          </div>
+        </>
       )}
       {viewMode === 'satellite' && (
         <div className="mx-auto mb-8 h-auto w-auto rounded-md bg-base-200 p-6">
           <ThemesCategories />
-        </div>
-      )}
-      {viewMode !== 'satellite' && (
-        <div className="mb-4 h-auto w-full rounded-md bg-base-200 p-6">
-          <ViewSelector />
         </div>
       )}
       {themesView}

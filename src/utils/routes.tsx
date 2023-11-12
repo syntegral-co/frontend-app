@@ -8,6 +8,7 @@ import Download from 'pages/download'
 import AssetClassSwitcher from 'components/asset-class-switcher'
 import AssetSwitcher from 'components/asset-switcher'
 import NewsRadar from 'pages/assets/themes/news'
+import UpdatedNewsRadar from 'pages/assets/themes/radar'
 import Catalogue from 'pages/catalogue'
 
 const childrenRoutes: RouteObject[] = [
@@ -22,6 +23,10 @@ const childrenRoutes: RouteObject[] = [
   {
     path: 'classes/6/assets/:asset/themes/:theme',
     element: <NewsRadar />,
+  },
+  {
+    path: 'classes/8/assets/:asset/themes/:theme',
+    element: <UpdatedNewsRadar />,
   },
   {
     path: 'classes/:class/assets/:asset',

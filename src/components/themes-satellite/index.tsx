@@ -89,13 +89,13 @@ function ThemesSatellites() {
             >
               <figure className="mx-auto mt-4 flex h-20 w-20 items-center justify-center rounded-full bg-[#000]">
                 <img
-                  src={icons[theme.id] || '/assets/images/syntegral.svg'}
+                  src={icons[theme.id] || '/assets/images/syntegral-logo.webp'}
                   alt={`${theme.name} icon`}
                   className="h-16 w-16"
                 />
               </figure>
               <div className="card-body items-center text-center">
-                <h2 className="card-title">{theme.name}</h2>
+                <h2 className="card-title font-bold text-lg">{theme.name}</h2>
                 <div className="card-actions">
                   <button className="btn-primary btn-link btn-sm btn">
                     View report

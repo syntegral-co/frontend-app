@@ -11,7 +11,7 @@ module.exports = {
     },
     fontFamily: {
       montserrat: ['Montserrat', 'sans-serif'],
-      conthax: ['conthrax', 'sans-serif'],
+      maven: ['Maven Pro', 'sans-serif'],
     },
     extend: {
       backgroundImage: {

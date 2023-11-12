@@ -4,7 +4,7 @@ import Loader from 'components/loader'
 import Icon from 'components/icon'
 import ChatMessage from './chat-message'
 import ChatInput from 'components/chat/chat-input'
-import logo from 'assets/images/syntegral.svg'
+import logo from 'assets/images/syntegral-logo.webp'
 
 function ChatOutput() {
   const currentAsset = useCurrentAsset()

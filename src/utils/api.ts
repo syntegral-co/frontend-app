@@ -38,3 +38,41 @@ export async function callAPI(
     throw new Error(errorMessage)
   }
 }
+
+export async function callBackendAPI(
+  endpoint: string,
+  analyticsOptions?: AnalyticsOptions,
+  body?: string
+) {
+  try {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-API-Key': import.meta.env.VITE_BACKEND_API_KEY,
+        session: UserSession.get()!,
+      },
+      body
+    })
+
+    const data = await response.json()
+
+    if (analyticsOptions) {
+      Mixpanel.track('API Call', analyticsOptions)
+    }
+
+    return data
+  } catch (error) {
+    let errorMessage = ''
+
+    if (error instanceof SyntaxError) {
+      errorMessage = 'There was a SyntaxError'
+      console.log(errorMessage, error)
+    } else {
+      errorMessage = 'There was an error'
+      console.log(errorMessage, error)
+    }
+
+    throw new Error(errorMessage)
+  }
+}
