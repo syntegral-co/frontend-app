@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
+import { useCurrentAssetClass } from 'components/asset-class-switcher/hooks'
 import { useCurrentAsset, useIsSwigcoUser } from 'pages/assets/hooks'
 import { ThemeScore } from 'pages/assets/types'
 import { useThemes } from 'components/themes-toggles/hooks'
@@ -11,6 +12,7 @@ import { disabledThemes } from './constants'
 
 function ThemesList() {
   const isSwigcoUser = useIsSwigcoUser()
+  const currentAssetClass = useCurrentAssetClass()
   const currentAsset = useCurrentAsset()
   const { themes, scores, selectedThemes } = useThemes()
   const categories = useRecoilValue(categoriesState)
@@ -61,7 +63,7 @@ function ThemesList() {
                   </div>
                 </div>
                 <div className="stat-value">
-                  {!isSwigcoUser && (
+                  {!isSwigcoUser && currentAssetClass!.id === 1 && (
                     <Ratings
                       id={theme.id}
                       rating={getThemeScore(theme.id, assetScore)}
