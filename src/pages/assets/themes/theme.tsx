@@ -33,7 +33,6 @@ function Theme() {
   }, [data])
 
   if (fetchStatus === 'fetching') return <Spinner context="data" />
-  console.log('fetchStatus: ', fetchStatus);
 
   return (
     <div

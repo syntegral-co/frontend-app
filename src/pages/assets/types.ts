@@ -1,4 +1,5 @@
 import { AssetClass } from 'components/asset-class-switcher/types'
+import { NewsRadarReference } from './themes/types'
 
 export type UserRole = 'Sysadmin' | 'SwigCo' | 'Ineria' | 'Demo_EQ' | 'Demo_RE'
 
@@ -42,5 +43,5 @@ export type QA = {
   themeId: Theme['id']
   question: string
   answer: string
-  references?: string[][]
+  references?: any
 }
