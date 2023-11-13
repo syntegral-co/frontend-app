@@ -7,6 +7,7 @@ import { Interweave } from 'interweave'
 import ThemeNews from 'components/theme-news'
 import Spinner from 'components/spinner'
 import References from 'components/references'
+import ThemeQA from 'components/theme-qa'
 import { formatReferences } from 'utils/helpers'
 
 function UpdatedNewsRadar() {
@@ -32,8 +33,8 @@ function UpdatedNewsRadar() {
 
   return (
     <>
-      <div className="gap-2 flex flex-col items-start justify-start">
-        <div className="col-span-full rounded-md bg-base-200 p-4 mb-4">
+      <div className="gap-2 flex flex-col lg:flex-row items-start justify-start">
+        <div className="w-full lg:w-1/2 rounded-md bg-base-200 p-4 mb-4">
           <h1 className="mb-4 text-teal font-maven font-bold text-2xl md:text-3xl">
             {theme!.name}
           </h1>
@@ -43,13 +44,16 @@ function UpdatedNewsRadar() {
             <References retrieval_type="uri" documents={formatReferences(data!.references?.documents)} />
           </ol>
         </div>
-        <h2 className="col-span-full mb-4 font-bold text-lg text-accent">
+        <div className="w-full lg:w-1/2">
+          <ThemeQA />
+        </div>
+        </div>
+        <h2 className="mb-4 font-bold text-lg text-accent">
           Source articles
         </h2>
-        <div className="flex flex-row gap-2 flex-wrap items-strat justify-between">
+        <div className="flex flex-row gap-2 flex-wrap items-start justify-between">
           {news}
         </div>
-      </div>
     </>
   )
 }

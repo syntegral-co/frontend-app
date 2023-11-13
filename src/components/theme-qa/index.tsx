@@ -1,4 +1,5 @@
 import { useRecoilValue } from 'recoil'
+import { useCurrentAssetClass } from 'components/asset-class-switcher/hooks'
 import { useCurrentAsset } from 'pages/assets/hooks'
 import { useCurrentTheme } from 'pages/assets/themes/hooks'
 import { qaState } from 'components/themes-toggles/atoms'
@@ -6,6 +7,7 @@ import { formatReferences } from 'utils/helpers'
 import References from 'components/references'
 
 function ThemeQA() {
+  const currentAssetClass = useCurrentAssetClass()
   const currentAsset = useCurrentAsset()
   const theme = useCurrentTheme()
   const QAs = useRecoilValue(qaState)
@@ -30,8 +32,8 @@ function ThemeQA() {
     <div className="rounded-md bg-base-200 p-4">
       <h2 className="mb-4 font-bold text-lg">Questions</h2>
       <ol className="mt-4 list-none pl-2">
-        {themeQAs.map((qa, index) => {
-          const references = formatReferences(qa.references)
+        {themeQAs.map((qa, index) => {          
+          const references = formatReferences(qa.references?.documents)
 
           return (
             <li className="mt-2 mb-4 cursor-pointer" key={index}>
@@ -44,7 +46,7 @@ function ThemeQA() {
                       <div className="divider"></div>
                       <p className="mt-4 font-bold">References</p>
                       <ol>
-                        <References documents={references} />
+                        <References retrieval_type="uri" documents={references} />
                       </ol>
                     </>
                   ) : null}
