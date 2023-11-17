@@ -32,8 +32,8 @@ function ThemeMetrics() {
 
             return (
               <li key={metricAnswer.id} className="text-md my-4">
-                <div className="flex flex-row flex-wrap items-center justify-between">
-                  <p>
+                <div className="flex flex-row items-center justify-between">
+                  <p className="w-5/6">
                     <Icon className="text-primary-focus" icon="pie" size={16} />{' '}
                     {metric.name}
                   </p>

@@ -7,6 +7,7 @@ import { Interweave } from 'interweave'
 import ThemeNews from 'components/theme-news'
 import Spinner from 'components/spinner'
 import References from 'components/references'
+import ThemeMetrics from 'components/theme-metrics'
 import ThemeQA from 'components/theme-qa'
 import { formatReferences } from 'utils/helpers'
 
@@ -45,6 +46,7 @@ function UpdatedNewsRadar() {
           </ol>
         </div>
         <div className="w-full lg:w-1/2">
+          <ThemeMetrics />
           <ThemeQA />
         </div>
         </div>
