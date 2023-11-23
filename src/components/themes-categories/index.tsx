@@ -8,9 +8,9 @@ import { Link } from 'react-router-dom'
 function ThemesCategories() {
   const currentAssetClass = useCurrentAssetClass()
   const currentCategory = useCurrentCategory()
-  const categories = useRecoilValue(categoriesState)  
+  const categories = useRecoilValue(categoriesState)
 
-  const availableCategories = currentAssetClass!.id === 7 ? [5,6,7] : [8]
+  const availableCategories = currentAssetClass!.id === 7 ? [5, 6, 7] : [8]
 
   const tabs = availableCategories!.map((category, index) => (
     <Link
@@ -20,11 +20,11 @@ function ThemesCategories() {
         'tab-active !text-base-200': currentCategory!.id === category,
       })}
     >
-      {categories.find(ctg => ctg.id === category)!.name}
+      {categories.find((ctg) => ctg.id === category)!.name}
     </Link>
   ))
 
-  return <div className="tabs tabs-boxed">{tabs}</div>
+  return <div className="tabs-boxed tabs">{tabs}</div>
 }
 
 export default ThemesCategories

@@ -4,14 +4,14 @@ import ChatOutput from './chat-output'
 function Chat() {
   return (
     <div
-      className="drawer drawer-end h-16 w-16 flex items-center justify-center fixed bottom-8 right-8 rounded-full group bg-base-100 hover:bg-primary transition-colors ease-in-out tooltip tooltip-accent tooltip-left"
+      className="group drawer drawer-end tooltip tooltip-accent tooltip-left fixed bottom-8 right-8 flex h-16 w-16 items-center justify-center rounded-full bg-base-100 transition-colors ease-in-out hover:bg-primary"
       data-tip="Open chatbot"
     >
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         <label
           htmlFor="my-drawer-4"
-          className="drawer-button group-hover:text-base-100 flex items-center justify-center cursor-pointer"
+          className="drawer-button flex cursor-pointer items-center justify-center group-hover:text-base-100"
         >
           <Icon icon="bubbles" size={30} />
         </label>

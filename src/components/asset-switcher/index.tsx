@@ -75,16 +75,22 @@ function AssetSwitcher() {
   }
 
   return (
-    <div className="flex h-auto md:h-full w-full flex-col items-center justify-center self-center">
-      <img className="h-52 w-auto" src={logo} alt="Syntegral logo" width="4167" height="4167" />
-      <h2 className="py-6 text-center font-bold text-lg text-primary-content">
+    <div className="flex h-auto w-full flex-col items-center justify-center self-center md:h-full">
+      <img
+        className="h-52 w-auto"
+        src={logo}
+        alt="Syntegral logo"
+        width="4167"
+        height="4167"
+      />
+      <h2 className="py-6 text-center text-lg font-bold text-primary-content">
         {welcomeText}
       </h2>
-      <div className="relative w-full flex flex-col items-center justify-start">
+      <div className="relative flex w-full flex-col items-center justify-start">
         <input
           type="text"
           placeholder="Start typing what you're looking for..."
-          className="input-bordered input w-full h-12 max-w-xs text-primary-content"
+          className="input input-bordered h-12 w-full max-w-xs text-primary-content"
           onFocus={() => setIsInputFocus(true)}
           onBlur={() => setIsInputFocus(false)}
           onChange={(event) => setSearchTerm(event.target.value)}

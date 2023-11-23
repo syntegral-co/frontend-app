@@ -11,18 +11,18 @@ function ChatOutput() {
   const { chatMessages, isLoading, isMetricsLoading } = useChatBot()
 
   return (
-    <div className="max-height-screen flex h-full w-full md:w-2/3 lg:w-1/3 flex-col justify-between p-4 bg-base-200 text-left">
-      <div className="absolute top-4 right-4 h-10 w-10">
+    <div className="max-height-screen flex h-full w-full flex-col justify-between bg-base-200 p-4 text-left md:w-2/3 lg:w-1/3">
+      <div className="absolute right-4 top-4 h-10 w-10">
         <label
           htmlFor="my-drawer-4"
-          className="drawer-button hover:text-primary flex items-center justify-center cursor-pointer"
+          className="drawer-button flex cursor-pointer items-center justify-center hover:text-primary"
         >
           <Icon icon="cross" size={15} />
         </label>
       </div>
       <div className="mt-4 overflow-y-scroll pr-4">
         <div className="chat chat-start">
-          <div className="chat-image avatar">
+          <div className="avatar chat-image">
             <div className="mask mask-hexagon w-10 rounded-full">
               <img src={logo} alt="Chatbot avatar" />
             </div>
@@ -37,7 +37,7 @@ function ChatOutput() {
         ))}
         {(isLoading > 0 || isMetricsLoading > 0) && (
           <div className="chat chat-start">
-            <div className="chat-image avatar">
+            <div className="avatar chat-image">
               <div className="mask mask-hexagon w-10 rounded-full">
                 <img src={logo} alt="Chatbot avatar" />
               </div>

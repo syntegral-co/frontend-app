@@ -78,7 +78,7 @@ function ThemesSatellites() {
                 clsx(
                   'card max-h-72 w-48 cursor-pointer border-2 bg-base-200 shadow-xl duration-300 ease-in-out hover:z-10 hover:scale-125',
                   {
-                    'opacity-30 pointer-events-none': disabledThemes.includes(
+                    'pointer-events-none opacity-30': disabledThemes.includes(
                       theme.id,
                     ),
                   },
@@ -95,9 +95,9 @@ function ThemesSatellites() {
                 />
               </figure>
               <div className="card-body items-center text-center">
-                <h2 className="card-title font-bold text-lg">{theme.name}</h2>
+                <h2 className="card-title text-lg font-bold">{theme.name}</h2>
                 <div className="card-actions">
-                  <button className="btn-primary btn-link btn-sm btn">
+                  <button className="btn btn-primary btn-link btn-sm">
                     View report
                   </button>
                 </div>

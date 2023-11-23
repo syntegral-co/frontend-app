@@ -10,7 +10,8 @@ export function useCurrentCategory() {
 
   const defaultCategory = currentAssetClass!.id === 7 ? 5 : 8
 
-  const currentCategoryId = parseInt(params.get('category') as string) || defaultCategory
+  const currentCategoryId =
+    parseInt(params.get('category') as string) || defaultCategory
   const currentCategory = categories.find(
     (category) => category.id === currentCategoryId,
   )

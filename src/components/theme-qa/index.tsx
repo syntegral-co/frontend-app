@@ -30,13 +30,13 @@ function ThemeQA() {
 
   return (
     <div className="rounded-md bg-base-200 p-4">
-      <h2 className="mb-4 font-bold text-lg">Questions</h2>
+      <h2 className="mb-4 text-lg font-bold">Questions</h2>
       <ol className="mt-4 list-none pl-2">
-        {themeQAs.map((qa, index) => {          
+        {themeQAs.map((qa, index) => {
           const references = formatReferences(qa.references?.documents)
 
           return (
-            <li className="mt-2 mb-4 cursor-pointer" key={index}>
+            <li className="mb-4 mt-2 cursor-pointer" key={index}>
               <details open={index === 0}>
                 <summary>{qa.question}</summary>
                 <div className="mt-2 bg-base-100 p-4 ">
@@ -46,7 +46,10 @@ function ThemeQA() {
                       <div className="divider"></div>
                       <p className="mt-4 font-bold">References</p>
                       <ol>
-                        <References retrieval_type="uri" documents={references} />
+                        <References
+                          retrieval_type="uri"
+                          documents={references}
+                        />
                       </ol>
                     </>
                   ) : null}

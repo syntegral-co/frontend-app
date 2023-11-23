@@ -42,7 +42,7 @@ export async function callAPI(
 export async function callBackendAPI(
   endpoint: string,
   analyticsOptions?: AnalyticsOptions,
-  body?: string
+  body?: string,
 ) {
   try {
     const response = await fetch(endpoint, {
@@ -52,7 +52,7 @@ export async function callBackendAPI(
         'X-API-Key': import.meta.env.VITE_BACKEND_API_KEY,
         session: UserSession.get()!,
       },
-      body
+      body,
     })
 
     const data = await response.json()

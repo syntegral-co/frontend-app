@@ -26,7 +26,7 @@ function UpdatedNewsRadar() {
   const news = data!.references?.articles?.map((newsData, index) => {
     const formattedNews = {
       title: newsData[0],
-      url: newsData[1]
+      url: newsData[1],
     }
 
     return <ThemeNews key={index} news={formattedNews} />
@@ -34,28 +34,29 @@ function UpdatedNewsRadar() {
 
   return (
     <>
-      <div className="gap-2 flex flex-col lg:flex-row items-start justify-start">
-        <div className="w-full lg:w-1/2 rounded-md bg-base-200 p-4 mb-4">
-          <h1 className="mb-4 text-teal font-maven font-bold text-2xl md:text-3xl">
+      <div className="flex flex-col items-start justify-start gap-2 lg:flex-row">
+        <div className="mb-4 w-full rounded-md bg-base-200 p-4 lg:w-1/2">
+          <h1 className="mb-4 font-maven text-2xl font-bold text-teal md:text-3xl">
             {theme!.name}
           </h1>
           <Interweave content={data!.summary} />
-          <h2 className="mt-4 mb-4 font-bold text-lg">References</h2>
+          <h2 className="mb-4 mt-4 text-lg font-bold">References</h2>
           <ol className="mt-4 list-none pl-2">
-            <References retrieval_type="uri" documents={formatReferences(data!.references?.documents)} />
+            <References
+              retrieval_type="uri"
+              documents={formatReferences(data!.references?.documents)}
+            />
           </ol>
         </div>
         <div className="w-full lg:w-1/2">
           <ThemeMetrics />
           <ThemeQA />
         </div>
-        </div>
-        <h2 className="mb-4 font-bold text-lg text-accent">
-          Source articles
-        </h2>
-        <div className="flex flex-row gap-2 flex-wrap items-start justify-between">
-          {news}
-        </div>
+      </div>
+      <h2 className="mb-4 text-lg font-bold text-accent">Source articles</h2>
+      <div className="flex flex-row flex-wrap items-start justify-between gap-2">
+        {news}
+      </div>
     </>
   )
 }

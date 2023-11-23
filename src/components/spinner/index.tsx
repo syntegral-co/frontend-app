@@ -4,7 +4,7 @@ type SpinnerProps = {
 
 function Spinner({ context }: SpinnerProps) {
   return (
-    <div className="flex h-full w-full items-center justify-center text-center flex-col">
+    <div className="flex h-full w-full flex-col items-center justify-center text-center">
       <div className="text-accent">
         <span className="loading loading-spinner loading-lg"></span>
         <span className="sr-only">Loading...</span>

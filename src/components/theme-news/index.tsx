@@ -6,17 +6,19 @@ type ThemeNewsProps = {
 }
 
 function ThemeNews({ news }: ThemeNewsProps) {
-  return (<div className="card w-full lg:w-96 bg-base-200 text-primary-content">
+  return (
+    <div className="card w-full bg-base-200 text-primary-content lg:w-96">
       <div className="card-body">
-        <h2 className="card-title font-bold text-lg">{news.title}</h2>
+        <h2 className="card-title text-lg font-bold">{news.title}</h2>
         <p>{news.description}</p>
         <div className="card-actions justify-end">
-        <Link className="btn btn-link" to={news.url} target="_blank">
-          Read more
-        </Link>
+          <Link className="btn btn-link" to={news.url} target="_blank">
+            Read more
+          </Link>
         </div>
       </div>
-    </div>)
+    </div>
+  )
 }
 
 export default ThemeNews

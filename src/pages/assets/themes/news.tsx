@@ -25,14 +25,14 @@ function NewsRadar() {
 
   return (
     <>
-      <div className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <div className="col-span-full rounded-md bg-base-200 p-4 mb-4">
-          <h1 className="mb-4 text-teal font-maven font-bold text-2xl md:text-3xl">
+      <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+        <div className="col-span-full mb-4 rounded-md bg-base-200 p-4">
+          <h1 className="mb-4 font-maven text-2xl font-bold text-teal md:text-3xl">
             {theme!.name}
           </h1>
           <Interweave content={data!.summary} />
         </div>
-        <h2 className="col-span-full mb-4 font-bold text-lg text-accen">
+        <h2 className="text-accen col-span-full mb-4 text-lg font-bold">
           Source articles
         </h2>
         {news}

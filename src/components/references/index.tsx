@@ -9,7 +9,9 @@ type ReferencesProps = {
 function References({ retrieval_type = 'id', documents }: ReferencesProps) {
   return documents.map((document, index) => (
     <li key={index}>
-      <Link to={`?document_${retrieval_type}=${document.id}&document_page=${document.page}`}>
+      <Link
+        to={`?document_${retrieval_type}=${document.id}&document_page=${document.page}`}
+      >
         📄{' '}
         <span className="italic text-secondary hover:underline">
           {document.name}

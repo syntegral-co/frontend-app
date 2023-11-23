@@ -1,7 +1,4 @@
-import {
-  FetchStatus,
-  QueryStatus,
-} from '@tanstack/react-query'
+import { FetchStatus, QueryStatus } from '@tanstack/react-query'
 
 export type DocumentRequest = {
   status: QueryStatus
@@ -15,7 +12,7 @@ export type Document = {
 
 export type DocumentLink = {
   id: string
-  url?: string,
+  url?: string
   page: string
   name: string
 }

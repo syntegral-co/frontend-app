@@ -6,8 +6,8 @@ function Catalogue() {
   const [isInputMenuOpen, setIsInputMenuOpen] = useState(false)
 
   return (
-    <div className="mx-auto max-w-7xl p-2 sm:p-6 lg:p-8 bg-base-200">
-      <h1 className="text-center text-teal font-maven font-bold text-2xl md:text-3xl">
+    <div className="mx-auto max-w-7xl bg-base-200 p-2 sm:p-6 lg:p-8">
+      <h1 className="text-center font-maven text-2xl font-bold text-teal md:text-3xl">
         Components catalogue
       </h1>
       <div className="overflow-x-auto">
@@ -79,7 +79,7 @@ function Catalogue() {
                 </div>
               </td>
               <td>
-                <h1 className="text-teal font-maven font-bold text-2xl md:text-3xl">
+                <h1 className="font-maven text-2xl font-bold text-teal md:text-3xl">
                   This is a title
                 </h1>
               </td>
@@ -107,7 +107,7 @@ function Catalogue() {
                 </div>
               </td>
               <td>
-                <h2 className="font-bold text-lg text-teal">
+                <h2 className="text-lg font-bold text-teal">
                   This is a sub heading
                 </h2>
               </td>
@@ -143,7 +143,7 @@ function Catalogue() {
                 <input
                   type="text"
                   placeholder="Click to open the menu..."
-                  className="input-bordered input w-full h-12 max-w-xs text-primary-content"
+                  className="input input-bordered h-12 w-full max-w-xs text-primary-content"
                   onFocus={() =>
                     setIsInputMenuOpen((isInputMenuOpen) => !isInputMenuOpen)
                   }
@@ -157,13 +157,13 @@ function Catalogue() {
                     className="menu w-full max-w-xs border border-base-200 bg-base-100 p-4 shadow-md"
                     onMouseDown={(event) => event.preventDefault()}
                   >
-                    <li className="text-primary-content hover:text-accent my-2">
+                    <li className="my-2 text-primary-content hover:text-accent">
                       <a href="#">First item</a>
                     </li>
-                    <li className="text-primary-content hover:text-accent my-2">
+                    <li className="my-2 text-primary-content hover:text-accent">
                       <a href="#">Second item</a>
                     </li>
-                    <li className="text-primary-content hover:text-accent my-2">
+                    <li className="my-2 text-primary-content hover:text-accent">
                       <a href="#">Third item</a>
                     </li>
                   </ul>

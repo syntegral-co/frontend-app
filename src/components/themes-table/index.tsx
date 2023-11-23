@@ -25,7 +25,7 @@ function ThemesTable() {
 
   return (
     <div className="overflow-x-auto">
-      <table className="table-zebra table w-full">
+      <table className="table table-zebra w-full">
         <thead>
           <tr>
             <th></th>
@@ -45,7 +45,7 @@ function ThemesTable() {
               <tr
                 key={theme.id}
                 className={clsx('hover cursor-pointer', {
-                  'opacity-30 pointer-events-none': disabledThemes.includes(
+                  'pointer-events-none opacity-30': disabledThemes.includes(
                     theme.id,
                   ),
                 })}

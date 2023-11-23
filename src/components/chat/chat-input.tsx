@@ -57,7 +57,7 @@ function ChatInput() {
       className="relative flex w-full flex-row flex-nowrap gap-2 shadow-md"
     >
       <button
-        className="tooltip-accent btn tooltip gap-2 rounded-none border-none text-primary-content"
+        className="btn tooltip tooltip-accent gap-2 rounded-none border-none text-primary-content"
         data-tip="Start new chat"
         type="button"
         onClick={startNewChat}
@@ -79,7 +79,7 @@ function ChatInput() {
       <button
         ref={submitButtonRef}
         className={clsx('btn gap-2 rounded-none border-none text-accent', {
-          'tooltip-error tooltip': formErrors.text?._errors,
+          'tooltip tooltip-error': formErrors.text?._errors,
         })}
         data-tip={formErrors.text?._errors[0]}
         type="submit"

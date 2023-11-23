@@ -48,7 +48,7 @@ function ChatMessage({ message }: ChatMessageProps) {
 
   return (
     <div className={chatClasses}>
-      <div className="chat-image avatar">
+      <div className="avatar chat-image">
         <div className="mask mask-hexagon w-10 rounded-full">
           <img src={chatAvatar} alt={`${user!.name} avatar`} />
         </div>

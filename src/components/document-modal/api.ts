@@ -13,13 +13,15 @@ export async function getDocument(filenameId: string, minutes: number) {
 }
 
 export async function getDocumentByURI(URI: string) {
-  const APIUrl = `${
-    import.meta.env.VITE_BACKEND_API
-  }/document/doc_signed_url`
-  const data = await callBackendAPI(APIUrl, {
-    type: 'doc_url_from_uri',
-    URI: URI,
-  },JSON.stringify([URI]))
+  const APIUrl = `${import.meta.env.VITE_BACKEND_API}/document/doc_signed_url`
+  const data = await callBackendAPI(
+    APIUrl,
+    {
+      type: 'doc_url_from_uri',
+      URI: URI,
+    },
+    JSON.stringify([URI]),
+  )
 
   return data[URI]
 }

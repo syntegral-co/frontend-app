@@ -52,7 +52,7 @@ function Themes() {
       )}
       {themesView}
       {viewMode === 'satellite' && (
-        <div className="mx-auto mb-8 h-auto w-full rounded-md py-2 mt-4">
+        <div className="mx-auto mb-8 mt-4 h-auto w-full rounded-md py-2">
           <div className="divider">News Radar</div>
           <CategoriesNews />
         </div>

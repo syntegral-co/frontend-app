@@ -36,7 +36,7 @@ function ThemesList() {
           >
             <Link
               className={clsx('border-none', {
-                'opacity-30 pointer-events-none': disabledThemes.includes(
+                'pointer-events-none opacity-30': disabledThemes.includes(
                   theme.id,
                 ),
               })}

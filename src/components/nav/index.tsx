@@ -67,7 +67,7 @@ function Nav() {
         <NavLink
           to={to}
           className={({ isActive }) =>
-            clsx({ 'text-accent font-bold': isActive })
+            clsx({ 'font-bold text-accent': isActive })
           }
           end
         >
@@ -80,9 +80,9 @@ function Nav() {
 
   return (
     <nav className="navbar mb-8 px-4 md:px-0">
-      <div className="flex-none lg:hidden w-2/3">
+      <div className="w-2/3 flex-none lg:hidden">
         <div className="dropdown">
-          <label tabIndex={0} className="btn-ghost btn">
+          <label tabIndex={0} className="btn btn-ghost">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -100,13 +100,13 @@ function Nav() {
           </label>
           <ul
             tabIndex={0}
-            className="menu-compact dropdown-content menu z-10 mt-3 w-52 rounded-md border-2 border-accent-focus bg-base-100 p-2 shadow"
+            className="menu-compact menu dropdown-content z-10 mt-3 w-52 rounded-md border-2 border-accent-focus bg-base-100 p-2 shadow"
           >
             {navLinksElement}
           </ul>
         </div>
         {currentAsset && (
-          <p className="text-primary text-xs">{currentAsset!.name}</p>
+          <p className="text-xs text-primary">{currentAsset!.name}</p>
         )}
       </div>
       {isAuthenticated && (
@@ -125,17 +125,17 @@ function Nav() {
       )}
       <div className="ml-auto mr-4 flex-none gap-2">
         {isAuthenticated ? (
-          <div className="dropdown-end dropdown">
+          <div className="dropdown dropdown-end">
             <div className="cursor-pointer" tabIndex={0}>
               <img
-                className="h-6 sm:h-8 max-h-16 w-auto sm:max-w-[90px] object-contain"
+                className="h-6 max-h-16 w-auto object-contain sm:h-8 sm:max-w-[90px]"
                 src={user?.picture}
                 alt={`${user!.name} avatar`}
               />
             </div>
             <ul
               tabIndex={0}
-              className="dropdown-content menu w-52 rounded-md border-2 border-accent-focus bg-base-200 p-2 shadow"
+              className="menu dropdown-content w-52 rounded-md border-2 border-accent-focus bg-base-200 p-2 shadow"
             >
               <li>
                 <a

@@ -25,7 +25,7 @@ describe('Helpers', () => {
       test('Decrypted string equals to "🦄"', () => {
         const encryptedString = encryptString('🦄')
         const decryptedString = decryptString(encryptedString)
-  
+
         expect(decryptedString).toEqual('🦄')
       })
     })

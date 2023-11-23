@@ -12,7 +12,7 @@ function CategoriesNews() {
   const newsDataElements = newsData.map((news) => (
     <div
       key={news.id}
-      className="collapse collapse-arrow join-item border-b-2 border-accent-focus opacit-90"
+      className="opacit-90 collapse join-item collapse-arrow border-b-2 border-accent-focus"
     >
       <input type="radio" name="accordion-news" />
       <div className="collapse-title text-xl font-medium">{news.title}</div>
@@ -22,7 +22,7 @@ function CategoriesNews() {
             <img className="h-20 w-auto" src={news.img_url} alt={news.title} />
           </figure>
         )}
-        <div className="flex flex-col w-full">
+        <div className="flex w-full flex-col">
           <p>{news.description}</p>
           <Link
             to={news.url}
@@ -37,7 +37,7 @@ function CategoriesNews() {
   ))
 
   return (
-    <div className="join join-vertical bg-base-200 mt-4">
+    <div className="join join-vertical mt-4 bg-base-200">
       {newsDataElements}
     </div>
   )

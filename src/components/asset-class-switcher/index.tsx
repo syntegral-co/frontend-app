@@ -63,7 +63,7 @@ function AssetClassSwitcher() {
   })
 
   return (
-    <div className="flex h-auto md:h-full w-full flex-col items-center justify-center self-center">
+    <div className="flex h-auto w-full flex-col items-center justify-center self-center md:h-full">
       <img
         className="h-52 w-auto"
         src={logo}
@@ -71,10 +71,10 @@ function AssetClassSwitcher() {
         width="4167"
         height="4167"
       />
-      <h1 className="py-6 text-teal text-center font-maven font-bold text-2xl md:text-3xl">
+      <h1 className="py-6 text-center font-maven text-2xl font-bold text-teal md:text-3xl">
         Select to start exploring!
       </h1>
-      <div className="flex flex-col md:flex-row gap-4">{assetLinksElement}</div>
+      <div className="flex flex-col gap-4 md:flex-row">{assetLinksElement}</div>
     </div>
   )
 }

@@ -9,22 +9,22 @@ export function useDocumentModal() {
   const documentURI = params.get('document_uri')
   const documentPage = params.get('document_page')
 
-if (documentURI) {
-  const { status, data, fetchStatus }: DocumentRequest = useQuery({
-    queryKey: ['document', documentURI],
-    queryFn: () => getDocumentByURI(documentURI),
-    enabled: documentURI !== null,
-    staleTime: 300000,
-  })
-  
-  return {
-    documentId: documentURI,
-    documentPage,
-    documentUrl: [data],
-    status,
-    fetchStatus,
+  if (documentURI) {
+    const { status, data, fetchStatus }: DocumentRequest = useQuery({
+      queryKey: ['document', documentURI],
+      queryFn: () => getDocumentByURI(documentURI),
+      enabled: documentURI !== null,
+      staleTime: 300000,
+    })
+
+    return {
+      documentId: documentURI,
+      documentPage,
+      documentUrl: [data],
+      status,
+      fetchStatus,
+    }
   }
-}
 
   const { status, data, fetchStatus }: DocumentRequest = useQuery({
     queryKey: ['document', documentId],
